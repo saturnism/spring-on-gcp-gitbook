@@ -62,6 +62,12 @@ gcloud beta sql instances create example-db \
 {% endtab %}
 {% endtabs %}
 
+### Cloud SQL Starter
+
+### Spring JDBC Template
+
+### Spring Data JPA
+
 ## Cloud SQL Starter
 
 ### Spring JDBC Template

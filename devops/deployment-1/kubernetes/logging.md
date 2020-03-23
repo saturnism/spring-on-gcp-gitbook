@@ -1,4 +1,4 @@
-# Logging
+# Centralized Logging
 
 ## STDOUT
 
