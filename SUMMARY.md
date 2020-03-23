@@ -24,6 +24,9 @@
   * [Logging](app-dev/cloud-services/logging.md)
   * [Metrics](app-dev/cloud-services/metrics.md)
   * [Security](app-dev/cloud-services/security.md)
+* [Testing](app-dev/testing/README.md)
+  * [Emulators](app-dev/testing/emulators.md)
+  * [Testcontainer](app-dev/testing/testcontainer.md)
 
 ## Deployment
 
