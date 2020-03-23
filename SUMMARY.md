@@ -79,18 +79,19 @@
 
 ## DevOps
 
+* [Infrastructure as Code](devops/infrastructure-as-code/README.md)
+  * [Terraform](devops/infrastructure-as-code/terraform.md)
 * [CI/CD](devops/ci-cd/README.md)
-  * [Terraform](devops/ci-cd/terraform.md)
   * [GitHub Action](devops/ci-cd/github-action.md)
   * [Cloud Build](devops/ci-cd/cloud-build.md)
-* [Monitoring](devops/monitoring/README.md)
-  * [Trace](devops/monitoring/trace.md)
-  * [Logging](devops/monitoring/logging.md)
-  * [Log Correlation](devops/monitoring/log-correlation.md)
-  * [Error Reporting](devops/monitoring/error-reporting.md)
-  * [Metrics](devops/monitoring/metrics.md)
-  * [Production Profiler](devops/monitoring/production-profiler.md)
-  * [Production Debugger](devops/monitoring/production-debugger.md)
+* [Observability](devops/observability/README.md)
+  * [Trace](devops/observability/trace.md)
+  * [Logging](devops/observability/logging.md)
+  * [Log Correlation](devops/observability/log-correlation.md)
+  * [Error Reporting](devops/observability/error-reporting.md)
+  * [Metrics](devops/observability/metrics.md)
+  * [Production Profiler](devops/observability/production-profiler.md)
+  * [Production Debugger](devops/observability/production-debugger.md)
 
 ## Additional Resources
 
