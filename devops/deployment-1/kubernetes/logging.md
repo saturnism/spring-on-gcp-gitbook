@@ -1,0 +1,6 @@
+# Logging
+
+## STDOUT
+
+## JSON Logging
+
