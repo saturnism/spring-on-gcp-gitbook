@@ -1,4 +1,4 @@
 # Configuration
 
-### Secret Manager Starter
+### Secret Manager
 

@@ -1,12 +1,8 @@
 # Cloud Datastore
 
-## Create an Instance
+## Cloud Datastore Instance
 
 ### Enable API
-
-### Create an Instance
-
-### Create a Database
 
 ## Spring Data Datastore
 

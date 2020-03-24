@@ -1,6 +1,6 @@
 # Cloud Firestore
 
-## Create an Instance
+## Cloud Firestore Instance
 
 ### Enable API
 
