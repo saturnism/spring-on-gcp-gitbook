@@ -6,6 +6,7 @@
 
 * [Google Cloud Platform](getting-started/google-cloud-platform-project.md)
 * [gcloud CLI](getting-started/install-gcloud-cli.md)
+* [Spring Cloud GCP](getting-started/spring-cloud-gcp.md)
 * [Development Tools](getting-started/development-tools.md)
 
 ## Application Development <a id="app-dev"></a>
