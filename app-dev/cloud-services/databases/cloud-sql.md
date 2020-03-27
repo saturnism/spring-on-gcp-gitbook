@@ -142,14 +142,14 @@ From the command line connection, you can use the client to create a table for t
 USE orders;
 
 CREATE TABLE order_items (
-  id BIGINT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+  id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   order_id BIGINT,
   description VARCHAR(255),
   quantity INT DEFAULT 1
 );
 
 CREATE TABLE orders (
-  id BIGINT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+  id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   description VARCHAR(255),
   creation_timestamp TIMESTAMP
 );
@@ -181,10 +181,23 @@ ALTER TABLE order_items ADD FOREIGN KEY (order_id) REFERENCES orders (id);
 {% endtab %}
 
 {% tab title="SQL Server" %}
-```java
+```sql
 USE orders;
 
+CREATE TABLE order_items (
+  id BIGINT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+  order_id BIGINT,
+  description VARCHAR(255),
+  quantity INT DEFAULT 1
+);
 
+CREATE TABLE orders (
+  id BIGINT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+  description VARCHAR(255),
+  creation_timestamp TIMESTAMP
+);
+
+ALTER TABLE order_items ADD FOREIGN KEY (order_id) REFERENCES orders (id);
 ```
 {% endtab %}
 {% endtabs %}
