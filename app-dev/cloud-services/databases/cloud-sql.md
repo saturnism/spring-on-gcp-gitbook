@@ -504,5 +504,3 @@ See [R2DBC documentation](https://r2dbc.io/) for corresponding driver usages:
 * [r2dbc-postgresql](https://github.com/r2dbc/r2dbc-postgresql)
 * [r2dbc-mssql](https://github.com/r2dbc/r2dbc-mssql)
 
-
-
