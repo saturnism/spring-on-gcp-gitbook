@@ -1,6 +1,6 @@
 # Cloud SQL
 
-Cloud SQL is managed MySQL, PostgreSQL, and SQL Server.  Cloud SQL automates backups, replication, and failover to ensure your database is reliable, highly available.
+[Cloud SQL](https://cloud.google.com/sql/) is managed MySQL, PostgreSQL, and SQL Server.  Cloud SQL automates backups, replication, and failover to ensure your database is reliable, highly available.
 
 Cloud SQL has automatic data encryption at rest and in transit. Private connectivity with Virtual Private Cloud \(VPC\) and user-controlled network access that includes firewall protection. Compliant with SSAE 16, ISO 27001, PCI DSS v3.0, and HIPAA
 
