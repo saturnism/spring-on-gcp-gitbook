@@ -202,6 +202,54 @@ ALTER TABLE order_items ADD FOREIGN KEY (order_id) REFERENCES orders (id);
 {% endtab %}
 {% endtabs %}
 
+### Add a User
+
+You can add a user using `gcloud` command line:
+
+{% tabs %}
+{% tab title="MySQL" %}
+Use `gcloud` command line to create a new user:
+
+```bash
+gcloud sql users create order-user
+  --instance=mysql-instance \
+  --password=... 
+```
+
+{% hint style="danger" %}
+The new user has no privileges. Connect to the database server and grant privileges. Refer to [MySQL documentation to use `GRANT`](https://dev.mysql.com/doc/refman/8.0/en/grant.html).
+{% endhint %}
+{% endtab %}
+
+{% tab title="PostgreSQL" %}
+Use `gcloud` command line to create a new user:
+
+```bash
+gcloud sql users create order-user \
+  --instance=postgresql-instance \
+  --password=...
+```
+
+{% hint style="danger" %}
+The new user has no privileges. Connect to the database server and grant privileges. Refer to [PostgreSQL documentation to use `GRANT`](https://www.postgresql.org/docs/9.0/sql-grant.html).
+{% endhint %}
+{% endtab %}
+
+{% tab title="SQL Server" %}
+Use `gcloud` command line to create a new user:
+
+```bash
+gcloud sql users create order-user \
+  --instance=sqlserver-instance \
+  --password=...
+```
+
+{% hint style="danger" %}
+The new user has no privileges. Connect to the database server and grant privileges. Refer to [SQL Server documentation to use `GRANT`](https://docs.microsoft.com/en-us/sql/t-sql/statements/grant-object-permissions-transact-sql?view=sql-server-ver15).
+{% endhint %}
+{% endtab %}
+{% endtabs %}
+
 ### Instance Connection Name
 
 Every Cloud SQL Instance has a unique instance connection name for the form of `PROJECT_ID:REGION:INSTANCE_NAME`.
