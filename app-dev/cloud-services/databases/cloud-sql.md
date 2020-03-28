@@ -500,7 +500,7 @@ R2DBC driver does not work with Cloud SQL Socket Factory. A [GitHub issue](https
 
 See [R2DBC documentation](https://r2dbc.io/) for corresponding driver usages:
 
-* [r2dbc-mysql](https://github.com/r2dbc/r2dbc-mysql)
+* [r2dbc-mysql](https://github.com/mirromutth/r2dbc-mysql)
 * [r2dbc-postgresql](https://github.com/r2dbc/r2dbc-postgresql)
 * [r2dbc-mssql](https://github.com/r2dbc/r2dbc-mssql)
 
