@@ -1,6 +1,6 @@
 # Cloud SQL
 
-[Cloud SQL](https://cloud.google.com/sql/) is managed MySQL, PostgreSQL, and SQL Server.  Cloud SQL automates backups, replication, and failover to ensure your database is reliable, highly available.
+[Cloud SQL](https://cloud.google.com/sql/) is managed MySQL, PostgreSQL, and SQL Server. Cloud SQL automates backups, replication, and failover to ensure your database is reliable, highly available.
 
 Cloud SQL has automatic data encryption at rest and in transit. Private connectivity with Virtual Private Cloud \(VPC\) and user-controlled network access that includes firewall protection. Compliant with SSAE 16, ISO 27001, PCI DSS v3.0, and HIPAA
 
@@ -16,7 +16,7 @@ gcloud services enable sqladmin.googleapis.com
 
 {% tabs %}
 {% tab title="MySQL" %}
-Create a new Cloud SQL - MySQL Instance with 
+Create a new Cloud SQL - MySQL Instance with
 
 ```bash
 gcloud sql instances create mysql-instance \
@@ -85,7 +85,7 @@ gcloud sql databases create orders --instance=sqlserver-instance
 
 ### Connect to Database instance
 
-By default, every database instance has a public IP address. However, the instance is not publicly accessible because it's protected by the firewall. 
+By default, every database instance has a public IP address. However, the instance is not publicly accessible because it's protected by the firewall.
 
 To easily connect to the database instance from command line:
 
@@ -116,10 +116,10 @@ gcloud sql connect postgresql-instance
 
 {% tab title="SQL Server" %}
 {% hint style="warning" %}
-You need the [MS SQL Server client](https://docs.microsoft.com/en-us/sql/tools/mssql-cli?view=sql-server-ver15) installed locally first, so that you can use `mssql-cli` to connect to any MS SQL Server.
+You need the [MS SQL Server client](https://docs.microsoft.com/en-us/sql/tools/mssql-cli?view=sql-server-ver15) installed locally first, so that you can use `mssql-cli` to connect to any SQL Server.
 {% endhint %}
 
-Connect to the MS Sql Server instance using `gcloud` CLI.
+Connect to the SQL Server instance using `gcloud` CLI.
 
 ```bash
 gcloud sql connect sqlserver-instance
@@ -213,7 +213,7 @@ Use `gcloud` command line to create a new user:
 ```bash
 gcloud sql users create order-user
   --instance=mysql-instance \
-  --password=... 
+  --password=...
 ```
 
 {% hint style="danger" %}
@@ -412,8 +412,6 @@ The JDBC URL for the Cloud SQL instance in this example is:
 ```text
 jdbc:postgresql:///orders?cloudSqlInstance=PROJECT_ID:us-central1:postgresql-instance&socketFactory=com.google.cloud.sql.postgres.SocketFactory
 ```
-
- 
 {% endtab %}
 
 {% tab title="SQL Server" %}
@@ -429,8 +427,7 @@ If your Cloud SQL instance is on [VPC and has a private IP](https://cloud.google
 
 ## Cloud SQL Proxy
 
-[Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/sql-proxy) is the generic way of establishing secured connection to a Cloud SQL instance. Rather than using the Cloud SQL Socket Factory to exchange certificates, Cloud SQL Proxy will authenticate and exchange the certificates.  
-
+[Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/sql-proxy) is the generic way of establishing secured connection to a Cloud SQL instance. Rather than using the Cloud SQL Socket Factory to exchange certificates, Cloud SQL Proxy will authenticate and exchange the certificates.
 
 ![Cloud SQL Proxy diagram](../../../.gitbook/assets/image%20%284%29.png)
 
@@ -475,13 +472,13 @@ mysql -u root -p
 {% endtab %}
 
 {% tab title="PostgreSQL" %}
-```
+```text
 psql -h localhost -U postgres
 ```
 {% endtab %}
 
 {% tab title="SQL Server" %}
-```
+```text
 mssql-cli -U sqlserver
 ```
 {% endtab %}
