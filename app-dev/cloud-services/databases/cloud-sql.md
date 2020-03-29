@@ -116,13 +116,13 @@ gcloud sql connect postgresql-instance
 
 {% tab title="SQL Server" %}
 {% hint style="warning" %}
-You need the [MS SQL Server client](https://docs.microsoft.com/en-us/sql/tools/mssql-cli?view=sql-server-ver15) installed locally first, so that you can use `mssql-cli` to connect to any PostgreSQL server.
+You need the [MS SQL Server client](https://docs.microsoft.com/en-us/sql/tools/mssql-cli?view=sql-server-ver15) installed locally first, so that you can use `mssql-cli` to connect to any MS SQL Server.
 {% endhint %}
 
-Connect to the PostgreSQL instance using `gcloud` CLI.
+Connect to the MS Sql Server instance using `gcloud` CLI.
 
 ```bash
-gcloud sql connect postgresql-instance
+gcloud sql connect sqlserver-instance
 ```
 {% endtab %}
 {% endtabs %}
