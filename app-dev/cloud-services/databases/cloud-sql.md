@@ -421,6 +421,11 @@ Cloud SQL Socket Factory is not supported for SQL Server. Use Cloud SQL Proxy in
 {% endtab %}
 {% endtabs %}
 
+#### Sample
+
+* [Spring Boot with Cloud SQL PostgreSQL](https://github.com/spring-cloud/spring-cloud-gcp/tree/master/spring-cloud-gcp-samples/spring-cloud-gcp-sql-postgres-sample)
+* [Spring Boot with Cloud SQL MySQL](https://github.com/spring-cloud/spring-cloud-gcp/tree/master/spring-cloud-gcp-samples/spring-cloud-gcp-sql-mysql-sample)
+
 ### VPC Private IP
 
 If your Cloud SQL instance is on [VPC and has a private IP](https://cloud.google.com/sql/docs/mysql/private-ip), and your application is running in the Cloud able to access the same VPC, then configure JDBC drivers normally connecting to the private IP address.
