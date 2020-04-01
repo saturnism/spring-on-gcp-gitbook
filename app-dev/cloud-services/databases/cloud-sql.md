@@ -16,7 +16,7 @@ gcloud services enable sqladmin.googleapis.com
 
 {% tabs %}
 {% tab title="MySQL" %}
-Create a new Cloud SQL - MySQL Instance with
+Create a new Cloud SQL - MySQL Instance.
 
 ```bash
 gcloud sql instances create mysql-instance \
