@@ -361,6 +361,11 @@ spring.datasource.password=...
 spring.datasource.hikari.maximum-pool-size=10
 ```
 
+#### Sample
+
+* [Spring Boot with Cloud SQL PostgreSQL](https://github.com/spring-cloud/spring-cloud-gcp/tree/master/spring-cloud-gcp-samples/spring-cloud-gcp-sql-postgres-sample)
+* [Spring Boot with Cloud SQL MySQL](https://github.com/spring-cloud/spring-cloud-gcp/tree/master/spring-cloud-gcp-samples/spring-cloud-gcp-sql-mysql-sample)
+
 ### Cloud SQL Socket Factory
 
 If you don't use Spring Cloud GCP's Cloud SQL starter, and need to configure JDBC URL directly, you can use [Cloud SQL Socket Factory](https://github.com/GoogleCloudPlatform/cloud-sql-jdbc-socket-factory) with existing JDBC driver.
@@ -420,11 +425,6 @@ Cloud SQL Socket Factory is not supported for SQL Server. Use Cloud SQL Proxy in
 {% endhint %}
 {% endtab %}
 {% endtabs %}
-
-#### Sample
-
-* [Spring Boot with Cloud SQL PostgreSQL](https://github.com/spring-cloud/spring-cloud-gcp/tree/master/spring-cloud-gcp-samples/spring-cloud-gcp-sql-postgres-sample)
-* [Spring Boot with Cloud SQL MySQL](https://github.com/spring-cloud/spring-cloud-gcp/tree/master/spring-cloud-gcp-samples/spring-cloud-gcp-sql-mysql-sample)
 
 ### VPC Private IP
 
