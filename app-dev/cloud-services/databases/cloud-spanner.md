@@ -79,7 +79,7 @@ CREATE TABLE order_items (
 ```
 
 {% hint style="warning" %}
-Cloud Spanner differs from other RDBMS in a few ways:
+Cloud Spanner differs from traditional RDBMS in a several ways:
 
 * No server-side automatic ID generation.
 * Avoid monodically increasing IDs - I.e., no auto incremented ID, because it may create hot spots in partitions.
