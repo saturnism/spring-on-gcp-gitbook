@@ -158,13 +158,121 @@ Notice that there is no explicit configuration for username/password. Cloud Span
 
 ### ORM
 
+Spring Data Cloud Spanner allows you to map domain POJOs to Cloud Spanner tables via annotations. Read the [Spring Data Spanner reference documentation](https://cloud.spring.io/spring-cloud-static/spring-cloud-gcp/1.2.2.RELEASE/reference/html/#object-mapping) for details  
+
+```java
+Table(name="orders")
+class Order {
+	@PrimaryKey
+	@Column(name="order_id")
+  private String id;
+
+	private String description;
+
+	private LocalDateTime timestamp;
+
+	@Interleaved
+	private List<OrderItem> items;
+
+  // Getter and Setters...
+}  
+
+@Table(name="order_items")
+class OrderItem {
+	@PrimaryKey(keyOrder = 1)
+	private String orderId;
+
+	@PrimaryKey(keyOrder = 2)
+	private String orderItemId;
+
+	private String description;
+	private Long quantity;
+
+  // Getter and Setter...
+}
+```
+
+{% hint style="info" %}
+Read the [Spring Data Spanner reference documentation](https://cloud.spring.io/spring-cloud-static/spring-cloud-gcp/1.2.2.RELEASE/reference/html/#object-mapping) for more details.
+{% endhint %}
+
 ### Repository
+
+Use Spring Data repository to quickly get CRUD access to the Cloud Spanner tables.
+
+```java
+@Repository
+interface OrderRepository extends SpannerRepository<Order, String> {
+}
+
+@Repository
+interface OrderItemRepository extends SpannerRepository<OrderItem, Key> {
+  List<OrderItem> findAllByOrderId(String orderId);
+}
+```
+
+{% hint style="info" %}
+`Order` is the parent and has only a primary key. Spring Data repository's ID parameter type can be the type for the single key. `OrderItem`, however, has a composite key. Spring Data repository's ID parameter type must be Cloud Spanner's `Key` type for a composite key.
+{% endhint %}
+
+In a business logic service, you can utilize the repositories:
+
+```java
+@Service
+class OrderService {
+	private final OrderRepository orderRepository;
+
+	OrderService(OrderRepository orderRepository,
+			OrderItemRepository orderItemRepository) {
+		this.orderRepository = orderRepository;
+	}
+
+	@Transactional
+	Order createOrder(Order order) {
+	  // Use UUID String representation for the ID
+		order.setId(UUID.randomUUID().toString());
+		
+		// Set the creation time
+		order.setCreationTimestamp(LocalDateTime.now());
+
+    // Set the parent Order ID and children ID for each item.
+		if (order.getItems() != null) {
+			order.getItems().stream().forEach(orderItem -> {
+				orderItem.setOrderId(order.getId());
+				orderItem.setOrderItemId(UUID.randomUUID().toString());
+			});
+		}
+		
+		// Children are saved in cascade.
+		return orderRepository.save(order);
+	}
+}
+```
 
 ### Rest Repository
 
+[Spring Data Rest](https://spring.io/projects/spring-data-rest) can expose a Spring Data repository directly on a RESTful endpoint, and rendering the payload as JSON with [HATEOS](https://en.wikipedia.org/wiki/HATEOAS) format. It supports common access patterns like pagination.
+
+```java
+@RepositoryRestResource
+interface OrderRepository extends SpannerRepository<Order, String> {
+}
+
+@RepositoryRestResource
+interface OrderItemRepository extends SpannerRepository<OrderItem, Key> {
+  List<OrderItem> findAllByOrderId(String orderId);
+}
+```
+
+To access the endpoint for Order:
+
+```java
+curl http://localhost:8080/orders
+```
+
 ### Samples
 
-
+* [Spring Boot with Cloud Spanner sample](https://github.com/spring-cloud/spring-cloud-gcp/tree/master/spring-cloud-gcp-samples/spring-cloud-gcp-data-spanner-sample)
 
 ## JDBC
 
