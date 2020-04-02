@@ -152,6 +152,10 @@ spring.cloud.gcp.spanner.database=orders
 ```
 {% endcode %}
 
+{% hint style="info" %}
+Notice that there is no explicit configuration for username/password. Cloud Spanner authentication uses the GCP credential \(either your user credential, or Service Account credential\), and authorization is configured via Identity Access Management \(IAM\).
+{% endhint %}
+
 ### ORM
 
 ### Repository
