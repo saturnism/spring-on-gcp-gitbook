@@ -293,7 +293,12 @@ gcloud sql instances describe sqlserver-instance \
 
 There are different ways to connect to a Cloud SQL instance.  All methods will configure a JDBC URL to allow you to use the corresponding JDBC Driver, and subsequently, JPA / Hibernate and Spring Data.
 
-
+| Method | MySQL | PostgreSQL | SQL Server | Considerations |
+| :--- | :--- | :--- | :--- | :--- |
+| Cloud SQL Starter | ✅ | ✅ | 🚫 | Easy to configure for Spring Boot projects. |
+| Cloud SQL Socket Factory | ✅ | ✅ | ✅ | Works with non Spring Boot projects. |
+| Cloud SQL Proxy | ✅ | ✅ | ✅ | Offloads authentication to proxy. |
+| VPC Private IP | ✅ | ✅ | ✅ | Access via VPC. Can be used with all of the other methods above. |
 
 ### Cloud SQL Starter
 
