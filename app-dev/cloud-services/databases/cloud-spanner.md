@@ -102,13 +102,56 @@ gcloud spanner databases ddl update orders \
   --ddl=$(<schema.ddl)
 ```
 
-## Spring Data Spanner
+## Spring Data Spanner Starter
+
+The easiest way to access Cloud Spanner is using Spring Cloud GCP's [Spring Data Spanner starter](https://cloud.spring.io/spring-cloud-static/spring-cloud-gcp/1.2.2.RELEASE/reference/html/#spring-data-cloud-spanner). This starter provides full Spring Data support for Cloud Spanner while implementing idiomatic access patterns.
+
+| Spring Data Feature | Supported |
+| :--- | :--- |
+| ORM | ✅ |
+| Declarative Transaction | ✅ |
+| Repository | ✅ |
+| REST Repository | ✅ |
+| Query methods | ✅ |
+| Query annotation | ✅ |
+| Pagination | ✅ |
+| Events | ✅ |
+| Auditing | ✅ |
+
+Add the Spring Data Spanner starter:
+
+{% tabs %}
+{% tab title="Maven" %}
+```bash
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-gcp-data-spanner</artifactId>
+</dependency>
+```
+{% endtab %}
+
+{% tab title="Gradle" %}
+```bash
+dependencies {
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-gcp-data-spanner'
+}
+```
+{% endtab %}
+{% endtabs %}
 
 ### ORM
 
 ### Repository
 
 ### Rest Repository
+
+### Samples
+
+
+
+## JDBC
+
+## Hibernate
 
 ## R2DBC
 

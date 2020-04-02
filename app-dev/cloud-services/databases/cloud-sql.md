@@ -309,6 +309,8 @@ Cloud SQL starter will automatically:
 * Add dependency to the corresponding JDBC driver, and the [Cloud SQL socket factory](cloud-sql.md#cloud-sql-socket-factory). You **do not** need to add those dependency separately.
 * Configure the JDBC URL for the corresponding database instance.
 
+#### Dependency
+
 Add the Cloud SQL Starter dependency:
 
 {% tabs %}
@@ -325,7 +327,10 @@ Maven:
 Gradle:
 
 ```bash
-compile group: 'org.springframework.cloud', name: 'spring-cloud-gcp-starter-sql-mysql'
+dependencies {
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-gcp-starter-sql-mysql'
+}
+
 ```
 {% endtab %}
 
@@ -353,6 +358,8 @@ Cloud SQL Starter is not supported for SQL Server. Use Cloud SQL Proxy instead.
 {% endtab %}
 {% endtabs %}
 
+#### Configuration
+
 Configure Spring Boot application's`application.properties` with [Instance Connection Name](cloud-sql.md#instance-connection-name) and the database name:
 
 ```bash
@@ -379,6 +386,8 @@ spring.datasource.hikari.maximum-pool-size=10
 
 If you don't use Spring Cloud GCP's Cloud SQL starter, and need to configure JDBC URL directly, you can use [Cloud SQL Socket Factory](https://github.com/GoogleCloudPlatform/cloud-sql-jdbc-socket-factory) with existing JDBC driver.
 
+#### Dependency
+
 Add the Cloud SQL Socket Factory dependency:
 
 {% tabs %}
@@ -398,6 +407,8 @@ compile 'com.google.cloud.sql:postgres-socket-factory:1.0.15'
 ```
 {% endtab %}
 {% endtabs %}
+
+#### Configuration
 
 {% tabs %}
 {% tab title="MySQL" %}
