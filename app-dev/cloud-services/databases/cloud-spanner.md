@@ -519,7 +519,11 @@ interface OrderItemRepository extends JpaRepository<OrderItem, OrderItemId> {
 
 ## R2DBC
 
-### Dependency
+[Cloud Spanner R2DBC driver](https://github.com/GoogleCloudPlatform/cloud-spanner-r2dbc) is under active development.
 
-### Configuration
+It can be used with [Spring Data R2DBC](https://spring.io/projects/spring-data-r2dbc) using the [Cloud Spanner R2DBC Dialect](https://github.com/GoogleCloudPlatform/cloud-spanner-r2dbc/tree/master/cloud-spanner-spring-data-r2dbc).
+
+### Samples
+
+* [Spring Boot with Spring Data R2DBC and Cloud Spanner](https://github.com/GoogleCloudPlatform/cloud-spanner-r2dbc/tree/master/cloud-spanner-r2dbc-samples/cloud-spanner-spring-data-r2dbc-sample)
 
