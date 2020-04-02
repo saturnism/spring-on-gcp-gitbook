@@ -81,6 +81,10 @@ dependencyManagement {
 {% endtab %}
 {% endtabs %}
 
+{% hint style="info" %}
+A BOM is a Bill of Material, when imported, you can specify dependencies managed by the BOM without explicitly specifying a version for that dependency.  Using the Spring Cloud BOM will allow you to use all Google Cloud Client Libraries and Spring Cloud GCP libraries without explicitly specifying a version.
+{% endhint %}
+
 ## Services
 
 Spring Cloud GCP supports many GCP services using de-facto Spring abstraction layers.
