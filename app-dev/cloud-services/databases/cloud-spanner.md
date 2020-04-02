@@ -118,7 +118,7 @@ The easiest way to access Cloud Spanner is using Spring Cloud GCP's [Spring Data
 | Events | ✅ |
 | Auditing | ✅ |
 
-#### Dependency
+### Dependency
 
 Add the Spring Data Spanner starter:
 
@@ -134,14 +134,13 @@ Add the Spring Data Spanner starter:
 
 {% tab title="Gradle" %}
 ```bash
-dependencies {
-    compile group: 'org.springframework.cloud', name: 'spring-cloud-gcp-data-spanner'
-}
+
+compile group: 'org.springframework.cloud', name: 'spring-cloud-gcp-data-spanner'
 ```
 {% endtab %}
 {% endtabs %}
 
-#### Configuration
+### Configuration
 
 Configure Cloud Spanner instance and database to connect to.
 
@@ -253,6 +252,25 @@ class OrderService {
 
 [Spring Data Rest](https://spring.io/projects/spring-data-rest) can expose a Spring Data repository directly on a RESTful endpoint, and rendering the payload as JSON with [HATEOS](https://en.wikipedia.org/wiki/HATEOAS) format. It supports common access patterns like pagination.
 
+Add Spring Data Rest starter:
+
+{% tabs %}
+{% tab title="Maven" %}
+```markup
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-data-rest</artifactId>
+</dependency>
+```
+{% endtab %}
+
+{% tab title="Gradle" %}
+```groovy
+compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-rest'
+```
+{% endtab %}
+{% endtabs %}
+
 ```java
 @RepositoryRestResource
 interface OrderRepository extends SpannerRepository<Order, String> {
@@ -276,7 +294,232 @@ curl http://localhost:8080/orders
 
 ## JDBC
 
+[Cloud Spanner JDBC Driver](https://cloud.google.com/spanner/docs/use-oss-jdbc) can be used if you need raw JDBC access.
+
+### Dependency
+
+Add Cloud Spanner JDBC Driver:
+
+{% tabs %}
+{% tab title="Maven" %}
+```bash
+<dependency>
+    <groupId>com.google.cloud</groupId>
+    <artifactId>google-cloud-spanner-jdbc</artifactId>
+</dependency>
+```
+{% endtab %}
+
+{% tab title="Gradle" %}
+```bash
+compile group: 'com.google.cloud', name: 'google-cloud-spanner-jdbc'
+```
+{% endtab %}
+{% endtabs %}
+
+Use Spring Boot JDBC Starter to use JDBC Template:
+
+{% tabs %}
+{% tab title="Maven" %}
+```bash
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-jdbc</artifactId>
+</dependency>
+```
+{% endtab %}
+
+{% tab title="Gradle" %}
+```
+compile group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc'
+```
+{% endtab %}
+{% endtabs %}
+
+### Configuration
+
+Cloud Spanner JDBC Driver Class:
+
+```java
+com.google.cloud.spanner.jdbc.JdbcDriver
+```
+
+Cloud Spanner JDBC URL format:
+
+```java
+jdbc:cloudspanner:/projects/PROJECT_ID/instances/INSTANCE_ID/databases/DATABASE_NAME
+```
+
+With Spring Data JDBC, you can configure the datasource:
+
+{% code title="application.properties" %}
+```java
+spring.datasource.driver-class-name=com.google.cloud.spanner.jdbc.JdbcDriver
+spring.datasource.url=jdbc:cloudspanner:/projects/PROJECT_ID/instances/spanner-instance/databases/orders
+```
+{% endcode %}
+
 ## Hibernate
 
+[Cloud Spanner Hibernate Dialect](https://cloud.google.com/spanner/docs/use-hibernate) lets you use Cloud Spanner with [Hibernate ORM](https://hibernate.org/orm/). You can use Cloud Spanner with Hibernate from any Java application. When using Spring Boot, you can use the Hibernate Dialect with [Spring Data JPA](https://spring.io/projects/spring-data-jpa).
+
+### Dependency
+
+Add both the Cloud Spanner JDBC driver and Cloud Spanner Hibernate Dialect:
+
+{% tabs %}
+{% tab title="Maven" %}
+```bash
+<dependency>
+  <groupId>com.google.cloud</groupId>
+  <artifactId>google-cloud-spanner-jdbc</artifactId>
+</dependency>
+<dependency>
+  <groupId>com.google.cloud</groupId>
+  <artifactId>google-cloud-spanner-hibernate-dialect</artifactId>
+</dependency>
+```
+{% endtab %}
+
+{% tab title="Gradle" %}
+```
+compile group: 'com.google.cloud', name: 'google-cloud-spanner-jdbc'
+compile group: 'com.google.cloud', name: 'google-cloud-spanner-hibernate-dialect'
+```
+{% endtab %}
+{% endtabs %}
+
+Add Spring Data JPA starter:
+
+{% tabs %}
+{% tab title="Maven" %}
+```bash
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-data-jpa</artifactId>
+</dependency>
+```
+{% endtab %}
+
+{% tab title="Gradle" %}
+```
+compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa'
+```
+{% endtab %}
+{% endtabs %}
+
+### Configuration
+
+Cloud Spanner Hibernate Dialect class:
+
+```java
+com.google.cloud.spanner.hibernate.SpannerDialect
+```
+
+Configure Spring Data JPA:
+
+{% code title="application.properties" %}
+```java
+spring.datasource.driver-class-name=com.google.cloud.spanner.jdbc.JdbcDriver
+spring.datasource.url=jdbc:cloudspanner:/projects/PROJECT_ID/instances/spanner-instance/databases/orders
+
+spring.jpa.database-platform=com.google.cloud.spanner.hibernate.SpannerDialect
+```
+{% endcode %}
+
+### ORM
+
+Use JPA annotations to map POJO to Cloud Spanner database tables.
+
+{% hint style="info" %}
+In Cloud Spanner, parent-children relationship is modeled as a composite key. With JPA, use `IdClass` or `EmbeddableId` to map a composite key.
+{% endhint %}
+
+```java
+@Entity
+@Table(name="orders")
+class Order {
+	@Id
+	@Column(name="order_id")
+  private String id;
+
+	private String description;
+
+	@Column(name="creation_timestamp")
+	private LocalDateTime creationTimestamp;
+
+	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+	private List<OrderItem> items;
+
+  // Getter and Setter ...
+}
+
+@Embeddable
+class OrderItemId implements Serializable {
+  @Column(name="order_id")
+	private String orderId;
+
+	@Column(name="order_item_id")
+	private String orderItemId;
+	
+	// Getter and Setter ...
+	// Hashcode and Equals ...
+}
+
+@Entity
+@Table(name="order_items")
+class OrderItem {
+	@EmbeddedId
+	private OrderItemId orderItemId;
+
+	private String description;
+	private Long quantity;
+
+	@ManyToOne
+  @JoinColumn(name="order_id", insertable = false, updatable = false)
+	private Order order;
+	
+	// Getter and Setter ...
+}
+```
+
+### Repository
+
+Use Spring Data repository for CRUD access to the tables.
+
+```java
+@Repository
+interface OrderRepository extends JpaRepository<Order, String> {
+}
+
+@Repository
+interface OrderItemRepository extends JpaRepository<OrderItem, OrderItemId> {
+}
+```
+
+### Rest Repository
+
+Use Spring Data Rest to expose the repositories as RESTful services with HATEOS format.
+
+```java
+@RepositoryRestResource
+interface OrderRepository extends JpaRepository<Order, String> {
+}
+
+@RepositoryRestResource
+interface OrderItemRepository extends JpaRepository<OrderItem, OrderItemId> {
+}
+```
+
+### Sample
+
+* [Spring Boot with Spring Data JPA and Cloud Spanner](https://github.com/GoogleCloudPlatform/google-cloud-spanner-hibernate/tree/master/google-cloud-spanner-hibernate-samples/spring-data-jpa-sample)
+* [Quarkus with Hibernate and Cloud Spanner](https://github.com/GoogleCloudPlatform/google-cloud-spanner-hibernate/tree/master/google-cloud-spanner-hibernate-samples/quarkus-jpa-sample)
+* [Microprofile with Hibernate and Cloud Spanner](https://github.com/GoogleCloudPlatform/google-cloud-spanner-hibernate/tree/master/google-cloud-spanner-hibernate-samples/microprofile-jpa-sample)
+
 ## R2DBC
+
+### Dependency
+
+### Configuration
 
