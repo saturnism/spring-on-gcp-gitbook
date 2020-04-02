@@ -147,7 +147,8 @@ Configure Cloud Spanner instance and database to connect to.
 
 {% code title="application.properties" %}
 ```bash
-
+spring.cloud.gcp.spanner.instance-id=spanner-instance
+spring.cloud.gcp.spanner.database=orders
 ```
 {% endcode %}
 
