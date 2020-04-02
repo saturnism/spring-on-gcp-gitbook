@@ -291,6 +291,10 @@ gcloud sql instances describe sqlserver-instance \
 
 ## JDBC
 
+There are different ways to connect to a Cloud SQL instance.  All methods will configure a JDBC URL to allow you to use the corresponding JDBC Driver, and subsequently, JPA / Hibernate and Spring Data.
+
+
+
 ### Cloud SQL Starter
 
 When using Spring Boot, you can use [Spring Cloud GCP's Cloud SQL starter](https://cloud.spring.io/spring-cloud-static/spring-cloud-gcp/1.2.2.RELEASE/reference/html/#spring-jdbc).
@@ -426,11 +430,7 @@ Cloud SQL Socket Factory is not supported for SQL Server. Use Cloud SQL Proxy in
 {% endtab %}
 {% endtabs %}
 
-### VPC Private IP
-
-If your Cloud SQL instance is on [VPC and has a private IP](https://cloud.google.com/sql/docs/mysql/private-ip), and your application is running in the Cloud able to access the same VPC, then configure JDBC drivers normally connecting to the private IP address.
-
-## Cloud SQL Proxy
+### Cloud SQL Proxy
 
 [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/sql-proxy) is the generic way of establishing secured connection to a Cloud SQL instance. Rather than using the Cloud SQL Socket Factory to exchange certificates, Cloud SQL Proxy will authenticate and exchange the certificates.
 
@@ -471,23 +471,51 @@ You can then establish connections on `localhost` with the corresponding ports.
 
 {% tabs %}
 {% tab title="MySQL" %}
+Connect with `mysql` CLI:
+
 ```bash
 mysql -u root -p
+```
+
+Or, connect with JDBC using JDBC URL:
+
+```bash
+jdbc:mysql://localhost/orders
 ```
 {% endtab %}
 
 {% tab title="PostgreSQL" %}
+Connect with `psql` CLI:
+
 ```text
 psql -h localhost -U postgres
+```
+
+Or, connect with JDBC using JDBC URL:
+
+```bash
+jdbc:postgresql://localhost/orders
 ```
 {% endtab %}
 
 {% tab title="SQL Server" %}
+Connect with `mssql-cli` CLI:
+
 ```text
 mssql-cli -U sqlserver
 ```
+
+Or, connect with JDBC using JDBC URL:
+
+```bash
+jdbc:sqlserver://localhost/databaseName=orders
+```
 {% endtab %}
 {% endtabs %}
+
+### VPC Private IP
+
+If your Cloud SQL instance is on [VPC and has a private IP](https://cloud.google.com/sql/docs/mysql/private-ip), and your application is running in the Cloud able to access the same VPC, then configure JDBC drivers normally connecting to the private IP address.
 
 ## R2DBC
 
