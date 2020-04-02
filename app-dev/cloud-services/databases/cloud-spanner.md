@@ -118,6 +118,8 @@ The easiest way to access Cloud Spanner is using Spring Cloud GCP's [Spring Data
 | Events | ✅ |
 | Auditing | ✅ |
 
+#### Dependency
+
 Add the Spring Data Spanner starter:
 
 {% tabs %}
@@ -138,6 +140,16 @@ dependencies {
 ```
 {% endtab %}
 {% endtabs %}
+
+#### Configuration
+
+Configure Cloud Spanner instance and database to connect to.
+
+{% code title="application.properties" %}
+```bash
+
+```
+{% endcode %}
 
 ### ORM
 

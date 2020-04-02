@@ -317,38 +317,46 @@ Add the Cloud SQL Starter dependency:
 {% tab title="MySQL" %}
 Maven:
 
+{% code title="pom.xml" %}
 ```bash
 <dependency>
     <groupId>org.springframework.cloud</groupId>
     <artifactId>spring-cloud-gcp-starter-sql-mysql</artifactId>
 </dependency>
 ```
+{% endcode %}
 
 Gradle:
 
+{% code title="build.gradle" %}
 ```bash
 dependencies {
     compile group: 'org.springframework.cloud', name: 'spring-cloud-gcp-starter-sql-mysql'
 }
 
 ```
+{% endcode %}
 {% endtab %}
 
 {% tab title="PostgreSQL" %}
 Maven:
 
+{% code title="pom.xml" %}
 ```bash
 <dependency>
     <groupId>org.springframework.cloud</groupId>
     <artifactId>spring-cloud-gcp-starter-sql-postgresql</artifactId>
 </dependency>
 ```
+{% endcode %}
 
 Gradle:
 
+{% code title="build.gradle" %}
 ```bash
 compile group: 'org.springframework.cloud', name: 'spring-cloud-gcp-starter-sql-postgresql'
 ```
+{% endcode %}
 {% endtab %}
 
 {% tab title="SQL Server" %}
@@ -362,6 +370,7 @@ Cloud SQL Starter is not supported for SQL Server. Use Cloud SQL Proxy instead.
 
 Configure Spring Boot application's`application.properties` with [Instance Connection Name](cloud-sql.md#instance-connection-name) and the database name:
 
+{% code title="application.properties" %}
 ```bash
 # Retrieve instance connection name from the previous step
 spring.cloud.gcp.sql.instance-connection-name=INSTANCE_CONNECTION_NAME
@@ -376,6 +385,7 @@ spring.datasource.password=...
 # Configure connection pooling if needed
 spring.datasource.hikari.maximum-pool-size=10
 ```
+{% endcode %}
 
 #### Sample
 
@@ -392,6 +402,7 @@ Add the Cloud SQL Socket Factory dependency:
 
 {% tabs %}
 {% tab title="Maven" %}
+{% code title="pom.xml" %}
 ```bash
 <dependency>
     <groupId>com.google.cloud.sql</groupId>
@@ -399,12 +410,17 @@ Add the Cloud SQL Socket Factory dependency:
     <version>1.0.15</version>
 </dependency>
 ```
+{% endcode %}
 {% endtab %}
 
 {% tab title="Gradle" %}
+{% code title="build.gradle" %}
 ```bash
-compile 'com.google.cloud.sql:postgres-socket-factory:1.0.15'
+dependencies {
+    compile 'com.google.cloud.sql:postgres-socket-factory:1.0.15'
+}
 ```
+{% endcode %}
 {% endtab %}
 {% endtabs %}
 
