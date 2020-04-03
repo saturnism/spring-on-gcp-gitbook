@@ -11,7 +11,7 @@
 
 ## Application Development <a id="app-dev"></a>
 
-* [Google Cloud Services](app-dev/cloud-services/README.md)
+* [Cloud Services](app-dev/cloud-services/README.md)
   * [Databases](app-dev/cloud-services/databases/README.md)
     * [Cloud SQL](app-dev/cloud-services/databases/cloud-sql.md)
     * [Cloud Spanner](app-dev/cloud-services/databases/cloud-spanner.md)
