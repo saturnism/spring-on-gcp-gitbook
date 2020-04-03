@@ -519,6 +519,8 @@ interface OrderItemRepository extends JpaRepository<OrderItem, OrderItemId> {
 
 ## R2DBC
 
+[Cloud Spanner R2DBC driver](https://github.com/GoogleCloudPlatform/cloud-spanner-r2dbc) let's you access Cloud Spanner data with reactive API.
+
 [Cloud Spanner R2DBC driver](https://github.com/GoogleCloudPlatform/cloud-spanner-r2dbc) is under active development.
 
 It can be used with [Spring Data R2DBC](https://spring.io/projects/spring-data-r2dbc) using the [Cloud Spanner R2DBC Dialect](https://github.com/GoogleCloudPlatform/cloud-spanner-r2dbc/tree/master/cloud-spanner-spring-data-r2dbc).
