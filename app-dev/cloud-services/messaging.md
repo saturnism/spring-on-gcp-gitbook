@@ -249,16 +249,9 @@ compile group: 'org.springframework.cloud', name: 'spring-cloud-gcp-pubsub-strea
 
 ### Consume Messages
 
-#### Configuration
-
-```text
-spring.cloud.stream.bindings.processOrder-in-0.destination=orders
-spring.cloud.stream.bindings.processOrder-in-0.group=orders-processor-group
-
-spring.cloud.stream.gcp.pubsub.bindings.events.consumer.auto-create-resources=true
-```
-
 #### Consumer
+
+A Spring Cloud Stream consumer to consume messages is simply a Java `Consumer`.
 
 ```java
 @Bean
@@ -269,5 +262,83 @@ public Consumer<Order> processOrder() {
 };
 ```
 
+#### Binding
 
+You can bind the `processOrder` consumer with `applications.properties` configuration. See [Spring Cloud Streams documentation](https://cloud.spring.io/spring-cloud-static/spring-cloud-stream/current/reference/html/spring-cloud-stream.html#_binding_and_binding_names) on the binding naming convention, where `processOrder` becomes `processorOrder-in-0`.
+
+```text
+spring.cloud.stream.bindings.processOrder-in-0.destination=orders
+spring.cloud.stream.bindings.processOrder-in-0.group=orders-processor-group
+
+# For development use, but not recommended for production.
+spring.cloud.stream.gcp.pubsub.default.consumer.auto-create-resources=true
+```
+
+A Spring Cloud Streams Consumer Group is mapped to a subscription, with the naming convention of `[destination-name].[consumer-group-name]`. So in this example, a subscription named `orders.orders-processor-group` will be automatically created.
+
+### Consume and Produce Message
+
+If your consumer need to also produce a message to another topic, you can implement a `Function`.
+
+#### Function
+
+```java
+@Bean
+public Function<Order, String> processOrder() {
+	return order -> {
+	  logger.info(order.getId());
+	  return order.getId();
+	};
+};
+
+```
+
+#### Binding
+
+The output of the function can be forwarded to the next destination/topic.
+
+```text
+spring.cloud.stream.bindings.processOrder-in-0.destination=orders
+spring.cloud.stream.bindings.processOrder-in-0.group=orders-processor-group
+spring.cloud.stream.bindings.processOrder-out-0.destination=order-processed
+
+# For development use, but not recommended for production.
+spring.cloud.stream.gcp.pubsub.default.consumer.auto-create-resources=true
+```
+
+### Produce Messages
+
+If you need to continuously produce messages, then you can implement `Supplier`. Supplier can be used in two ways, either supply the object itself, or supply a `Flux` that can then continuously emit new messages. Read Spring Cloud Streams documentation for more information.
+
+#### Supplier
+
+```java
+@Bean
+Supplier<Flux<Order>> ordersToProcess() {
+	return () -> Flux.from(e -> {
+		while (true) {
+			try {
+				Order order = new Order();
+				order.setId(UUID.randomUUID().toString());
+				e.onNext(order);
+				Thread.sleep(1000L);
+			} catch (InterruptedException interruptedException) {
+			}
+	  }
+	});
+}
+```
+
+#### Binding
+
+The output of the supplier can be sent to the  destination/topic.
+
+```text
+spring.cloud.stream.bindings.ordersToProcess-out-0.destination=order-processed
+
+# For development use, but not recommended for production.
+spring.cloud.stream.gcp.pubsub.default.consumer.auto-create-resources=true
+```
+
+This will send the output of the supplier to the `order-processed` topic.
 
