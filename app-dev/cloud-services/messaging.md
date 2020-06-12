@@ -82,6 +82,17 @@ public PubSubMessageConverter pubSubMessageConverter() {
 }
 ```
 
+#### Non-Web Applications
+
+In a web application, the Java process will stay alive until it's explicitly killed. If your Pub/Sub message subscriber does not use a Web starter \(Web or Webflux\), then the application may exit as soon as it initializes.  When you need the Pub/Sub subscribers to stay alive without exiting immediately, you must create a bean `ThreadPoolTaskScheduler` named `pubsubSubscriberThreadPool`. 
+
+```java
+@Bean
+ThreadPoolTaskScheduler pubsubSubscriberThreadPool() {
+  return new ThreadPoolTaskScheduler();
+}
+```
+
 #### Publish a Message
 
 You can use `PubSubPublisherTemplate` to easily publish a message.
@@ -232,16 +243,27 @@ compile group: 'org.springframework.cloud', name: 'spring-cloud-gcp-pubsub-strea
 {% endtab %}
 {% endtabs %}
 
-### Configuration
+### Consume Messages
+
+#### Configuration
 
 ```text
-spring.cloud.stream.bindings.events.destination=orders
+spring.cloud.stream.bindings.processOrder-in-0.destination=orders
+spring.cloud.stream.bindings.processOrder-in-0.group=orders-processor-group
 
-# this will automatically create a consumer group
-# consider turning this off for production.
 spring.cloud.stream.gcp.pubsub.bindings.events.consumer.auto-create-resources=true
-
-# specify consumer group, and avoid anonymous consumer group generation
-spring.cloud.stream.bindings.events.group=orders-consumer-group
 ```
+
+#### Consumer
+
+```java
+@Bean
+public Consumer<Order> processOrder() {
+  return order -> {
+    logger.info(order.getId());
+	};
+};
+```
+
+
 
