@@ -47,7 +47,7 @@ Add the Spring Data Datastore starter:
 ```bash
 <dependency>
     <groupId>org.springframework.cloud</groupId>
-    <artifactId>spring-cloud-gcp-pubsub-starter</artifactId>
+    <artifactId>spring-cloud-gcp-starter-pubsub</artifactId>
 </dependency>
 ```
 {% endtab %}
@@ -55,7 +55,7 @@ Add the Spring Data Datastore starter:
 {% tab title="Gradle" %}
 ```bash
 
-compile group: 'org.springframework.cloud', name: 'spring-cloud-gcp-pubsub-starter'
+compile group: 'org.springframework.cloud', name: 'spring-cloud-gcp-starter-pubsub'
 ```
 {% endtab %}
 {% endtabs %}
@@ -65,12 +65,96 @@ compile group: 'org.springframework.cloud', name: 'spring-cloud-gcp-pubsub-start
 There is no explicit configuration required if you use the automatic authentication and project ID detection. I.e., if you already logged in locally with `gcloud` command line, then it'll automatically use Datastore from the project you configured in `gcloud`.
 
 {% hint style="info" %}
-Notice that there is no explicit configuration for username/password. Cloud Firestore authentication uses the GCP credential \(either your user credential, or Service Account credential\), and authorization is configured via Identity Access Management \(IAM\).
+Notice that there is no explicit configuration for username/password. Cloud Pub/Sub authentication uses the GCP credential \(either your user credential, or Service Account credential\), and authorization is configured via Identity Access Management \(IAM\).
 {% endhint %}
 
-### 
-
 ### Pub/Sub Template
+
+#### JSON Serialization
+
+You need to produce a  `PubSubMessageConverter` bean in order for Spring Cloud GCP Pub/Sub to automatically serialize a POJO into JSON payload, 
+
+```java
+@Bean
+public PubSubMessageConverter pubSubMessageConverter() {
+    return new JacksonPubSubMessageConverter(new ObjectMapper());
+}
+```
+
+#### Publish a Message
+
+You can use `PubSubPublisherTemplate` to easily publish a message.
+
+```java
+@RestController
+class OrderController {
+  private final PubSubPublisherTemplate publisherTemplate;
+
+  OrderController(
+      PubSubPublisherTemplate publisherTemplate) {
+    this.publisherTemplate = publisherTemplate;
+  }
+
+  @PostMapping("/order/submit")
+  void submitOrder(@RequestBody Order order) {
+    publisherTemplate.publish("orders", order);
+  }
+}
+```
+
+#### Pull a Message
+
+You can pull N number of messages by using `PubSubSubscriberTemplate`.
+
+```java
+@Bean
+ApplicationRunner runner(PubSubSubscriberTemplate subscriberTemplate) {
+  return (args) -> {
+    var msgs = subscriberTemplate
+        .pullAndConvert("orders-subscription", 1, true, Order.class);
+    msgs.forEach(msg -> {
+      logger.info(m.getPayload().getId());
+      msg.ack();
+    });
+  };
+}
+```
+
+#### Subscribe to a Subscription
+
+You can also just subscribe to a subscription using Streaming Pull, so that it maintains a persistent connection, and can process messages whenever they arrive:
+
+```java
+@Bean
+ApplicationRunner subscribeRunner(PubSubSubscriberTemplate subscriberTemplate) {
+  return (args) -> {
+    subscriberTemplate.subscribeAndConvert("orders-subscription", msg -> {
+      System.out.println(msg.getPayload().getId());
+      msg.ack();
+    }, Order.class);
+  };
+}
+```
+
+{% hint style="warning" %}
+Streaming pull currently does not support back-pressure  well. If you have many small messages, but each message takes a long time to process.
+{% endhint %}
+
+### Reactive Stream
+
+If you are using Project Reactor \(or Webflux that uses Project Reactor\), you can also subscribe to a Pub/Sub Subscription using `PubSubReactiveFactory`.
+
+```java
+@Bean
+ApplicationRunner reactiveSubscriber(PubSubReactiveFactory reactiveFactory, PubSubMessageConverter converter) {
+  return (args) -> {
+    reactiveFactory.poll("orders-subscription", 250L)
+      .map(msg -> converter.fromPubSubMessage(msg.getPubsubMessage(), Order.class))
+      .doOnNext(order -> System.out.println(order.getId()))
+      .subscribe();
+  };
+}
+```
 
 ### Spring Integration
 
