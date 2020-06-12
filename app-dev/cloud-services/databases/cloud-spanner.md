@@ -160,7 +160,7 @@ Notice that there is no explicit configuration for username/password. Cloud Span
 Spring Data Cloud Spanner allows you to map domain POJOs to Cloud Spanner tables via annotations. Read the [Spring Data Spanner reference documentation](https://cloud.spring.io/spring-cloud-static/spring-cloud-gcp/1.2.2.RELEASE/reference/html/#object-mapping) for details  
 
 ```java
-Table(name="orders")
+@Table(name="orders")
 class Order {
 	@PrimaryKey
 	@Column(name="order_id")
