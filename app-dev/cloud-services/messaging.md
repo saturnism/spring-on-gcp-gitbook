@@ -159,7 +159,54 @@ ApplicationRunner reactiveSubscriber(PubSubReactiveFactory reactiveFactory, PubS
 
 ### Spring Integration
 
+If you use Spring Integration, you can easily use Pub/Sub to send and consume messages, using an `InboundChannelAdapter` and `MessageHandler`.
 
+#### Inbound Channel
+
+In Spring Integration, you can configure bind an input channel to a Pub/Sub Subscription using the `PubSubInboundChannelAdapter`.
+
+```java
+@Bean
+public MessageChannel orderRequestInputChannel() {
+  return MessageChannels.direct().get();
+}
+
+@Bean
+public PubSubInboundChannelAdapter orderRequestChannelAdapter(
+    @Qualifier("orderRequestInputChannel") MessageChannel inputChannel,
+    PubSubTemplate pubSubTemplate) {
+  PubSubInboundChannelAdapter adapter =
+      new PubSubInboundChannelAdapter(
+          pubSubTemplate, "orders-subscription");
+  adapter.setOutputChannel(inputChannel);
+  adapter.setPayloadType(Order.class);
+  adapter.setAckMode(AckMode.AUTO);
+
+  return adapter;
+}
+```
+
+#### Message Handler and Message Gateway
+
+To send the message to a topic, you can use `PubSubMessageHandler` to bind it to a channel.
+
+```java
+@Bean
+@ServiceActivator(inputChannel = "ordersRequestOutputChannel")
+public MessageHandler ordersOutputMessageHandler() {
+  return new PubSubMessageHandler(pubSubTemplate, "orders");
+}
+```
+
+With Spring Integration Message Gateway, you can also bind a gateway method to a channel that's handled by the `PubSubMessageHandler`.
+
+```java
+@MessagingGateway
+public interface OrdersGateway {
+  @Gateway(requestChannel = "ordersRequestOutputChannel")
+  void sendOrder(Order order);
+}
+```
 
 ### Spring Cloud Stream
 
