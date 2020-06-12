@@ -25,7 +25,8 @@ gcloud pubsub subscriptions create orders-subscription --topic=orders
 ### Publish a Message
 
 ```bash
-gcloud pubsub topics publish orders --message="my order"
+gcloud pubsub topics publish orders \
+  --message='{"id":"1", "description": "My Order"}'
 ```
 
 ### Pull a Message
@@ -157,6 +158,8 @@ ApplicationRunner reactiveSubscriber(PubSubReactiveFactory reactiveFactory, PubS
 ```
 
 ### Spring Integration
+
+
 
 ### Spring Cloud Stream
 
