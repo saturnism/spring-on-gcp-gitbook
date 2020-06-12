@@ -229,15 +229,19 @@ Spring Cloud Stream depends on Spring Integration. In addition, add the Pub/Sub 
 {% tab title="Maven" %}
 ```bash
 <dependency>
-    <groupId>org.springframework.cloud</groupId>
-    <artifactId>spring-cloud-gcp-pubsub-stream-binder</artifactId>
+  <groupId>org.springframework.cloud</groupId>
+  <artifactId>spring-cloud-stream</artifactId>
+</dependency>
+<dependency>
+  <groupId>org.springframework.cloud</groupId>
+  <artifactId>spring-cloud-gcp-pubsub-stream-binder</artifactId>
 </dependency>
 ```
 {% endtab %}
 
 {% tab title="Gradle" %}
 ```bash
-
+compile group: 'org.springframework.cloud', name: 'spring-cloud-stream'
 compile group: 'org.springframework.cloud', name: 'spring-cloud-gcp-pubsub-stream-binder'
 ```
 {% endtab %}
