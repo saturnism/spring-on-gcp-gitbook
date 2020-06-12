@@ -1,24 +1,22 @@
 # Native Mode
 
+## Cloud Firestore Native Instance
 
-
-## Cloud Firestore Datastore Instance
-
-There can only be one Datastore instance associated with a single project. The Datastore instance is automatically created when you enable the API:
+There can only be one Datastore instance associated with a single project. The Cloud Firestore in Datastore instance is automatically created when you enable the API:
 
 ### Enable API
 
 ```bash
-gcloud services enable datastore.googleapis.com
+gcloud services enable firestore.googleapis.com
 ```
 
 ### Data Schema
 
 Because Cloud Firestore is a NoSQL database, you do not need to explicitly create tables, define data schema, etc. Simply use the API to store new documents, and perform CRUD operations.
 
-## Spring Data Datastore
+## Spring Data Firestore
 
-The easiest way to access Cloud Spanner is using Spring Cloud GCP's [Spring Data Datastore starter](https://cloud.spring.io/spring-cloud-static/spring-cloud-gcp/1.2.2.RELEASE/reference/html/#spring-data-cloud-datastore). This starter provides full Spring Data support for Cloud Spanner while implementing idiomatic access patterns.
+The easiest way to access Cloud Firestore is using Spring Cloud GCP's [Spring Data Datastore starter](https://cloud.spring.io/spring-cloud-static/spring-cloud-gcp/1.2.2.RELEASE/reference/html/#spring-data-cloud-datastore). This starter provides full Spring Data support for Cloud Spanner while implementing idiomatic access patterns.
 
 | Spring Data Feature | Supported |
 | :--- | :--- |
