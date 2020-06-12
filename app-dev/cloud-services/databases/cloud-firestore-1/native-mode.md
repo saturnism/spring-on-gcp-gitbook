@@ -68,8 +68,8 @@ Spring Data Cloud Firestore allows you to map domain POJOs to Datastore document
 ```java
 @Document
 class Order {
-	@Id
-	private Long id;
+	@DocumentId
+	private String id;
 	private String description;
 	private LocalDateTime timestamp;
 	private List<OrderItem> items;
@@ -97,7 +97,7 @@ Use Spring Data Reactive repository to quickly get CRUD access to the Cloud Fire
 
 ```java
 @Repository
-interface OrderRepository extends DatastoreRepository<Order, Long> {
+interface OrderRepository extends FirestoreReactiveRepository<Order> {
 }
 ```
 
@@ -106,59 +106,24 @@ In a business logic service, you can utilize the repositories:
 ```java
 @Service
 class OrderService {
-	private final OrderRepository orderRepository;
+  private final OrderRepository orderRepository;
 
-	OrderService(OrderRepository orderRepository) {
-		this.orderRepository = orderRepository;
-	}
+  OrderService(OrderRepository orderRepository) {
+    this.orderRepository = orderRepository;
+  }
 
-	@Transactional
-	Order createOrder(Order order) {
-		// Set the creation time
-		order.setTimestamp(LocalDateTime.now());
+  @Transactional
+  Mono<Order> createOrder(Order order) {
+    // Set the creation time
+    order.setTimestamp(Timestamp.of(new Date()));
 
-		// Children are saved in cascade.
-		return orderRepository.save(order);
-	}
+    // Children are saved in cascade.
+    return orderRepository.save(order);
+  }
 }
-```
-
-### Rest Repository
-
-[Spring Data Rest](https://spring.io/projects/spring-data-rest) can expose a Spring Data repository directly on a RESTful endpoint, and rendering the payload as JSON with [HATEOS](https://en.wikipedia.org/wiki/HATEOAS) format. It supports common access patterns like pagination.
-
-Add Spring Data Rest starter:
-
-{% tabs %}
-{% tab title="Maven" %}
-```markup
-<dependency>
-  <groupId>org.springframework.boot</groupId>
-  <artifactId>spring-boot-starter-data-rest</artifactId>
-</dependency>
-```
-{% endtab %}
-
-{% tab title="Gradle" %}
-```groovy
-compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-rest'
-```
-{% endtab %}
-{% endtabs %}
-
-```java
-@RepositoryRestResource
-interface OrderRepository extends DatastoreRepository<Order, String> {
-}
-```
-
-To access the endpoint for Order:
-
-```java
-curl http://localhost:8080/orders
 ```
 
 ### Samples
 
-* [Spring Boot with Datastore sample](https://github.com/spring-cloud/spring-cloud-gcp/tree/master/spring-cloud-gcp-samples/spring-cloud-gcp-data-datastore-sample)
+* [Spring Boot with Cloud Firestore sample](https://github.com/spring-cloud/spring-cloud-gcp/tree/master/spring-cloud-gcp-data-firestore)
 
