@@ -157,11 +157,11 @@ ApplicationRunner reactiveSubscriber(PubSubReactiveFactory reactiveFactory, PubS
 }
 ```
 
-### Spring Integration
+## Spring Integration
 
 If you use Spring Integration, you can easily use Pub/Sub to send and consume messages, using an `InboundChannelAdapter` and `MessageHandler`.
 
-#### Inbound Channel
+### Inbound Channel
 
 In Spring Integration, you can configure bind an input channel to a Pub/Sub Subscription using the `PubSubInboundChannelAdapter`.
 
@@ -186,7 +186,7 @@ public PubSubInboundChannelAdapter orderRequestChannelAdapter(
 }
 ```
 
-#### Message Handler and Message Gateway
+### Message Handler and Message Gateway
 
 To send the message to a topic, you can use `PubSubMessageHandler` to bind it to a channel.
 
@@ -208,5 +208,40 @@ public interface OrdersGateway {
 }
 ```
 
-### Spring Cloud Stream
+## Spring Cloud Stream
+
+### Dependency
+
+Spring Cloud Stream depends on Spring Integration. In addition, add the Pub/Sub Stream Binding.
+
+{% tabs %}
+{% tab title="Maven" %}
+```bash
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-gcp-pubsub-stream-binder</artifactId>
+</dependency>
+```
+{% endtab %}
+
+{% tab title="Gradle" %}
+```bash
+
+compile group: 'org.springframework.cloud', name: 'spring-cloud-gcp-pubsub-stream-binder'
+```
+{% endtab %}
+{% endtabs %}
+
+### Configuration
+
+```text
+spring.cloud.stream.bindings.events.destination=orders
+
+# this will automatically create a consumer group
+# consider turning this off for production.
+spring.cloud.stream.gcp.pubsub.bindings.events.consumer.auto-create-resources=true
+
+# specify consumer group, and avoid anonymous consumer group generation
+spring.cloud.stream.bindings.events.group=orders-consumer-group
+```
 
