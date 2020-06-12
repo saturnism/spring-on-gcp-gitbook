@@ -41,7 +41,7 @@ Add the Spring Data Datastore starter:
 ```bash
 <dependency>
     <groupId>org.springframework.cloud</groupId>
-    <artifactId>spring-cloud-gcp-data-datastore</artifactId>
+    <artifactId>spring-cloud-gcp-starter-data-datastore</artifactId>
 </dependency>
 ```
 {% endtab %}
@@ -49,7 +49,7 @@ Add the Spring Data Datastore starter:
 {% tab title="Gradle" %}
 ```bash
 
-compile group: 'org.springframework.cloud', name: 'spring-cloud-gcp-data-spanner'
+compile group: 'org.springframework.cloud', name: 'spring-cloud-gcp-starter-data-datastore'
 ```
 {% endtab %}
 {% endtabs %}

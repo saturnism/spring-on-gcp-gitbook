@@ -24,7 +24,7 @@ The easiest way to access Cloud Firestore is using Spring Cloud GCP's [Spring Da
 | ORM | ✅ |
 | Declarative Transaction | ✅ |
 | Repository | ✅ |
-| REST Repository | ✅ |
+| REST Repository | ❌ |
 | Query methods | ✅ |
 | Query annotation | ✅ |
 | Pagination | ✅ |
@@ -40,7 +40,7 @@ Add the Spring Data Firestore starter:
 ```bash
 <dependency>
     <groupId>org.springframework.cloud</groupId>
-    <artifactId>spring-cloud-gcp-data-firestore</artifactId>
+    <artifactId>spring-cloud-gcp-starter-data-firestore</artifactId>
 </dependency>
 ```
 {% endtab %}
@@ -48,7 +48,7 @@ Add the Spring Data Firestore starter:
 {% tab title="Gradle" %}
 ```bash
 
-compile group: 'org.springframework.cloud', name: 'spring-cloud-gcp-data-spanner'
+compile group: 'org.springframework.cloud', name: 'spring-cloud-gcp-starter-data-firestore'
 ```
 {% endtab %}
 {% endtabs %}
