@@ -18,7 +18,7 @@ Because Cloud Firestore is a NoSQL database, you do not need to explicitly creat
 
 ## Spring Data Datastore
 
-The easiest way to access Datastore is using Spring Cloud GCP's [Spring Data Datastore starter](https://cloud.spring.io/spring-cloud-static/spring-cloud-gcp/1.2.2.RELEASE/reference/html/#spring-data-cloud-datastore). This starter provides full Spring Data support for Cloud Spanner while implementing idiomatic access patterns.
+The easiest way to access Datastore is using Spring Cloud GCP's [Spring Data Datastore starter](https://cloud.spring.io/spring-cloud-static/spring-cloud-gcp/1.2.2.RELEASE/reference/html/#spring-data-cloud-datastore). This starter provides full Spring Data support for Datastore while implementing idiomatic access patterns.
 
 | Spring Data Feature | Supported |
 | :--- | :--- |

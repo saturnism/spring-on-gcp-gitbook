@@ -16,10 +16,11 @@ Because Cloud Firestore is a NoSQL database, you do not need to explicitly creat
 
 ## Spring Data Firestore
 
-The easiest way to access Cloud Firestore is using Spring Cloud GCP's [Spring Data Datastore starter](https://cloud.spring.io/spring-cloud-static/spring-cloud-gcp/1.2.2.RELEASE/reference/html/#spring-data-cloud-datastore). This starter provides full Spring Data support for Cloud Spanner while implementing idiomatic access patterns.
+The easiest way to access Cloud Firestore is using Spring Cloud GCP's [Spring Data Firestore starter](https://cloud.spring.io/spring-cloud-static/spring-cloud-gcp/1.2.2.RELEASE/reference/html/#spring-data-reactive-repositories-for-cloud-firestore). This starter provides full Spring Data support for Cloud Firestore while implementing idiomatic access patterns.
 
 | Spring Data Feature | Supported |
 | :--- | :--- |
+| Reactive Repository | ✅ |
 | ORM | ✅ |
 | Declarative Transaction | ✅ |
 | Repository | ✅ |
@@ -32,14 +33,14 @@ The easiest way to access Cloud Firestore is using Spring Cloud GCP's [Spring Da
 
 ### Dependency
 
-Add the Spring Data Datastore starter:
+Add the Spring Data Firestore starter:
 
 {% tabs %}
 {% tab title="Maven" %}
 ```bash
 <dependency>
     <groupId>org.springframework.cloud</groupId>
-    <artifactId>spring-cloud-gcp-data-datastore</artifactId>
+    <artifactId>spring-cloud-gcp-data-firestore</artifactId>
 </dependency>
 ```
 {% endtab %}
@@ -62,10 +63,10 @@ Notice that there is no explicit configuration for username/password. Cloud Fire
 
 ### ORM
 
-Spring Data Cloud Datastore allows you to map domain POJOs to Datastore documents via annotations. Read the [Spring Data Datastore reference documentation](https://cloud.spring.io/spring-cloud-static/spring-cloud-gcp/1.2.2.RELEASE/reference/html/#object-mapping-2) for details  
+Spring Data Cloud Firestore allows you to map domain POJOs to Datastore documents via annotations.
 
 ```java
-@Entity
+@Document
 class Order {
 	@Id
 	private Long id;
@@ -76,7 +77,6 @@ class Order {
 	// Getters and setters ...
 }
 
-@Entity
 class OrderItem {
 	private String description;
 	private Long quantity;
@@ -85,15 +85,15 @@ class OrderItem {
 }
 ```
 
-Because Datastore is a document-oriented NoSQL database, you can have nested structure, you can establish parent-children relationships without complicated foreign keys.
+Because Firestore is a document-oriented NoSQL database, you can have nested structure, you can establish parent-children relationships without complicated foreign keys.
 
 {% hint style="info" %}
-Read the [Spring Data Datastore reference documentation](https://cloud.spring.io/spring-cloud-static/spring-cloud-gcp/1.2.2.RELEASE/reference/html/#object-mapping-2) for more details.
+Read the [Spring Data Firestore reference documentation](https://cloud.spring.io/spring-cloud-static/spring-cloud-gcp/1.2.2.RELEASE/reference/html/#object-mapping-3) for more details.
 {% endhint %}
 
 ### Repository
 
-Use Spring Data repository to quickly get CRUD access to the Datastore.
+Use Spring Data Reactive repository to quickly get CRUD access to the Cloud Firestore.
 
 ```java
 @Repository
