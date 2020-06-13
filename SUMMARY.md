@@ -19,7 +19,7 @@
       * [Datastore Mode](app-dev/cloud-services/databases/cloud-firestore-1/cloud-firestore-datastore.md)
       * [Native Mode](app-dev/cloud-services/databases/cloud-firestore-1/native-mode.md)
   * [Messaging](app-dev/cloud-services/messaging.md)
-  * [Configuration](app-dev/cloud-services/configuration.md)
+  * [Secret Management](app-dev/cloud-services/secret-management.md)
   * [Storage](app-dev/cloud-services/storage.md)
   * [Cache](app-dev/cloud-services/cache.md)
   * [Trace](app-dev/cloud-services/trace.md)

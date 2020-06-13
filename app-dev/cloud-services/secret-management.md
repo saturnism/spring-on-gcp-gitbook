@@ -1,4 +1,4 @@
-# Configuration
+# Secret Management
 
 ### Secret Manager
 
