@@ -41,7 +41,7 @@ The easiest way to use Cloud Pub/Sub is using Spring Cloud GCP's [Spring Pub/Sub
 
 ### Dependency
 
-Add the Spring Data Datastore starter:
+Add the Spring Cloud GCP Pub/Sub starter:
 
 {% tabs %}
 {% tab title="Maven" %}
@@ -63,7 +63,7 @@ compile group: 'org.springframework.cloud', name: 'spring-cloud-gcp-starter-pubs
 
 ### Configuration
 
-There is no explicit configuration required if you use the automatic authentication and project ID detection. I.e., if you already logged in locally with `gcloud` command line, then it'll automatically use Datastore from the project you configured in `gcloud`.
+There is no explicit configuration required if you use the automatic authentication and project ID detection. I.e., if you already logged in locally with `gcloud` command line, then it'll automatically use Pub/Sub topics/subscriptions from the project you configured in `gcloud`.
 
 {% hint style="info" %}
 Notice that there is no explicit configuration for username/password. Cloud Pub/Sub authentication uses the GCP credential \(either your user credential, or Service Account credential\), and authorization is configured via Identity Access Management \(IAM\).
@@ -125,7 +125,7 @@ ApplicationRunner runner(PubSubSubscriberTemplate subscriberTemplate) {
     var msgs = subscriberTemplate
         .pullAndConvert("orders-subscription", 1, true, Order.class);
     msgs.forEach(msg -> {
-      logger.info(m.getPayload().getId());
+      logger.info(msg.getPayload().getId());
       msg.ack();
     });
   };

@@ -127,7 +127,7 @@ class OrderService {
 
 ### Rest Repository
 
-[Spring Data Rest](https://spring.io/projects/spring-data-rest) can expose a Spring Data repository directly on a RESTful endpoint, and rendering the payload as JSON with [HATEOS](https://en.wikipedia.org/wiki/HATEOAS) format. It supports common access patterns like pagination.
+[Spring Data Rest](https://spring.io/projects/spring-data-rest) can expose a Spring Data repository directly on a RESTful endpoint, and rendering the payload as JSON with [HATEOAS](https://en.wikipedia.org/wiki/HATEOAS) format. It supports common access patterns like pagination.
 
 Add Spring Data Rest starter:
 
