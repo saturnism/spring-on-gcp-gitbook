@@ -170,7 +170,7 @@ ApplicationRunner reactiveSubscriber(PubSubReactiveFactory reactiveFactory, PubS
 
 ## Spring Integration
 
-If you use Spring Integration, you can easily use Pub/Sub to send and consume messages, using an `InboundChannelAdapter` and `MessageHandler`.
+[Spring Integration](https://spring.io/projects/spring-integration) is allows you to easily create Enterprise Integration pipelines by supporting well known [Enterprise Integration Patterns](https://www.enterpriseintegrationpatterns.com/). If you use Spring Integration, you can easily use Pub/Sub to send and consume messages, using an `InboundChannelAdapter` and `MessageHandler`.
 
 ### Inbound Channel
 
@@ -197,9 +197,22 @@ public PubSubInboundChannelAdapter orderRequestChannelAdapter(
 }
 ```
 
+You can then create a new message processor and binding a method to the input channel, by using the `ServiceActivator` annotation.
+
+```java
+public class OrderProcessor {
+  private static final Logger logger = LoggerFactory.getLogger(OrderProcessor.class);
+  
+  @ServiceActivator(inputChannel = "orderRequestInputChannel")
+  void process(@Payload Order order) {
+    logger.info(order.getId());
+  }
+}
+```
+
 ### Message Handler and Message Gateway
 
-To send the message to a topic, you can use `PubSubMessageHandler` to bind it to a channel.
+To send the message to a topic, you can use `PubSubMessageHandler` to bind it to a channel by using the `ServiceActivator` annotation.
 
 ```java
 @Bean
@@ -219,11 +232,30 @@ public interface OrdersGateway {
 }
 ```
 
+Now you can send a message to the Pub/Sub Topic by using an instance of the Gateway.
+
+```java
+@Bean
+ApplicationRunner sendOrder(OrderGateway gateway) {
+  return (args) -> {
+    Order order = new Order();
+    order.setId(UUID.randomUUID().toString());
+    gateway.sendOrder(order);
+  };
+}
+```
+
+### Integration Flow
+
+Last but not least, you can create an entire message flow, with patterns such as Retry and Rate Limiting, and processing the message by creating a new [Integration Flow](https://docs.spring.io/spring-integration/reference/html/dsl.html).
+
 ## Spring Cloud Stream
+
+Spring Cloud Stream allows you to write event-driven microservices by simply implementing well known Java functional interfaces such as `Function`, `Consumer`, and `Supplier`. Messaging infrastructure \(such as a Pub/Sub Topic or Subscription\) can be bound to these functions at the runtime.
 
 ### Dependency
 
-Spring Cloud Stream depends on Spring Integration. In addition, add the Pub/Sub Stream Binding.
+Spring Cloud Stream depends on Spring Integration. In addition, add the Pub/Sub Stream Binder.
 
 {% tabs %}
 {% tab title="Maven" %}
