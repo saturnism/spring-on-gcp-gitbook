@@ -101,5 +101,3 @@ spring.datasource.password=${sm://order-db-password}
 | Long - Project Scoped | `sm://projects/your-project/order-db-password/1` |
 | Long - Fully Qualified | `sm://projects/your-project/secrets/order-db-password/versions/1` |
 
-
-
