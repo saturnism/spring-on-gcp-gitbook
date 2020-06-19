@@ -91,5 +91,148 @@ There is no explicit configuration required if you use the automatic authenticat
 Notice that there is no explicit configuration for username/password. Cloud Storage authentication uses the GCP credential \(either your user credential, or Service Account credential\), and authorization is configured via Identity Access Management \(IAM\).
 {% endhint %}
 
+### Storage Client
+
+The starter automatically creates a pre-configured `Storage` bean that provides raw-access to Google Cloud Storage.
+
+```java
+@Bean
+ApplicationRunner storageRunner(Storage storage, GcpProjectIdProvider projectIdProvider) {
+  return (args) -> {
+    Page<Blob> list = storage.list(projectIdProvider.getProjectId());
+    list.iterateAll().forEach(blob -> System.out.println(blob.getName()));
+  };
+}
+```
+
+### Resource URI
+
+You can address a Cloud Storage file by using the resource URI prefixed with `gs://`. The fully qualified URI is of the form: `gs://project-id/path/to/file`.
+
+### Read a file
+
+You can open the `Resource` using `ApplicationContext`. Then read the content from `InputStream`. You must `close` the stream when you are done \(or wrap with try-with-resource since it's auto-closeable\).
+
+```java
+@Bean
+ApplicationRunner runner(ApplicationContext ctx, GcpProjectIdProvider projectIdProvider) {
+  return (args) -> {
+    WritableResource resource = (WritableResource) ctx
+        .getResource(String.format("gs://%s/hello.txt", projectIdProvider.getProjectId()));
+    try (PrintWriter writer = new PrintWriter(resource.getOutputStream())) {
+      writer.println("Hello World!");
+    }
+  };
+}
+```
+
+### Write a file
+
+You can open the `Resource` using `ApplicationContext`. Then cast the `Resource` to a `WritableResource`, and then use the `OutputStream` to write the content. Lastly, you must `close` the stream in order for the file to write \(or wrap with try-with-resource since it's auto-closeable\).
+
+```java
+@Bean
+ApplicationRunner readRunner(ApplicationContext ctx, GcpProjectIdProvider projectIdProvider) {
+  return (args) -> {
+    Resource resource = ctx
+        .getResource(String.format("gs://%s/hello.txt", projectIdProvider.getProjectId()));
+    try (InputStreamReader reader = new InputStreamReader(resource.getInputStream())) {
+      BufferedReader bufferedReader = new BufferedReader(reader);
+      bufferedReader.lines().forEach(System.out::println);
+    }
+  };
+}
+```
+
+## Spring Integration
+
+You can channel adapters for Google Cloud Storage to read and write files to Google Cloud Storage through `MessageChannels`.
+
+### Dependency
+
+Add both the Spring Cloud GCP Storage starter, and Spring Integration File component.
+
+{% tabs %}
+{% tab title="Maven" %}
+```bash
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-gcp-starter-storage</artifactId>
+</dependency>
+<dependency>
+    <groupId>org.springframework.integration</groupId>
+    <artifactId>spring-integration-file</artifactId>
+</dependency>
+```
+{% endtab %}
+
+{% tab title="Gradle" %}
+```bash
+
+compile group: 'org.springframework.cloud', name: 'spring-cloud-gcp-starter-storage'
+compile group: 'org.springframework.integration', name: 'spring-integration-file'
+```
+{% endtab %}
+{% endtabs %}
+
+### Inbound Channel Adapter
+
+#### Inbound File Synchronizer
+
+File-based integration with files typically requires polling a directory that contains the new files.  In Spring Integration, this is configured through an `InboundFileSynchronizer`. Use `GcsInboundFileSyncronizer` to create a `MessageSource` and adapt it to a `MessageChannel`.
+
+{% hint style="warning" %}
+The files are temporarily stored in a directory in the local file system.
+{% endhint %}
+
+```java
+@Bean
+public MessageChannel gcsInputChannel() {
+  return MessageChannels.direct().get();
+}
+
+@Bean
+@InboundChannelAdapter(channel = "gcsInputChannel", poller = @Poller(fixedDelay = "5000"))
+public MessageSource<File> (Storage gcs, GcpProjectIdProvider projectIdProvider)
+    throws IOException {
+  GcsInboundFileSynchronizer synchronizer = new GcsInboundFileSynchronizer(gcs);
+  synchronizer.setRemoteDirectory(projectIdProvider.getProjectId());
+
+  GcsInboundFileSynchronizingMessageSource messageSource =
+          new GcsInboundFileSynchronizingMessageSource(synchronizer);
+  File localDirectory = Files.createTempDirectory("gcs");
+  messageSource.setLocalDirectory(localDirectory);
+
+  return messageSource;
+}
+```
+
+#### Streaming Message Source
+
+For most use cases, you should use the streaming message source, which does not require files to be stored in the file system.
+
+```java
+@Bean
+public MessageChannel gcsInputChannel() {
+  return MessageChannels.direct().get();
+}
+
+@Bean
+@InboundChannelAdapter(channel = "gcsInputChannel", poller = @Poller(fixedDelay = "5000"))
+public MessageSource<InputStream> streamingAdapter(Storage gcs, GcpProjectIdProvider projectIdProvider) {
+  GcsStreamingMessageSource adapter =
+          new GcsStreamingMessageSource(new GcsRemoteFileTemplate(new GcsSessionFactory(gcs)));
+  adapter.setRemoteDirectory(projectIdProvider.getProjectId());
+  return adapter;
+}
+```
+
+
+
+
+
+  
+
+
 
 
