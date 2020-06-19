@@ -227,6 +227,21 @@ public MessageSource<InputStream> streamingAdapter(Storage gcs, GcpProjectIdProv
 }
 ```
 
+### Outbound Channel Adapter
+
+The outbound channel adapter allows files to be written to Google Cloud Storage. When it receives a `Message` containing a payload of type `File`, it writes that file to the Google Cloud Storage bucket specified in the adapter.
+
+```java
+@Bean
+@ServiceActivator(inputChannel = "gcsOutputChannel")
+public MessageHandler outboundChannelAdapter(Storage gcs, GcpProjectIdProvider projectIdProvider) {
+  GcsMessageHandler outboundChannelAdapter = new GcsMessageHandler(new GcsSessionFactory(gcs));
+  outboundChannelAdapter.setRemoteDirectoryExpression(new ValueExpression<>(projectIdProvider.getProjectId()));
+
+  return outboundChannelAdapter;
+}
+```
+
 
 
 
