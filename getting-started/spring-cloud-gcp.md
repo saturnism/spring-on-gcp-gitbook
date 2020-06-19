@@ -21,6 +21,7 @@ Or, generate the project using `curl`:
 ```text
 curl https://start.spring.io/starter.zip \
   -d dependencies=web,cloud-gcp \
+  -d bootVersion=2.3.1.RELEASE
   -d baseDir=demo
 ```
 
@@ -40,10 +41,11 @@ If you want to add Spring Cloud GCP to existing project, simply add Spring Cloud
 | :--- | :--- |
 | 2.1 | Greenwich |
 | 2.2 | Hoxton |
+| 2.3 | Hoxton.SR5 |
 
 See [Spring Cloud documentation](https://spring.io/projects/spring-cloud#learn) for the latest versions.
 
-Add the Spring Cloud BOM to your project:
+Add the compatible Spring Cloud BOM version to your project:
 
 {% tabs %}
 {% tab title="Maven" %}
@@ -53,7 +55,7 @@ Add the Spring Cloud BOM to your project:
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-dependencies</artifactId>
-            <version>Hoxton.RELEASE</version>
+            <version>Hoxton.SR5</version>
             <type>pom</type>
             <scope>import</scope>
         </dependency>
