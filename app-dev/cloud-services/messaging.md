@@ -168,6 +168,11 @@ ApplicationRunner reactiveSubscriber(PubSubReactiveFactory reactiveFactory, PubS
 }
 ```
 
+### Samples
+
+* [Spring Cloud GCP Pub/Sub Template sample](https://github.com/spring-cloud/spring-cloud-gcp/tree/master/spring-cloud-gcp-samples/spring-cloud-gcp-pubsub-sample)
+* [Spring Cloud GCP Reactive Pub/Sub sample](https://github.com/spring-cloud/spring-cloud-gcp/tree/master/spring-cloud-gcp-samples/spring-cloud-gcp-pubsub-reactive-sample)
+
 ## Spring Integration
 
 [Spring Integration](https://spring.io/projects/spring-integration) is allows you to easily create Enterprise Integration pipelines by supporting well known [Enterprise Integration Patterns](https://www.enterpriseintegrationpatterns.com/). If you use Spring Integration, you can easily use Pub/Sub to send and consume messages, using an `InboundChannelAdapter` and `MessageHandler`.
@@ -248,6 +253,11 @@ ApplicationRunner sendOrder(OrderGateway gateway) {
 ### Integration Flow
 
 Last but not least, you can create an entire message flow, with patterns such as Retry and Rate Limiting, and processing the message by creating a new [Integration Flow](https://docs.spring.io/spring-integration/reference/html/dsl.html).
+
+### Samples
+
+* [Spring Integration with Pub/Sub sample](https://github.com/spring-cloud/spring-cloud-gcp/tree/master/spring-cloud-gcp-samples/spring-cloud-gcp-integration-pubsub-sample)
+* [Spring Integration with Pub/Sub and JSON payload sample](https://github.com/spring-cloud/spring-cloud-gcp/tree/master/spring-cloud-gcp-samples/spring-cloud-gcp-integration-pubsub-json-sample)
 
 ## Spring Cloud Stream
 
@@ -373,4 +383,9 @@ spring.cloud.stream.gcp.pubsub.default.consumer.auto-create-resources=true
 ```
 
 This will send the output of the supplier to the `order-processed` topic.
+
+### Samples
+
+* [Spring Cloud GCP Pub/Sub Stream Binder sample](https://github.com/spring-cloud/spring-cloud-gcp/tree/master/spring-cloud-gcp-samples/spring-cloud-gcp-pubsub-binder-sample)
+* [Spring Cloud GCP Pub/Sub Stream Binder \(no annotations\) sample](https://github.com/spring-cloud/spring-cloud-gcp/tree/master/spring-cloud-gcp-samples/spring-cloud-gcp-pubsub-stream-binder-functional-sample)
 
