@@ -144,6 +144,10 @@ ApplicationRunner readRunner(ApplicationContext ctx, GcpProjectIdProvider projec
 }
 ```
 
+### Samples
+
+* [Spring Cloud GCP Storage sample](https://github.com/spring-cloud/spring-cloud-gcp/tree/master/spring-cloud-gcp-samples/spring-cloud-gcp-storage-resource-sample)
+
 ## Spring Integration
 
 You can channel adapters for Google Cloud Storage to read and write files to Google Cloud Storage through `MessageChannels`.
@@ -241,6 +245,10 @@ public MessageHandler outboundChannelAdapter(Storage gcs, GcpProjectIdProvider p
   return outboundChannelAdapter;
 }
 ```
+
+### Samples
+
+* [Spring Cloud Integration with Cloud Storage Sample](https://github.com/spring-cloud/spring-cloud-gcp/tree/master/spring-cloud-gcp-samples/spring-cloud-gcp-integration-storage-sample)
 
 
 
