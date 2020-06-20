@@ -125,6 +125,9 @@ Configure the Redis instance to connect to:
 {% code title="application.properties" %}
 ```bash
 spring.redis.host=<MEMORYSTORE_REDIS_IP>
+
+# Configure default TTL, e.g., 10 minutes
+spring.cache.redis.time-to-live=600000
 ```
 {% endcode %}
 
@@ -137,9 +140,9 @@ Notice that there is no explicit configuration for username/password. Cloud Span
 Once you configured the Spring Boot with Redis, you can use the `@Cacheable` annotation to cache return values.
 
 ```text
-@Cacheable("cache1")
-public String hello(@PathVariable String name) {
-    ....
+@Cacheable("order")
+public Order getOrder(Long id) {
+  ...
 }
 ```
 
