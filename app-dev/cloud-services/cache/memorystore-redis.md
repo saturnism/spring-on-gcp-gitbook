@@ -92,6 +92,46 @@ See [redis-cli documentation](https://redis.io/topics/rediscli) for more informa
 
 Spring Boot can [use Redis](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-caching-provider-redis) to [cache with annotations](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-caching).
 
+### Dependency
+
+Add the Spring Data Spanner starter:
+
+{% tabs %}
+{% tab title="Maven" %}
+```bash
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-boot-starter-cache</artifactId>
+</dependency>
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-data-redis</artifactId>
+</dependency>
+```
+{% endtab %}
+
+{% tab title="Gradle" %}
+```bash
+compile group: 'org.springframework.cloud', name: 'spring-boot-starter-cache'
+compile group: 'org.springframework.cloud', name: 'spring-boot-starter-data-redis'
+```
+{% endtab %}
+{% endtabs %}
+
+### Configuration
+
+Configure the Redis instance to connect to:
+
+{% code title="application.properties" %}
+```bash
+spring.redis.host=<MEMORYSTORE_REDIS_IP>
+```
+{% endcode %}
+
+{% hint style="info" %}
+Notice that there is no explicit configuration for username/password. Cloud Spanner authentication uses the GCP credential \(either your user credential, or Service Account credential\), and authorization is configured via Identity Access Management \(IAM\).
+{% endhint %}
+
 ## Spring Boot Session
 
 Spring Boot can [use Redis for session data](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-session). 
