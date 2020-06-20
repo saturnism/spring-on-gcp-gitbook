@@ -44,14 +44,14 @@ PROJECT_ID=$(gcloud config get-value project)
 gsutil mb gs://$PROJECT_ID
 ```
 
-### Copy a file
+### Copy a File
 
 ```bash
 echo "Hello World" > hello.txt
 gsutil cp hello.txt gs://$PROJECT_ID
 ```
 
-### Delete a file
+### Delete a File
 
 ```bash
 gsutil rm gs://$PROJECT_ID/hello.txt
