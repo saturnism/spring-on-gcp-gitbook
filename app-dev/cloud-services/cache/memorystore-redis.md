@@ -142,7 +142,7 @@ Once you configured the Spring Boot with Redis, you can use the `@Cacheable` ann
 ```text
 @Cacheable("order")
 public Order getOrder(Long id) {
-  ...
+  orderRepository.findById(id);
 }
 ```
 
