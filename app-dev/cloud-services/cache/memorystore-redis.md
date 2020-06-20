@@ -47,9 +47,11 @@ See [Memorystore connectivity options](./#connectivity) to see how to connect to
 | Cloud Run | [Guide](https://cloud.google.com/run/docs/configuring/connecting-vpc) |
 | Cloud Function | [Guide](https://cloud.google.com/memorystore/docs/redis/connect-redis-instance-functions) |
 
+See [Memorystore Redis Quickstart documentation](https://cloud.google.com/memorystore/docs/redis/quickstart-gcloud) to test the instance from a Compute Engine instance.
+
 ## Spring Boot Cache
 
-Spring Boot can [use Redis](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-caching-provider-redis)  to [cache with annotations](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-caching).
+Spring Boot can [use Redis](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-caching-provider-redis) to [cache with annotations](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-caching).
 
 ## Spring Boot Session
 
