@@ -132,6 +132,21 @@ spring.redis.host=<MEMORYSTORE_REDIS_IP>
 Notice that there is no explicit configuration for username/password. Cloud Spanner authentication uses the GCP credential \(either your user credential, or Service Account credential\), and authorization is configured via Identity Access Management \(IAM\).
 {% endhint %}
 
+### Cacheable
+
+Once you configured the Spring Boot with Redis, you can use the `@Cacheable` annotation to cache return values.
+
+```text
+@Cacheable("cache1")
+public String hello(@PathVariable String name) {
+    ....
+}
+```
+
+{% hint style="info" %}
+Read Spring Boot documentation on [Cacheable](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-caching) and [Redis](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-caching-provider-redis) for more information.
+{% endhint %}
+
 ## Spring Boot Session
 
 Spring Boot can [use Redis for session data](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-session). 

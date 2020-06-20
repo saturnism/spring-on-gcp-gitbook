@@ -87,23 +87,29 @@ You can inject the secret value by using the `Value` annotation.
 
 You can refer to the secret value like any other properties, and reference the secret values in a `properties` file.
 
+{% code title="application.properties" %}
 ```text
 spring.datasource.password=${sm://order-db-password}
 ```
+{% endcode %}
 
 Mapping properties this way, rather than hard-coding the Secret Manager property key using `@Value` annotation can be help you utilize multiple profiles.
 
 For example, you can have `application-dev.properties` with:
 
+{% code title="application.properties" %}
 ```text
 spring.datasource.password=${sm://order-db-dev-password}
 ```
+{% endcode %}
 
-And, for production, `application-prod.properties` with:
+And, for production, create an `application-prod.properties` with:
 
+{% code title="application-prod.properties" %}
 ```text
 spring.datasource.password=${sm://order-db-prod-password}
 ```
+{% endcode %}
 
 #### Property Key Syntax
 
