@@ -47,7 +47,7 @@ The Memorystore instance is only accessible from the VPC. You can connect from d
 | Cloud Run | [VPC Service Connector](https://cloud.google.com/run/docs/configuring/connecting-vpc) | [Guide](https://cloud.google.com/run/docs/configuring/connecting-vpc) |
 | Cloud Function | [VPC Service Connector](https://cloud.google.com/functions/docs/networking/connecting-vpc) | [Guide](https://cloud.google.com/memorystore/docs/redis/connect-redis-instance-functions) |
 
- instance from a Google Compute Engine instance, a VPC-native Google Kubernetes Engine cluster,
+
 
 ## Spring Boot Cache
 
