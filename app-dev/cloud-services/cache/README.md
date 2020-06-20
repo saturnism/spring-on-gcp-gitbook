@@ -12,14 +12,14 @@ Memorystore is zonal, meaning each Memorystore instance is only available within
 
 All Memorystore instances can only be accessed by a private IP on a VPC network. You can connect to a Memorystore instance from different Google Cloud Platform computing resources differently.  In general, VM-based products \(Compute Engine, Kubernetes Engine, and App Engine Flexible\) requires the VM to be on the same VPC, and Serverless products requires [VPC Service Connector](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access).
 
-| Resource | Method | Guide |
-| :--- | :--- | :--- |
-| Compute Engine | Out-of-the-box | [Guide](https://cloud.google.com/memorystore/docs/redis/connect-redis-instance-gce) |
-| Kubernetes Engine | [VPC-Native cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/alias-ips) | [Guide](https://cloud.google.com/memorystore/docs/redis/connect-redis-instance-gke) |
-| App Engine Flexible | Out-of-the-box | [Guide](https://cloud.google.com/memorystore/docs/redis/connect-redis-instance-flex#java_1) |
-| App Engine Standard | [VPC Service Connector](https://cloud.google.com/appengine/docs/standard/java11/connecting-vpc) | [Guide](https://cloud.google.com/memorystore/docs/redis/connect-redis-instance-standard) |
-| Cloud Run | [VPC Service Connector](https://cloud.google.com/run/docs/configuring/connecting-vpc) | [Guide](https://cloud.google.com/run/docs/configuring/connecting-vpc) |
-| Cloud Function | [VPC Service Connector](https://cloud.google.com/functions/docs/networking/connecting-vpc) | [Guide](https://cloud.google.com/memorystore/docs/redis/connect-redis-instance-functions) |
+| Resource | Method |
+| :--- | :--- |
+| Compute Engine | Out-of-the-box |
+| Kubernetes Engine | [VPC-Native cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/alias-ips) |
+| App Engine Flexible | [Additional Configuration](https://cloud.google.com/appengine/docs/flexible/java/using-shared-vpc) |
+| App Engine Standard | [VPC Service Connector](https://cloud.google.com/appengine/docs/standard/java11/connecting-vpc) |
+| Cloud Run | [VPC Service Connector](https://cloud.google.com/run/docs/configuring/connecting-vpc) |
+| Cloud Function | [VPC Service Connector](https://cloud.google.com/functions/docs/networking/connecting-vpc) |
 
 #### Protocol Compatibility
 
