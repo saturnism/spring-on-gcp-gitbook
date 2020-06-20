@@ -91,6 +91,20 @@ You can refer to the secret value like any other properties, and reference the s
 spring.datasource.password=${sm://order-db-password}
 ```
 
+Mapping properties this way, rather than hard-coding the Secret Manager property key using `@Value` annotation can be help you utilize multiple profiles.
+
+For example, you can have `application-dev.properties` with:
+
+```text
+spring.datasource.password=${sm://order-db-dev-password}
+```
+
+And, for production, `application-prod.properties` with:
+
+```text
+spring.datasource.password=${sm://order-db-prod-password}
+```
+
 #### Property Key Syntax
 
 | Form | Example |
