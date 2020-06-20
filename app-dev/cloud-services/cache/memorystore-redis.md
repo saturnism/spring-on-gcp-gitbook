@@ -14,6 +14,8 @@ Enabling this API may take a few minutes.
 
 ### Create an Instance
 
+Create an instance and attach it to the default VPC.
+
 ```bash
 gcloud redis instances create orders-cache \
   --size=1 --region=us-central1
@@ -47,7 +49,44 @@ See [Memorystore connectivity options](./#connectivity) to see how to connect to
 | Cloud Run | [Guide](https://cloud.google.com/run/docs/configuring/connecting-vpc) |
 | Cloud Function | [Guide](https://cloud.google.com/memorystore/docs/redis/connect-redis-instance-functions) |
 
-See [Memorystore Redis Quickstart documentation](https://cloud.google.com/memorystore/docs/redis/quickstart-gcloud) to test the instance from a Compute Engine instance.
+You can test quickly by creating a Compute Engine instance in a zone within the same region:
+
+```text
+gcloud compute instances create test-memorystore-vm --zone=us-central1-c
+```
+
+SSH into the machine:
+
+```text
+gcloud compute ssh test-memorystore-vm --zone=us-central1-c
+```
+
+Install `redis-cli`:
+
+```text
+sudo apt-get update && sudo apt-get install -y redis-tools
+```
+
+Connect to the instance:
+
+```text
+redis-cli -h <MEMORYSTORE_REDIS_IP>
+```
+
+You can try different Redis commands, for example:
+
+```text
+> PING
+PONG
+> SET greeting Hello
+OK
+> GET greeting
+"Hello"
+```
+
+{% hint style="info" %}
+See [redis-cli documentation](https://redis.io/topics/rediscli) for more information.
+{% endhint %}
 
 ## Spring Boot Cache
 
