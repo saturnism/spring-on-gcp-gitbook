@@ -7,10 +7,10 @@
 * [Google Cloud Platform](getting-started/google-cloud-platform-project.md)
 * [gcloud CLI](getting-started/install-gcloud-cli.md)
 * [Spring Cloud GCP](getting-started/spring-cloud-gcp.md)
-* [Development Tools](getting-started/development-tools.md)
 
 ## Application Development <a id="app-dev"></a>
 
+* [Development Tools](app-dev/development-tools.md)
 * [Cloud Services](app-dev/cloud-services/README.md)
   * [Databases](app-dev/cloud-services/databases/README.md)
     * [Cloud SQL](app-dev/cloud-services/databases/cloud-sql.md)
