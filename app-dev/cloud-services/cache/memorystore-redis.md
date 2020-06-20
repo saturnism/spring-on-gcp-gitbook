@@ -214,6 +214,18 @@ spring.cache.redis.time-to-live=600000
 ```
 {% endcode %}
 
+### Enable HTTP Session
+
+Turn on caching capability explicitly with the `@EnableSpringHttpSession` annotation:
+
+```java
+@SpringBootApplication
+@EnableSpringHttpSession
+class DemoApplication {
+  ...
+}
+```
+
 ### Samples
 
 * [Spring Boot Session Data Redis sample](https://github.com/spring-projects/spring-session/tree/master/spring-session-samples/spring-session-sample-boot-redis-simple)
