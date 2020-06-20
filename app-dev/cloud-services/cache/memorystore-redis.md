@@ -135,14 +135,35 @@ spring.cache.redis.time-to-live=600000
 Notice that there is no explicit configuration for username/password. Cloud Spanner authentication uses the GCP credential \(either your user credential, or Service Account credential\), and authorization is configured via Identity Access Management \(IAM\).
 {% endhint %}
 
+### Enable Caching
+
+Turn on caching capability explicitly with the `@EnableCaching` annotation:
+
+```java
+@SpringBootApplication
+@EnableCaching
+class DemoApplication {
+  ...
+}
+```
+
 ### Cacheable
 
-Once you configured the Spring Boot with Redis, you can use the `@Cacheable` annotation to cache return values.
+Once you configured the Spring Boot with Redis and enabled caching, you can use the `@Cacheable` annotation to cache return values.
 
-```text
-@Cacheable("order")
-public Order getOrder(Long id) {
-  orderRepository.findById(id);
+```java
+@Service
+class OrderService {
+  private final OrderRepository orderRepository;
+  
+  public OrderService(OrderRepository orderRepository) {
+    this.orderRepository = orderRepository;
+  }
+  
+  @Cacheable("order")
+  public Order getOrder(Long id) {
+    orderRepository.findById(id);
+  }
 }
 ```
 
@@ -152,5 +173,48 @@ Read Spring Boot documentation on [Cacheable](https://docs.spring.io/spring-boot
 
 ## Spring Boot Session
 
-Spring Boot can [use Redis for session data](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-session). 
+Spring Boot can [use Redis for session data](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-session) with [Spring Session Data Redis](https://docs.spring.io/spring-session/docs/2.3.0.RELEASE/reference/html5/#httpsession-redis).
+
+### Dependency
+
+Add the Spring Data Spanner starter:
+
+{% tabs %}
+{% tab title="Maven" %}
+```bash
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-session-data-redis</artifactId>
+</dependency>
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-data-redis</artifactId>
+</dependency>
+```
+{% endtab %}
+
+{% tab title="Gradle" %}
+```bash
+compile group: 'org.springframework.cloud', name: 'spring-session-data-redis'
+compile group: 'org.springframework.cloud', name: 'spring-boot-starter-data-redis'
+```
+{% endtab %}
+{% endtabs %}
+
+### Configuration
+
+Configure the Redis instance to connect to:
+
+{% code title="application.properties" %}
+```bash
+spring.redis.host=<MEMORYSTORE_REDIS_IP>
+
+# Configure default TTL, e.g., 10 minutes
+spring.cache.redis.time-to-live=600000
+```
+{% endcode %}
+
+### Samples
+
+* [Spring Boot Session Data Redis sample](https://github.com/spring-projects/spring-session/tree/master/spring-session-samples/spring-session-sample-boot-redis-simple)
 
