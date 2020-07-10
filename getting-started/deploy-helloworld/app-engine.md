@@ -6,13 +6,13 @@ Build your Spring Boot JAR file.
 ./mvnw package
 ```
 
-Deploy to App Engine
+Deploy the JAR to App Engine:
 
 ```text
 gcloud app deploy target/helloworld.jar
 ```
 
-Configuration
+Additional Configuration
 
 {% code title="app.yaml" %}
 ```text
