@@ -159,3 +159,13 @@ spring.sleuth.propagation-keys=x-request-id,x-ot-span-context
 
 * [Spring Cloud GCP Trace sample](https://github.com/spring-cloud/spring-cloud-gcp/tree/master/spring-cloud-gcp-samples/spring-cloud-gcp-trace-sample)
 
+## Istio
+
+If you use Istio service mesh, Istio can automatically capture service to service traces. You can use Spring Cloud Sleuth to [propagate additional trace headers](trace.md#additional-headers), without any trace senders:
+
+```text
+spring.sleuth.propagation-keys=x-request-id,x-ot-span-context
+```
+
+For in-application trace, you can use [Spring Cloud GCP Trace starter](trace.md#spring-cloud-sleuth).
+
