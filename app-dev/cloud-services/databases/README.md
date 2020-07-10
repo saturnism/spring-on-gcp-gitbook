@@ -1,12 +1,6 @@
----
-description: >-
-  Google Cloud Platform offers a number of different fully managed database
-  services from RDBMS to NoSQL for different use cases.
----
-
 # Databases
 
-A list of 
+Google Cloud Platform offers a number of different fully managed database services from RDBMS to NoSQL for different use cases.
 
 | Service | Description | Use Case |
 | :--- | :--- | :--- |
