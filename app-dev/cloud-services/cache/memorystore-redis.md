@@ -5,6 +5,7 @@
 ### Enable API
 
 ```bash
+gcloud services enable servicenetworking.googleapis.com
 gcloud services enable redis.googleapis.com
 ```
 
@@ -94,7 +95,7 @@ Spring Boot can [use Redis](https://docs.spring.io/spring-boot/docs/current/refe
 
 ### Dependency
 
-Add the Spring Data Spanner starter:
+Add the Spring Data Redis starter:
 
 {% tabs %}
 {% tab title="Maven" %}
@@ -130,10 +131,6 @@ spring.redis.host=<MEMORYSTORE_REDIS_IP>
 spring.cache.redis.time-to-live=600000
 ```
 {% endcode %}
-
-{% hint style="info" %}
-Notice that there is no explicit configuration for username/password. Cloud Spanner authentication uses the GCP credential \(either your user credential, or Service Account credential\), and authorization is configured via Identity Access Management \(IAM\).
-{% endhint %}
 
 ### Enable Caching
 
