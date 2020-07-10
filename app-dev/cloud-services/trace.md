@@ -14,7 +14,7 @@ gcloud services enable cloudtrace.googleapis.com
 
 ## Spring Cloud Sleuth
 
-[Spring Cloud GCP's Trace integration](https://cloud.spring.io/spring-cloud-static/spring-cloud-gcp/1.2.3.RELEASE/reference/html/#stackdriver-trace) uses [Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) behind the scenes to instrument and trace your application.
+[Spring Cloud GCP's Trace integration](https://cloud.spring.io/spring-cloud-static/spring-cloud-gcp/1.2.3.RELEASE/reference/html/#stackdriver-trace) uses [Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) behind the scenes to instrument and trace your application. In addition, it'll also enhance the log messages to include the current trace context \(Trace ID, Span ID\) for trace to log correlation.
 
 ### Dependency
 
