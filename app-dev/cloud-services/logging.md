@@ -1,2 +1,195 @@
 # Logging
 
+## Cloud Logging
+
+Cloud Logging allows you to store, search, analyze, monitor, and alert on logging data and events from Google Cloud runtime environments and also any other on-premises or Cloud environments.
+
+### Enable API
+
+```bash
+gcloud services enable logging.googleapis.com
+```
+
+{% hint style="info" %}
+Logging API is usually enabled by default for your project.
+{% endhint %}
+
+## Centralized Logging
+
+There are a couple of ways to send log messages to Google Cloud.
+
+* If you are running in a Kubernetes Engine,  App Engine, Cloud Run, Cloud Functions, then logs to `STDOUT` or `STDERR` are automatically sent to Cloud Logging.
+* If you are running in Compute Engine, then you can install a [Logging Agent](https://cloud.google.com/logging/docs/agent/installation).
+* If you are running outside of Google Cloud runtime environment, e.g., from on-premise datacenter, or another cloud, you can:
+  * Use the Cloud Logging API to send log entries to Cloud Logging
+  * Use a [Logging Agent](https://cloud.google.com/logging/docs/agent/installation)
+  * Use a [Fluend adapter](https://github.com/GoogleCloudPlatform/google-fluentd)
+
+## Severity Level
+
+Cloud Logging has [9 different log severity levels](https://cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry#LogSeverity) the log entries can associate with.
+
+However, in all the runtime environments where logs printed `STDOUT` and `STDERR` are sent to Cloud Logging, original log entry's severity level is not retained:
+
+* Log entries printed to `STDOUT` will have a severity level of `INFO` regardless of the original log entry level.
+* Log entries printed to `STDERR` will have a severity level of `WARNING` regardless of the original log entry level.
+
+Different runtime environments have different ways of associating the log level properly.
+
+| Environment | Preferred Logging |
+| :--- | :--- |
+| Cloud Function | [Use Java Logging API \(JUL\)](https://cloud.google.com/functions/docs/concepts/java-logging) |
+| App Engine Standard | Use Cloud Logging API |
+| Cloud Run | [Output Structured Logs in JSON format](https://cloud.google.com/logging/docs/structured-logging) |
+| Compute Engine | [Install Logging Agent](https://cloud.google.com/logging/docs/agent/installation), or use Cloud Logging API |
+| Kubernetes Engine | [Output Structured Logs in JSON format](https://cloud.google.com/logging/docs/structured-logging) |
+
+## Logback
+
+Spring Boot uses [Slf4J](http://www.slf4j.org/) logging API and [Logback](http://logback.qos.ch/) logger by default. You can user [Spring Cloud GCP's Logging Starter](https://cloud.spring.io/spring-cloud-static/spring-cloud-gcp/1.2.3.RELEASE/reference/html/#stackdriver-logging) to use pre-configured Logback appenders to produce Structured JSON logs, or send the log via the Cloud Logging API.
+
+### Dependency
+
+Add the Spring Cloud GCP Trace starter:
+
+{% tabs %}
+{% tab title="Maven" %}
+```bash
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-gcp-starter-trace</artifactId>
+</dependency>
+```
+{% endtab %}
+
+{% tab title="Gradle" %}
+```bash
+
+compile group: 'org.springframework.cloud', name: 'spring-cloud-gcp-starter-trace'
+```
+{% endtab %}
+{% endtabs %}
+
+### Configuration
+
+{% hint style="info" %}
+Notice that there is no explicit configuration for username/password. Cloud Logging authentication uses the GCP credential \(either your user credential, or Service Account credential\), and authorization is configured via Identity Access Management \(IAM\).
+{% endhint %}
+
+By default, Spring Cloud Sleuth samples only 10% of the requests.  I.e., 1 in 10 requests may have traces propagated to the trace server \(Cloud Trace\). In a non-production environment, you may want to see all of the trace. You can adjust the sampling rate using Spring Cloud Sleuth's properties:
+
+{% code title="application.properties" %}
+```text
+# Set sampler probability to 100%
+spring.sleuth.sampler.probability=1.0
+```
+{% endcode %}
+
+### Instrumentation
+
+Spring Cloud Sleuth automatically adds trace instrumentation to commonly used components, such as [incoming HTTP requests](https://docs.spring.io/spring-cloud-sleuth/docs/2.2.x-SNAPSHOT/reference/html/#http-integration), and incoming [messages from Spring Integration](https://docs.spring.io/spring-cloud-sleuth/docs/2.2.x-SNAPSHOT/reference/html/#messaging-2). See [Spring Cloud Sleuth Integrations documentation](https://docs.spring.io/spring-cloud-sleuth/docs/2.2.x-SNAPSHOT/reference/html/#integrations) for more details.
+
+#### Web
+
+Spring Cloud Sleuth will automatically trace incoming requests from WebMVC, or WebFlux as-is.
+
+```java
+@RestController
+class OrderController {
+  private final OrderRepository orderRepository;
+  
+  OrderController(OrderRepository orderService) {
+    this.orderRepository = orderRepository;
+  }
+  
+  @GetMapping("/order/{orderId}")
+  public Order getOrder(@PathParam String orderId) {
+    return orderRepository.findById(orderId);
+  }
+}
+```
+
+{% hint style="info" %}
+In this example, an incoming request to `/order/{orderId}` endpoint will be automatically traced, and the traces will be propagated to Cloud Trace based on the sampler probability.
+{% endhint %}
+
+#### Messaging
+
+Spring Cloud Sleuth will automatically trace incoming messages and handlers when using Spring Integration
+
+#### Custom Spans
+
+If there is a piece of code/method that you want to break out into it's own span, you can use Spring Cloud Sleuth's `@NewSpan` annotation. See [Spring Cloud Sleuth's Creating New Span documentation](https://docs.spring.io/spring-cloud-sleuth/docs/2.2.x-SNAPSHOT/reference/html/#creating-new-spans).
+
+
+
+```java
+@Service
+class OrderService {
+	private final OrderRepository orderRepository;
+
+	...
+
+  @NewSpan
+	@Transactional
+	Order createOrder(Order order) {
+	  ...
+		return orderRepository.save(order);
+	}
+}
+```
+
+#### Tagging Spans
+
+You can associate additional data to a Span \(a tag\) via annotation. See [Spring Cloud Sleuth's Continuing Span documentation](https://docs.spring.io/spring-cloud-sleuth/docs/2.2.x-SNAPSHOT/reference/html/#continuing-spans-2).
+
+
+
+```java
+@Service
+class OrderService {
+	private final OrderRepository orderRepository;
+
+  ...
+
+  @NewSpan
+	@Transactional
+	Order getOrder(@SpanTag("orderId") String id) {
+		return orderRepository.findById(id);
+	}
+}
+```
+
+### Propagation
+
+Spring Cloud Sleuth automatically propagates the trace context to a remote system \(e.g., via HTTP request, or messaging\) when using `RestTemplate`, `WebClient`, Spring Integration, and more. See [Spring Cloud Sleuth Integrations documentation](https://docs.spring.io/spring-cloud-sleuth/docs/2.2.x-SNAPSHOT/reference/html/#integrations) for more details.
+
+#### Rest Template / WebClient
+
+Simply create a `RestTemplate` or `WebClient` bean and Spring Cloud Sleuth will automatically add filters to propagate the trace context via HTTP headers.
+
+```java
+@Bean
+RestTemplate restTemplate() {
+  return new RestTemplate();
+}
+```
+
+#### Messaging
+
+When using Spring Integration, Spring Cloud Sleuth will automatically propagate trace context via message headers. For example, send a [Pub/Sub message with Spring Integration's Gateway](messaging.md#spring-integration) will automatically add trace headers to the Pub/Sub message.
+
+#### Additional Headers
+
+Spring Cloud Sleuth uses [OpenZipkin's Brave tracer](https://github.com/openzipkin/brave), and uses [B3 propagation](https://github.com/openzipkin/b3-propagation). Over HTTP, it will automatically propagate B3 headers to HTTP headers.
+
+When running your application in Istio, you may need to propagate [additional trace headers required by Istio](https://istio.io/latest/faq/distributed-tracing/#how-to-support-tracing), such as `x-request-id` and `x-ot-span-context`.
+
+```text
+spring.sleuth.propagation-keys=x-request-id,x-ot-span-context
+```
+
+### Samples
+
+* [Spring Cloud GCP Trace sample](https://github.com/spring-cloud/spring-cloud-gcp/tree/master/spring-cloud-gcp-samples/spring-cloud-gcp-trace-sample)
+

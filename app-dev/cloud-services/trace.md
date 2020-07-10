@@ -38,12 +38,6 @@ compile group: 'org.springframework.cloud', name: 'spring-cloud-gcp-starter-trac
 
 ### Configuration
 
-There is no explicit configuration required if you use the automatic authentication and project ID detection. I.e., if you already logged in locally with `gcloud` command line, then it'll automatically access buckets that you have access to.
-
-{% hint style="info" %}
-Notice that there is no explicit configuration for username/password. Cloud Storage authentication uses the GCP credential \(either your user credential, or Service Account credential\), and authorization is configured via Identity Access Management \(IAM\).
-{% endhint %}
-
 By default, Spring Cloud Sleuth samples only 10% of the requests.  I.e., 1 in 10 requests may have traces propagated to the trace server \(Cloud Trace\). In a non-production environment, you may want to see all of the trace. You can adjust the sampling rate using Spring Cloud Sleuth's properties:
 
 {% code title="application.properties" %}
@@ -52,6 +46,10 @@ By default, Spring Cloud Sleuth samples only 10% of the requests.  I.e., 1 in 10
 spring.sleuth.sampler.probability=1.0
 ```
 {% endcode %}
+
+{% hint style="info" %}
+Notice that there is no explicit configuration for username/password. Cloud Trace authentication uses the GCP credential \(either your user credential, or Service Account credential\), and authorization is configured via Identity Access Management \(IAM\).
+{% endhint %}
 
 ### Instrumentation
 
