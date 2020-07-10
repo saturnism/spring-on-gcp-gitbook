@@ -111,6 +111,8 @@ STAT uptime 1020
 STAT time 1594348128
 ...
 END
+quit
+Connection closed by foreign host.
 ```
 
 {% hint style="info" %}
