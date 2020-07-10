@@ -6,11 +6,17 @@
 
 * [Google Cloud Platform](getting-started/google-cloud-platform-project.md)
 * [gcloud CLI](getting-started/install-gcloud-cli.md)
-* [Spring Cloud GCP](getting-started/spring-cloud-gcp.md)
+* [Deploy Helloworld](getting-started/deploy-helloworld/README.md)
+  * [App Engine](getting-started/deploy-helloworld/app-engine.md)
+  * [Cloud Run](getting-started/deploy-helloworld/cloud-run.md)
+  * [Kubernetes Engine](getting-started/deploy-helloworld/kubernetes-engine.md)
+  * [Compute Engine](getting-started/deploy-helloworld/compute-engine.md)
+  * [Cloud Functions](getting-started/deploy-helloworld/cloud-functions.md)
 
 ## Application Development <a id="app-dev"></a>
 
 * [Development Tools](app-dev/development-tools.md)
+* [Spring Cloud GCP](app-dev/spring-cloud-gcp.md)
 * [Cloud Services](app-dev/cloud-services/README.md)
   * [Databases](app-dev/cloud-services/databases/README.md)
     * [Cloud SQL](app-dev/cloud-services/databases/cloud-sql.md)
