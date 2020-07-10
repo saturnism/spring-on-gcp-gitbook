@@ -1,7 +1,5 @@
 # Trace
 
-
-
 ## Cloud Trace
 
 Cloud Trace is a managed distributed tracing system that collects latency data from your applications and displays it in the Google Cloud Console. You can track how requests propagate through your application and receive detailed near real-time performance insights.
