@@ -209,3 +209,19 @@ You can then see the logs alongside the trace itself:
 
 * [Spring Cloud GCP Logging sample](https://github.com/spring-cloud/spring-cloud-gcp/tree/master/spring-cloud-gcp-samples/spring-cloud-gcp-logging-sample)
 
+## Other Loggers
+
+It's highly recommended that you use the default logger \(Logback\) with Spring Boot, to take advantage of Spring Cloud GCP features.  If you do use other Loggers, you may be able to configure logging to API with different appenders/handlers.
+
+#### Java Logging API \(JUL\)
+
+See [Cloud Logging handler for Java Logging API](https://cloud.google.com/logging/docs/setup/java#the_javautillogging_handler).
+
+#### Apache Commons Logging \(JCL\)
+
+There is no ready-to-use appender to Cloud Logging. But you can [bridge it to Slf4J](http://www.slf4j.org/legacy.html), or [bridge it to Java Logging API](http://commons.apache.org/proper/commons-logging/apidocs/org/apache/commons/logging/impl/Jdk14Logger.html). 
+
+#### Log4J 2
+
+There is no ready-to-use appender to Cloud Logging. But you can [bridge it to Slf4J](https://logging.apache.org/log4j/log4j-2.2/log4j-to-slf4j/index.html).
+
