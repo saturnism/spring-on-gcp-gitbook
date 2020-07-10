@@ -2,7 +2,7 @@
 
 ## Memorystore
 
-Memory Store is a fully managed in-memory data store service having protocol compatibility with Redis and Memcached. See documentations for [Memorystore Redis](https://cloud.google.com/memorystore/docs/redis/) and [Memorystore Memcached](https://cloud.google.com/memorystore/docs/memcached) \(beta\) for more information.
+Memory Store is a fully managed in-memory cache service having protocol compatibility with Redis and Memcached. See documentations for [Memorystore Redis](https://cloud.google.com/memorystore/docs/redis/) and [Memorystore Memcached](https://cloud.google.com/memorystore/docs/memcached) \(beta\) for more information.
 
 #### Zonal Resource
 
