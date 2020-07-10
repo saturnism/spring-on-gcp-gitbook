@@ -2,7 +2,7 @@
 
 Click to Deploy
 
-![Deploy a Spring Boot app on Cloud Run](https://deploy.cloud.run/button.svg)
+[![Deploy a Spring Boot app on Cloud Run](https://deploy.cloud.run/button.svg)](https://deploy.cloud.run/?git_repo=https://github.com/jamesward/hello-springboot-mvn.git)
 
 Build Your Application
 
