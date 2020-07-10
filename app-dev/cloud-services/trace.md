@@ -155,6 +155,12 @@ When running your application in Istio, you may need to propagate [additional tr
 spring.sleuth.propagation-keys=x-request-id,x-ot-span-context
 ```
 
+### Log / Trace Correlation
+
+Spring Cloud Sleuth automatically associate each log message with the trace context \(Trace ID, Span ID\). When the log message is sent to Cloud Logging, you can then be able to see the log messages alongside the trace itself. See [how to configure Logback](logging.md#log-trace-correlation) to achieve this.
+
+![](https://lh3.googleusercontent.com/O6u214GgMO_GD-xNUkHVj8KTOBH6pf8-_SJP1x17QhdT9Fle3D30gjV-wuTOSSYDHWnjMqFyZmymAIroBTrxNRJGXrT6JqWRQYGVyZE0DMXRDCR4IkNxBCoAwKGnzyctcJMk7-PPBQ)
+
 ### Samples
 
 * [Spring Cloud GCP Trace sample](https://github.com/spring-cloud/spring-cloud-gcp/tree/master/spring-cloud-gcp-samples/spring-cloud-gcp-trace-sample)
