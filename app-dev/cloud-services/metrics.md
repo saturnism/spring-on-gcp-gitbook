@@ -24,7 +24,8 @@ gcloud services enable monitoring.googleapis.com
   </thead>
   <tbody>
     <tr>
-      <td style="text-align:left">Prometheus</td>
+      <td style="text-align:left"><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html#production-ready-metrics-export-prometheus">Prometheus</a>
+      </td>
       <td style="text-align:left">
         <p>Export metrics using the Prometheus format from a Spring Boot Actuator
           endpoint (<code>/actuator/prometheus</code>).</p>
@@ -35,7 +36,8 @@ gcloud services enable monitoring.googleapis.com
         using Prometheus operator.</td>
     </tr>
     <tr>
-      <td style="text-align:left">Cloud Monitoring API</td>
+      <td style="text-align:left"><a href="http://micrometer.io/docs/registry/stackdriver#_spring_boot">Cloud Monitoring API</a>
+      </td>
       <td style="text-align:left">Export the metrics directly to Cloud Monitoring using the API.</td>
       <td
       style="text-align:left">This is needed whenever Prometheus scraping is not possible, such as Serverless
