@@ -34,7 +34,7 @@ PROJECT_ID=$(gcloud config get-value project)
 ```
 
 {% hint style="info" %}
-Alternatively, you can declare Jib as a plugin inside the Maven or Gradle build file, and execute the plugin easily.
+Alternatively, you can declare Jib as a plugin inside the Maven or Gradle build file, and execute the plugin easily.  You can also build the container using [Cloud Native Buildpack](https://buildpacks.io/).
 {% endhint %}
 
 Deploy to Cloud Run!
