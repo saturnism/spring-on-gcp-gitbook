@@ -39,7 +39,7 @@ Different runtime environments have different ways of associating the log level 
 | Environment | Preferred Logging |
 | :--- | :--- |
 | Cloud Function | [Use Java Logging API \(JUL\)](https://cloud.google.com/functions/docs/concepts/java-logging) |
-| App Engine Standard | Use Cloud Logging API |
+| App Engine Standard | [Output Structured Logs in JSON format](https://cloud.google.com/logging/docs/structured-logging) |
 | Cloud Run | [Output Structured Logs in JSON format](https://cloud.google.com/logging/docs/structured-logging) |
 | Compute Engine | [Install Logging Agent](https://cloud.google.com/logging/docs/agent/installation), or use Cloud Logging API |
 | Kubernetes Engine | [Output Structured Logs in JSON format](https://cloud.google.com/logging/docs/structured-logging) |
