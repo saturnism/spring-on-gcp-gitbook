@@ -49,7 +49,8 @@ env_variables:
 Deploy the JAR file with the configuration:
 
 ```text
-gcloud app deploy target/helloworld.jar --appyaml app.yaml
+gcloud app deploy target/springboot-helloworld-j11-0.0.1-SNAPSHOT.jar \
+  --appyaml app.yaml
 ```
 
 {% hint style="info" %}
