@@ -6,7 +6,7 @@
 
 * [Google Cloud Platform](getting-started/google-cloud-platform-project.md)
 * [gcloud CLI](getting-started/install-gcloud-cli.md)
-* [Deploy Helloworld](getting-started/helloworld/README.md)
+* [Hello World!](getting-started/helloworld/README.md)
   * [App Engine](getting-started/helloworld/app-engine.md)
   * [Cloud Run](getting-started/helloworld/cloud-run.md)
   * [Kubernetes Engine](getting-started/helloworld/kubernetes-engine.md)
