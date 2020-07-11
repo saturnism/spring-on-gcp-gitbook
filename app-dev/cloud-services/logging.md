@@ -86,7 +86,7 @@ Configure Logback to use the additional appenders, by adding a `logback-spring.x
 ```
 {% endcode %}
 
-#### Use Cloud Logging API
+### Log with Cloud Logging API
 
 {% code title="logback-spring.xml" %}
 ```markup
@@ -107,7 +107,7 @@ Configure Logback to use the additional appenders, by adding a `logback-spring.x
 Notice that there is no explicit configuration for username/password. Cloud Logging authentication uses the GCP credential \(either your user credential, or Service Account credential\), and authorization is configured via Identity Access Management \(IAM\).
 {% endhint %}
 
-#### Use Structured JSON Logging
+### Log with Structured JSON Logging
 
 {% code title="logback-spring.xml" %}
 ```markup
