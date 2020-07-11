@@ -45,3 +45,14 @@ gcloud run deploy helloworld --platform=managed --allow-unauthenticated \
   --image=gcr.io/${PROJECT_ID}/helloworld
 ```
 
+## Additional Configurations
+
+By default, Cloud Run will deploy with the smallest 1CPU 256MB instance. You can specify a larger instance, and configure environment variables with the `gcloud` CLI:
+
+```text
+PROJECT_ID=$(gcloud config get-value project)
+gcloud run deploy helloworld --platform=managed --allow-unauthenticated \
+  --cpu=2 --memory=512M --set-env-vars="GREETING=Hola!"
+  --image=gcr.io/${PROJECT_ID}/helloworld
+```
+
