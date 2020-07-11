@@ -201,7 +201,7 @@ When using Structured JSON Logging or logging using the API, then Spring Cloud S
 
 ![](https://lh3.googleusercontent.com/4Z0u20hq8WiwuueOU-DqDG58hqbs2m6IG3jCOZpmrNTu8vJjN8sfcjBbbhiDfmQI1MZf_IeJ9x8tnLSUapoiR8kM5M8fqu7avXucQ4JgU3FoWEWu_NbzL8nd1l7kbXdfzqJkiAYfeA)
 
-You can then see the logs alongside the trace itself:
+In the Cloud Trace console, check **Show Logs**, then you can then see the logs alongside the trace itself:
 
 ![](https://lh3.googleusercontent.com/O6u214GgMO_GD-xNUkHVj8KTOBH6pf8-_SJP1x17QhdT9Fle3D30gjV-wuTOSSYDHWnjMqFyZmymAIroBTrxNRJGXrT6JqWRQYGVyZE0DMXRDCR4IkNxBCoAwKGnzyctcJMk7-PPBQ)
 
