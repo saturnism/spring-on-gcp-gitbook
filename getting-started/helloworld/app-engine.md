@@ -4,20 +4,20 @@ App Engine is a fully managed Platform-as-a-Service that can run your applicatio
 
 ## Getting Started
 
-#### Clone
+### Clone
 
 ```text
 git clone https://github.com/GoogleCloudPlatform/java-docs-samples
 cd java-docs-samples/appengine-java11/springboot-helloworld
 ```
 
-#### Build
+### Build
 
 ```text
 ./mvnw package
 ```
 
-#### Deploy
+### Deploy
 
 ```text
 gcloud app deploy target/springboot-helloworld-j11-0.0.1-SNAPSHOT.jar

@@ -2,30 +2,28 @@
 
 Cloud Run is a fully managed container runtime environment, where you can deploy any HTTP serving containers, and Cloud Run will automatically scale out the number of instances as needed, and scale down to zero when no one is using it.
 
-## Getting Started
-
-### Click to Deploy
+## Getting Started - Click to Deploy
 
 You can deploy a [Hello World Application](https://github.com/jamesward/hello-springboot-mvn.git) simply by click on the **Run on Google Cloud** button below!
 
 [![Deploy a Spring Boot app on Cloud Run](https://deploy.cloud.run/button.svg)](https://deploy.cloud.run/?git_repo=https://github.com/jamesward/hello-springboot-mvn.git)
 
-### Manual Deployment
+## Getting Started - Manual Deployment
 
-#### Clone
+### Clone
 
 ```bash
 git clone https://github.com/jamesward/hello-springboot-mvn
 cd hello-springboot-mvn
 ```
 
-#### Build
+### Build
 
 ```bash
 ./mvnw package
 ```
 
-#### Containerize
+### Containerize
 
 {% tabs %}
 {% tab title="Jib" %}
@@ -56,7 +54,7 @@ You can configure Jib plugin in Maven or Gradle build file to run the Jib easier
 {% endtab %}
 {% endtabs %}
 
-#### Deploy
+### Deploy
 
 ```bash
 PROJECT_ID=$(gcloud config get-value project)
