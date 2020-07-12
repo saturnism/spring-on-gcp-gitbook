@@ -41,6 +41,7 @@ PROJECT_ID=$(gcloud config get-value project)
 2. Install `pack` CLI - see [Installing `pack` documentation](https://buildpacks.io/docs/install-pack/)
 3. Build container with `pack`:
 4. ```bash
+   PROJECT_ID=$(gcloud config get-value project)
    pack build --builder gcr.io/buildpacks/builder:v1 \
      gcr.io/${PROJECT_ID}/helloworld 
    ```
