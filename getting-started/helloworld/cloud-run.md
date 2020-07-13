@@ -1,6 +1,6 @@
 # Cloud Run
 
-Cloud Run is a fully managed container runtime environment, where you can deploy any HTTP serving containers, and Cloud Run will automatically scale out the number of instances as needed, and scale down to zero when no one is using it.
+[Cloud Run](https://cloud.google.com/run/docs) is a fully managed container runtime environment, where you can deploy any HTTP serving containers, and Cloud Run will automatically scale out the number of instances as needed, and scale down to zero when no one is using it.
 
 ## Getting Started - Click to Deploy
 

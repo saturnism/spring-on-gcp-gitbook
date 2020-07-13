@@ -1,11 +1,13 @@
 # Kubernetes Engine
 
+[Kubernetes Engine](https://cloud.google.com/kubernetes-engine/docs) is a secured and managed Kubernetes service so you can deploy containerized application in an enterprise/production-grade Kubernetes cluster with a click of a button. 
+
 ## Getting Started
 
 ### Enable API
 
 ```text
-# To use Virtual Machines (Google Compute Engine)
+# To use Compute Engine
 gcloud services enable compute.googleapis.com
 
 # To use Kubernetes Engine
