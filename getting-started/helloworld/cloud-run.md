@@ -50,7 +50,8 @@ You can configure Jib plugin in Maven or Gradle build file to run the Jib easier
 ```bash
 PROJECT_ID=$(gcloud config get-value project)
 pack build --builder gcr.io/buildpacks/builder:v1 \
-  gcr.io/${PROJECT_ID}/helloworld 
+  --publish \
+  gcr.io/${PROJECT_ID}/helloworld
 ```
 {% endtab %}
 {% endtabs %}
