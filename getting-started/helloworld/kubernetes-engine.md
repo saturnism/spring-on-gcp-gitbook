@@ -92,3 +92,7 @@ Find the public load balancer IP address:
 kubectl get services helloworld
 ```
 
+{% hint style="info" %}
+A Network \(L4\) Load Balancer is the easiest way to expose a single service for a demo. For production environment, you likely will need to [use a HTTP Load Balancer](https://cloud.google.com/kubernetes-engine/docs/how-to/ingress-http2) instead.
+{% endhint %}
+
