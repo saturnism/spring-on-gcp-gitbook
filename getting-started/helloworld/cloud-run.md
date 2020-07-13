@@ -46,11 +46,12 @@ You can configure Jib plugin in Maven or Gradle build file to run the Jib easier
 1. Install Docker locally - see [Get Docker documentation](https://docs.docker.com/get-docker/).
 2. Install `pack` CLI - see [Installing `pack` documentation](https://buildpacks.io/docs/install-pack/)
 3. Build container with `pack`:
-4. ```bash
-   PROJECT_ID=$(gcloud config get-value project)
-   pack build --builder gcr.io/buildpacks/builder:v1 \
-     gcr.io/${PROJECT_ID}/helloworld 
-   ```
+
+```bash
+PROJECT_ID=$(gcloud config get-value project)
+pack build --builder gcr.io/buildpacks/builder:v1 \
+  gcr.io/${PROJECT_ID}/helloworld 
+```
 {% endtab %}
 {% endtabs %}
 
