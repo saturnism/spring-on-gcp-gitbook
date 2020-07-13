@@ -73,6 +73,8 @@ gcloud compute firewall-rules create webapp-rule \
   --allow=tcp:8080
 ```
 
+#### External IP Address
+
 Find the external IP address of the Compute Engine VM instance:
 
 ```bash
@@ -86,6 +88,10 @@ EXTERNAL_IP=$(gcloud compute instances describe helloworld \
   --format='value(networkInterfaces.accessConfigs[0].natIP)')
 curl http://${EXTERNAL_IP}:8080
 ```
+
+{% hint style="info" %}
+In production environments, you would most likely want to put a Load Balancer in front, either with a [Network \(L4\) Load Balancer](https://cloud.google.com/load-balancing/docs/network/setting-up-network), or a [HTTP \(L7\) Load Balancer](https://cloud.google.com/load-balancing/docs/https/ext-http-lb-simple).
+{% endhint %}
 
 
 
