@@ -73,6 +73,8 @@ kubectl create deployment helloworld \
 
 ### Expose
 
+You can expose this one service using a single [Network \(L4\) Load Balancer](https://cloud.google.com/load-balancing/docs/network):
+
 ```text
 kubectl create service loadbalancer helloworld --tcp=8080:8080
 ```
@@ -80,6 +82,6 @@ kubectl create service loadbalancer helloworld --tcp=8080:8080
 Find the public load balancer IP address:
 
 ```text
-kubectl get services
+kubectl get services helloworld
 ```
 
