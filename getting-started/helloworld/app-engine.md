@@ -23,6 +23,8 @@ cd java-docs-samples/appengine-java11/springboot-helloworld
 gcloud app deploy target/springboot-helloworld-j11-0.0.1-SNAPSHOT.jar
 ```
 
+### Connect
+
 Once deployed, the command will output the HTTPS URL, and you can open it up in a browser. Or, simply run:
 
 ```text
