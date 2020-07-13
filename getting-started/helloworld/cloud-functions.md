@@ -42,6 +42,29 @@ gcloud functions deploy helloworld --trigger-http \
   --allow-unauthenticated
 ```
 
+### Connect
+
+Once a HTTP function is deployed, you can connect to it using `curl`. You can also find the URL:
+
+```bash
+gcloud functions describe helloworld --format='value(httpsTrigger.url)'
+```
+
+Trigger the function with `curl`:
+
+```bash
+URL=$(gcloud functions describe helloworld --format='value(httpsTrigger.url)')
+curl ${URL}
+```
+
+Alternatively, for a quick test, you can also use `gcloud`:
+
+```bash
+gcloud functions call helloworld
+```
+
+
+
 
 
 
