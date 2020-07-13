@@ -2,27 +2,6 @@
 
 ## Getting Started
 
-### Enable API
-
-```text
-# To use Compute Engine
-gcloud services enable compute.googleapis.com
-```
-
-### Create Cluster
-
-Create a [VPC-native Kubernetes Engine cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/alias-ips).
-
-```text
-gcloud container clusters create helloworld-cluster \
-  --num-nodes 2 \
-  -enable-ip-alias \
-  --create-subnetwork="" \
-  --network=default \
-  --machine-type n1-standard-1 \
-  --zone us-central1-c
-```
-
 ### Clone
 
 ```text
@@ -36,64 +15,79 @@ cd hello-springboot-mvn
 ./mvnw package
 ```
 
-### Containerize
-
-{% tabs %}
-{% tab title="Jib" %}
-[Jib](https://github.com/GoogleContainerTools/jib) can containerize any Java application easily, without a `Dockerfile` nor `docker` installed.
+### Enable API
 
 ```bash
-PROJECT_ID=$(gcloud config get-value project)
-./mvnw compile com.google.cloud.tools:jib-maven-plugin:2.4.0:build \
-  -Dimage=gcr.io/${PROJECT_ID}/helloworld
+# To use Compute Engine
+gcloud services enable compute.googleapis.com
 ```
 
-{% hint style="info" %}
-You can configure Jib plugin in Maven or Gradle build file to run the Jib easier, such as `./mvnw jib:build`.
-{% endhint %}
-{% endtab %}
-
-{% tab title="Buildpack" %}
-[Cloud Native Buildpacks](https://buildpacks.io) can containerize applications written in different language without a `Dockerfile`. It does require `docker` installed.
-
-1. Install Docker locally - see [Get Docker documentation](https://docs.docker.com/get-docker/).
-2. Install `pack` CLI - see [Installing `pack` documentation](https://buildpacks.io/docs/install-pack/)
-3. Build container with `pack`:
+### Create a VM
 
 ```bash
-PROJECT_ID=$(gcloud config get-value project)
-pack build --builder gcr.io/buildpacks/builder:v1 \
-  --publish \
-  gcr.io/${PROJECT_ID}/helloworld
+gcloud compute instances create helloworld
 ```
-{% endtab %}
-{% endtabs %}
 
-### Deploy
+### Copy File to VM
 
 ```bash
-PROJECT_ID=$(gcloud config get-value project)
-kubectl create deployment helloworld \
-  --image=gcr.io/${PROJECT_ID}/helloworld
+gcloud compute scp target/spring-boot-example-0.1.0.jar helloworld:
+```
+
+### SSH to VM
+
+```bash
+gcloud compute ssh helloworld
+```
+
+### Install OpenJDK in the VM
+
+```bash
+sudo apt-get update && sudo apt-get install -y openjdk-11-jdk
+```
+
+### Run in the VM
+
+```text
+java -jar spring-boot-example-0.1.0.jar
 ```
 
 ### Expose
 
-You can expose this one service using a single [Network \(L4\) Load Balancer](https://cloud.google.com/load-balancing/docs/network):
+#### Firewall
+
+By default, most ports on the Compute Engine are firewalled off.  If you want to expose port `8080` in this case, you can first add a `tag` to the Compute Engine instance, and then add a firewall rule to allow inbound port `8080` traffic for any Compute Engine instance with a certain tag.
+
+Add a tag:
 
 ```text
-kubectl create service loadbalancer helloworld --tcp=8080:8080
+gcloud compute instances add-tags helloworld --tags=webapp
 ```
 
-Find the public load balancer IP address:
+Add Firewall rule:
 
-```text
-kubectl get services helloworld
+```bash
+gcloud compute firewall-rules create webapp-rule \
+  --source-ranges=0.0.0.0/0 \
+  --target-tags=webapp \
+  --allow=tcp:8080
 ```
 
-{% hint style="info" %}
-A Network \(L4\) Load Balancer is the easiest way to expose a single service for a demo. For production environment, you likely will need to [use a HTTP Load Balancer](https://cloud.google.com/kubernetes-engine/docs/how-to/container-native-load-balancing) instead.
-{% endhint %}
+Find the external IP address of the Compute Engine VM instance:
 
-## 
+```bash
+gcloud compute instances list
+```
+
+You can now connect to the external IP on port `8080` of the application:
+
+```bash
+EXTERNAL_IP=$(gcloud compute instances describe helloworld \
+  --format='value(networkInterfaces.accessConfigs[0].natIP)')
+curl http://${EXTERNAL_IP}:8080
+```
+
+
+
+
 

@@ -27,8 +27,7 @@ gcloud container clusters create helloworld-cluster \
   -enable-ip-alias \
   --create-subnetwork="" \
   --network=default \
-  --machine-type n1-standard-1 \
-  --zone us-central1-c
+  --machine-type n1-standard-1
 ```
 
 ### Clone
