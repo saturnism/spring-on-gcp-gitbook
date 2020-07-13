@@ -10,6 +10,16 @@ You can deploy a [Hello World Application](https://github.com/jamesward/hello-sp
 
 ## Getting Started - Manual Deployment
 
+### Enable API
+
+```text
+# To use Cloud Run
+gcloud services enable run.googleapis.com
+
+# To store Container Images in Container Registry
+gcloud services enable containerregistry.googleapis.com
+```
+
 ### Clone
 
 ```bash

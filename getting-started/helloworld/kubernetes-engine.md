@@ -5,7 +5,14 @@
 ### Enable API
 
 ```text
-gcloud services enable compute.googleapis.com container.googleapis.com
+# To use Virtual Machines (Google Compute Engine)
+gcloud services enable compute.googleapis.com
+
+# To use Kubernetes Engine
+gcloud services enable container.googleapis.com
+
+# To store Container Images in Container Registry
+gcloud services enable containerregistry.googleapis.com
 ```
 
 ### Create Cluster
