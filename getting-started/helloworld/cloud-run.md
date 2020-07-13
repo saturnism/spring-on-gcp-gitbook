@@ -74,6 +74,22 @@ gcloud run deploy helloworld --platform=managed --allow-unauthenticated \
   --image=gcr.io/${PROJECT_ID}/helloworld
 ```
 
+### Connect
+
+Once deployed, Cloud Run will display the HTTPs URL. You can also find the URL with the command line:
+
+```text
+gcloud run services describe helloworld --platform=managed 
+```
+
+You can then `curl` the URL:
+
+```bash
+URL=$(gcloud run services describe helloworld \
+  --platform=managed --format='value(status.address.url)')
+curl ${URL}
+```
+
 ## Additional Configurations
 
 By default, Cloud Run will deploy with the smallest 1CPU 256MB instance. You can specify a larger instance, and configure environment variables with the `gcloud` CLI:
