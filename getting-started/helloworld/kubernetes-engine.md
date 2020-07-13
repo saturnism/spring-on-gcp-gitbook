@@ -1,6 +1,6 @@
 # Kubernetes Engine
 
-## Getting Started \(Cloud\)
+## Getting Started
 
 ### Enable API
 
