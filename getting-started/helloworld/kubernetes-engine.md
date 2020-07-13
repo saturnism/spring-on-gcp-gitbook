@@ -92,10 +92,20 @@ You can expose this one service using a single [Network \(L4\) Load Balancer](ht
 kubectl create service loadbalancer helloworld --tcp=8080:8080
 ```
 
+### Connect
+
 Find the public load balancer IP address:
 
 ```text
 kubectl get services helloworld
+```
+
+Then connect with `curl`:
+
+```bash
+EXTERNAL_IP=$(kubectl get svc helloworld \
+  -ojsonpath='{.status.loadBalancer.ingress[0].ip})
+curl http://${EXTERNAL_IP}
 ```
 
 {% hint style="info" %}
