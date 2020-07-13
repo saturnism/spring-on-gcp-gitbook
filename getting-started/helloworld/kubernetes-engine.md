@@ -92,6 +92,10 @@ You can expose this one service using a single [Network \(L4\) Load Balancer](ht
 kubectl create service loadbalancer helloworld --tcp=8080:8080
 ```
 
+{% hint style="info" %}
+A Network \(L4\) Load Balancer is the easiest way to expose a single service for a demo. For production environment, you likely will need to [use a HTTP Load Balancer](https://cloud.google.com/kubernetes-engine/docs/how-to/container-native-load-balancing) instead.
+{% endhint %}
+
 ### Connect
 
 Find the public load balancer IP address:
@@ -107,10 +111,6 @@ EXTERNAL_IP=$(kubectl get svc helloworld \
   -ojsonpath='{.status.loadBalancer.ingress[0].ip})
 curl http://${EXTERNAL_IP}
 ```
-
-{% hint style="info" %}
-A Network \(L4\) Load Balancer is the easiest way to expose a single service for a demo. For production environment, you likely will need to [use a HTTP Load Balancer](https://cloud.google.com/kubernetes-engine/docs/how-to/container-native-load-balancing) instead.
-{% endhint %}
 
 ## Learn More
 
