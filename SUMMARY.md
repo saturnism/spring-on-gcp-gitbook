@@ -37,9 +37,6 @@
     * [Identity Access Proxy](app-dev/cloud-services/security/identity-access-proxy.md)
     * [Google OpenID Connect](app-dev/cloud-services/security/google-openid-connect.md)
     * [Firebase Authentication](app-dev/cloud-services/security/firebase-authentication.md)
-* [Testing](app-dev/testing/README.md)
-  * [Emulators](app-dev/testing/emulators.md)
-  * [Testcontainer](app-dev/testing/testcontainer.md)
 
 ## Deployment
 
