@@ -48,12 +48,44 @@ Use [Hibernate Cloud Spanner Dialect](https://cloud.google.com/spanner/docs/use-
 
 Use R2DBC to access database to produce highly concurrent non-blocking microservices. 
 
-|  | R2DBC Support |
+| Database | R2DBC Support |
 | :--- | :--- |
 | **Cloud Spanner** | [cloud-spanner-r2dbc](https://github.com/GoogleCloudPlatform/cloud-spanner-r2dbc) |
 | **Cloud SQL - PostgreSQL** | [r2dbc-postgresql](https://github.com/r2dbc/r2dbc-postgresql) with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/postgres/sql-proxy) |
 | **Cloud SQL - MySQL** | [r2dbc-mysql](https://github.com/mirromutth/r2dbc-mysql) with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/sql-proxy) |
 | **Cloud SQL - Microsoft SQL Server** | [r2dbc-mssql](https://github.com/r2dbc/r2dbc-mssql) with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/sqlserver/sql-proxy) |
+
+## DevOps Tools
+
+### Cloud Build
+
+Declare your CI/CD pipeline and run it with Cloud Build. See [Cloud Build with Java application documentation](https://cloud.google.com/cloud-build/docs/building/build-java).
+
+### Artifact Registry
+
+Publish Java artifacts to Artifact Registry, which can host Maven repositories.  See [Artifact Registry Maven Repository Quickstart](https://cloud.google.com/artifact-registry/docs/java/quickstart).
+
+### Cloud Trace
+
+Use Spring Cloud Sleuth and send Distributed Tracing data to Cloud Trace, using Spring Cloud GCP.  See [Trace documentation](cloud-services/trace.md).
+
+### Cloud Logging
+
+Aggregate logs into a centralized logging console to easily search and view logs. See [Logging documentation](cloud-services/logging.md).
+
+### Cloud Monitoring
+
+Collect system and application metrics, build dashboards, and setup alerts.  See [Metrics documentation](cloud-services/metrics.md).
+
+## Production Tools
+
+### Cloud Debugger
+
+[Cloud Debugger](https://cloud.google.com/debugger/docs/setup/java) can debug your production application without halting the application. Cloud Debugger can capture application state as a Snapshot, and also able to add additional log messages without redeploying the code.
+
+### Cloud Profiler
+
+[Cloud Profiler](https://cloud.google.com/profiler/docs/profiling-java) can continuously profile CPU and heap usages in a production application with minimal overhead.  The profiled flame graph can help you understand performance hotspots.
 
 
 
