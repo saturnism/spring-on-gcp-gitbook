@@ -73,7 +73,7 @@ gcloud compute firewall-rules create webapp-rule \
   --allow=tcp:8080
 ```
 
-#### External IP Address
+### Connect
 
 Find the external IP address of the Compute Engine VM instance:
 
