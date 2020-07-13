@@ -13,7 +13,7 @@ Sub-sections will show how to utilize Google Cloud services using Spring Boot an
 | [Storage](storage.md) | [Cloud Storage](storage.md#cloud-storage) |
 | [Cache](cache/) | [Memorystore Redis](cache/memorystore-redis.md) |
 |  | [Memorystore Memcached](cache/memorystore-memcached.md) |
-| [Trace](trace.md) | Cloud Trace |
-| [Logging](logging.md) | Cloud Logging |
-| [Metrics](metrics.md) | Cloud Monitoring |
+| [Trace](trace.md) | [Cloud Trace](trace.md#cloud-trace) |
+| [Logging](logging.md) | [Cloud Logging](logging.md#cloud-logging) |
+| [Metrics](metrics.md) | [Cloud Monitoring](metrics.md#cloud-monitoring) |
 
