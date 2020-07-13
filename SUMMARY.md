@@ -95,19 +95,3 @@
   * [Background Function](deployment/cloud-function/background-function.md)
   * [Local Development](deployment/cloud-function/local-development.md)
 
-## DevOps
-
-* [Infrastructure as Code](devops/infrastructure-as-code/README.md)
-  * [Terraform](devops/infrastructure-as-code/terraform.md)
-* [CI/CD](devops/ci-cd/README.md)
-  * [GitHub Action](devops/ci-cd/github-action.md)
-  * [Cloud Build](devops/ci-cd/cloud-build.md)
-* [Observability](devops/observability/README.md)
-  * [Trace](devops/observability/trace.md)
-  * [Logging](devops/observability/logging.md)
-  * [Log Correlation](devops/observability/log-correlation.md)
-  * [Error Reporting](devops/observability/error-reporting.md)
-  * [Metrics](devops/observability/metrics.md)
-  * [Production Profiler](devops/observability/production-profiler.md)
-  * [Production Debugger](devops/observability/production-debugger.md)
-
