@@ -101,8 +101,9 @@ kubectl get services helloworld
 A Network \(L4\) Load Balancer is the easiest way to expose a single service for a demo. For production environment, you likely will need to [use a HTTP Load Balancer](https://cloud.google.com/kubernetes-engine/docs/how-to/container-native-load-balancing) instead.
 {% endhint %}
 
-## Next Steps
+## Learn More
 
 * [Kubernetes from Basic to Advanced code lab](https://bit.ly/k8s-lab)
 * [Spring Boot on GCP code lab](https://bit.ly/spring-gcp-lab)
+* [Spring to Kubernetes Faster and Easier](https://saturnism.me/talk/kubernetes-spring-java-best-practices/)
 
