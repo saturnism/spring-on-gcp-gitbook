@@ -17,9 +17,14 @@ gcloud services enable containerregistry.googleapis.com
 
 ### Create Cluster
 
+Create a [VPC-native Kubernetes Engine cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/alias-ips).
+
 ```text
 gcloud container clusters create helloworld-cluster \
   --num-nodes 2 \
+  -enable-ip-alias \
+  --create-subnetwork="" \
+  --network=default \
   --machine-type n1-standard-1 \
   --zone us-central1-c
 ```
@@ -93,6 +98,6 @@ kubectl get services helloworld
 ```
 
 {% hint style="info" %}
-A Network \(L4\) Load Balancer is the easiest way to expose a single service for a demo. For production environment, you likely will need to [use a HTTP Load Balancer](https://cloud.google.com/kubernetes-engine/docs/how-to/ingress-http2) instead.
+A Network \(L4\) Load Balancer is the easiest way to expose a single service for a demo. For production environment, you likely will need to [use a HTTP Load Balancer](https://cloud.google.com/kubernetes-engine/docs/how-to/container-native-load-balancing) instead.
 {% endhint %}
 
