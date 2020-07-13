@@ -85,3 +85,7 @@ gcloud run deploy helloworld --platform=managed --allow-unauthenticated \
   --image=gcr.io/${PROJECT_ID}/helloworld
 ```
 
+## Next Steps
+
+* [Optimizing Java Applications on Cloud Run](https://cloud.google.com/run/docs/tips/java)
+
