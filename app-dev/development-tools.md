@@ -73,6 +73,10 @@ Use Spring Cloud Sleuth and send Distributed Tracing data to Cloud Trace, using 
 
 Aggregate logs into a centralized logging console to easily search and view logs. See [Logging documentation](cloud-services/logging.md).
 
+### Error Reporting
+
+Automatically identifies Java exceptions and produce reports. Easily see new exceptions and their frequencies. See [Error Reporting documentation](https://cloud.google.com/error-reporting/docs/viewing-errors).
+
 ### Cloud Monitoring
 
 Collect system and application metrics, build dashboards, and setup alerts.  See [Metrics documentation](cloud-services/metrics.md).
