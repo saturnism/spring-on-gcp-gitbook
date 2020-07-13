@@ -63,6 +63,18 @@ Alternatively, for a quick test, you can also use `gcloud`:
 gcloud functions call helloworld
 ```
 
+## Additional Configurations
+
+By default, Cloud Functions will deploy with the smallest 256MB instance. You can specify a larger instance, and configure environment variables with the `gcloud` CLI:
+
+```bash
+gcloud functions deploy helloworld --trigger-http \
+  --runtime=java11 \
+  --memory=512M
+  --entry-point=functions.HelloWorld \
+  --allow-unauthenticated
+```
+
 
 
 
