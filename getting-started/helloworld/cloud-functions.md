@@ -57,7 +57,7 @@ URL=$(gcloud functions describe helloworld --format='value(httpsTrigger.url)')
 curl ${URL}
 ```
 
-Alternatively, for a quick test, you can also use `gcloud`:
+Alternatively, you can also use `gcloud`:
 
 ```bash
 gcloud functions call helloworld
