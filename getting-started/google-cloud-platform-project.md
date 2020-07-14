@@ -40,13 +40,13 @@ IAM may be one of the hardest concepts to grasp about Google Cloud Platform - bu
 
 ### Principal
 
-All authentication Principals \(i.e., a user\) are identified as an e-mail address:
+All authentication Principals \(i.e., a user\) are identified by an e-mail address:
 
 | Type | Uses | Identified By |
 | :--- | :--- | :--- |
-| User Account | User interaction with `gcloud` CLI, or the web console. | User's E-Mail address |
-| Service Account | Service to Service authentication | Service account's E-Mail address |
-| G Suite Group | A collection of user accounts or service accounts. | G Suite Group E-Mail |
+| User Account | User interaction with `gcloud` CLI, or the web console. | User's e-mail address |
+| Service Account | Service to Service authentication | Service account's e-mail address |
+| G Suite Group | A collection of user accounts or service accounts. | G Suite Group e-mail |
 
 ### Roles and Permissions
 
