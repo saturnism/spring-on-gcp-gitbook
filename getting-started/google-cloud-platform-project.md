@@ -72,8 +72,8 @@ User Account is great for local development when using `gcloud`.  Service Accoun
 This is the default credential that a Google Cloud client library will discover.  Application Default Credential can be:
 
 * Created by `gcloud auth application-default login` when running locally,
-* **or** a `GOOGLE_APPLICATION_CREDENTIALS` environmental variable that points to the path of a Service Account key file,
-* **or** automatically discovered using the Metadata Server. 
+* **or** a `GOOGLE_APPLICATION_CREDENTIALS` environmental variable that points to the path of a Service[ Account key file](google-cloud-platform-project.md#service-account-key),
+* **or** automatically discovered using the [Metadata Server](google-cloud-platform-project.md#machine-credentials). 
 
 #### Service Account Key
 
@@ -91,7 +91,7 @@ Never put your service account key file in a container image, or deployable arti
 In most cases, your application is associated with a service account.
 {% endhint %}
 
-#### Machine Credentials
+#### Machine Credentials from Metadata Server
 
 All Google Cloud runtime environments \(App Engine, Cloud Functions, Cloud Run, Kubernetes Engine, Compute Engine, ...\) have access to the [Metadata Server](https://cloud.google.com/compute/docs/storing-retrieving-metadata). From the runtime environment, you can retrieve the current access token associated with the Service Account:
 
