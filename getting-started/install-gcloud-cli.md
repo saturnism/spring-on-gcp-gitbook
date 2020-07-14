@@ -18,6 +18,10 @@ Authenticate gcloud so that it can interact with Google Cloud Platform using you
 gcloud auth login
 ```
 
+{% hint style="info" %}
+This authenticated `gcloud` so that you can run all the commands.
+{% endhint %}
+
 ## Project ID
 
 Configure the default project ID to your project.
@@ -52,4 +56,10 @@ In addition to authenticating gcloud, also authenticate Application Default Cred
 ```text
 gcloud auth application-default login
 ```
+
+{% hint style="info" %}
+This is different from the [previous authentication](install-gcloud-cli.md#authenticate). The previous authentication is for `gcloud` CLI to make calls to Google Cloud.  Application Default Credentials authentication is for client libraries to make calls to Google Cloud.
+{% endhint %}
+
+This will store the credential \(OAuth refresh token\) in a well-known location, such as `~/.config/gcloud/application_default_credentials.json`. Google Cloud client libraries can automatically detect this file and use this credential.
 
