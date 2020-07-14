@@ -28,6 +28,15 @@ gcloud services enable compute.googleapis.com
 gcloud compute instances create helloworld
 ```
 
+{% hint style="info" %}
+If you want to use a specific distribution, such as Debian 10, you can add additional parameters:
+
+```bash
+gcloud compute instances create helloworld \
+  --image-family debian-10 --image-project debian-cloud
+```
+{% endhint %}
+
 ### Copy File to VM
 
 ```bash
