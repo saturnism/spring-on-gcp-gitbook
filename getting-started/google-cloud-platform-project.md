@@ -75,6 +75,8 @@ This is the default credential that a Google Cloud client library will discover.
 * **or** a `GOOGLE_APPLICATION_CREDENTIALS` environmental variable that points to the path of a Service[ Account key file](google-cloud-platform-project.md#service-account-key),
 * **or** automatically discovered using the [Metadata Server](google-cloud-platform-project.md#machine-credentials). 
 
+When using a Google Cloud client library to access a Cloud service, the client library would automatically discover the credential to use based on precedence. See [Google Auth Library README for more information](https://github.com/googleapis/google-auth-library-java/blob/master/README.md#application-default-credentials).
+
 #### Service Account Key
 
 Service Account Key file is a JSON file that contains a private key, and the private key is used to retrieve OAuth access token. The Service Account file is like a password and must be stored securely!
