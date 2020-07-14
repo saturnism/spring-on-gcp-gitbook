@@ -4,9 +4,9 @@ Google Cloud Platform has a range of different runtime environments to run your 
 
 | Environment | Description | Deploys | When to use? |
 | :--- | :--- | :--- | :--- |
-| [App Engine](app-engine.md) | Fully managed Platform-as-a-Service | Source or JAR | External-facing web application/services |
+| [App Engine](app-engine.md) | Fully managed Platform-as-a-Service | Source or JAR | Web application and services. Scheduled tasks. |
 | [Cloud Functions](cloud-functions.md) | Fully managed Function-as-a-Service | Source or JAR | Webhooks, Event handlers |
-| [Cloud Run](cloud-run.md) | Fully managed Container-as-a-Service | Container Image | External facing web application/services |
+| [Cloud Run](cloud-run.md) | Fully managed Container-as-a-Service | Container Image | Web application and services. Scheduled tasks. Event handlers. |
 | [Kubernetes Engine](kubernetes-engine.md) | Fully managed Kubernetes cluster | Container Image | Any workload |
 | [Compute Engine](compute-engine.md) | Virtual Machine | Container Image, anything you bring | Any workload |
 
