@@ -60,8 +60,38 @@ You can create [Custom Roles](https://cloud.google.com/iam/docs/understanding-cu
 
 | Type | Credential |
 | :--- | :--- |
-| User Account | OAuth credentials - an Access Token, or a Refresh Token |
-| Service Account | A Service Account Key file **or** from [Metadata Server](https://cloud.google.com/compute/docs/storing-retrieving-metadata) |
+| User Account | OAuth credentials - an Access Token, or a Refresh Token, or [Application Default Credentials](google-cloud-platform-project.md#application-default-credentials). |
+| Service Account | A [Service Account Key file](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) **or** from [Machine Credentials from Metadata Server](https://cloud.google.com/compute/docs/storing-retrieving-metadata) |
+
+{% hint style="info" %}
+User Account is great for local development when using `gcloud`.  Service Account is great for your application/microservice.
+{% endhint %}
+
+#### Application Default Credentials
+
+This is the default credential that a Google Cloud client library will discover.  Application Default Credential can be:
+
+* Created by `gcloud auth application-default login` when running locally,
+* **or** a `GOOGLE_APPLICATION_CREDENTIALS` environmental variable that points to the path of a Service Account key file,
+* **or** automatically discovered using the Metadata Server. 
+
+#### Service Account Key
+
+Service Account Key file is a JSON file that contains a private key, and the private key is used to retrieve OAuth access token. The Service Account file is like a password and must be stored securely!
+
+{% hint style="danger" %}
+Never expose the service account key file in the public.
+
+Never check-in your service account key file.
+
+Never put your service account key file in a container image, or deployable artifact like a JAR file.
+{% endhint %}
+
+{% hint style="success" %}
+In most cases, your application is associated with a service account.
+{% endhint %}
+
+#### Machine Credentials
 
 All Google Cloud runtime environments \(App Engine, Cloud Functions, Cloud Run, Kubernetes Engine, Compute Engine, ...\) have access to the [Metadata Server](https://cloud.google.com/compute/docs/storing-retrieving-metadata). From the runtime environment, you can retrieve the current access token associated with the Service Account:
 
@@ -69,4 +99,8 @@ All Google Cloud runtime environments \(App Engine, Cloud Functions, Cloud Run, 
 curl -H "Metadata-Flavor: Google" \
   http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/token  
 ```
+
+{% hint style="info" %}
+Each runtime / service may be associated with a specific Service Account. For example, VM1 uses Service Account A, and VM2 uses Service Account B. Depending on which VM is used to access the Metadata Server, the Metadata Server will return the token for the associated Service Account.
+{% endhint %}
 
