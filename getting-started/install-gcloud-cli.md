@@ -58,7 +58,7 @@ gcloud auth application-default login
 ```
 
 {% hint style="info" %}
-This is different from the [previous authentication](install-gcloud-cli.md#authenticate). The previous authentication is for `gcloud` CLI to make calls to Google Cloud.  Application Default Credentials authentication is for client libraries to make calls to Google Cloud.
+Application Default Credentials authentication is for client libraries to make calls to Google Cloud. This is different from the [first gcloud Authenticate](install-gcloud-cli.md#authenticate), which is for `gcloud` to make calls to Google Cloud.
 {% endhint %}
 
 This will store the credential \(OAuth refresh token\) in a well-known location, such as `~/.config/gcloud/application_default_credentials.json`. Google Cloud client libraries can automatically detect this file and use this credential.
