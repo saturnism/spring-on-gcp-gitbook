@@ -38,15 +38,27 @@ If you already have an account, use an existing project, or create a new one.
 
 IAM may be one of the hardest concepts to grasp about Google Cloud Platform - but once you understand it, everything else becomes clear.
 
-### Principal
+### Principal / Member
 
-All authentication Principals \(i.e., a user\) are identified by an e-mail address:
+All Principals \(i.e., a user\) are identified by an e-mail address:
 
 | Type | Uses | Identified By |
 | :--- | :--- | :--- |
 | User Account | User interaction with `gcloud` CLI, or the web console. | User's e-mail address |
 | Service Account | Service to Service authentication | Service account's e-mail address |
 | G Suite Group | A collection of user accounts or service accounts. | G Suite Group e-mail |
+| G Suite Domain | All users and groups of a G Suite domain. | G Suite domain name |
+
+Sometimes, when referring to different type of Principals, you may need to add a prefix:
+
+| Type | Prefix | Example |
+| :--- | :--- | :--- |
+| User Account | user | user:jane@example.com |
+| Service Account | serviceAccount | serviceAccount:my-service@appspot.gserviceaccount.com |
+| G Suite Group | group | group:webmaster@example.com |
+| G Suite Domain | domain | domain:example.com |
+
+See [Identity Access Management Overview documentation](https://cloud.google.com/iam/docs/overview) for more details.
 
 ### Roles and Permissions
 
