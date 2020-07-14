@@ -1,6 +1,6 @@
 # Hello World!
 
-Google Cloud Platform has a range of different runtime environments to run your Java / Spring Boot application.
+Google Cloud Platform has a range of different runtime environments to run your Java / Spring Boot application.  The **Hello World!** sections will walk you through on how to deploy using all of the different runtimes.
 
 | Environment | Description | Deploys | When to use? |
 | :--- | :--- | :--- | :--- |
