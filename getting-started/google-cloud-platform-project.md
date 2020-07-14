@@ -49,7 +49,7 @@ All Principals \(i.e., a user\) are identified by an e-mail address:
 | G Suite Group | A collection of user accounts or service accounts. | G Suite Group e-mail |
 | G Suite Domain | All users and groups of a G Suite domain. | G Suite domain name |
 
-Sometimes, when referring to different type of Principals, you may need to add a prefix:
+Sometimes, when referring to different types of Principals, you may need to add a prefix:
 
 | Type | Prefix | Example |
 | :--- | :--- | :--- |
