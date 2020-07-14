@@ -8,6 +8,10 @@ Spring Cloud GCP is part of the Spring Cloud release train.
 Even though Spring Cloud GCP is part of the Spring Cloud release train, it doesn't mean that you need to use any Spring Cloud features \(Eureka, Config Server, etc.\). The release train only help manage dependency versions so that you don't need to specify them. It helps at reducing picking incompatible versions, and eliminates dependency conflicts.
 {% endhint %}
 
+## Demo
+
+{% embed url="https://www.youtube.com/watch?v=5d\_dy7RVcpE" caption="A short demo video of Spring Cloud GCP" %}
+
 ## Configure Spring Boot Project
 
 ### New Spring Boot Project
