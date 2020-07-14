@@ -38,9 +38,9 @@ If you already have an account, use an existing project, or create a new one.
 
 IAM may be one of the hardest concepts to grasp about Google Cloud Platform - but once you understand it, everything else becomes clear.
 
-### Principal / Member
+### Member
 
-All Principals \(i.e., a user\) are identified by an e-mail address:
+All Member \(i.e., a user\) are identified by an e-mail address:
 
 | Type | Uses | Identified By |
 | :--- | :--- | :--- |
@@ -49,7 +49,7 @@ All Principals \(i.e., a user\) are identified by an e-mail address:
 | G Suite Group | A collection of user accounts or service accounts. | G Suite Group e-mail |
 | G Suite Domain | All users and groups of a G Suite domain. | G Suite domain name |
 
-Sometimes, when referring to different types of Principals, you may need to add a prefix:
+Sometimes, when referring to different types of Members, you may need to add a prefix:
 
 | Type | Prefix | Example |
 | :--- | :--- | :--- |
@@ -62,7 +62,7 @@ See [Identity Access Management Overview documentation](https://cloud.google.com
 
 ### Roles and Permissions
 
-Each Principal can be associated with [different Roles](https://cloud.google.com/iam/docs/understanding-roles), and each Role is associated with specific Permissions.  For example, a `viewer` role may have fewer permissions than an `editor` role, which may have fewer permissions than an `admin` role.  See [Understanding roles documentation](https://cloud.google.com/iam/docs/understanding-roles) for all the available roles and the associated permissions
+Each Member can be associated with [different Roles](https://cloud.google.com/iam/docs/understanding-roles), and each Role is associated with specific Permissions.  For example, a `viewer` role may have fewer permissions than an `editor` role, which may have fewer permissions than an `admin` role.  See [Understanding roles documentation](https://cloud.google.com/iam/docs/understanding-roles) for all the available roles and the associated permissions
 
 {% hint style="info" %}
 You can create [Custom Roles](https://cloud.google.com/iam/docs/understanding-custom-roles) to associate with specific permissions too.
