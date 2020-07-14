@@ -60,9 +60,13 @@ Sometimes, when referring to different types of Members, you may need to add a p
 
 See [Identity Access Management Overview documentation](https://cloud.google.com/iam/docs/overview) for more details.
 
-### Roles and Permissions
+### Permission
 
-Each Member can be associated with [different Roles](https://cloud.google.com/iam/docs/understanding-roles), and each Role is associated with specific Permissions.  For example, a `viewer` role may have fewer permissions than an `editor` role, which may have fewer permissions than an `admin` role.  See [Understanding roles documentation](https://cloud.google.com/iam/docs/understanding-roles) for all the available roles and the associated permissions
+A Permission is the finest grain of a particular action that a Member can perform. For example, a permission to list objects / files from Cloud Storage is `storage.objects.list`.
+
+### Roles
+
+Each Member can be associated with [different Roles](https://cloud.google.com/iam/docs/understanding-roles), and each Role is associated with a set of [Permissions](google-cloud-platform-project.md#permission).  For example, a `roles/storage.objectViewer` role, has `storage.objects.get` and `storage.objects.list` permissions.  See [Understanding roles documentation](https://cloud.google.com/iam/docs/understanding-roles) for all the available roles and the associated permissions
 
 {% hint style="info" %}
 You can create [Custom Roles](https://cloud.google.com/iam/docs/understanding-custom-roles) to associate with specific permissions too.
