@@ -102,7 +102,11 @@ Never put your service account key file in a container image, or deployable arti
 {% endhint %}
 
 {% hint style="success" %}
-In most cases, your application is associated with a service account.
+Always store your service account securely.
+{% endhint %}
+
+{% hint style="success" %}
+In most cases, your application is associated with a service account, but will **not** need the Service Account key file. See [Machine Credentials](google-cloud-platform-project.md#machine-credentials-from-metadata-server).
 {% endhint %}
 
 #### Machine Credentials from Metadata Server
