@@ -26,6 +26,96 @@ gcloud services enable clouddebugger.googleapis.com
 
 Cloud Debugger works by adding a Java agent to your JVM startup argument, and the agent can communicate with the Cloud Debugger service in the Cloud. Through the Cloud Console, you can then instruct your JVM instances to take a Snapshot of the application state at a specific line of code, or to add an additional log message on a specific line.
 
+There are 2 types of Cloud Debugger Java agents that authenticates with Cloud Debugger service differently:
+
+| Type | When to use? | Latest Version |
+| :--- | :--- | :--- |
+| Machine Credentials | In Google Cloud runtime environments | [Download Link](https://storage.googleapis.com/cloud-debugger/compute-java/debian-wheezy/cdbg_java_agent_gce.tar.gz) |
+| Service Account Key | In non-Google Cloud environments | [Download Link](https://storage.googleapis.com/cloud-debugger/compute-java/debian-wheezy/cdbg_java_agent_service_account.tar.gz) |
+
+Typically, you'll need to configure Java agent in the JVM command line using the standard  `-agentpath` , for example,
+
+```bash
+java -agentpath:/opt/cdbg/cdbg_java_agent.so \
+  -jar ...
+```
+
+Rather than hard coding the startup command line, you can also configure it with the `JAVA_TOOL_OPTIONS` environmental variable:
+
+```bash
+JAVA_TOOL_OPTIONS="-agentpath:/opt/cdbg/cdbg_java_agent.so"
+java -jar ...
+```
+
+There are additional flags you can pass to the Java agent using Java's system properties.
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">System Properties</th>
+      <th style="text-align:left">Description</th>
+      <th style="text-align:left">Required</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">
+        <p>com.google.cdbg</p>
+        <p>.module</p>
+      </td>
+      <td style="text-align:left">The name of your application.</td>
+      <td style="text-align:left">Not required for Cloud Run or App Engine.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p>com.google.cdbg</p>
+        <p>.version</p>
+      </td>
+      <td style="text-align:left">The version of your application.</td>
+      <td style="text-align:left">Not required for Cloud Run or App Engine.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p>com.google.cdbg</p>
+        <p>.breakpoints</p>
+        <p>.enable_canary</p>
+      </td>
+      <td style="text-align:left"><code>true</code> or <code>false</code>.Whether to turn on debugger for
+        a subset of the running instances. See <a href="https://cloud.google.com/debugger/docs/setup/java#canary_snapshots_and_logpoints">Canary snapshots and logpoints documentation</a>.</td>
+      <td
+      style="text-align:left">Not required and defaults to <code>false</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p>com.google.cdbg</p>
+        <p>.auth.serviceaccount.enable</p>
+      </td>
+      <td style="text-align:left"><code>true</code> or <code>false</code>. Whether to authenticate with a
+        Service Account key file.</td>
+      <td style="text-align:left">Required when running outside of Google Cloud.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p>com.google.cdbg.auth</p>
+        <p>.serviceaccount.jsonfile</p>
+      </td>
+      <td style="text-align:left">File path to the Service Account key file.</td>
+      <td style="text-align:left">Required when running outside of Google Cloud.</td>
+    </tr>
+  </tbody>
+</table>
+
+For example, you can enable the snapshot using the system property:
+
+```text
+JAVA_TOOL_OPTIONS="-agentpath:/opt/cdbg/cdbg_java_agent.so \
+  -Dcom.google.cdbg.breakpoints.enable_canary=true"
+```
+
+{% hint style="info" %}
+See [Setting Up Cloud Debugger for Java](https://cloud.google.com/debugger/docs/setup/java#overview) documentation for more information.
+{% endhint %}
+
 {% tabs %}
 {% tab title="App Engine" %}
 Cloud Debugger agent is automatically added to your App Engine application.
@@ -36,15 +126,52 @@ In Cloud Debugger console, you can see the Default service in the drop down:
 {% endtab %}
 
 {% tab title="Cloud Run" %}
-You need to add the Cloud Debugger Java agent to the container, and adding it to the startup command line.  You can see the Dockerfile instruction in the [Setting Up Cloud Debugger for Java](https://cloud.google.com/debugger/docs/setup/java#cloud-run) documentation.
-
-To do this in Jib, with a Helloworld sample, first download the Cloud Debugger Java agent to a directory for Jib to include in the container image.
+You need to add the Cloud Debugger Java agent to the container, and adding it to the startup command line. Using the Helloworld sample application:
 
 ```text
 # Clone the sample repository manually
 git clone https://github.com/GoogleCloudPlatform/java-docs-samples
 cd java-docs-samples/appengine-java11/springboot-helloworld
+```
 
+{% hint style="info" %}
+Use the agent that authenticated using Machine Credentials associated with the Cloud Run service.
+{% endhint %}
+
+#### Containerize with a Dockerfile
+
+In the Dockerfile, download the Cloud Debugger and build it as part of the container image:
+
+{% code title="Dockerfile" %}
+```text
+FROM openjdk:11
+
+# Create a directory for the Debugger. Add and unzip the agent in the directory.
+RUN mkdir /opt/cdbg && \
+     wget -qO- https://storage.googleapis.com/cloud-debugger/compute-java/debian-wheezy/cdbg_java_agent_gce.tar.gz | \
+     tar xvz -C /opt/cdbg
+
+COPY target/springboot-helloworld-j11-0.0.1-SNAPSHOT.jar /app.jar
+
+ENTRYPOINT ["java", "-jar", "/app.jar"]
+```
+{% endcode %}
+
+Then build and push the container:
+
+```bash
+mvn package
+
+PROJECT_ID=$(gcloud config get-value project)
+docker build -t gcr.io/${PROJECT_ID}/helloworld .
+docker push gcr.io/${PROJECT_ID}/helloworld
+```
+
+#### Containerize with Jib
+
+Download the Cloud Debugger Java agent into `src/main/jib` directory so that Jib can include the agent files as part of the container image:
+
+```text
 # Make a directory to store the Java agent
 mkdir -p src/main/jib/opt/cdbg
 
@@ -52,12 +179,6 @@ mkdir -p src/main/jib/opt/cdbg
 wget -qO- https://storage.googleapis.com/cloud-debugger/compute-java/debian-wheezy/cdbg_java_agent_gce.tar.gz | \
   tar xvz -C src/main/jib/opt/cdbg
 ```
-
-You need to start the debugger agent using `agentpath` parameter, for example `java -agentpath:/opt/cdbg/cdbg_java_agent.so -jar ...`.
-
-{% hint style="info" %}
-The agent configuration can either be hard coded into the container image `entrypoint`, or it can be configured using the `JAVA_TOOL_OPTIONS` environmental variable for the JVM.
-{% endhint %}
 
 Create the image with Jib:
 
@@ -67,7 +188,9 @@ mvn compile com.google.cloud.tools:jib-maven-plugin:2.4.0:build \
   -Dimage=gcr.io/${PROJECT_ID}/helloworld
 ```
 
-Deploy to Cloud Run with Debugger Enabled:
+#### Deploy
+
+Deploy to Cloud Run with Debugger Enabled using the environmental variable:
 
 ```bash
 gcloud run deploy helloworld --platform=managed --allow-unauthenticated \
@@ -78,10 +201,6 @@ gcloud run deploy helloworld --platform=managed --allow-unauthenticated \
 In Cloud Debugger console, you can see the `helloworld` service in the drop down:
 
 ![](../../.gitbook/assets/image%20%2810%29.png)
-
-{% hint style="info" %}
-The Java agent automatically discovers the [Machine Credential](../../getting-started/google-cloud-platform-project.md#machine-credentials-from-metadata-server) associated with Cloud Run service, so you do not need to specify a service account key file.
-{% endhint %}
 {% endtab %}
 
 {% tab title="Kubernetes Engine" %}
@@ -96,12 +215,6 @@ The Java agent automatically discovers the [Machine Credential](../../getting-st
 
 {% endtab %}
 {% endtabs %}
-
-{% hint style="info" %}
-See [Setting Up Cloud Debugger for Java](https://cloud.google.com/debugger/docs/setup/java#overview) documentation for more information.
-{% endhint %}
-
-
 
 ## Associating with Source Code
 
