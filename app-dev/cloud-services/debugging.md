@@ -204,7 +204,113 @@ In Cloud Debugger console, you can see the `helloworld` service in the drop down
 {% endtab %}
 
 {% tab title="Kubernetes Engine" %}
+You need to add the Cloud Debugger Java agent to the container, and adding it to the startup command line. Using the Helloworld sample application:
 
+```text
+# Clone the sample repository manually
+git clone https://github.com/GoogleCloudPlatform/java-docs-samples
+cd java-docs-samples/appengine-java11/springboot-helloworld
+```
+
+{% hint style="info" %}
+Use the agent that authenticated using Machine Credentials associated with the Kubernetes Engine cluster.
+{% endhint %}
+
+#### Containerize with a Dockerfile
+
+In the Dockerfile, download the Cloud Debugger and build it as part of the container image:
+
+{% code title="Dockerfile" %}
+```text
+FROM openjdk:11
+
+# Create a directory for the Debugger. Add and unzip the agent in the directory.
+RUN mkdir /opt/cdbg && \
+     wget -qO- https://storage.googleapis.com/cloud-debugger/compute-java/debian-wheezy/cdbg_java_agent_gce.tar.gz | \
+     tar xvz -C /opt/cdbg
+
+COPY target/springboot-helloworld-j11-0.0.1-SNAPSHOT.jar /app.jar
+
+ENTRYPOINT ["java", "-jar", "/app.jar"]
+```
+{% endcode %}
+
+Then build and push the container:
+
+```bash
+mvn package
+
+PROJECT_ID=$(gcloud config get-value project)
+docker build -t gcr.io/${PROJECT_ID}/helloworld .
+docker push gcr.io/${PROJECT_ID}/helloworld
+```
+
+#### Containerize with Jib
+
+Download the Cloud Debugger Java agent into `src/main/jib` directory so that Jib can include the agent files as part of the container image:
+
+```text
+# Make a directory to store the Java agent
+mkdir -p src/main/jib/opt/cdbg
+
+# Download and extract the Java agent to the directory
+wget -qO- https://storage.googleapis.com/cloud-debugger/compute-java/debian-wheezy/cdbg_java_agent_gce.tar.gz | \
+  tar xvz -C src/main/jib/opt/cdbg
+```
+
+Create the image with Jib:
+
+```bash
+PROJECT_ID=$(gcloud config get-value project)
+mvn compile com.google.cloud.tools:jib-maven-plugin:2.4.0:build \
+  -Dimage=gcr.io/${PROJECT_ID}/helloworld
+```
+
+#### Deploy
+
+Deploy to Kubernetes Engine with Debugger Enabled using the environmental variable using a Deployment YAML:
+
+```bash
+# Make a directory to store Kubernetes YAMLs
+mkdir k8s/
+```
+
+Create a  Deployment YAML file and configure the environmental variable:
+
+{% code title="k8s/deployment.yaml" %}
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: helloworld
+  name: helloworld
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: helloworld
+  template:
+    metadata:
+      labels:
+        app: helloworld
+    spec:
+      containers:
+      - image: gcr.io/YOUR_PROJECT_ID/helloworld
+        name: helloworld
+        env:
+        - name: JAVA_TOOL_OPTIONS
+          value: "-agentpath:/opt/cdbg/cdbg_java_agent.so -Dcom.google.cdbg.module=helloworld -Dcom.google.cdbg.version=1.0-on-gke"
+```
+{% endcode %}
+
+Deploy the YAML file:
+
+```bash
+kubectl apply -f k8s/deployment.yaml
+```
+
+In Cloud Debugger console, you can see the `helloworld` service in the drop down:
 {% endtab %}
 
 {% tab title="Compute Engine" %}
