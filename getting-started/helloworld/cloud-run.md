@@ -42,7 +42,7 @@ cd hello-springboot-mvn
 ```bash
 PROJECT_ID=$(gcloud config get-value project)
 ./mvnw compile com.google.cloud.tools:jib-maven-plugin:2.4.0:build \
-  -Dimage=gcr.io/${PROJECT_ID}>/helloworld
+  -Dimage=gcr.io/${PROJECT_ID}/helloworld
 ```
 
 {% hint style="info" %}
