@@ -26,7 +26,125 @@ gcloud services enable clouddebugger.googleapis.com
 
 Cloud Debugger works by adding a Java agent to your JVM startup argument, and the agent can communicate with the Cloud Debugger service in the Cloud. Through the Cloud Console, you can then instruct your JVM instances to take a Snapshot of the application state at a specific line of code, or to add an additional log message on a specific line.
 
-### Configure Java Agent
+### Files
+
+There are 2 types of Cloud Debugger Java agents that authenticates with Cloud Debugger service differently:
+
+| Type | When to use? | Latest Version | Versioned URL |
+| :--- | :--- | :--- | :--- |
+| Machine Credentials | Google Cloud runtime environments | [Download](https://storage.googleapis.com/cloud-debugger/compute-java/debian-wheezy/cdbg_java_agent_gce.tar.gz) | https://storage.googleapis.com/cloud-debugger/archive/java/${VERSION}/cdbg\_java\_agent\_gce.tar.gz |
+| Service Account Key | Non-Google Cloud environments | [Download](https://storage.googleapis.com/cloud-debugger/compute-java/debian-wheezy/cdbg_java_agent_service_account.tar.gz) | https://storage.googleapis.com/cloud-debugger/archive/java/${VERSION}/cdbg\_java\_agent\_service\_account.tar.gz |
+
+{% hint style="info" %}
+You can find all the versions in the [cloud-debug-java](https://github.com/GoogleCloudPlatform/cloud-debug-java/releases) GitHub repository. For example, Cloud Debugger agent version `2.25` using Machine Credentials can be downloaded with URL: [https://storage.googleapis.com/cloud-debugger/archive/java/2.25/cdbg\_java\_agent\_gce.tar.gz](https://storage.googleapis.com/cloud-debugger/archive/java/2.25/cdbg_java_agent_gce.tar.gz)
+{% endhint %}
+
+### Configurations
+
+#### Agent Path
+
+To use the agent, you'll need to configure the JVM command line using the standard  `-agentpath` , e.g.:
+
+```bash
+java -agentpath:/opt/cdbg/cdbg_java_agent.so \
+  -jar ...
+```
+
+Rather than hard coding the startup command line, you can also configure it with the `JAVA_TOOL_OPTIONS` environmental variable:
+
+```bash
+JAVA_TOOL_OPTIONS="-agentpath:/opt/cdbg/cdbg_java_agent.so"
+java -jar ...
+```
+
+#### System Properties
+
+There are additional flags you can pass to the Java agent using Java's system properties.
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">System Properties</th>
+      <th style="text-align:left">Description</th>
+      <th style="text-align:left">Required</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">
+        <p>com.google.cdbg</p>
+        <p>.module</p>
+      </td>
+      <td style="text-align:left">The name of your application.</td>
+      <td style="text-align:left">Not required for Cloud Run or App Engine.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p>com.google.cdbg</p>
+        <p>.version</p>
+      </td>
+      <td style="text-align:left">The version of your application.</td>
+      <td style="text-align:left">Not required for Cloud Run or App Engine.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p>com.google.cdbg</p>
+        <p>.breakpoints</p>
+        <p>.enable_canary</p>
+      </td>
+      <td style="text-align:left"><code>true</code> or <code>false</code>.Whether to turn on debugger for
+        a subset of the running instances. See <a href="https://cloud.google.com/debugger/docs/setup/java#canary_snapshots_and_logpoints">Canary snapshots and logpoints documentation</a>.</td>
+      <td
+      style="text-align:left">Not required and defaults to <code>false</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p>com.google.cdbg</p>
+        <p>.auth.serviceaccount.enable</p>
+      </td>
+      <td style="text-align:left"><code>true</code> or <code>false</code>. Whether to authenticate with a
+        Service Account key file.</td>
+      <td style="text-align:left">Required when running outside of Google Cloud.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p>com.google.cdbg.auth</p>
+        <p>.serviceaccount.jsonfile</p>
+      </td>
+      <td style="text-align:left">File path to the Service Account key file.</td>
+      <td style="text-align:left">Required when running outside of Google Cloud.</td>
+    </tr>
+  </tbody>
+</table>
+
+For example, you can enable the snapshot using the system property:
+
+```text
+JAVA_TOOL_OPTIONS="-agentpath:/opt/cdbg/cdbg_java_agent.so \
+  -Dcom.google.cdbg.breakpoints.enable_canary=true"
+```
+
+#### Logging
+
+By default the Cloud Debugger agent writes its logs to `cdbg_java_agent.INFO` file in the default logging directory. You can overwrite the log file path:
+
+```text
+java -agentpath:/opt/cdbg/cdbg_java_agent.so=--log_dir=/tmp/cdbg.log \
+  -jar ...
+```
+
+Alternatively you can make the Java Cloud Debugger log to `stderr`:
+
+```text
+java -agentpath:/opt/cdbg/cdbg_java_agent.so=--logtostderr=1 \
+  -jar ...
+```
+
+{% hint style="info" %}
+See [Setting Up Cloud Debugger for Java](https://cloud.google.com/debugger/docs/setup/java#overview) documentation for more information.
+{% endhint %}
+
+### Environment-Specific Configurations
 
 {% tabs %}
 {% tab title="App Engine" %}
@@ -263,121 +381,7 @@ You can attach the Cloud Debugger agent to any Java application even if it runs 
 {% endtab %}
 {% endtabs %}
 
-#### Agent Types
-
-There are 2 types of Cloud Debugger Java agents that authenticates with Cloud Debugger service differently:
-
-| Type | When to use? | Latest Version | Versioned URL |
-| :--- | :--- | :--- | :--- |
-| Machine Credentials | Google Cloud runtime environments | [Download](https://storage.googleapis.com/cloud-debugger/compute-java/debian-wheezy/cdbg_java_agent_gce.tar.gz) | https://storage.googleapis.com/cloud-debugger/archive/java/${VERSION}/cdbg\_java\_agent\_gce.tar.gz |
-| Service Account Key | Non-Google Cloud environments | [Download](https://storage.googleapis.com/cloud-debugger/compute-java/debian-wheezy/cdbg_java_agent_service_account.tar.gz) | https://storage.googleapis.com/cloud-debugger/archive/java/${VERSION}/cdbg\_java\_agent\_service\_account.tar.gz |
-
-{% hint style="info" %}
-You can find all the versions in the [cloud-debug-java](https://github.com/GoogleCloudPlatform/cloud-debug-java/releases) GitHub repository. For example, Cloud Debugger agent version `2.25` using Machine Credentials can be downloaded with URL: [https://storage.googleapis.com/cloud-debugger/archive/java/2.25/cdbg\_java\_agent\_gce.tar.gz](https://storage.googleapis.com/cloud-debugger/archive/java/2.25/cdbg_java_agent_gce.tar.gz)
-{% endhint %}
-
-#### Agent Path
-
-To use the agent, you'll need to configure the JVM command line using the standard  `-agentpath` , e.g.:
-
-```bash
-java -agentpath:/opt/cdbg/cdbg_java_agent.so \
-  -jar ...
-```
-
-Rather than hard coding the startup command line, you can also configure it with the `JAVA_TOOL_OPTIONS` environmental variable:
-
-```bash
-JAVA_TOOL_OPTIONS="-agentpath:/opt/cdbg/cdbg_java_agent.so"
-java -jar ...
-```
-
-#### System Properties
-
-There are additional flags you can pass to the Java agent using Java's system properties.
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">System Properties</th>
-      <th style="text-align:left">Description</th>
-      <th style="text-align:left">Required</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">
-        <p>com.google.cdbg</p>
-        <p>.module</p>
-      </td>
-      <td style="text-align:left">The name of your application.</td>
-      <td style="text-align:left">Not required for Cloud Run or App Engine.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p>com.google.cdbg</p>
-        <p>.version</p>
-      </td>
-      <td style="text-align:left">The version of your application.</td>
-      <td style="text-align:left">Not required for Cloud Run or App Engine.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p>com.google.cdbg</p>
-        <p>.breakpoints</p>
-        <p>.enable_canary</p>
-      </td>
-      <td style="text-align:left"><code>true</code> or <code>false</code>.Whether to turn on debugger for
-        a subset of the running instances. See <a href="https://cloud.google.com/debugger/docs/setup/java#canary_snapshots_and_logpoints">Canary snapshots and logpoints documentation</a>.</td>
-      <td
-      style="text-align:left">Not required and defaults to <code>false</code>.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p>com.google.cdbg</p>
-        <p>.auth.serviceaccount.enable</p>
-      </td>
-      <td style="text-align:left"><code>true</code> or <code>false</code>. Whether to authenticate with a
-        Service Account key file.</td>
-      <td style="text-align:left">Required when running outside of Google Cloud.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p>com.google.cdbg.auth</p>
-        <p>.serviceaccount.jsonfile</p>
-      </td>
-      <td style="text-align:left">File path to the Service Account key file.</td>
-      <td style="text-align:left">Required when running outside of Google Cloud.</td>
-    </tr>
-  </tbody>
-</table>
-
-For example, you can enable the snapshot using the system property:
-
-```text
-JAVA_TOOL_OPTIONS="-agentpath:/opt/cdbg/cdbg_java_agent.so \
-  -Dcom.google.cdbg.breakpoints.enable_canary=true"
-```
-
-#### Logging
-
-By default the Cloud Debugger agent writes its logs to `cdbg_java_agent.INFO` file in the default logging directory. You can overwrite the log file path:
-
-```text
-java -agentpath:/opt/cdbg/cdbg_java_agent.so=--log_dir=/tmp/cdbg.log \
-  -jar ...
-```
-
-Alternatively you can make the Java Cloud Debugger log to `stderr`:
-
-```text
-java -agentpath:/opt/cdbg/cdbg_java_agent.so=--logtostderr=1 \
-  -jar ...
-```
-
-{% hint style="info" %}
-See [Setting Up Cloud Debugger for Java](https://cloud.google.com/debugger/docs/setup/java#overview) documentation for more information.
-{% endhint %}
+#### 
 
 ## Associating with Source Code
 
