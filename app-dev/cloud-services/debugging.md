@@ -41,6 +41,8 @@ You can find all the versions in [cloud-debug-java](https://github.com/GoogleClo
 
 ### General Configuration
 
+#### Agent Path
+
 To use the agent, you'll need to configure the JVM command line using the standard  `-agentpath` , e.g.:
 
 ```bash
@@ -54,6 +56,8 @@ Rather than hard coding the startup command line, you can also configure it with
 JAVA_TOOL_OPTIONS="-agentpath:/opt/cdbg/cdbg_java_agent.so"
 java -jar ...
 ```
+
+#### System Properties
 
 There are additional flags you can pass to the Java agent using Java's system properties.
 
@@ -119,6 +123,24 @@ For example, you can enable the snapshot using the system property:
 JAVA_TOOL_OPTIONS="-agentpath:/opt/cdbg/cdbg_java_agent.so \
   -Dcom.google.cdbg.breakpoints.enable_canary=true"
 ```
+
+#### Logging
+
+By default the Cloud Debugger agent writes its logs to `cdbg_java_agent.INFO` file in the default logging directory. You can overwrite the log file path:
+
+```text
+java -agentpath:/opt/cdbg/cdbg_java_agent.so=--log_dir=/tmp/cdbg.log \
+  -jar ...
+```
+
+Alternatively you can make the Java Cloud Debugger log to `stderr`:
+
+```text
+java -agentpath:/opt/cdbg/cdbg_java_agent.so=--logtostderr=1 \
+  -jar ...
+```
+
+
 
 {% hint style="info" %}
 See [Setting Up Cloud Debugger for Java](https://cloud.google.com/debugger/docs/setup/java#overview) documentation for more information.
