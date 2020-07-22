@@ -226,8 +226,8 @@ FROM openjdk:11
 
 # Create a directory for the Debugger. Add and unzip the agent in the directory.
 RUN mkdir /opt/cdbg && \
-     wget -qO- https://storage.googleapis.com/cloud-debugger/compute-java/debian-wheezy/cdbg_java_agent_gce.tar.gz | \
-     tar xvz -C /opt/cdbg
+    wget -qO- https://storage.googleapis.com/cloud-debugger/compute-java/debian-wheezy/cdbg_java_agent_gce.tar.gz | \
+    tar xvz -C /opt/cdbg
 
 COPY target/springboot-helloworld-j11-0.0.1-SNAPSHOT.jar /app.jar
 
@@ -314,11 +314,40 @@ In Cloud Debugger console, you can see the `helloworld` service in the drop down
 {% endtab %}
 
 {% tab title="Compute Engine" %}
+Follow the [Compute Engine Hello World!](../../getting-started/helloworld/compute-engine.md) to deploy an application in Compute Engine.
 
+SSH into the Compute Engine instance:
+
+```bash
+gcloud compute ssh helloworld
+```
+
+From the Compute Engine instance, download the Java agent:
+
+```bash
+sudo mkdir -p /opt/cdbg
+curl -s -o- https://storage.googleapis.com/cloud-debugger/compute-java/debian-wheezy/cdbg_java_agent_gce.tar.gz \
+  | sudo tar xvz -C /opt/cdbg
+```
+
+Run the Java application with the Cloud Debugger agent:
+
+```bash
+java -agentpath:/opt/cdbg/cdbg_java_agent.so \
+    -Dcom.google.cdbg.module=helloworld \
+    -Dcom.google.cdbg.version=1.0-gce \
+    -jar spring-boot-example-0.1.0.jar
+```
 {% endtab %}
 
 {% tab title="Non-Google Cloud Environment" %}
+You can attach the Cloud Debugger agent to any Java application even if it runs outside of the Google Cloud environment \(whether it's in a container, or on your local laptop, or in another cloud\). Authentication has to be done using Service Account key file rather than using the Machine Credentials.
 
+#### Create a Service Account
+
+#### Add IAM Permission
+
+#### Use Service Account Cloud Debugger Agent
 {% endtab %}
 {% endtabs %}
 
