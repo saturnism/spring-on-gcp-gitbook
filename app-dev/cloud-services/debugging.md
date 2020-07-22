@@ -377,7 +377,19 @@ You can attach the Cloud Debugger agent to any Java application even if it runs 
 
 #### Create a Service Account
 
+```bash
+PROJECT_ID=$(gcloud config list --format 'value(core.project)')
+gcloud iam service-accounts create helloworld-app
+```
+
 #### Add IAM Permission
+
+```bash
+PROJECT_ID=$(gcloud config list --format 'value(core.project)')
+gcloud projects add-iam-policy-binding ${PROJECT_ID} \
+  --member serviceAccount:helloworld-app@${PROJECT_ID}.iam.gserviceaccount.com \
+  --role roles/clouddebugger.agent
+```
 
 #### Use Service Account Cloud Debugger Agent
 {% endtab %}
