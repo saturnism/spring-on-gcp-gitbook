@@ -33,7 +33,7 @@ There are 2 types of Cloud Debugger Java agents that authenticates with Cloud De
 | Machine Credentials | In Google Cloud runtime environments | [Download Link](https://storage.googleapis.com/cloud-debugger/compute-java/debian-wheezy/cdbg_java_agent_gce.tar.gz) |
 | Service Account Key | In non-Google Cloud environments | [Download Link](https://storage.googleapis.com/cloud-debugger/compute-java/debian-wheezy/cdbg_java_agent_service_account.tar.gz) |
 
-Typically, you'll need to configure Java agent in the JVM command line using the standard  `-agentpath` , for example,
+Typically, you'll need to configure Java agent in the JVM command line using the standard  `-agentpath` , e.g.:
 
 ```bash
 java -agentpath:/opt/cdbg/cdbg_java_agent.so \
