@@ -2,7 +2,7 @@
 
 ## Cloud Debugger
 
-Cloud Debugger  lets you inspect the state of an application, at any code location, without stopping or slowing down the running application.
+Cloud Debugger lets you inspect the state of an application, at any code location, without stopping or slowing down the running application.
 
 A Snapshot can introspect the context information on a given line of code as user go through the code flow.
 
