@@ -69,6 +69,72 @@ Here are some  commands and links to reference documentations that are frequentl
   </tbody>
 </table>
 
+## Serverless Deployments
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">Task</th>
+      <th style="text-align:left"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">App Engine</td>
+      <td style="text-align:left"><code>gcloud app deploy $JAR_FILE</code>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"></td>
+      <td style="text-align:left"><code>gcloud app deploy $JAR_FILE --appyaml app.yaml</code>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Cloud Run</td>
+      <td style="text-align:left">
+        <p><code>gcloud run deploy ${NAME} \</code>
+        </p>
+        <p><code>  --platform=managed \</code>
+        </p>
+        <p><code>  --allow-unauthenticated \</code>
+        </p>
+        <p><code>  --image=gcr.io/${PROJECT_ID}/${IMAGE_NAME}</code>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"></td>
+      <td style="text-align:left">
+        <p><code>gcloud run deploy ${NAME} \</code>
+        </p>
+        <p><code>  --platform=managed \</code>
+        </p>
+        <p><code>  --allow-unauthenticated \</code>
+        </p>
+        <p><code>  --cpu=2 --memory=512M \</code>
+        </p>
+        <p><code>  --set-env-vars=&quot;JAVA_TOOL_OPTIONS=-Dproperty=value&quot;</code>
+        </p>
+        <p><code>  --image=gcr.io/${PROJECT_ID}/${IMAGE_NAME}</code>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Cloud Function</td>
+      <td style="text-align:left">
+        <p><code>gcloud functions deploy ${NAME} --trigger-http \</code>
+        </p>
+        <p><code>  --runtime=java11 \</code>
+        </p>
+        <p><code>  --allow-unauthenticated \</code>
+        </p>
+        <p><code>  --entry-point=${FUNCTION_CLASS_FQN}</code>
+        </p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 ## Jib
 
 <table>
