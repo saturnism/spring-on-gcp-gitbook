@@ -144,7 +144,7 @@ java -agentpath:/opt/cdbg/cdbg_java_agent.so=--logtostderr=1 \
 See [Setting Up Cloud Debugger for Java](https://cloud.google.com/debugger/docs/setup/java#overview) documentation for more information.
 {% endhint %}
 
-### Configurations for Runtimes
+### Cloud Runtimes
 
 {% tabs %}
 {% tab title="App Engine" %}
