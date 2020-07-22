@@ -14,7 +14,7 @@ A Logpoint can add additional log messages to a running application without modi
 
 In both Snapshot and Logpoint, you can specify conditionals so you can capture specific information for a specific request \(e.g., match against a session ID, or request ID\).
 
-Cloud Debugger is supported in all Google Cloud runtime environments \(except for Cloud Functions\) and can also be used when running applications in non-Google Cloud environments \(on-premises, other clouds\) that can connect to Google Cloud services.
+Cloud Debugger is supported in all Google Cloud runtime environments \(except for Cloud Functions\) and can also be used when running applications in non-Google Cloud environments \(on-premises, other clouds\).
 
 ### Enable API
 
