@@ -6,6 +6,7 @@ Here are some `gcloud` CLI command lines and reference documentations that are f
 
 | Task | Command |
 | :--- | :--- |
+| Enable an API | `gcloud services enable ${API}` |
 | Current Project ID | `gcloud config get-value project` |
 | Export to PROJECT\_ID | `PROJECT_ID=$(gcloud config get-value project)` |
 | Authentication | `gcloud auth login` |
