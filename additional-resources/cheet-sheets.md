@@ -46,11 +46,6 @@ Here are some `gcloud` CLI command lines that are frequently used.
       </td>
     </tr>
     <tr>
-      <td style="text-align:left">All Possible Roles</td>
-      <td style="text-align:left"><a href="https://cloud.google.com/iam/docs/understanding-roles">Understanding roles</a>
-      </td>
-    </tr>
-    <tr>
       <td style="text-align:left">Create a Service Account Key File</td>
       <td style="text-align:left">
         <p><code>gcloud iam service-accounts keys create \</code>
@@ -59,6 +54,11 @@ Here are some `gcloud` CLI command lines that are frequently used.
         </p>
         <p><code>  --iam-account ${SERVICE_ACCOUNT_EMAIL}</code>
         </p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">All Possible Roles</td>
+      <td style="text-align:left"><a href="https://cloud.google.com/iam/docs/understanding-roles">Understanding roles</a>
       </td>
     </tr>
   </tbody>
