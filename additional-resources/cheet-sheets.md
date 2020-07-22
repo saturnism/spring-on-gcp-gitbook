@@ -80,7 +80,7 @@ Here are some  commands and links to reference documentations that are frequentl
   </thead>
   <tbody>
     <tr>
-      <td style="text-align:left">Create and push a remote Image</td>
+      <td style="text-align:left">Create a remote Image</td>
       <td style="text-align:left"><code>mvn jib:build</code>
       </td>
     </tr>
@@ -90,7 +90,7 @@ Here are some  commands and links to reference documentations that are frequentl
       </td>
     </tr>
     <tr>
-      <td style="text-align:left">Create an image locally</td>
+      <td style="text-align:left">Create a local image</td>
       <td style="text-align:left"><code>mvn jib:dockerBuild</code>
       </td>
     </tr>
@@ -100,7 +100,10 @@ Here are some  commands and links to reference documentations that are frequentl
       </td>
     </tr>
     <tr>
-      <td style="text-align:left">Run Jib without pre-configured plugin</td>
+      <td style="text-align:left">
+        <p>Run Jib without</p>
+        <p>pre-configured plugin</p>
+      </td>
       <td style="text-align:left">
         <p><code>mvn compile \</code>
         </p>
