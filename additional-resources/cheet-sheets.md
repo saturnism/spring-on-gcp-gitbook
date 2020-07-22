@@ -1,6 +1,6 @@
 # Cheat Sheets
 
-Here are some `gcloud` CLI command lines and reference documentations that are frequently used.
+Here are some  commands and links to reference documentations that are frequently used.
 
 ## Basics
 
@@ -64,6 +64,60 @@ Here are some `gcloud` CLI command lines and reference documentations that are f
     <tr>
       <td style="text-align:left">All Possible Roles</td>
       <td style="text-align:left"><a href="https://cloud.google.com/iam/docs/understanding-roles">Understanding roles</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+## Jib
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">Task</th>
+      <th style="text-align:left">Command</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">Create and push a remote Image</td>
+      <td style="text-align:left"><code>mvn jib:build</code>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"></td>
+      <td style="text-align:left"><code>gradle jib</code>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Create an image locally</td>
+      <td style="text-align:left"><code>mvn jib:dockerBuild</code>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"></td>
+      <td style="text-align:left"><code>gradle jibDockerBuild</code>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Run Jib without pre-configured plugin</td>
+      <td style="text-align:left">
+        <p><code>mvn compile \</code>
+        </p>
+        <p><code>com.google.cloud.tools:jib-maven-plugin:2.4.0:build \</code>
+        </p>
+        <p><code>-Dimage=gcr.io/${PROJECT_ID}/${IMAGE_NAME}</code>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Jib READMEs</td>
+      <td style="text-align:left"><a href="https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin">Maven</a>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"></td>
+      <td style="text-align:left"><a href="https://github.com/GoogleContainerTools/jib/tree/master/jib-gradle-plugin">Gradle</a>
       </td>
     </tr>
   </tbody>
