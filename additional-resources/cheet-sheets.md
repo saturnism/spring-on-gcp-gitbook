@@ -27,12 +27,16 @@ Here are some `gcloud` CLI command lines and reference documentations that are f
   <tbody>
     <tr>
       <td style="text-align:left">Create a Service Account</td>
-      <td style="text-align:left"><code>gcloud iam service-accounts create sa</code>
+      <td style="text-align:left">
+        <p><code>gcloud iam service-accounts create \</code>
+        </p>
+        <p><code>  ${SERVICE_ACCOUNT_NAME}</code>
+        </p>
       </td>
     </tr>
     <tr>
       <td style="text-align:left">Service Account E-Mail</td>
-      <td style="text-align:left"><code>sa@${PROJECT_ID}.iam.gserviceaccount.com</code>
+      <td style="text-align:left"><code>${SERVICE_ACCOUNT_NAME}@${PROJECT_ID}.iam.gserviceaccount.com</code>
       </td>
     </tr>
     <tr>
