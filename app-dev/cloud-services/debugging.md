@@ -502,7 +502,7 @@ gcloud beta debug source upload \
 
 Once uploaded, click **Select source.**
 
-### **Associate from git.properties**
+### **Use git.properties**
 
 You can associate a Git repository using the [`git-commit-plugin`](https://github.com/git-commit-id/git-commit-id-maven-plugin) that generates a `git.properties` file, which contains the information to the Git repository. This only works if the repository is publicly accessible.
 
