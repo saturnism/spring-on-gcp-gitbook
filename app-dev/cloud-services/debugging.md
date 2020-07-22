@@ -375,6 +375,15 @@ java -agentpath:/opt/cdbg/cdbg_java_agent.so=--logtostderr=1 \
 {% tab title="Non-Google Cloud Environment" %}
 You can attach the Cloud Debugger agent to any Java application even if it runs outside of the Google Cloud environment \(whether it's in a container, or on your local laptop, or in another cloud\). Authentication has to be done using Service Account key file rather than using the Machine Credentials.
 
+#### Build Sample Application
+
+```bash
+# Clone the sample repository manually
+git clone https://github.com/GoogleCloudPlatform/java-docs-samples
+cd java-docs-samples/appengine-java11/springboot-helloworld
+mvn package
+```
+
 #### Create a Service Account
 
 ```bash
@@ -391,7 +400,22 @@ gcloud projects add-iam-policy-binding ${PROJECT_ID} \
   --role roles/clouddebugger.agent
 ```
 
+#### Create a Service Account Key File
+
+```bash
+gcloud iam service-accounts keys create \
+  $HOME/helloworld-app-sa.json \
+  --iam-account helloworld-app@${PROJECT_ID}.iam.gserviceaccount.com
+```
+
 #### Use Service Account Cloud Debugger Agent
+
+```bash
+java -agentpath:/opt/cdbg/cdbg_java_agent.so=--logtostderr=1 \
+    -Dcom.google.cdbg.module=helloworld-laptop \
+    -Dcom.google.cdbg.version=1.0 \
+    -jar target/spring-boot-example-0.1.0.jar
+```
 {% endtab %}
 {% endtabs %}
 
