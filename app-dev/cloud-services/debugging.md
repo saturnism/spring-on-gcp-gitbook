@@ -28,12 +28,16 @@ Cloud Debugger works by adding a Java agent to your JVM startup argument, and th
 
 There are 2 types of Cloud Debugger Java agents that authenticates with Cloud Debugger service differently:
 
-| Type | When to use? | Latest Version |
-| :--- | :--- | :--- |
-| Machine Credentials | In Google Cloud runtime environments | [Download Link](https://storage.googleapis.com/cloud-debugger/compute-java/debian-wheezy/cdbg_java_agent_gce.tar.gz) |
-| Service Account Key | In non-Google Cloud environments | [Download Link](https://storage.googleapis.com/cloud-debugger/compute-java/debian-wheezy/cdbg_java_agent_service_account.tar.gz) |
+| Type | When to use? | Latest Version | Versioned URL |
+| :--- | :--- | :--- | :--- |
+| Machine Credentials | Google Cloud runtime environments | [Download](https://storage.googleapis.com/cloud-debugger/compute-java/debian-wheezy/cdbg_java_agent_gce.tar.gz) | https://storage.googleapis.com/cloud-debugger/archive/java/${VERSION}/cdbg\_java\_agent\_gce.tar.gz |
+| Service Account Key | Non-Google Cloud environments | [Download](https://storage.googleapis.com/cloud-debugger/compute-java/debian-wheezy/cdbg_java_agent_service_account.tar.gz) | https://storage.googleapis.com/cloud-debugger/archive/java/${VERSION}/cdbg\_java\_agent\_service\_account.tar.gz |
 
-Typically, you'll need to configure Java agent in the JVM command line using the standard  `-agentpath` , e.g.:
+{% hint style="info" %}
+You can find all the versions in [cloud-debug-java](https://github.com/GoogleCloudPlatform/cloud-debug-java/releases) GitHub repository. For example, Cloud Debugger agent version `2.25` using Machine Credentials can be downloaded with URL: [https://storage.googleapis.com/cloud-debugger/archive/java/2.25/cdbg\_java\_agent\_gce.tar.gz](https://storage.googleapis.com/cloud-debugger/archive/java/2.25/cdbg_java_agent_gce.tar.gz)
+{% endhint %}
+
+To use the agent, you'll need to configure the JVM command line using the standard  `-agentpath` , e.g.:
 
 ```bash
 java -agentpath:/opt/cdbg/cdbg_java_agent.so \
