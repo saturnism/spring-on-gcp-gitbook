@@ -168,10 +168,6 @@ git clone https://github.com/GoogleCloudPlatform/java-docs-samples
 cd java-docs-samples/appengine-java11/springboot-helloworld
 ```
 
-{% hint style="info" %}
-Use the agent that authenticated using Machine Credentials associated with the Cloud Run service.
-{% endhint %}
-
 #### Containerize with a Dockerfile
 
 In the Dockerfile, download the Cloud Debugger and build it as part of the container image:
@@ -238,17 +234,15 @@ In Cloud Debugger console, you can see the `helloworld` service in the drop down
 {% endtab %}
 
 {% tab title="Kubernetes Engine" %}
-You need to add the Cloud Debugger Java agent to the container, and adding it to the startup command line, with the sample application:
+Add the Cloud Debugger Java agent to the container, and configure the agent in the startup command line.
+
+#### Clone
 
 ```text
 # Clone the sample repository manually
 git clone https://github.com/GoogleCloudPlatform/java-docs-samples
 cd java-docs-samples/appengine-java11/springboot-helloworld
 ```
-
-{% hint style="info" %}
-Use the agent that authenticated using Machine Credentials associated with the Kubernetes Engine cluster.
-{% endhint %}
 
 #### Containerize with a Dockerfile
 
