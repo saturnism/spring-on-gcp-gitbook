@@ -1,6 +1,6 @@
 # Cheat Sheets
 
-Here are some `gcloud` CLI command lines that are frequently used.
+Here are some `gcloud` CLI command lines and reference documentations that are frequently used.
 
 ## Basics
 
