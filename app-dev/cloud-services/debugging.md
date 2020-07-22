@@ -158,7 +158,9 @@ In Cloud Debugger console, you can see the Default service in the drop down:
 {% endtab %}
 
 {% tab title="Cloud Run" %}
-You need to add the Cloud Debugger Java agent to the container, and adding it to the startup command line, with the sample application:
+Add the Cloud Debugger Java agent to the container, and configure the agent in the startup command line.
+
+#### Clone
 
 ```text
 # Clone the sample repository manually
@@ -375,12 +377,17 @@ java -agentpath:/opt/cdbg/cdbg_java_agent.so=--logtostderr=1 \
 {% tab title="Non-Google Cloud Environment" %}
 You can attach the Cloud Debugger agent to any Java application even if it runs outside of the Google Cloud environment \(whether it's in a container, or on your local laptop, or in another cloud\). Authentication has to be done using Service Account key file rather than using the Machine Credentials.
 
-#### Build Sample Application
+#### Clone
 
 ```bash
 # Clone the sample repository manually
 git clone https://github.com/GoogleCloudPlatform/java-docs-samples
 cd java-docs-samples/appengine-java11/springboot-helloworld
+```
+
+#### Build
+
+```bash
 mvn package
 ```
 
