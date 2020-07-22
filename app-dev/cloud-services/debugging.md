@@ -226,7 +226,7 @@ Deploy to Cloud Run with Debugger Enabled using the environmental variable:
 
 ```bash
 gcloud run deploy helloworld --platform=managed --allow-unauthenticated \
-  --set-env-vars='JAVA_TOOL_OPTIONS="-agentpath:/opt/cdbg/cdbg_java_agent.so"' \
+  --set-env-vars='JAVA_TOOL_OPTIONS="-agentpath:/opt/cdbg/cdbg_java_agent.so=--logtostderr=1"' \
   --image=gcr.io/${PROJECT_ID}/helloworld
 ```
 
@@ -332,7 +332,7 @@ spec:
         name: helloworld
         env:
         - name: JAVA_TOOL_OPTIONS
-          value: "-agentpath:/opt/cdbg/cdbg_java_agent.so -Dcom.google.cdbg.module=helloworld -Dcom.google.cdbg.version=1.0-on-gke"
+          value: "-agentpath:/opt/cdbg/cdbg_java_agent.so=--logtostderr=1 -Dcom.google.cdbg.module=helloworld-gke -Dcom.google.cdbg.version=1.0"
 ```
 {% endcode %}
 
@@ -365,9 +365,9 @@ curl -s -o- https://storage.googleapis.com/cloud-debugger/compute-java/debian-wh
 Run the Java application with the Cloud Debugger agent:
 
 ```bash
-java -agentpath:/opt/cdbg/cdbg_java_agent.so \
-    -Dcom.google.cdbg.module=helloworld \
-    -Dcom.google.cdbg.version=1.0-gce \
+java -agentpath:/opt/cdbg/cdbg_java_agent.so=--logtostderr=1 \
+    -Dcom.google.cdbg.module=helloworld-gce \
+    -Dcom.google.cdbg.version=1.0 \
     -jar spring-boot-example-0.1.0.jar
 ```
 {% endtab %}

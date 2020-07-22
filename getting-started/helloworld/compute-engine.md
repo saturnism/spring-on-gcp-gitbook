@@ -25,7 +25,8 @@ gcloud services enable compute.googleapis.com
 ### Create a VM
 
 ```bash
-gcloud compute instances create helloworld
+gcloud compute instances create helloworld \
+  --scopes=cloud-platform
 ```
 
 {% hint style="info" %}
