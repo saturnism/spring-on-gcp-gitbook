@@ -150,6 +150,8 @@ See [Setting Up Cloud Debugger for Java](https://cloud.google.com/debugger/docs/
 {% tab title="App Engine" %}
 Cloud Debugger agent is automatically added to your App Engine application.
 
+Follow [App Engine Hello World!](../../getting-started/helloworld/app-engine.md) instructions to deploy an application.
+
 In Cloud Debugger console, you can see the Default service in the drop down:
 
 ![](../../.gitbook/assets/image%20%287%29.png)
@@ -210,7 +212,7 @@ wget -qO- https://storage.googleapis.com/cloud-debugger/compute-java/debian-whee
   tar xvz -C src/main/jib/opt/cdbg
 ```
 
-Create the image with Jib:
+Create the container image with Jib:
 
 ```bash
 PROJECT_ID=$(gcloud config get-value project)
@@ -380,8 +382,6 @@ You can attach the Cloud Debugger agent to any Java application even if it runs 
 #### Use Service Account Cloud Debugger Agent
 {% endtab %}
 {% endtabs %}
-
-#### 
 
 ## Associating with Source Code
 
