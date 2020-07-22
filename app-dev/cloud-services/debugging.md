@@ -26,6 +26,8 @@ gcloud services enable clouddebugger.googleapis.com
 
 Cloud Debugger works by adding a Java agent to your JVM startup argument, and the agent can communicate with the Cloud Debugger service in the Cloud. Through the Cloud Console, you can then instruct your JVM instances to take a Snapshot of the application state at a specific line of code, or to add an additional log message on a specific line.
 
+### Java Agent Files
+
 There are 2 types of Cloud Debugger Java agents that authenticates with Cloud Debugger service differently:
 
 | Type | When to use? | Latest Version | Versioned URL |
@@ -36,6 +38,8 @@ There are 2 types of Cloud Debugger Java agents that authenticates with Cloud De
 {% hint style="info" %}
 You can find all the versions in [cloud-debug-java](https://github.com/GoogleCloudPlatform/cloud-debug-java/releases) GitHub repository. For example, Cloud Debugger agent version `2.25` using Machine Credentials can be downloaded with URL: [https://storage.googleapis.com/cloud-debugger/archive/java/2.25/cdbg\_java\_agent\_gce.tar.gz](https://storage.googleapis.com/cloud-debugger/archive/java/2.25/cdbg_java_agent_gce.tar.gz)
 {% endhint %}
+
+### General Configuration
 
 To use the agent, you'll need to configure the JVM command line using the standard  `-agentpath` , e.g.:
 
@@ -119,6 +123,8 @@ JAVA_TOOL_OPTIONS="-agentpath:/opt/cdbg/cdbg_java_agent.so \
 {% hint style="info" %}
 See [Setting Up Cloud Debugger for Java](https://cloud.google.com/debugger/docs/setup/java#overview) documentation for more information.
 {% endhint %}
+
+### Environment Configuration
 
 {% tabs %}
 {% tab title="App Engine" %}
