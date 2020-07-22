@@ -30,13 +30,13 @@ Here are some `gcloud` CLI command lines and reference documentations that are f
       <td style="text-align:left">
         <p><code>gcloud iam service-accounts create \</code>
         </p>
-        <p><code>  ${SERVICE_ACCOUNT_NAME}</code>
+        <p><code>  ${SA_NAME}</code>
         </p>
       </td>
     </tr>
     <tr>
       <td style="text-align:left">Service Account E-Mail</td>
-      <td style="text-align:left"><code>${SERVICE_ACCOUNT_NAME}@${PROJECT_ID}.iam.gserviceaccount.com</code>
+      <td style="text-align:left"><code>${SA_NAME}@${PROJECT_ID}.iam.gserviceaccount.com</code>
       </td>
     </tr>
     <tr>
@@ -44,7 +44,7 @@ Here are some `gcloud` CLI command lines and reference documentations that are f
       <td style="text-align:left">
         <p><code>gcloud projects add-iam-policy-binding ${PROJECT_ID} \</code>
         </p>
-        <p><code>  --member serviceAccount:${SERVICE_ACCOUNT_EMAIL} \</code>
+        <p><code>  --member serviceAccount:${SA_EMAIL} \</code>
         </p>
         <p><code>  --role ${ROLES}</code>
         </p>
@@ -57,7 +57,7 @@ Here are some `gcloud` CLI command lines and reference documentations that are f
         </p>
         <p><code>  $HOME/sa-key.json \</code>
         </p>
-        <p><code>  --iam-account ${SERVICE_ACCOUNT_EMAIL}</code>
+        <p><code>  --iam-account ${SA_EMAIL}</code>
         </p>
       </td>
     </tr>
