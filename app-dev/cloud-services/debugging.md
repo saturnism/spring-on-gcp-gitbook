@@ -387,14 +387,14 @@ mvn package
 #### Create a Service Account
 
 ```bash
-PROJECT_ID=$(gcloud config list --format 'value(core.project)')
+PROJECT_ID=$(gcloud config get-value project)
 gcloud iam service-accounts create helloworld-app
 ```
 
 #### Add IAM Permission
 
 ```bash
-PROJECT_ID=$(gcloud config list --format 'value(core.project)')
+PROJECT_ID=$(gcloud config get-value project)
 gcloud projects add-iam-policy-binding ${PROJECT_ID} \
   --member serviceAccount:helloworld-app@${PROJECT_ID}.iam.gserviceaccount.com \
   --role roles/clouddebugger.agent
@@ -403,6 +403,7 @@ gcloud projects add-iam-policy-binding ${PROJECT_ID} \
 #### Create a Service Account Key File
 
 ```bash
+PROJECT_ID=$(gcloud config get-value project)
 gcloud iam service-accounts keys create \
   $HOME/helloworld-app-sa.json \
   --iam-account helloworld-app@${PROJECT_ID}.iam.gserviceaccount.com
@@ -412,7 +413,7 @@ gcloud iam service-accounts keys create \
 
 ```bash
 java -agentpath:/opt/cdbg/cdbg_java_agent.so=--logtostderr=1 \
-    -Dcom.google.cdbg.module=helloworld-laptop \
+    -Dcom.google.cdbg.module=helloworld-local \
     -Dcom.google.cdbg.version=1.0 \
     -jar target/spring-boot-example-0.1.0.jar
 ```
