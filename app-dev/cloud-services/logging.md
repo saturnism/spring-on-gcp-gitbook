@@ -25,6 +25,10 @@ There are a couple of ways to send log messages to Google Cloud.
   * Use a [Logging Agent](https://cloud.google.com/logging/docs/agent/installation)
   * Use a [Fluend adapter](https://github.com/GoogleCloudPlatform/google-fluentd)
 
+## Error Reporting
+
+Google Cloud will automatically identify exceptions and in Error Reporting console, list recently occurring errors, in order of frequency. You can quickly identify new errors, frequent errors, and dig into details through Centralized Logging.
+
 ## Severity Level
 
 Cloud Logging has [9 different log severity levels](https://cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry#LogSeverity) the log entries can associate with.
