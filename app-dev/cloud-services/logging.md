@@ -31,7 +31,7 @@ Once the log is collected by Cloud Logging, you can see:
 * Create metrics from logs based on criteria, to see in Cloud Monitoring, or create alerts
 * Stream log entries to BigQuery, Pub/Sub, or Cloud Storage for further analysis
 
-![](../../.gitbook/assets/image%20%2818%29.png)
+![](../../.gitbook/assets/image%20%2819%29.png)
 
 ## Error Reporting
 
@@ -60,7 +60,7 @@ Different runtime environments have different ways of associating the log level 
 
 In Cloud Logging dashboard, you can see graphs with segmentation on the Severity levels:
 
-![](../../.gitbook/assets/image%20%2817%29.png)
+![](../../.gitbook/assets/image%20%2818%29.png)
 
 ## Logback
 

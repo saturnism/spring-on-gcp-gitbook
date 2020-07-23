@@ -339,6 +339,8 @@ kubectl apply -f k8s/deployment.yaml
 ```
 
 In Cloud Debugger console, you can see the `helloworld` service in the drop down:
+
+![](../../.gitbook/assets/image%20%2820%29.png)
 {% endtab %}
 
 {% tab title="Compute Engine" %}
@@ -366,6 +368,10 @@ java -agentpath:/opt/cdbg/cdbg_java_agent.so=--logtostderr=1 \
     -Dcom.google.cdbg.version=1.0 \
     -jar spring-boot-example-0.1.0.jar
 ```
+
+In Cloud Debugger console, you can see the `helloworld` service in the drop down:
+
+![](../../.gitbook/assets/image%20%2817%29.png)
 {% endtab %}
 
 {% tab title="Non-Google Cloud Environment" %}
