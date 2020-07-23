@@ -422,6 +422,8 @@ gcloud iam service-accounts keys create \
 java -agentpath:/opt/cdbg/cdbg_java_agent.so=--logtostderr=1 \
     -Dcom.google.cdbg.module=helloworld-local \
     -Dcom.google.cdbg.version=1.0 \
+    -Dcom.google.cdbg.auth.serviceaccount.enable=true \
+    -Dcom.google.cdbg.auth.serviceaccount.jsonfile=$HOME/hellworld-app-sa.json \
     -jar target/spring-boot-example-0.1.0.jar
 ```
 {% endtab %}
