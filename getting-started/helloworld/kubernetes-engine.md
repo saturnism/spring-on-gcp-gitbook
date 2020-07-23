@@ -26,7 +26,6 @@ gcloud container clusters create helloworld-cluster \
   --num-nodes 2 \
   --enable-ip-alias \
   --scopes=cloud-platform \
-  --create-subnetwork="" \
   --network=default \
   --machine-type n1-standard-1
 ```

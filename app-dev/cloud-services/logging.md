@@ -25,9 +25,19 @@ There are a couple of ways to send log messages to Google Cloud.
   * Use a [Logging Agent](https://cloud.google.com/logging/docs/agent/installation)
   * Use a [Fluend adapter](https://github.com/GoogleCloudPlatform/google-fluentd)
 
+Once the log is collected by Cloud Logging, you can see:
+
+* Search the logs
+* Create metrics from logs based on criteria, to see in Cloud Monitoring, or create alerts
+* Stream log entries to BigQuery, Pub/Sub, or Cloud Storage for further analysis
+
+![](../../.gitbook/assets/image%20%2818%29.png)
+
 ## Error Reporting
 
 Google Cloud will automatically identify exceptions and in Error Reporting console, list recently occurring errors, in order of frequency. You can quickly identify new errors, frequent errors, and dig into details through Centralized Logging.
+
+![Error Reporting showing an new exception in identified from the logs](../../.gitbook/assets/image%20%2816%29.png)
 
 ## Severity Level
 
@@ -47,6 +57,10 @@ Different runtime environments have different ways of associating the log level 
 | Cloud Run | [Output Structured Logs in JSON format](https://cloud.google.com/logging/docs/structured-logging) |
 | Compute Engine | [Install Logging Agent](https://cloud.google.com/logging/docs/agent/installation), or use Cloud Logging API |
 | Kubernetes Engine | [Output Structured Logs in JSON format](https://cloud.google.com/logging/docs/structured-logging) |
+
+In Cloud Logging dashboard, you can see graphs with segmentation on the Severity levels:
+
+![](../../.gitbook/assets/image%20%2817%29.png)
 
 ## Logback
 
