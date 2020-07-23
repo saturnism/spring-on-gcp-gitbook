@@ -303,3 +303,7 @@ management.metrics.export.stackdriver.project-id=<PROJECT_ID>
 Better integration is [coming soon with Spring Cloud GCP](https://cloud.spring.io/spring-cloud-gcp/reference/html/#stackdriver-monitoring). 
 {% endhint %}
 
+## Learn More
+
+* [Troubleshooting and Debugging Microservices in Kubernetes](https://saturnism.me/talk/troubleshooting-debugging-microservices/)
+

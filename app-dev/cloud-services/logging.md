@@ -243,3 +243,7 @@ There is no ready-to-use appender to Cloud Logging. But you can [bridge it to Sl
 
 There is no ready-to-use appender to Cloud Logging. But you can [bridge it to Slf4J](https://logging.apache.org/log4j/log4j-2.2/log4j-to-slf4j/index.html).
 
+## Learn More
+
+* [Troubleshooting and Debugging Microservices in Kubernetes](https://saturnism.me/talk/troubleshooting-debugging-microservices/)
+

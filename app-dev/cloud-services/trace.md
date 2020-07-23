@@ -175,3 +175,7 @@ spring.sleuth.propagation-keys=x-request-id,x-ot-span-context
 
 For in-application trace, you can use [Spring Cloud GCP Trace starter](trace.md#spring-cloud-sleuth).
 
+## Learn More
+
+* [Troubleshooting and Debugging Microservices in Kubernetes](https://saturnism.me/talk/troubleshooting-debugging-microservices/)
+

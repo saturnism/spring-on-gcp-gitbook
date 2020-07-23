@@ -541,7 +541,9 @@ Once configured the IntelliJ profile, you can add Snapshot to source code direct
 
 ![Debug in the Cloud](../../.gitbook/assets/image%20%288%29.png)
 
+## Learn More
 
+* [Troubleshooting and Debugging Microservices in Kubernetes](https://saturnism.me/talk/troubleshooting-debugging-microservices/)
 
 
 
