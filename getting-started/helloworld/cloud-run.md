@@ -85,7 +85,7 @@ PROJECT_ID=$(gcloud config get-value project)
 
 # Gradle with GCP Buildpack
 ./gradlew bootBuildImage --imageName=gcr.io/${PROJECT_ID}/helloworld \
-  --builder=gcr.io/buildpacks/builder \
+  --builder=gcr.io/buildpacks/builder
 ```
 
 After the image is built, push the docker image to Container Registry:
