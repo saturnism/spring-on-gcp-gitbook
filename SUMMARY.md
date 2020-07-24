@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Spring Boot on Google Cloud Platform](README.md)
+* [Home](README.md)
 
 ## Getting Started
 

@@ -1,4 +1,4 @@
-# Spring Boot on Google Cloud Platform
+# Home
 
 This is a community documentation that captures everything you need to know to running Spring Boot microservices/applications on Google Cloud Platform.
 
