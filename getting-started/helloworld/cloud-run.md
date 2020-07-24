@@ -74,12 +74,12 @@ PROJECT_ID=$(gcloud config get-value project)
 # Maven with Paketo Buildpack
 ./mvnw spring-boot:build-image \
   -Dspring-boot.build-image.imageName=gcr.io/${PROJECT_ID}/helloworld
-  
+
 # Maven with GCP Buildpack
 ./mvnw spring-boot:build-image \
   -Dspring-boot.build-image.imageName=gcr.io/${PROJECT_ID}/helloworld \
   -Dspring-boot.build-image.builder=gcr.io/buildpacks/builder
-  
+
 # Gradle with Paketo Buildpack
 ./gradlew bootBuildImage --imageName=gcr.io/${PROJECT_ID}/helloworld
 
@@ -118,7 +118,7 @@ Once deployed, Cloud Run will display the HTTPs URL. You can also find the URL w
 ```text
 gcloud run services describe helloworld \
   --region=us-central1 \
-  --platform=managed 
+  --platform=managed
 ```
 
 You can `curl` the URL:

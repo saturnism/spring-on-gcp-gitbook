@@ -4,16 +4,6 @@
 
 Cloud Debugger lets you inspect the state of an application, at any code location, without stopping or slowing down the running application.
 
-A Snapshot can introspect the context information on a given line of code as user go through the code flow.
-
-![Example of a Snapshot](../../.gitbook/assets/image%20%286%29.png)
-
-A Logpoint can add additional log messages to a running application without modifying the code nor redeploying the code.
-
-![Example of a Logpoint](../../.gitbook/assets/image%20%2814%29.png)
-
-In both Snapshot and Logpoint, you can specify conditionals so you can capture specific information for a specific request \(e.g., match against a session ID, or request ID\).
-
 Cloud Debugger is supported in all Google Cloud runtime environments \(except for Cloud Functions\) and can also be used when running applications in non-Google Cloud environments \(on-premises, other clouds\).
 
 ### Enable API
@@ -21,6 +11,22 @@ Cloud Debugger is supported in all Google Cloud runtime environments \(except fo
 ```bash
 gcloud services enable clouddebugger.googleapis.com
 ```
+
+### Snapshot
+
+A Snapshot can introspect the context information on a given line of code as user go through the code flow.
+
+![Example of a Snapshot](../../.gitbook/assets/image%20%286%29.png)
+
+### Logpoint
+
+A Logpoint can add additional log messages to a running application without modifying the code nor redeploying the code.
+
+![Example of a Logpoint](../../.gitbook/assets/image%20%2814%29.png)
+
+### Conditions
+
+In both Snapshot and Logpoint, you can specify conditionals so you can capture specific information for a specific request \(e.g., match against a session ID, or request ID\).
 
 ## Java Agent
 
