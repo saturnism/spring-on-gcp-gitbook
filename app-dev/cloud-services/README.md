@@ -1,6 +1,6 @@
 # Cloud Services
 
-Sub-sections will show how to utilize Google Cloud services using Spring Boot and [Spring Cloud GCP.](../spring-cloud-gcp.md)
+Sub-sections will show how to utilize Google Cloud services using Spring Boot and [Spring Cloud GCP.](../../getting-started/spring-cloud-gcp.md)
 
 | Concerns | Cloud Service |
 | :--- | :--- |
