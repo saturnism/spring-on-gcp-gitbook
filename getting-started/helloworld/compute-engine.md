@@ -5,8 +5,8 @@
 ### Clone
 
 ```text
-git clone https://github.com/jamesward/hello-springboot-mvn
-cd hello-springboot-mvn
+git clone https://github.com/saturnism/jvm-helloworld-by-example
+cd jvm-helloworld-by-example/helloworld-springboot-tomcat
 ```
 
 ### Build
@@ -41,7 +41,7 @@ gcloud compute instances create helloworld \
 ### Copy File to VM
 
 ```bash
-gcloud compute scp target/spring-boot-example-0.1.0.jar helloworld:
+gcloud compute scp target/helloworld.jar helloworld:
 ```
 
 ### SSH to VM
@@ -59,7 +59,7 @@ sudo apt-get update && sudo apt-get install -y openjdk-11-jdk
 ### Run in the VM
 
 ```text
-java -jar spring-boot-example-0.1.0.jar
+java -jar helloworld.jar
 ```
 
 ### Expose

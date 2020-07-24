@@ -30,11 +30,17 @@ gcloud container clusters create helloworld-cluster \
   --machine-type n1-standard-1
 ```
 
+Kubernetes credential is automatically retrieved and stored in your `$HOME/.kube/config` file. If you need to re-retrieve the credential:
+
+```bash
+gcloud container clusters get-credentials helloworld-cluster
+```
+
 ### Clone
 
 ```text
-git clone https://github.com/jamesward/hello-springboot-mvn
-cd hello-springboot-mvn
+git clone https://github.com/saturnism/jvm-helloworld-by-example
+cd jvm-helloworld-by-example/helloworld-springboot-tomcat
 ```
 
 ### Build
