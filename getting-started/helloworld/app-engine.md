@@ -7,8 +7,8 @@
 ### Clone
 
 ```text
-git clone https://github.com/GoogleCloudPlatform/java-docs-samples
-cd java-docs-samples/appengine-java11/springboot-helloworld
+git clone https://github.com/saturnism/jvm-helloworld-by-example
+cd jvm-helloworld-by-example/helloworld-springboot-tomcat
 ```
 
 ### Build
@@ -20,12 +20,12 @@ cd java-docs-samples/appengine-java11/springboot-helloworld
 ### Deploy
 
 ```text
-gcloud app deploy target/springboot-helloworld-j11-0.0.1-SNAPSHOT.jar
+gcloud app deploy target/helloworld.jar
 ```
 
 ### Connect
 
-Once deployed, the command will output the HTTPS URL, and you can open it up in a browser. Or, simply run:
+Once deployed, the command will output the HTTPs URL, and you can open it up in a browser. Or, simply run:
 
 ```text
 gcloud app browse
@@ -44,14 +44,14 @@ By default, App Engine will deploy with the smallest `F1`instance class. You can
 runtime: java11
 instance_class: F4
 env_variables:
-  GREETING: "Hola!"
+  SPRING_ACTIVE_PROFILE: "prod"
 ```
 {% endcode %}
 
 Deploy the JAR file with the configuration:
 
 ```text
-gcloud app deploy target/springboot-helloworld-j11-0.0.1-SNAPSHOT.jar \
+gcloud app deploy target/helloworld.jar \
   --appyaml app.yaml
 ```
 
@@ -62,4 +62,6 @@ Learn more about the configurations in [app.yaml reference documentation](https:
 ## Learn More
 
 * [App Engine Java 11 documentation](https://cloud.google.com/appengine/docs/standard/java11)
+* [Deploy with App Engine Maven plugin](https://cloud.google.com/appengine/docs/standard/java11/using-maven#setting_up_maven)
+* [Deploy with App Engine Gradle plugin](https://cloud.google.com/appengine/docs/standard/java11/using-gradle)
 

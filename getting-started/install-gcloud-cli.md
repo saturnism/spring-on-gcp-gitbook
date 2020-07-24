@@ -57,6 +57,12 @@ In addition to authenticating gcloud, also authenticate Application Default Cred
 gcloud auth application-default login
 ```
 
+It will also configure a Quota Project to be the same as the default project you previously configured. If needed, you configure a different Quota Project:
+
+```bash
+gcloud auth application-default set-quota-project YOUR_PROJECT_ID
+```
+
 {% hint style="info" %}
 Application Default Credentials authentication is for client libraries to make calls to Google Cloud. This is different from the [first gcloud Authenticate](install-gcloud-cli.md#authenticate), which is for `gcloud` to make calls to Google Cloud.
 {% endhint %}
