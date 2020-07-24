@@ -6,7 +6,7 @@ Here are some  commands and links to reference documentations that are frequentl
 
 ### Basics
 
-| Task | Command |
+| Task |  |
 | :--- | :--- |
 | Enable an API | `gcloud services enable ${API}` |
 | Current Project ID | `gcloud config get-value project` |
@@ -23,7 +23,7 @@ Here are some  commands and links to reference documentations that are frequentl
   <thead>
     <tr>
       <th style="text-align:left">Task</th>
-      <th style="text-align:left">Command</th>
+      <th style="text-align:left"></th>
     </tr>
   </thead>
   <tbody>
@@ -92,6 +92,16 @@ Here are some  commands and links to reference documentations that are frequentl
       </td>
     </tr>
     <tr>
+      <td style="text-align:left"></td>
+      <td style="text-align:left"><a href="https://cloud.google.com/appengine/docs/standard/java11/using-maven#setting_up_maven">Maven plugin</a>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"></td>
+      <td style="text-align:left"><a href="https://cloud.google.com/appengine/docs/standard/java11/using-gradle">Gradle Plugin</a>
+      </td>
+    </tr>
+    <tr>
       <td style="text-align:left">Cloud Run</td>
       <td style="text-align:left">
         <p><code>gcloud run deploy ${NAME} \</code>
@@ -138,6 +148,11 @@ Here are some  commands and links to reference documentations that are frequentl
         </p>
       </td>
     </tr>
+    <tr>
+      <td style="text-align:left"></td>
+      <td style="text-align:left"><a href="https://github.com/GoogleCloudPlatform/functions-framework-java#running-a-function-with-the-maven-plugin">Maven plugin</a>
+      </td>
+    </tr>
   </tbody>
 </table>
 
@@ -147,7 +162,7 @@ Here are some  commands and links to reference documentations that are frequentl
   <thead>
     <tr>
       <th style="text-align:left">Task</th>
-      <th style="text-align:left">Command</th>
+      <th style="text-align:left"></th>
     </tr>
   </thead>
   <tbody>
@@ -187,12 +202,12 @@ Here are some  commands and links to reference documentations that are frequentl
     </tr>
     <tr>
       <td style="text-align:left">Jib READMEs</td>
-      <td style="text-align:left"><a href="https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin">Maven</a>
+      <td style="text-align:left"><a href="https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin">Maven plugin</a>
       </td>
     </tr>
     <tr>
       <td style="text-align:left"></td>
-      <td style="text-align:left"><a href="https://github.com/GoogleContainerTools/jib/tree/master/jib-gradle-plugin">Gradle</a>
+      <td style="text-align:left"><a href="https://github.com/GoogleContainerTools/jib/tree/master/jib-gradle-plugin">Gradle plugin</a>
       </td>
     </tr>
   </tbody>
@@ -203,7 +218,7 @@ Here are some  commands and links to reference documentations that are frequentl
 <table>
   <thead>
     <tr>
-      <th style="text-align:left"></th>
+      <th style="text-align:left">Task</th>
       <th style="text-align:left"></th>
     </tr>
   </thead>
