@@ -53,7 +53,7 @@ cd jvm-helloworld-by-example/helloworld-springboot-tomcat
 
 {% tabs %}
 {% tab title="Jib" %}
-[Jib](https://github.com/GoogleContainerTools/jib) can containerize any Java application easily, without a `Dockerfile` nor `docker` installed.
+[Jib](https://github.com/GoogleContainerTools/jib) can containerize any Java application easily, without a `Dockerfile` nor `docker` installed. Jib will push the container image directly to the remote registry.
 
 ```bash
 PROJECT_ID=$(gcloud config get-value project)
@@ -62,7 +62,7 @@ PROJECT_ID=$(gcloud config get-value project)
 ```
 
 {% hint style="info" %}
-You can configure Jib plugin in Maven or Gradle build file to run the Jib easier, such as `./mvnw jib:build`.
+You can configure [Jib Maven plugin](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin) or [Jib Gradle plugin](https://github.com/GoogleContainerTools/jib/tree/master/jib-gradle-plugin) directly in the build file to run the Jib easier, such as `./mvnw jib:build`.
 {% endhint %}
 {% endtab %}
 
@@ -71,13 +71,37 @@ You can configure Jib plugin in Maven or Gradle build file to run the Jib easier
 
 1. Install Docker locally - see [Get Docker documentation](https://docs.docker.com/get-docker/).
 2. Install `pack` CLI - see [Installing `pack` documentation](https://buildpacks.io/docs/install-pack/)
-3. Build container with `pack`:
+3. Build container with `pack`, and use `--publish` flag to push directly to the remote registry:
 
 ```bash
 PROJECT_ID=$(gcloud config get-value project)
 pack build --builder gcr.io/buildpacks/builder:v1 \
   --publish \
   gcr.io/${PROJECT_ID}/helloworld
+```
+{% endtab %}
+
+{% tab title="Spring Boot 2.3" %}
+Since Spring Boot 2.3+, you can build container using the Spring Boot plugin.
+
+```bash
+PROJECT_ID=$(gcloud config get-value project)
+
+# Maven with Paketo Buildpack
+./mvnw spring-boot:build-image \
+  -Dspring-boot.build-image.imageName=gcr.io/${PROJECT_ID}/helloworld
+  
+# Maven with GCP Buildpack
+./mvnw spring-boot:build-image \
+  -Dspring-boot.build-image.imageName=gcr.io/${PROJECT_ID}/helloworld \
+  -Dspring-boot.build-image.builder=gcr.io/buildpacks/builder
+  
+# Gradle with Paketo Buildpack
+./gradlew bootBuildImage --imageName=gcr.io/${PROJECT_ID}/helloworld
+
+# Gradle with GCP Buildpack
+./gradlew bootBuildImage --imageName=gcr.io/${PROJECT_ID}/helloworld \
+  --builder=gcr.io/buildpacks/builder
 ```
 {% endtab %}
 {% endtabs %}
