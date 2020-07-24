@@ -31,6 +31,12 @@ Once deployed, the command will output the HTTPs URL, and you can open it up in 
 gcloud app browse
 ```
 
+To find the URL without opening the browser:
+
+```bash
+gcloud app browse --no-launch-browser
+```
+
 {% hint style="info" %}
 You can run any Java service in App Engine as long as it's packaged as a JAR file, and can be executed with `java -jar app.jar`.
 {% endhint %}

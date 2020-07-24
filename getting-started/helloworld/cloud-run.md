@@ -4,7 +4,7 @@
 
 ## Getting Started - Click to Deploy
 
-You can deploy a [Hello World Application](https://github.com/jamesward/hello-springboot-mvn.git) simply by click on the **Run on Google Cloud** button below!
+You can deploy a [Hello World Application](https://github.com/saturnism/jvm-helloworld-by-example/tree/master/helloworld-springboot-tomcat) simply by click on the **Run on Google Cloud** button below!
 
 [![Deploy a Spring Boot app on Cloud Run](https://deploy.cloud.run/button.svg)](https://deploy.cloud.run/?git_repo=https://github.com/jamesward/hello-springboot-mvn.git)
 
@@ -23,8 +23,8 @@ gcloud services enable containerregistry.googleapis.com
 ### Clone
 
 ```bash
-git clone https://github.com/jamesward/hello-springboot-mvn
-cd hello-springboot-mvn
+git clone https://github.com/saturnism/jvm-helloworld-by-example
+cd jvm-helloworld-by-example/helloworld-springboot-tomcat
 ```
 
 ### Build
@@ -46,7 +46,7 @@ PROJECT_ID=$(gcloud config get-value project)
 ```
 
 {% hint style="info" %}
-You can configure Jib plugin in Maven or Gradle build file to run the Jib easier, such as `./mvnw jib:build`.
+You can configure [Jib Maven plugin](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin) or [Jib Gradle plugin](https://github.com/GoogleContainerTools/jib/tree/master/jib-gradle-plugin) directly in the build file to run the Jib easier, such as `./mvnw jib:build`.
 {% endhint %}
 {% endtab %}
 
