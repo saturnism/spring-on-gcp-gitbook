@@ -250,12 +250,3 @@ public MessageHandler outboundChannelAdapter(Storage gcs, GcpProjectIdProvider p
 
 * [Spring Cloud Integration with Cloud Storage Sample](https://github.com/spring-cloud/spring-cloud-gcp/tree/master/spring-cloud-gcp-samples/spring-cloud-gcp-integration-storage-sample)
 
-
-
-
-
-  
-
-
-
-
