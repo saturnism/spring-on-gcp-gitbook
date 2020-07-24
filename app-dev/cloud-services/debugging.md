@@ -26,7 +26,7 @@ gcloud services enable clouddebugger.googleapis.com
 
 Cloud Debugger works by adding a Java agent to your JVM startup argument, and the agent can communicate with the Cloud Debugger service in the Cloud. Through the Cloud Console, you can then instruct your JVM instances to take a Snapshot of the application state at a specific line of code, or to add an additional log message on a specific line.
 
-### Files
+### Agent Files
 
 There are 2 types of Cloud Debugger Java agents that authenticates with Cloud Debugger service differently:
 
@@ -39,7 +39,7 @@ There are 2 types of Cloud Debugger Java agents that authenticates with Cloud De
 You can find all the versions in the [cloud-debug-java](https://github.com/GoogleCloudPlatform/cloud-debug-java/releases) GitHub repository. For example, Cloud Debugger agent version `2.25` using Machine Credentials can be downloaded with URL: [https://storage.googleapis.com/cloud-debugger/archive/java/2.25/cdbg\_java\_agent\_gce.tar.gz](https://storage.googleapis.com/cloud-debugger/archive/java/2.25/cdbg_java_agent_gce.tar.gz)
 {% endhint %}
 
-### Configurations
+### Agent Configurations
 
 #### Agent Path
 
@@ -144,7 +144,7 @@ java -agentpath:/opt/cdbg/cdbg_java_agent.so=--logtostderr=1 \
 See [Setting Up Cloud Debugger for Java](https://cloud.google.com/debugger/docs/setup/java#overview) documentation for more information.
 {% endhint %}
 
-### Runtimes
+### Runtime Configuration
 
 {% tabs %}
 {% tab title="App Engine" %}
@@ -223,7 +223,10 @@ mvn compile com.google.cloud.tools:jib-maven-plugin:2.4.0:build \
 Deploy to Cloud Run with Debugger Enabled using the environmental variable:
 
 ```bash
-gcloud run deploy helloworld --platform=managed --allow-unauthenticated \
+gcloud run deploy helloworld \
+  --region=us-central1 \
+  --platform=managed \
+  --allow-unauthenticated \
   --set-env-vars='JAVA_TOOL_OPTIONS="-agentpath:/opt/cdbg/cdbg_java_agent.so=--logtostderr=1"' \
   --image=gcr.io/${PROJECT_ID}/helloworld
 ```
@@ -429,7 +432,7 @@ java -agentpath:/opt/cdbg/cdbg_java_agent.so=--logtostderr=1 \
 {% endtab %}
 {% endtabs %}
 
-## Associating with Source Code
+## Source Code
 
 Cloud Debugger needs to have access to the application's source code in order for you to add a Snapshot or Logpoint from the Cloud Debugger console. There are severals ways to associating the source code:
 
@@ -438,7 +441,7 @@ Cloud Debugger needs to have access to the application's source code in order fo
 * Git repository reference from `git.properties`
 * IntelliJ Cloud Code plugin
 
-### Existing Git Repository
+### Git Repository
 
 From Cloud Debugger console, navigate to **Deployed Files** &gt; **Add source code**.
 
@@ -454,7 +457,7 @@ For example, using an existing GitHub repository:
 
 Once selected, the contents of the Git repository will be available to navigate.
 
-### Upload Source Code
+### Upload
 
 #### Upload from Browser
 
