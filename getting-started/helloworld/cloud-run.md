@@ -6,7 +6,7 @@
 
 You can deploy a [Hello World Application](https://github.com/saturnism/jvm-helloworld-by-example/tree/master/helloworld-springboot-tomcat) simply by click on the **Run on Google Cloud** button below!
 
-[![Deploy a Spring Boot app on Cloud Run](https://deploy.cloud.run/button.svg)](https://deploy.cloud.run/?git_repo=https://github.com/jamesward/hello-springboot-mvn.git)
+[![Deploy a Spring Boot app on Cloud Run](https://deploy.cloud.run/button.svg)](https://deploy.cloud.run/?git_repo=https://github.com/saturnism/jvm-helloworld-by-example.git&dir=helloworld-springboot-tomcat)
 
 ## Getting Started - Manual Deployment
 
