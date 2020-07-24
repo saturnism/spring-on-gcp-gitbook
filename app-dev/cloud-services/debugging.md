@@ -164,8 +164,8 @@ Add the Cloud Debugger Java agent to the container, and configure the agent in t
 
 ```text
 # Clone the sample repository manually
-git clone https://github.com/GoogleCloudPlatform/java-docs-samples
-cd java-docs-samples/appengine-java11/springboot-helloworld
+git clone https://github.com/saturnism/jvm-helloworld-by-example
+cd jvm-helloworld-by-example/helloworld-springboot-tomcat
 ```
 
 #### Containerize with a Dockerfile
@@ -181,7 +181,7 @@ RUN mkdir /opt/cdbg && \
      wget -qO- https://storage.googleapis.com/cloud-debugger/compute-java/debian-wheezy/cdbg_java_agent_gce.tar.gz | \
      tar xvz -C /opt/cdbg
 
-COPY target/springboot-helloworld-j11-0.0.1-SNAPSHOT.jar /app.jar
+COPY target/helloworld.jar /app.jar
 
 ENTRYPOINT ["java", "-jar", "/app.jar"]
 ```
@@ -240,8 +240,8 @@ Add the Cloud Debugger Java agent to the container, and configure the agent in t
 
 ```text
 # Clone the sample repository manually
-git clone https://github.com/GoogleCloudPlatform/java-docs-samples
-cd java-docs-samples/appengine-java11/springboot-helloworld
+git clone https://github.com/saturnism/jvm-helloworld-by-example
+cd jvm-helloworld-by-example/helloworld-springboot-tomcat
 ```
 
 #### Containerize with a Dockerfile
@@ -257,7 +257,7 @@ RUN mkdir /opt/cdbg && \
     wget -qO- https://storage.googleapis.com/cloud-debugger/compute-java/debian-wheezy/cdbg_java_agent_gce.tar.gz | \
     tar xvz -C /opt/cdbg
 
-COPY target/springboot-helloworld-j11-0.0.1-SNAPSHOT.jar /app.jar
+COPY target/helloworld.jar /app.jar
 
 ENTRYPOINT ["java", "-jar", "/app.jar"]
 ```
@@ -366,7 +366,7 @@ Run the Java application with the Cloud Debugger agent:
 java -agentpath:/opt/cdbg/cdbg_java_agent.so=--logtostderr=1 \
     -Dcom.google.cdbg.module=helloworld-gce \
     -Dcom.google.cdbg.version=1.0 \
-    -jar spring-boot-example-0.1.0.jar
+    -jar helloworld.jar
 ```
 
 In Cloud Debugger console, you can see the `helloworld` service in the drop down:
@@ -381,8 +381,8 @@ You can attach the Cloud Debugger agent to any Java application even if it runs 
 
 ```bash
 # Clone the sample repository manually
-git clone https://github.com/GoogleCloudPlatform/java-docs-samples
-cd java-docs-samples/appengine-java11/springboot-helloworld
+git clone https://github.com/saturnism/jvm-helloworld-by-example
+cd jvm-helloworld-by-example/helloworld-springboot-tomcat
 ```
 
 #### Build
@@ -424,7 +424,7 @@ java -agentpath:/opt/cdbg/cdbg_java_agent.so=--logtostderr=1 \
     -Dcom.google.cdbg.version=1.0 \
     -Dcom.google.cdbg.auth.serviceaccount.enable=true \
     -Dcom.google.cdbg.auth.serviceaccount.jsonfile=$HOME/hellworld-app-sa.json \
-    -jar target/spring-boot-example-0.1.0.jar
+    -jar target/helloworld.jar
 ```
 {% endtab %}
 {% endtabs %}
