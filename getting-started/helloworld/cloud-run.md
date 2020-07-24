@@ -104,7 +104,10 @@ Learn about [Paketo Buildpack](https://paketo.io/) and [GCP Buildpack](https://g
 
 ```bash
 PROJECT_ID=$(gcloud config get-value project)
-gcloud run deploy helloworld --platform=managed --allow-unauthenticated \
+gcloud run deploy helloworld \
+  --region=us-central1 \
+  --platform=managed \
+  --allow-unauthenticated \
   --image=gcr.io/${PROJECT_ID}/helloworld
 ```
 
@@ -113,14 +116,18 @@ gcloud run deploy helloworld --platform=managed --allow-unauthenticated \
 Once deployed, Cloud Run will display the HTTPs URL. You can also find the URL with the command line:
 
 ```text
-gcloud run services describe helloworld --platform=managed 
+gcloud run services describe helloworld \
+  --region=us-central1 \
+  --platform=managed 
 ```
 
-You can then `curl` the URL:
+You can `curl` the URL:
 
 ```bash
 URL=$(gcloud run services describe helloworld \
-  --platform=managed --format='value(status.address.url)')
+  --region=us-central1 \
+  --platform=managed \
+  --format='value(status.address.url)')
 curl ${URL}
 ```
 

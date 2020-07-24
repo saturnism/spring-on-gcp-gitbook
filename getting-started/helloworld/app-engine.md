@@ -25,7 +25,7 @@ gcloud app deploy target/helloworld.jar
 
 ### Connect
 
-Once deployed, the command will output the HTTPs URL, and you can open it up in a browser. Or, simply run:
+Once deployed, the command will output the HTTPs URL. To open the URL in your browser:
 
 ```text
 gcloud app browse
@@ -35,6 +35,13 @@ To find the URL without opening the browser:
 
 ```bash
 gcloud app browse --no-launch-browser
+```
+
+You can `curl` the URL:
+
+```bash
+URL=$(gcloud app browse --no-launch-browser)
+curl ${URL}
 ```
 
 {% hint style="info" %}
@@ -50,7 +57,7 @@ By default, App Engine will deploy with the smallest `F1`instance class. You can
 runtime: java11
 instance_class: F4
 env_variables:
-  SPRING_ACTIVE_PROFILE: "prod"
+  SPRING_PROFILES_ACTIVE: "prod"
 ```
 {% endcode %}
 
