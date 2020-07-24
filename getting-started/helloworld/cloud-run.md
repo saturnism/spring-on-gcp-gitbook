@@ -138,7 +138,7 @@ By default, Cloud Run will deploy with the smallest 1CPU 256MB instance. You can
 ```bash
 PROJECT_ID=$(gcloud config get-value project)
 gcloud run deploy helloworld --platform=managed --allow-unauthenticated \
-  --cpu=2 --memory=512M --set-env-vars="GREETING=Hola!"
+  --cpu=2 --memory=512M --set-env-vars="SPRING_PROFILES_ACTIVE=prod"
   --image=gcr.io/${PROJECT_ID}/helloworld
 ```
 
