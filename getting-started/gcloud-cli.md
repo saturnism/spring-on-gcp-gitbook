@@ -64,7 +64,7 @@ gcloud auth application-default set-quota-project YOUR_PROJECT_ID
 ```
 
 {% hint style="info" %}
-Application Default Credentials authentication is for client libraries to make calls to Google Cloud. This is different from the [first gcloud Authenticate](install-gcloud-cli.md#authenticate), which is for `gcloud` to make calls to Google Cloud.
+Application Default Credentials authentication is for client libraries to make calls to Google Cloud. This is different from the [first gcloud Authenticate](gcloud-cli.md#authenticate), which is for `gcloud` to make calls to Google Cloud.
 {% endhint %}
 
 This will store the credential \(OAuth refresh token\) in a well-known location, such as `~/.config/gcloud/application_default_credentials.json`. Google Cloud client libraries can automatically detect this file and use this credential.

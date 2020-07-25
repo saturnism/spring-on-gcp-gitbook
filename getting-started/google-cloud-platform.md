@@ -66,7 +66,7 @@ A Permission is the finest grain of a particular action that a Member can perfor
 
 ### Roles
 
-Each Member can be associated with [different Roles](https://cloud.google.com/iam/docs/understanding-roles), and each Role is associated with a set of [Permissions](google-cloud-platform-project.md#permission).  For example, a `roles/storage.objectViewer` role, has `storage.objects.get` and `storage.objects.list` permissions.  See [Understanding roles documentation](https://cloud.google.com/iam/docs/understanding-roles) for all the available roles and the associated permissions
+Each Member can be associated with [different Roles](https://cloud.google.com/iam/docs/understanding-roles), and each Role is associated with a set of [Permissions](google-cloud-platform.md#permission).  For example, a `roles/storage.objectViewer` role, has `storage.objects.get` and `storage.objects.list` permissions.  See [Understanding roles documentation](https://cloud.google.com/iam/docs/understanding-roles) for all the available roles and the associated permissions
 
 {% hint style="info" %}
 You can create [Custom Roles](https://cloud.google.com/iam/docs/understanding-custom-roles) to associate with specific permissions too.
@@ -76,7 +76,7 @@ You can create [Custom Roles](https://cloud.google.com/iam/docs/understanding-cu
 
 | Type | Credential |
 | :--- | :--- |
-| User Account | OAuth credentials - an Access Token, or a Refresh Token, or [Application Default Credentials](google-cloud-platform-project.md#application-default-credentials). |
+| User Account | OAuth credentials - an Access Token, or a Refresh Token, or [Application Default Credentials](google-cloud-platform.md#application-default-credentials). |
 | Service Account | A [Service Account Key file](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) **or** from [Machine Credentials from Metadata Server](https://cloud.google.com/compute/docs/storing-retrieving-metadata) |
 
 {% hint style="info" %}
@@ -88,8 +88,8 @@ User Account is great for local development when using `gcloud`.  Service Accoun
 This is the default credential that a Google Cloud client library will discover.  Application Default Credential can be:
 
 * Created by `gcloud auth application-default login` when running locally,
-* **or** a `GOOGLE_APPLICATION_CREDENTIALS` environmental variable that points to the path of a Service[ Account key file](google-cloud-platform-project.md#service-account-key),
-* **or** automatically discovered using the [Metadata Server](google-cloud-platform-project.md#machine-credentials). 
+* **or** a `GOOGLE_APPLICATION_CREDENTIALS` environmental variable that points to the path of a Service[ Account key file](google-cloud-platform.md#service-account-key),
+* **or** automatically discovered using the [Metadata Server](google-cloud-platform.md#machine-credentials). 
 
 When using a Google Cloud client library to access a Cloud service, the client library would automatically discover the credential to use based on precedence. See [Google Auth Library README for more information](https://github.com/googleapis/google-auth-library-java/blob/master/README.md#application-default-credentials).
 
@@ -110,7 +110,7 @@ Always store your service account securely.
 {% endhint %}
 
 {% hint style="success" %}
-In most cases, your application is associated with a service account, but will **not** need the Service Account key file. See [Machine Credentials](google-cloud-platform-project.md#machine-credentials-from-metadata-server).
+In most cases, your application is associated with a service account, but will **not** need the Service Account key file. See [Machine Credentials](google-cloud-platform.md#machine-credentials-from-metadata-server).
 {% endhint %}
 
 #### Machine Credentials from Metadata Server

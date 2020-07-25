@@ -4,8 +4,8 @@
 
 ## Getting Started
 
-* [Google Cloud Platform](getting-started/google-cloud-platform-project.md)
-* [gcloud CLI](getting-started/install-gcloud-cli.md)
+* [Google Cloud Platform](getting-started/google-cloud-platform.md)
+* [gcloud CLI](getting-started/gcloud-cli.md)
 * [Hello World!](getting-started/helloworld/README.md)
   * [App Engine](getting-started/helloworld/app-engine.md)
   * [Cloud Functions](getting-started/helloworld/cloud-functions.md)
