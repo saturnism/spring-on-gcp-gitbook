@@ -189,6 +189,12 @@ exit
 
 In this Nginx container image, you can see that there are actually many command line utilities that's not needed for production deployment of an Nginx server. Exposing more commands like this may increase attack surface area if the container instance is compromised.  For this reason, Distroless base images do not include any commands. On the other hand, lack of commands may increase the difficulty to debug the application instance.
 
+{% hint style="warning" %}
+Delete the Nginx deployment before you continue!
+
+`kubectl delete deployment nginx-deployment`
+{% endhint %}
+
 
 
 
