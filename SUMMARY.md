@@ -40,6 +40,10 @@
     * [Google OpenID Connect](app-dev/cloud-services/security/google-openid-connect.md)
     * [Firebase Authentication](app-dev/cloud-services/security/firebase-authentication.md)
 
+## Deployment
+
+* [Kubernetes](deployment/kubernetes.md)
+
 ## Additional Resources
 
 * [Code Labs](additional-resources/code-labs.md)
