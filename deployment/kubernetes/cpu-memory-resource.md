@@ -1,2 +1,0 @@
-# CPU / Memory Resource
-
