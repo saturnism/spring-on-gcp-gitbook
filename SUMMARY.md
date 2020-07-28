@@ -42,7 +42,10 @@
 
 ## Deployment
 
-* [Kubernetes](deployment/kubernetes.md)
+* [Kubernetes](deployment/kubernetes/README.md)
+  * [Kubernetes Cluster](deployment/kubernetes/kubernetes-cluster.md)
+  * [Container Image](deployment/kubernetes/container-image.md)
+  * [Deployment](deployment/kubernetes/deployment.md)
 
 ## Additional Resources
 

@@ -1,0 +1,152 @@
+---
+description: >-
+  In this section, you'll learn how to create a Kubernetes deployment and
+  deploying the Hello World container image.
+---
+
+# Deployment
+
+This section continues from the previous section - make sure you do the tutorial in sequence.
+
+{% page-ref page="container-image.md" %}
+
+## Pod
+
+A Kubernetes pod is a group of containers, tied together for the purposes of administration and networking. It can contain one or more containers.  All containers within a single pod will share the same networking interface, IP address, volumes, etc.  All containers within the same pod instance will live and die together.  It’s especially useful when you have, for example, a container that runs the application, and another container that periodically polls logs/metrics from the application container.
+
+You can start a single Pod in Kubernetes by creating a Pod resource. However, a Pod created this way would be known as a Naked Pod. If a Naked Pod dies/exits, it will not be restarted by Kubernetes. A better way to start a pod, is by using a higher-level construct such as a Deployment.
+
+## Deployment
+
+Deployment provides declarative updates for Pods and Replica Sets. You only need to describe the desired state in a Deployment resource, and behind the scenes, a Kubernetes Deployment controller will change the actual state to the desired state for you. It does this using a resource called a ReplicaSet under the covers. You can use deployments to easily:
+
+You can create a Deployment and deploy into Kubernetes using `kubectl` command line like in the [Hello World tutorial](../../getting-started/helloworld/kubernetes-engine.md). That's great to get a feel of Kubernetes. However, it's best that you create a YAML file first, and then deploy the YAML file.
+
+```bash
+# Under the helloworld-springboot-tomcat directory , create a k8s directory
+mkdir k8s/
+
+PROJECT_ID=$(gcloud config get-value project)
+kubectl create deployment helloworld \
+  --image=gcr.io/${PROJECT_ID}/helloworld \
+  --dry-run \
+  -o yaml > k8s/deployment.yaml
+```
+
+You can open the `k8s/deployment.yaml` file to see the content. Following is a version of the YAML file where it's slimmed down to the bare minimum.
+
+```yaml
+# API Version and Kind are important to indicate the type of resource
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  # Every Kubernetes resource has a name that's unique within a namespace
+  name: helloworld
+  # Every Kubernetes can have labels, label key/value pairs can be queried later.
+  labels:
+    app: helloworld
+spec:
+  # The number of the pods that start
+  replicas: 1
+  
+  # The labels that matches the pods within this deployment
+  selector:
+    matchLabels:
+      app: helloworld
+  # Every instance of the pod will be created using the template below
+  template:
+    metadata:
+      # Every new pod created by the deployment will have these labels
+      # The name of a newly created pod will be generated
+      labels:
+        app: helloworld
+    spec:
+      containers:
+      # Every container can have a name, and the container image to run
+      - name: helloworld
+        image: gcr.io/.../helloworld
+```
+
+{% hint style="info" %}
+The instructors will explain the descriptor in detail. You can read more about Deployment in the [Kubernetes Deployment Guide](http://kubernetes.io/docs/user-guide/deployments/).  The specification can be found in [Kubernetes API reference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.10).
+{% endhint %}
+
+## Deploy
+
+Use `kubectl` command line to deploy the YAML file:
+
+```bash
+kubectl apply -f k8s/deployment.yaml
+```
+
+To verify the application is deployed, see all the pods that are running:
+
+```bash
+kubectl get pods
+```
+
+You should see that there is one pod running!
+
+```bash
+NAME                         READY   STATUS    RESTARTS   AGE
+helloworld-...               1/1     Running   0          ...
+```
+
+## Basic Interactions
+
+### Find Pods with Labels
+
+`kubectl get pods` shows you every pod running in the current namespace. You can limit the output to just the application you are interested in by select only pods matching certain label key/value pairs. 
+
+```bash
+kubectl get pods -lapp=helloworld
+```
+
+### Scaling a Deployment
+
+Scale the number of instances from 1 to 2.
+
+```bash
+kubectl scale deployment helloworld --replicas=2
+```
+
+Verify that there are now 2 pods running:
+
+```bash
+kubectl get pods
+```
+
+### Delete a Pod
+
+Out of the 2 pods, pick one to delete, and then observe that Kubernetes automatically starts another pod instance so that there are always 2 pods running.
+
+```bash
+POD_NAME=$(kubectl get pods -lapp=helloworld -o jsonpath='{.items[0].metadata.name}')
+kubectl delete pod ${POD_NAME}
+```
+
+Verify that there still 2 pods running, but one of them has a lower `age` indicating it's recently started.
+
+```bash
+kubectl get pods
+```
+
+### Delete All Pods
+
+You can use labels to delete all pods matching certain label key/value pairs.
+
+```bash
+kubectl delete pod -lapp=helloworld
+```
+
+### Stream Logs
+
+You can see the logs from the pod, and follow the log as new logs are produced:
+
+```bash
+POD_NAME=$(kubectl get pods --selector=app=helloworld -o jsonpath='{.items[0].metadata.name}')
+kubectl logs -f ${POD_NAME}
+```
+
+
+
