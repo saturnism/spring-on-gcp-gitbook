@@ -20,6 +20,8 @@ You can start a single Pod in Kubernetes by creating a Pod resource. However, a 
 
 Deployment provides declarative updates for Pods and Replica Sets. You only need to describe the desired state in a Deployment resource, and behind the scenes, a Kubernetes Deployment controller will change the actual state to the desired state for you. It does this using a resource called a ReplicaSet under the covers. You can use deployments to easily:
 
+### Deployment YAML
+
 You can create a Deployment and deploy into Kubernetes using `kubectl` command line like in the [Hello World tutorial](../../getting-started/helloworld/kubernetes-engine.md). That's great to get a feel of Kubernetes. However, it's best that you create a YAML file first, and then deploy the YAML file.
 
 ```bash
@@ -71,7 +73,7 @@ spec:
 The instructors will explain the descriptor in detail. You can read more about Deployment in the [Kubernetes Deployment Guide](http://kubernetes.io/docs/user-guide/deployments/).  The specification can be found in [Kubernetes API reference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.10).
 {% endhint %}
 
-## Deploy
+### Deploy
 
 Use `kubectl` command line to deploy the YAML file:
 
@@ -144,9 +146,50 @@ kubectl delete pod -lapp=helloworld
 You can see the logs from the pod, and follow the log as new logs are produced:
 
 ```bash
-POD_NAME=$(kubectl get pods --selector=app=helloworld -o jsonpath='{.items[0].metadata.name}')
+POD_NAME=$(kubectl get pods -lapp=helloworld -o jsonpath='{.items[0].metadata.name}')
 kubectl logs -f ${POD_NAME}
 ```
+
+### Executing Commands
+
+You can execute commands directly in the container instance. However, the container image will need to contains the command that you'd like to run.  The Hello World application built with Jib uses a Distroless base image by default - and the Distroless base image does not come with any shell commands for security purposes.
+
+Let's deploy an Nginx container that contains the executables and see how you can shell into the container instance.
+
+```bash
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/website/master/content/en/examples/controllers/nginx-deployment.yaml
+```
+
+See that Nginx container is running:
+
+```bash
+kubectl get pods -lapp=nginx
+```
+
+Use a specific Nginx pod, and shell into the container instance:
+
+```bash
+POD_NAME=$(kubectl get pods -lapp=nginx -o jsonpath='{.items[0].metadata.name}')
+kubectl exec -ti ${POD_NAME} /bin/bash
+```
+
+{% hint style="info" %}
+The `-ti` flag means to receive output from TTY, and also that the session is interactive \(i.e., you'll be typing commands\).
+{% endhint %}
+
+Once you are in the container instance's shell, you can explore the container instance:
+
+```bash
+# Within the container instance shell:
+ls
+ls /sbin
+ls /bin
+exit
+```
+
+In this Nginx container image, you can see that there are actually many command line utilities that's not needed for production deployment of an Nginx server. Exposing more commands like this may increase attack surface area if the container instance is compromised.  For this reason, Distroless base images do not include any commands. On the other hand, lack of commands may increase the difficulty to debug the application instance.
+
+
 
 
 
