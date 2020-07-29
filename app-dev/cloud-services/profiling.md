@@ -14,19 +14,19 @@ gcloud services enable cloudprofiler.googleapis.com
 
 The CPU time for a function tells you how long the CPU was busy executing instructions. It doesn't include the time the CPU was waiting or processing instructions for something else.
 
-![](../../.gitbook/assets/image%20%2823%29.png)
+![](../../.gitbook/assets/image%20%2825%29.png)
 
 ### Wall Time
 
 The wall-clock time for a function measures the time elapsed between entering and exiting a function. Wall-clock time includes all wait time, including that for locks and thread synchronization. If the wall-clock time is significantly longer than the CPU time, then that is an indication the code spends a lot of time waiting. This might be an indication of a resource bottleneck.
 
-![](../../.gitbook/assets/image%20%2825%29.png)
+![](../../.gitbook/assets/image%20%2828%29.png)
 
 ### Heap
 
 The heap consumption is the amount of memory allocated in the Java program's heap - this can help you find potential inefficiencies and memory leaks in your application.
 
-![](../../.gitbook/assets/image%20%2828%29.png)
+![](../../.gitbook/assets/image%20%2834%29.png)
 
 
 
@@ -123,7 +123,7 @@ gcloud app deploy target/helloworld.jar \
 
 It'll take a couple of minutes before Cloud Profiler can display the information. In Cloud Profiler console, you can find the Default service in the drop down:
 
-![](../../.gitbook/assets/image%20%2821%29.png)
+![](../../.gitbook/assets/image%20%2823%29.png)
 {% endtab %}
 
 {% tab title="Cloud Run" %}
@@ -202,7 +202,7 @@ gcloud run deploy helloworld \
 
 In Cloud Profiler console, you can see the `helloworld` service in the drop down:
 
-![](../../.gitbook/assets/image%20%2827%29.png)
+![](../../.gitbook/assets/image%20%2832%29.png)
 {% endtab %}
 
 {% tab title="Kubernetes Engine" %}
@@ -312,7 +312,7 @@ kubectl apply -f k8s/deployment.yaml
 
 In Cloud Debugger console, you can see the `helloworld-gke` service in the drop down:
 
-![](../../.gitbook/assets/image%20%2829%29.png)
+![](../../.gitbook/assets/image%20%2835%29.png)
 {% endtab %}
 
 {% tab title="Compute Engine" %}
@@ -341,7 +341,7 @@ java -agentpath:/opt/cprof/profiler_java_agent.so=-logtostderr,-cprof_enable_hea
 
 In Cloud Debugger console, you can see the `helloworld-gce` service in the drop down:
 
-![](../../.gitbook/assets/image%20%2822%29.png)
+![](../../.gitbook/assets/image%20%2824%29.png)
 {% endtab %}
 
 {% tab title="Non-Google Cloud Environment" %}

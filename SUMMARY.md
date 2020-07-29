@@ -6,6 +6,7 @@
 
 * [Google Cloud Platform](getting-started/google-cloud-platform.md)
 * [gcloud CLI](getting-started/gcloud-cli.md)
+* [Cloud Shell](getting-started/cloud-shell.md)
 * [Hello World!](getting-started/helloworld/README.md)
   * [App Engine](getting-started/helloworld/app-engine.md)
   * [Cloud Functions](getting-started/helloworld/cloud-functions.md)
