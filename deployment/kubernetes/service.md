@@ -1,4 +1,4 @@
-# Load Balancing
+# Service
 
 ## Service
 
@@ -40,15 +40,15 @@ spec:
   selector:
     app: helloworld
   ports:
-  - name: 8080-8080
+    # A port can have a name, it can be renamed to be more descriptive
+    # such as "http", "jmx", "metrics", etc.
+  - name: 8080-8080 
     # The port to listen on by the Service (L4 Load Balancer)
     port: 8080
     # The port to forward traffic to on the destination Pod
     targetPort: 8080
     # TCP or UDP protocol
     protocol: TCP
-  
-
 ```
 
 {% hint style="info" %}
@@ -76,7 +76,7 @@ NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)    AGE
 helloworld   ClusterIP   ...          <none>        8080/TCP   7s
 ```
 
-## 
+The newly created Service \(L4 Load Balancer\) can be accessed using the Cluster IP, or the hostname `helloworld`, or a Fully Qualified Name \(FQN\) of `helloworld.default.svc.cluster.local`.
 
 
 

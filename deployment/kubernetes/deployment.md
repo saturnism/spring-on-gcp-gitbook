@@ -12,9 +12,13 @@ This section continues from the previous section - make sure you do the tutorial
 
 ## Pod
 
-A Kubernetes pod is a group of containers, tied together for the purposes of administration and networking. It can contain one or more containers.  All containers within a single pod will share the same networking interface, IP address, volumes, etc.  All containers within the same pod instance will live and die together.  It’s especially useful when you have, for example, a container that runs the application, and another container that periodically polls logs/metrics from the application container.
+A Kubernetes Pod is a group of tightly coupled containers, tied together that must start, stop, and scale together. In many case a Pod is associated to only one container.  Multiple containers in a single pod can be useful when you have, for example, a container that runs the application, and another container that periodically polls logs/metrics from the application container.
 
-You can start a single Pod in Kubernetes by creating a Pod resource. However, a Pod created this way would be known as a Naked Pod. If a Naked Pod dies/exits, it will not be restarted by Kubernetes. A better way to start a pod, is by using a higher-level construct such as a Deployment.
+Every Pod has a unique, ephemeral, and routable IP address. I.e., a container inside of a Pod can directly reach another the IP address of another Pod \(and the containers in that Pod\).
+
+All containers within a single pod are scheduled to a single physical resource \(the same Node\), and all containers within a Pod will share the same networking interface, IP address, volumes, etc. 
+
+You can start a single Pod in Kubernetes by creating a Pod resource. However, a Pod created this way would be known as an Unmanaged Pod. If an Unmanaged Pod dies/exits, it will not be restarted by Kubernetes. A better way to start a Pod, is by using a higher-level construct such as a Deployment.
 
 ## Deployment
 
@@ -213,8 +217,4 @@ Delete the Nginx deployment before you continue!
 
 `kubectl delete deployment nginx-deployment`
 {% endhint %}
-
-
-
-
 
