@@ -6,7 +6,7 @@
 
 After you logged into the Google Cloud console, make sure you have selected a project in the top bar, by clicking **Select a project**.
 
-![Select a project](../.gitbook/assets/image%20%2831%29.png)
+![Select a project](../.gitbook/assets/image%20%2832%29.png)
 
 From the **Select a project** dialog, select a Google Cloud Project to use. This will help pre-configure Cloud Shell to use that project as the default project.
 
@@ -14,7 +14,7 @@ From the **Select a project** dialog, select a Google Cloud Project to use. This
 
 On the top right, click the **Active Cloud Shell** icon.
 
-![Activate Cloud Shell icon](../.gitbook/assets/image%20%2827%29.png)
+![Activate Cloud Shell icon](../.gitbook/assets/image%20%2828%29.png)
 
 If it's your first time using Cloud Shell, in the introduction dialog, click **Start Cloud Shell** to continue. Wait for the Cloud Shell machine to provision \(it may take a few minutes\).
 
@@ -39,7 +39,7 @@ echo 'export PATH="$HOME/bin:$PATH"' >> $HOME/.bashrc
 
 When working with Java applications and running heavier workloads in Cloud Shell, it'll be useful to enable Boosted Mode. In the Cloud Shell's **More** menu, click **Boost Cloud Shell**.
 
-![Boost Cloud Shell](../.gitbook/assets/image%20%2829%29.png)
+![Boost Cloud Shell](../.gitbook/assets/image%20%2830%29.png)
 
 This will re-provision your Cloud Shell instance and replace the original `e2-small` \(0.5 vCPU, 2GB of memory\) machine type with a larger `e2-medium` \(1 vCPU, 4GB of memory\) machine type.
 
@@ -51,13 +51,13 @@ See [Compute Engine Machine Types documentation](https://cloud.google.com/comput
 
 You can open new Cloud Shell tabs by clicking the **+** icon.
 
-![Open a new tab + icon](../.gitbook/assets/image%20%2822%29.png)
+![Open a new tab + icon](../.gitbook/assets/image%20%2823%29.png)
 
 ## Code Editor
 
 Cloud Shell comes with common text editing tools, such as `vi`, `emacs`, `nano`. It also has a built-in web-based text editor You can open it by clicking **Open Editor**.
 
-![Open Editor](../.gitbook/assets/image%20%2833%29.png)
+![Open Editor](../.gitbook/assets/image%20%2834%29.png)
 
 This will launch an embedded editor where you can open and edit text files easily.
 
