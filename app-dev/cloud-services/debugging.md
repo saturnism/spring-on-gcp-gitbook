@@ -347,7 +347,7 @@ Deploy the YAML file:
 kubectl apply -f k8s/deployment.yaml
 ```
 
-In Cloud Debugger console, you can see the `helloworld` service in the drop down:
+In Cloud Debugger console, you can see the `helloworld-gke` service in the drop down:
 
 ![](../../.gitbook/assets/image%20%2820%29.png)
 {% endtab %}
@@ -378,7 +378,7 @@ java -agentpath:/opt/cdbg/cdbg_java_agent.so=--logtostderr=1 \
     -jar helloworld.jar
 ```
 
-In Cloud Debugger console, you can see the `helloworld` service in the drop down:
+In Cloud Debugger console, you can see the `helloworld-gce` service in the drop down:
 
 ![](../../.gitbook/assets/image%20%2817%29.png)
 {% endtab %}
