@@ -55,3 +55,28 @@ spec:
 You can read more about Deployment in the [Kubernetes Service Guide](http://kubernetes.io/docs/user-guide/deployments/).
 {% endhint %}
 
+### Deploy
+
+Use `kubectl` command line to deploy the YAML file:
+
+```bash
+kubectl apply -f k8s/service.yaml
+```
+
+To verify the application is deployed, see all the pods that are running:
+
+```bash
+kubectl get svc
+```
+
+You should see that there is one pod running!
+
+```bash
+NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)    AGE
+helloworld   ClusterIP   ...          <none>        8080/TCP   7s
+```
+
+## 
+
+
+

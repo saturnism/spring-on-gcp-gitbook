@@ -98,6 +98,23 @@ helloworld-...               1/1     Running   0          ...
 
 ## Basic Interactions
 
+### Describe Details
+
+For every Kubernetes resource, you can describe the details of a resource, and see its current state, and any events, errors that may have occurred.
+
+Describe a Deployment:
+
+```bash
+kubectl describe deployment helloworld
+```
+
+Describe a Pod:
+
+```bash
+POD_NAME=$(kubectl get pods -lapp=helloworld -o jsonpath='{.items[0].metadata.name}')
+kubectl delete pod ${POD_NAME}
+```
+
 ### Find Pods with Labels
 
 `kubectl get pods` shows you every pod running in the current namespace. You can limit the output to just the application you are interested in by select only pods matching certain label key/value pairs. 
