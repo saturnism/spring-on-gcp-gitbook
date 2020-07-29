@@ -102,5 +102,3 @@ Describe the Service to see the Endpoint IP addresses that it's currently enlist
 kubectl describe svc helloworld
 ```
 
-Endpoints are only 
-

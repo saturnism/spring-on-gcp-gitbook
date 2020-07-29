@@ -25,22 +25,22 @@ cd jvm-helloworld-by-example/helloworld-springboot-tomcat
 
 ## OpenJDK Version
 
-When you containerize a Java application, make sure you use a base JDK image that is CGroup aware so that the JDK can allocate memory and CPU core counts properly.
+When you containerize a Java application, make sure you use a base JDK image that is container-aware \(CGroup aware\) so that the JDK can allocate memory and CPU counts properly.
 
-Older versions of JDK \(prior to 8u192\) may not have CGroup awareness. That means older versions of JDK may look for memory and CPU information from the traditional `/proc/meminfo` and `/proc/cpuinfo` files. The content of these files may reflect the amount of resources of the host/node machine that is running the container, but do not reflect the actual resources assigned to the container \(which may be much less\).
+Older versions of JDK \(prior to 8u192\) may not have container awareness \(or may have experimental support that requires explict flags to enable\). Older versions of JDK may look at the traditional `/proc/meminfo` and `/proc/cpuinfo` files for available memory and CPUs. The content of these files reflects the amount of resources of the host/node machine that is running the container, but do not reflect the actual limits assigned to the container \(which may be much less\).
 
 Newer versions of JDK \(8u192 and above\) will automatically discover the CGroup resource allocations located in `/sys/fs/cgroup/cpu` and `/sys/fs/cgroup/memory`.
 
 ### Heap
 
-Run a Docker container and giving it only 256MB of memory,  and see what a JDK will assign for the default Max Heap.
+Run a Docker container and give it only 256MB of memory,  and see an older version of JDK will assign for the default Max Heap.
 
 ```bash
 docker run -ti --rm --cpus=1 --memory=256M openjdk:8u141-jre \
   java -XX:+PrintFlagsFinal -version | grep MaxHeapSize
 ```
 
-It will output the `MaxHeapSize` \(in bytes\) that is calculated from the host machine and can be significantly higher than the 256MB of memory you originally assigned. This means your Java process may allocate heap aggressively and go beyond the 256MB memory limit, causing the container instance to be killed, usually result in a `OOMKilled`message.
+Because version `8u141` is not container-aware, it will output the `MaxHeapSize` \(in bytes\) that is calculated from the host machine and can be significantly higher than the 256MB of memory you originally assigned. This means your Java process may allocate heap aggressively and go beyond the original limit, causing the container instance to be killed, usually result in a `OOMKilled`message.
 
 Run the same command, but with a newer version of JDK:
 
@@ -90,7 +90,7 @@ If your application was `OOMKilled`, then it's an unsuccessful exit, so the memo
 
 ### CPU
 
-Run a Docker container and giving it only 2 CPUs,  and see what a JDK will assign for the default Parallel GC threads.
+Run a Docker container and giving it only 2 CPUs,  and see what an older version of JDK will assign for the default Parallel GC threads.
 
 ```bash
 docker run -ti --rm --cpus=2 openjdk:8u141-jre java \
@@ -178,6 +178,10 @@ PROJECT_ID=$(gcloud config get-value project)
 ```
 {% endtab %}
 {% endtabs %}
+
+{% hint style="info" %}
+Luckily, all of these tools automatically try to use the newest version of the JDK that is container-aware.
+{% endhint %}
 
 ## Run Locally
 
