@@ -47,7 +47,7 @@
   * [Kubernetes Cluster](deployment/kubernetes/kubernetes-cluster.md)
   * [Container Image](deployment/kubernetes/container-image.md)
   * [Deployment](deployment/kubernetes/deployment.md)
-  * [Service](deployment/kubernetes/service.md)
+  * [Load Balancing](deployment/kubernetes/service.md)
 
 ## Additional Resources
 

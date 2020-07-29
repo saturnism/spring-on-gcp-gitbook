@@ -72,7 +72,7 @@ spec:
 ```
 
 {% hint style="info" %}
-The instructors will explain the descriptor in detail. You can read more about Deployment in the [Kubernetes Deployment Guide](http://kubernetes.io/docs/user-guide/deployments/).  The specification can be found in [Kubernetes API reference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.10).
+You can read more about Deployment in the [Kubernetes Deployment Guide](http://kubernetes.io/docs/user-guide/deployments/).
 {% endhint %}
 
 ### Deploy
