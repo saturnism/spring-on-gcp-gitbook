@@ -386,6 +386,10 @@ In Cloud Debugger console, you can see the `helloworld` service in the drop down
 {% tab title="Non-Google Cloud Environment" %}
 You can attach the Cloud Debugger agent to any Java application even if it runs outside of the Google Cloud environment \(whether it's in a container, or on your local laptop, or in another cloud\). Authentication has to be done using Service Account key file rather than using the Machine Credentials.
 
+{% hint style="danger" %}
+This only works on a Linux x86 based system.
+{% endhint %}
+
 #### Clone
 
 ```bash
@@ -398,6 +402,14 @@ cd jvm-helloworld-by-example/helloworld-springboot-tomcat
 
 ```bash
 mvn package
+```
+
+#### Download Agent
+
+```bash
+sudo mkdir -p /opt/cdbg
+curl -s -o- https://storage.googleapis.com/cloud-debugger/compute-java/debian-wheezy/cdbg_java_agent_gce.tar.gz \
+  | sudo tar xvz -C /opt/cdbg
 ```
 
 #### Create a Service Account
