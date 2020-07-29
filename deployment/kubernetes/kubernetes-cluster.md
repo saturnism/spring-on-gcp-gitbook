@@ -61,3 +61,38 @@ Kubernetes credential is automatically retrieved and stored in your `$HOME/.kube
 gcloud container clusters get-credentials demo-cluster
 ```
 
+## Node Pool and Nodes
+
+The Kubernetes cluster is composed of multiple Nodes - each node is a Compute Engine Virtual Machine.  When you deploy a container image into Kubernetes, a container instance is ultimately scheduled and ran on one of the Nodes.
+
+In Kubernetes Engine, theses nodes are managed by a Node Pool, which is a set of homogenous Compute Engine Virtual Machines \(i.e., they have exactly the same configuration, such as machine type, disk, operation system, etc\).
+
+{% hint style="info" %}
+You can add different machine types to your Kubernetes Engine cluster, by creating a new Node Pool with the configuration you want.
+{% endhint %}
+
+You can see a list of Virtual Machines using `gcloud`:
+
+```bash
+gcloud compute instances list
+```
+
+You can also use `kubectl` to list the nodes that belongs to the current cluster:
+
+```bash
+kubectl get nodes
+```
+
+You can also SSH into the node directly if needed, by specifying the name of the node:
+
+```bash
+gcloud compute ssh gke-demo-cluster-default-pool-...
+```
+
+Once you are in the Compute Engine Virtual Machine, you can also see the containers that are running inside of the Node:
+
+```bash
+docker ps
+exit
+```
+
