@@ -69,7 +69,7 @@ To verify the application is deployed, see all the pods that are running:
 kubectl get svc
 ```
 
-You should see that there is one pod running!
+You should see that the Service is configured!
 
 ```bash
 NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)    AGE
