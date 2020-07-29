@@ -18,7 +18,7 @@ You can start a single Pod in Kubernetes by creating a Pod resource. However, a 
 
 ## Deployment
 
-Deployment provides declarative updates for Pods and Replica Sets. You only need to describe the desired state in a Deployment resource, and behind the scenes, a Kubernetes Deployment controller will change the actual state to the desired state for you. It does this using a resource called a ReplicaSet under the covers. You can use deployments to easily:
+Deployment provides declarative way to manage a set of Pods. You only need to describe the desired state in a Deployment resource, and behind the scenes, a Kubernetes Deployment controller will change the actual state to the desired state for you. It does this using a resource called a ReplicaSet under the covers. You can use deployments to easily:
 
 ### Deployment YAML
 
