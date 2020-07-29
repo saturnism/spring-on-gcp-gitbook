@@ -106,7 +106,7 @@ helloworld-...               1/1     Running   0          ...
 kubectl get pods -lapp=helloworld
 ```
 
-### Scaling a Deployment
+### Scaling
 
 Scale the number of instances from 1 to 2.
 
