@@ -23,6 +23,14 @@ cd jvm-helloworld-by-example/helloworld-springboot-tomcat
 gcloud app deploy target/helloworld.jar
 ```
 
+{% hint style="info" %}
+If this is your first time using App Engine on the project, you'll be prompted to choose the region of the App Engine application. Pick the region that's most suitable for your application. This site mostly uses `us-central` as an example.
+{% endhint %}
+
+{% hint style="warning" %}
+Once you picked the region, you cannot change it for an App Engine application.
+{% endhint %}
+
 ### Connect
 
 Once deployed, the command will output the HTTPs URL. To open the URL in your browser:
