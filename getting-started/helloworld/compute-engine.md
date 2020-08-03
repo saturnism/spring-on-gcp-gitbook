@@ -238,3 +238,7 @@ curl http://${EXTERNAL_IP}:8080
 In production environments, you would most likely want to put a Load Balancer in front, either with a [Network \(L4\) Load Balancer](https://cloud.google.com/load-balancing/docs/network/setting-up-network), or a [HTTP \(L7\) Load Balancer](https://cloud.google.com/load-balancing/docs/https/ext-http-lb-simple).
 {% endhint %}
 
+{% hint style="info" %}
+To deploy a fleet of VMs, you can use [Managed Instance Group](https://cloud.google.com/compute/docs/containers/deploying-containers#managedinstancegroupcontainer) to deploy a set of VMs running the same container image.
+{% endhint %}
+
