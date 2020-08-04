@@ -1,3 +1,9 @@
+---
+description: >-
+  In this section, you'll learn how to create a Kubernetes service and how
+  service discovery works.
+---
+
 # Service
 
 ## Service
@@ -101,4 +107,6 @@ Describe the Service to see the Endpoint IP addresses that it's currently enlist
 ```bash
 kubectl describe svc helloworld
 ```
+
+
 
