@@ -108,7 +108,3 @@ Describe the Service to see the Endpoint IP addresses that it's currently enlist
 kubectl describe svc helloworld
 ```
 
-## Service Discovery
-
-In the previous section, you created a Service. A service can also be used for service discovery - by API, or by IP, or by the DNS name.
-
