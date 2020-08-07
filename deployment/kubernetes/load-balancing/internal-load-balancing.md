@@ -94,7 +94,7 @@ The setup of the Internal Network Load Balancer is similar to the [External HTTP
 
 ### Service YAML
 
-In the `k8s/service.yaml`, use the `cloud.google.com/neg` annotation to enable Network Endpoint Group \(NEG\) in order to use container-native load balancing, and also `kubernetes.io/ingress.class` to use the Internal HTTP\(s\) Load Balancer:
+In the `k8s/service.yaml`, use the `cloud.google.com/neg` annotation to enable Network Endpoint Group \(NEG\) in order to use container-native load balancing:
 
 {% code title="k8s/service.yaml" %}
 ```yaml
@@ -104,12 +104,10 @@ metadata:
   name: helloworld
   labels:
     app: helloworld
+  # Add the NEG annotation to enable Network Endpoint Group
+  # in order to use container-native load balancing
   annotations:
-    # Add the NEG annotation to enable Network Endpoint Group
-    # in order to use container-native load balancing
     cloud.google.com/neg: '{"ingress": true}'
-    # Add the Ingress Class annotation to use Internal HTTP(s) Load Balancer
-    kubernetes.io/ingress.class: "gce-internal"
 spec:
   ports:
   - name: 8080-8080
@@ -124,7 +122,7 @@ spec:
 
 ### Ingress YAML
 
-Create a Kubernetes Ingress configuration that will create the HTTP Load Balancer. Create a `k8s/ingress.yaml`:
+Create a Kubernetes Ingress configuration that will create the HTTP Load Balancer. Create a `k8s/ingress.yaml`, but also use `kubernetes.io/ingress.class` annotation to indicate this is an Internal HTTP\(s\) Load Balancer
 
 {% code title="k8s/ingress.yaml" %}
 ```yaml
@@ -132,6 +130,9 @@ apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: helloworld
+  annotations:
+    # Add the Ingress Class annotation to use Internal HTTP(s) Load Balancer
+    kubernetes.io/ingress.class: "gce-internal"
 spec:
   rules:
   - http:
