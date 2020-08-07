@@ -114,7 +114,7 @@ You can configure an external HTTP load balancer using Kubernetes Ingress. In or
 
 ### Service YAML
 
-To prepare the service to be load balanced by the external HTTP Load Balancer, annotate the service to enable Network Endpoint Group \(NEG\). Modify the `k8s/service.yaml`:
+In the `k8s/service.yaml`, use the `cloud.google.com/neg` annotation to enable Network Endpoint Group \(NEG\) in order to use container-native load balancing:
 
 {% code title="k8s/service.yaml" %}
 ```yaml
@@ -347,7 +347,7 @@ spec:
 {% endtab %}
 {% endtabs %}
 
-Modify `k8s/ingress.yaml` to add the annotation:
+In `k8s/ingress.yaml`, use the `networking.gke.io/managed-certificates` annotation to associate the certificate:
 
 {% code title="k8s/ingress.yaml" %}
 ```yaml
@@ -463,6 +463,7 @@ metadata:
   annotations:
     kubernetes.io/ingress.global-static-ip-name: "helloworld-ingress-ip"
 spec:
+  # Associate with the TLS certificate/key pair by the secret name
   tls:
   - secretName: helloworld-tls
   rules:

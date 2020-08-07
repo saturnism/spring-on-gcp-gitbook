@@ -10,5 +10,7 @@ A [Kubernetes Service](../service.md#service) acts as an internal L4 load balanc
 
 ## Internal Network Load Balancer
 
+The setup of the Internal Network Load Balancer is similar to the [External Network Load Balancer](external-load-balancing.md#external-network-load-balancer), but with an additional annotation.
+
 ## Internal HTTP\(s\) Load Balancer
 
