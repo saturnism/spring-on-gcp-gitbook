@@ -498,5 +498,3 @@ curl -k "https://${DOMAIN}"
 See [Using multiple SSL certificates in HTTP\(s\) load balancing with Ingress](https://cloud.google.com/kubernetes-engine/docs/how-to/ingress-multi-ssl) for more details
 {% endhint %}
 
-
-
