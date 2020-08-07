@@ -282,3 +282,119 @@ Continuously check the IP address to be updated. It'll take several minutes for 
 kubectl get ingress helloworld
 ```
 
+### SSL Certificate
+
+In order to use a SSL certificate to serve HTTPs traffic, you must use a real fully qualified domain name and configure it to point to the IP address.
+
+If you don't have a real domain, then you can try using [xip.io](https://xip.io).
+
+```bash
+EXTERNAL_IP=$(kubectl get ingress helloworld -ojsonpath="{.status.loadBalancer.ingress[0].ip}")
+XIP="${EXTERNAL_IP}.xip.io"
+curl $XIP
+echo $XIP
+```
+
+#### Managed Certificate
+
+Google Cloud can automatically provision a certificate for your domain name when using the External HTTP\(s\) Load Balancer.
+
+Create a new `k8s/certificate.yaml`:
+
+{% tabs %}
+{% tab title="Use xip.io" %}
+```bash
+EXTERNAL_IP=$(kubectl get ingress helloworld -ojsonpath="{.status.loadBalancer.ingress[0].ip}")
+XIP="${EXTERNAL_IP}.xip.io"
+
+cat << EOF > k8s/certificate.yaml
+apiVersion: networking.gke.io/v1beta2
+kind: ManagedCertificate
+metadata:
+  name: helloworld-certificate
+spec:
+  domains:
+  # Replace the value with your domain name
+  - ${XIP}
+EOF
+```
+{% endtab %}
+
+{% tab title="Your Domain Name" %}
+{% code title="k8s/certificate.yaml" %}
+```yaml
+apiVersion: networking.gke.io/v1beta2
+kind: ManagedCertificate
+metadata:
+  name: helloworld-certificate
+spec:
+  domains:
+  # Replace the value with your domain name
+  - YOUR_DOMAIN_NAME
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
+
+Modify `k8s/ingress.yaml` to add the annotation:
+
+{% code title="k8s/ingress.yaml" %}
+```yaml
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: helloworld
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: "helloworld-ingress-ip"
+    # Associate the ingress with the certificate name
+    networking.gke.io/managed-certificates: "helloworld-certificate"
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /*
+        backend:
+          serviceName: helloworld
+          servicePort: 8080
+```
+{% endcode %}
+
+Deploy both files:
+
+```bash
+kubectl apply -f k8s/certificate.yaml
+kubectl apply -f k8s/ingress.yaml
+```
+
+It may take several minutes to provision the certificate. Check the Managed Certificate status:
+
+```bash
+kubectl describe managedcertificate helloworld-certificate
+```
+
+Wait until the Certificate Status becomes `ACTIVE`:
+
+```text
+Name:         helloworld
+Namespace:    default
+...
+Status:
+  Certificate Name:    ...
+  Certificate Status:  Active
+...
+```
+
+{% hint style="info" %}
+See [Using Google-managed SSL certificates](https://cloud.google.com/kubernetes-engine/docs/how-to/managed-certs) for more details.
+{% endhint %}
+
+#### Self-Managed Certificate
+
+You can configure the Ingress to serve with your own SSL certificate.
+
+{% hint style="info" %}
+See [Using multiple SSL certificates in HTTP\(s\) load balancing with Ingress](https://cloud.google.com/kubernetes-engine/docs/how-to/ingress-multi-ssl) for more details
+{% endhint %}
+
+
+
