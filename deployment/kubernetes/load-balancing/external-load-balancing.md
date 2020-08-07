@@ -302,7 +302,7 @@ Google Cloud can automatically provision a certificate for your domain name when
 Create a new `k8s/certificate.yaml`:
 
 {% tabs %}
-{% tab title="Use xip.io" %}
+{% tab title="With xip.io" %}
 ```bash
 EXTERNAL_IP=$(kubectl get ingress helloworld -ojsonpath="{.status.loadBalancer.ingress[0].ip}")
 XIP="${EXTERNAL_IP}.xip.io"
@@ -320,7 +320,7 @@ EOF
 ```
 {% endtab %}
 
-{% tab title="Your Domain Name" %}
+{% tab title="With Custom Domain" %}
 {% code title="k8s/certificate.yaml" %}
 ```yaml
 apiVersion: networking.gke.io/v1beta2
@@ -383,6 +383,24 @@ Status:
   Certificate Status:  Active
 ...
 ```
+
+You can then use HTTPs to connect:
+
+{% tabs %}
+{% tab title="Use xip.io" %}
+```bash
+EXTERNAL_IP=$(kubectl get ingress helloworld -ojsonpath="{.status.loadBalancer.ingress[0].ip}")
+XIP="${EXTERNAL_IP}.xip.io"
+curl https://${XIP}
+```
+{% endtab %}
+
+{% tab title="With Custom Domain" %}
+```bash
+curl https://YOUR_DOMAIN_NAME
+```
+{% endtab %}
+{% endtabs %}
 
 {% hint style="info" %}
 See [Using Google-managed SSL certificates](https://cloud.google.com/kubernetes-engine/docs/how-to/managed-certs) for more details.
