@@ -71,8 +71,39 @@ You can assign a static IP address to the Network Load Balancer.
 Reserve a regional static IP address:
 
 ```bash
-
+REGION=$(gcloud config get-value compute/region)
+gcloud compute addresses create helloworld-service-ip --region=${REGION}
 ```
+
+See the reserved IP address:
+
+```bash
+REGION=$(gcloud config get-value compute/region)
+gcloud compute addresses describe helloworld-service-ip --region=${REGION} --format='value(address)'
+```
+
+Update the `k8s/service.yaml` to pin the Load Balancer IP address:
+
+{% code title="k8s/service.yaml" %}
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: helloworld
+  labels:
+    app: helloworld
+spec:
+  ports:
+  - name: 8080-8080
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: helloworld
+  type: LoadBalancer
+  loadBalancerIP: <RESERVED_IP_ADDRESS>
+```
+{% endcode %}
 
 ## External HTTP Load Balancer
 
