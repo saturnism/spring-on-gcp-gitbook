@@ -401,7 +401,7 @@ You can then use HTTPs to connect:
 EXTERNAL_IP=$(kubectl get ingress helloworld -ojsonpath="{.status.loadBalancer.ingress[0].ip}")
 DOMAIN="${EXTERNAL_IP}.xip.io"
 
-curl https://${DOMAIN}
+curl "https://${DOMAIN}"
 ```
 {% endtab %}
 
@@ -481,6 +481,15 @@ kubectl apply -f k8s/ingress.yaml
 ```
 
 It will take several minutes for the new configuration to take effect.
+
+You can then use HTTPs to connect. However, if you used a self-signed certificate, you will need to ignore certificate validation errors:
+
+```bash
+EXTERNAL_IP=$(kubectl get ingress helloworld -ojsonpath="{.status.loadBalancer.ingress[0].ip}")
+DOMAIN="${EXTERNAL_IP}.xip.io"
+
+curl -k "https://${DOMAIN}"
+```
 
 {% hint style="info" %}
 See [Using multiple SSL certificates in HTTP\(s\) load balancing with Ingress](https://cloud.google.com/kubernetes-engine/docs/how-to/ingress-multi-ssl) for more details
