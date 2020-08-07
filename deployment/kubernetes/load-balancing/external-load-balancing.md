@@ -64,13 +64,23 @@ EXTERNAL_IP=$(kubectl get svc helloworld -ojsonpath="{.status.loadBalancer.ingre
 curl $EXTERNAL_IP:8080
 ```
 
+### Static IP Address
+
+You can assign a static IP address to the Network Load Balancer.
+
+Reserve a regional static IP address:
+
+```bash
+
+```
+
 ## External HTTP Load Balancer
 
-You can configure an external HTTP load balancer using Kubernetes Ingress. In order for the HTTP load balancer to find the backends, it's recommended to use [container-native load balancing](https://cloud.google.com/kubernetes-engine/docs/how-to/container-native-load-balancing) on Google Cloud.
+You can configure an external HTTP load balancer using Kubernetes Ingress. In order for the HTTP Load Balancer to find the backends, it's recommended to use [container-native load balancing](https://cloud.google.com/kubernetes-engine/docs/how-to/container-native-load-balancing) on Google Cloud.
 
 ### Service YAML
 
-To prepare the service to be load balanced by the external HTTP load balancer, annotate the service to enable Network Endpoint Group \(NEG\). Modify the `k8s/service.yaml`:
+To prepare the service to be load balanced by the external HTTP Load Balancer, annotate the service to enable Network Endpoint Group \(NEG\). Modify the `k8s/service.yaml`:
 
 {% code title="k8s/service.yaml" %}
 ```yaml
@@ -107,9 +117,13 @@ kind: Ingress
 metadata:
   name: helloworld
 spec:
-  backend:
-    serviceName: helloworld
-    servicePort: 8080
+  rules:
+  - http:
+      paths:
+      - path: /*
+        backend:
+          serviceName: helloworld
+          servicePort: 8080
 ```
 {% endcode %}
 
@@ -186,5 +200,53 @@ You can then use the IP address to connect:
 ```bash
 EXTERNAL_IP=$(kubectl get ingress helloworld -ojsonpath="{.status.loadBalancer.ingress[0].ip}")
 curl $EXTERNAL_IP
+```
+
+### Static IP Address
+
+By default, the Ingress IP address is ephemeral - it'll change if you ever delete and recreate the Ingress. You can associate the Ingress with a static IP address instead.
+
+Reserve a global static IP address:
+
+```bash
+gcloud compute addresses create helloworld-ingress-ip --global
+```
+
+See the static IP address you reserved:
+
+```bash
+gcloud compute addresses describe helloworld-ingress-ip --global \
+  --format='value(address)'
+```
+
+In `k8s/ingress.yaml`, use the `kubernetes.io/ingress.global-static-ip-name` annotation to specify the IP name:
+
+```yaml
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: helloworld
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: "helloworld-ingress-ip"
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /*
+        backend:
+          serviceName: helloworld
+          servicePort: 8080
+```
+
+Deploy the Ingress:
+
+```bash
+kubectl apply -f k8s/ingress.yaml
+```
+
+Continuously check the IP address to be updated. It'll take several minutes for the IP address to update:
+
+```bash
+kubectl get ingress helloworld
 ```
 

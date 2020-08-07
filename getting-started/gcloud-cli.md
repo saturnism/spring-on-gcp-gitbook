@@ -6,11 +6,21 @@ description: >-
 
 # gcloud CLI
 
-## Install
+## Cloud Shell
 
-Follow the [official gcloud installation guide](https://cloud.google.com/sdk/docs/downloads-interactive#linux) for your platform.
+Cloud Shell already has the `gcloud` CLI pre-installed. Jump to the last section to [configure default zone and region](gcloud-cli.md#default-zone-and-region) so you do not need to repeatedly specify it.
 
-## Authenticate
+## Local Installation
+
+If you want to install on your local machine, follow the [official gcloud installation guide](https://cloud.google.com/sdk/docs/downloads-interactive#linux) for your platform.
+
+Once the `gcloud` CLI is installed, follow the below steps to finish configuration.
+
+{% hint style="danger" %}
+If you are using Cloud Shell, jump to the last section to [configure default zone and region](gcloud-cli.md#default-zone-and-region) so you do not need to repeatedly specify it.
+{% endhint %}
+
+### Authenticate
 
 Authenticate gcloud so that it can interact with Google Cloud Platform using your account.
 
@@ -22,7 +32,7 @@ gcloud auth login
 This authenticated `gcloud` so that you can run all the commands.
 {% endhint %}
 
-## Project ID
+### Project ID
 
 Configure the default project ID to your project.
 
@@ -34,22 +44,7 @@ gcloud config set project YOUR_PROJECT_ID
 If you already have a project can list using the following command: `gcloud projects list`. Find one and then setting it as a default project.
 {% endhint %}
 
-## Default Zone and Region
-
-A cloud resource can be Zonal, Regional, or Multi-Regional. For example, a VM is Zonal, because it can only live in a single availability zone. App Engine service is regional, because it's automatically distributed across multiple zones within a single Region.  Cloud Storage can store your data in a Regional bucket, or a Multi-Regional bucket.
-
-You can always specify the `zone` or `region` with each of the `gcloud` command. If you primarily operate within a single zone or region, set the default `zone` and default `region`.
-
-```bash
-gcloud config set compute/region us-central1
-gcloud config set compute/zone us-central1-c
-```
-
-{% hint style="info" %}
-See the complete list in [Regions and Zones documentation](https://cloud.google.com/compute/docs/regions-zones).
-{% endhint %}
-
-## Application Default Credentials
+### Application Default Credentials
 
 In addition to authenticating gcloud, also authenticate Application Default Credentials \(ADC\). ADC is used by your application/microservices during local development to authenticate with cloud services.
 
@@ -68,4 +63,19 @@ Application Default Credentials authentication is for client libraries to make c
 {% endhint %}
 
 This will store the credential \(OAuth refresh token\) in a well-known location, such as `~/.config/gcloud/application_default_credentials.json`. Google Cloud client libraries can automatically detect this file and use this credential.
+
+### Default Zone and Region
+
+A cloud resource can be Zonal, Regional, or Multi-Regional. For example, a VM is Zonal, because it can only live in a single availability zone. App Engine service is regional, because it's automatically distributed across multiple zones within a single Region.  Cloud Storage can store your data in a Regional bucket, or a Multi-Regional bucket.
+
+You can always specify the `zone` or `region` with each of the `gcloud` command. If you primarily operate within a single zone or region, set the default `zone` and default `region`.
+
+```bash
+gcloud config set compute/region us-central1
+gcloud config set compute/zone us-central1-c
+```
+
+{% hint style="info" %}
+See the complete list in [Regions and Zones documentation](https://cloud.google.com/compute/docs/regions-zones).
+{% endhint %}
 
