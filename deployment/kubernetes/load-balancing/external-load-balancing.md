@@ -101,7 +101,8 @@ spec:
   selector:
     app: helloworld
   type: LoadBalancer
-  loadBalancerIP: <RESERVED_IP_ADDRESS>
+  # Replace the value with the IP address you reserved
+  loadBalancerIP: RESERVED_IP_ADDRESS
 ```
 {% endcode %}
 
