@@ -459,7 +459,7 @@ metadata:
     kubernetes.io/ingress.global-static-ip-name: "helloworld-ingress-ip"
 spec:
   tls:
-  - helloworld-tls
+  - secretName: helloworld-tls
   rules:
   - http:
       paths:
@@ -469,6 +469,15 @@ spec:
           servicePort: 8080
 ```
 {% endcode %}
+
+Deploy the configurations:
+
+```bash
+kubectl apply -f k8s/tls-secret.yaml
+kubectl apply -f k8s/ingress.yaml
+```
+
+It will take several minutes for the new configuration to take effect.
 
 {% hint style="info" %}
 See [Using multiple SSL certificates in HTTP\(s\) load balancing with Ingress](https://cloud.google.com/kubernetes-engine/docs/how-to/ingress-multi-ssl) for more details
