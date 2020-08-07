@@ -59,6 +59,8 @@ NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)    AGE
 helloworld   ClusterIP   ...          <pending>     8080/TCP   7s
 ```
 
+### Connect
+
 Continuously to check the External IP address, until an IP address is assigned.  Once the IP Address is assigned, you can connect to the External IP address, and it'll be load balanced to the `helloworld` service backend pods.
 
 ```bash
@@ -228,6 +230,8 @@ Annotations:
   ...
   ingress.kubernetes.io/backends:  {"...":"HEALTHY"}
 ```
+
+### Connect
 
 You can then use the IP address to connect:
 
