@@ -1,8 +1,10 @@
 # External Load Balancing
 
-A [Kubernetes Service](../service.md) allows you to connect to the built-in L4 load balancer with just the DNS name. But this works only from within the cluster for in-cluster service-to-service communication.
+This section continues from the previous section - make sure you do the tutorial in sequence.
 
-There are primarily 2 ways to expose the same service on the public internet:
+{% page-ref page="../service.md" %}
+
+There are primarily 2 ways to expose a Kubernetes Service on the public internet:
 
 | Type | Protocol | Locality | When to use? |
 | :--- | :--- | :--- | :--- |
