@@ -298,8 +298,11 @@ If you don't have a real domain, then you can try using [xip.io](https://xip.io)
 EXTERNAL_IP=$(kubectl get ingress helloworld -ojsonpath="{.status.loadBalancer.ingress[0].ip}")
 DOMAIN="${EXTERNAL_IP}.xip.io"
 curl $DOMAIN
+
 echo $DOMAIN
 ```
+
+You can provision the External HTTP\(s\) Load Balancer using Ingress with a Managed Certificate, or you can provide your own Self-Managed Certificate.
 
 #### Managed Certificate
 
