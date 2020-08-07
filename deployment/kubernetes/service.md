@@ -28,6 +28,7 @@ kubectl create service clusterip helloworld \
 
 You can open the `k8s/service.yaml` file to see the content. Following is a version of the YAML file where it's slimmed down to the bare minimum.
 
+{% code title="k8s/service.yaml" %}
 ```yaml
 # API Version and Kind are important to indicate the type of resource
 apiVersion: v1
@@ -56,6 +57,7 @@ spec:
     # TCP or UDP protocol
     protocol: TCP
 ```
+{% endcode %}
 
 {% hint style="info" %}
 You can read more about Deployment in the [Kubernetes Service Guide](http://kubernetes.io/docs/user-guide/deployments/).
@@ -69,13 +71,13 @@ Use `kubectl` command line to deploy the YAML file:
 kubectl apply -f k8s/service.yaml
 ```
 
-To verify the application is deployed, see all the pods that are running:
+Verify that the service is configured:
 
 ```bash
-kubectl get svc
+kubectl get svc helloworld
 ```
 
-You should see that the Service is configured!
+You should see that the Service has a Cluster IP address:
 
 ```bash
 NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)    AGE

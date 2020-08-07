@@ -43,6 +43,7 @@ kubectl create deployment helloworld \
 
 You can open the `k8s/deployment.yaml` file to see the content. Following is a version of the YAML file where it's slimmed down to the bare minimum.
 
+{% code title="k8s/deployment.yaml" %}
 ```yaml
 # API Version and Kind are important to indicate the type of resource
 apiVersion: apps/v1
@@ -74,6 +75,7 @@ spec:
       - name: helloworld
         image: gcr.io/.../helloworld
 ```
+{% endcode %}
 
 {% hint style="info" %}
 You can read more about Deployment in the [Kubernetes Deployment Guide](http://kubernetes.io/docs/user-guide/deployments/).

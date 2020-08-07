@@ -1,0 +1,190 @@
+# External Load Balancing
+
+A [Kubernetes Service](../service.md) allows you to connect to the built-in L4 load balancer with just the DNS name. But this works only from within the cluster for in-cluster service-to-service communication.
+
+There are primarily 2 ways to expose the same service on the public internet:
+
+| Type | Protocol | Locality | When to use? |
+| :--- | :--- | :--- | :--- |
+| [External Network Load Balancer](https://cloud.google.com/load-balancing/docs/network) | TCP/UDP | Regional | Non-HTTP requests, or no need for a global load balancer. Connection to the Load Balancer is routed by public Internet to region of the load balancer. |
+| [External HTTP\(s\) Load Balancer](https://cloud.google.com/load-balancing/docs/https) | HTTP\(s\) | Global | HTTP requests. GCP's L7 Load Balancer is a global load balancer - a single IP address can automatically route traffic to the nearest region within the GCP network. |
+
+## External Network Load Balancer
+
+### Service YAML
+
+To create an external network load balancer, simply change Kubernetes Service's type from `clusterip` to `loadbalancer`. Modify the `k8s/service.yaml`:
+
+{% code title="k8s/service.yaml" %}
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: helloworld
+  labels:
+    app: helloworld
+spec:
+  ports:
+  - name: 8080-8080
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: helloworld
+  # Use LoadBalancer type instead of ClusterIP
+  type: LoadBalancer
+```
+{% endcode %}
+
+### Deploy
+
+Use `kubectl` command line to deploy the YAML file:
+
+```bash
+kubectl apply -f k8s/service.yaml
+```
+
+To verify the application is deployed, see :
+
+```bash
+kubectl get svc helloworld
+```
+
+You should see that the Service has a Cluster IP address, but also the External IP address with the initial value of `<pending>`. This is because the behind the scenes, Kubernetes Engine is provision a real Google Cloud Network Load Balancer.
+
+```bash
+NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)    AGE
+helloworld   ClusterIP   ...          <pending>     8080/TCP   7s
+```
+
+Continuously to check the External IP address, until an IP address is assigned.  Once the IP Address is assigned, you can connect to the External IP address, and it'll be load balanced to the `helloworld` service backend pods.
+
+```bash
+EXTERNAL_IP=$(kubectl get svc helloworld -ojsonpath="{.status.loadBalancer.ingress[0].ip}")
+curl $EXTERNAL_IP:8080
+```
+
+## External HTTP Load Balancer
+
+You can configure an external HTTP load balancer using Kubernetes Ingress. In order for the HTTP load balancer to find the backends, it's recommended to use [container-native load balancing](https://cloud.google.com/kubernetes-engine/docs/how-to/container-native-load-balancing) on Google Cloud.
+
+### Service YAML
+
+To prepare the service to be load balanced by the external HTTP load balancer, annotate the service to enable Network Endpoint Group \(NEG\). Modify the `k8s/service.yaml`:
+
+{% code title="k8s/service.yaml" %}
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: helloworld
+  labels:
+    app: helloworld
+  # Add the NEG annotation to enable Network Endpoint Group
+  # in order to use container-native load balancing
+  annotations:
+    cloud.google.com/neg: '{"ingress": true}'
+spec:
+  ports:
+  - name: 8080-8080
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: helloworld
+  type: ClusterIP
+```
+{% endcode %}
+
+### Ingress YAML
+
+Create a Kubernetes Ingress configuration that will create the HTTP Load Balancer. Create a `k8s/ingress.yaml`:
+
+{% code title="k8s/ingress.yaml" %}
+```yaml
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: helloworld
+spec:
+  backend:
+    serviceName: helloworld
+    servicePort: 8080
+```
+{% endcode %}
+
+### Deploy
+
+Use `kubectl` command line to deploy the YAML files:
+
+```bash
+# Delete the existing service because it may contain a node port:
+kubectl delete -f k8s/service.yaml
+
+# Redeploy the service
+kubectl apply -f k8s/service.yaml
+
+# Deploy the ingress
+kubectl apply -f k8s/ingress.yaml
+```
+
+To verify the Ingress is deployed:
+
+```bash
+kubectl get ingress helloworld
+```
+
+You should see that the Ingress has an IP address provisioned:
+
+```bash
+NAME         HOSTS   ADDRESS         PORTS   AGE
+helloworld   *       ...             80      81s
+```
+
+However, Ingress will be configuring many Google Cloud components behind the scenes for a global load balancer, so it'll take a few minutes before the address is accessible. Use `kubectl describe` to see the current status:
+
+```bash
+kubectl describe ingress helloworld
+```
+
+Initially, you may see:
+
+```bash
+Name:             helloworld
+Namespace:        default
+Address:          ...
+Default backend:  helloworld:8080 (...)
+Rules:
+  Host  Path  Backends
+  ----  ----  --------
+  *     *     helloworld:8080 (...)
+Annotations:
+  ...
+  ingress.kubernetes.io/backends:  {"...":"Unknown"}
+```
+
+When the annotation value of `ingress.kubernetes.io/backends` is `Unknown`, it means that the backend is not yet accessible.
+
+Re-check the status until the backend becomes `HEALTHY`.
+
+```bash
+Name:             helloworld
+Namespace:        default
+Address:          ...
+Default backend:  helloworld:8080 (...)
+Rules:
+  Host  Path  Backends
+  ----  ----  --------
+  *     *     helloworld:8080 (...)
+Annotations:
+  ...
+  ingress.kubernetes.io/backends:  {"...":"HEALTHY"}
+```
+
+You can then use the IP address to connect:
+
+```bash
+EXTERNAL_IP=$(kubectl get ingress helloworld -ojsonpath="{.status.loadBalancer.ingress[0].ip}")
+curl $EXTERNAL_IP
+```
+
