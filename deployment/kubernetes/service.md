@@ -82,11 +82,14 @@ NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)    AGE
 helloworld   ClusterIP   ...          <none>        8080/TCP   7s
 ```
 
-The newly created Service \(L4 Load Balancer\) can be accessed using the Cluster IP, or the hostname `helloworld`, or a Fully Qualified Name \(FQN\) of `helloworld.default.svc.cluster.local`.
+## Service Discovery
 
-{% hint style="info" %}
-See [Kubernetes DNS for Services and Pods documentation](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/) for more detail on how a DNS name is associated with a Service.
-{% endhint %}
+In a traditional Spring Cloud application, service discovery is done using an external service registry like Eureka, and perform client-side load balancing with Ribbon.
+
+In Kubernetes, the Kubernetes Service itself can act as the service registry:
+
+* You can discover all the endpoints associated with a service
+* Kubernetes Service's Cluster IP is a built-in L4 load balancer, and it's automatically associated with a DNS name
 
 ### Endpoints
 
@@ -107,4 +110,48 @@ Describe the Service to see the Endpoint IP addresses that it's currently enlist
 ```bash
 kubectl describe svc helloworld
 ```
+
+It is possible to continue to use Ribbon for client-side load balancing by retrieving these endpoints using the Kubernetes API. This is an advanced usage and not covered in this documentation at the moment. However, you can easily achieve the result if you use [Spring Cloud Kubernetes](https://spring.io/projects/spring-cloud-kubernetes) to replace Spring Cloud Eureka.
+
+### DNS Name
+
+The newly created Kubernetes Service is also a L4 Load Balancer, and it can be accessed using the Cluster IP, or the hostname `helloworld`, or a Fully Qualified Name \(FQN\) of `helloworld.default.svc.cluster.local`.
+
+{% hint style="info" %}
+See [Kubernetes DNS for Services and Pods documentation](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/) for more detail on how a DNS name is associated with a Service.
+{% endhint %}
+
+This service is currently accessibly only from within the Kubernetes cluster. I.e., there is no public IP address. You can start a new Pod within the cluster that has a shell, and execute commands within the cluster. This accurately simulates a client application sending request to another backend service.
+
+`nginx` container image has a shell that we can use, so deploy one instance of `nginx`.
+
+```bash
+kubectl create deployment nginx --image=nginx
+```
+
+Attach to the `nginx` Pod:
+
+```bash
+POD_NAME=$(kubectl get pods -lapp=nginx -o jsonpath='{.items[0].metadata.name}')
+kubectl exec -ti ${POD_NAME} /bin/bash
+```
+
+From within the Pod, `curl` the service:
+
+```bash
+# From within the nginx Pod
+curl http://helloworld:8080
+
+exit
+```
+
+{% hint style="info" %}
+If you have a client service that needs to reach the `helloworld` service within the same cluster, you can simply use the DNS name. This will resolve to the Cluster IP, and subsequently, L4 load balanced to one of the backend endpoints.
+{% endhint %}
+
+
+
+### 
+
+
 
