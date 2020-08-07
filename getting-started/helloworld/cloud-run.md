@@ -97,6 +97,10 @@ docker push gcr.io/${PROJECT_ID}/helloworld
 {% hint style="info" %}
 Learn about [Paketo Buildpack](https://paketo.io/) and [GCP Buildpack](https://github.com/GoogleCloudPlatform/buildpacks).
 {% endhint %}
+
+{% hint style="danger" %}
+Paketo Buildpack will calculate the minimum memory needed to run the Spring Boot application. For a this Hello World example, the minimum is 1GB of RAM.
+{% endhint %}
 {% endtab %}
 {% endtabs %}
 
@@ -107,6 +111,8 @@ PROJECT_ID=$(gcloud config get-value project)
 gcloud run deploy helloworld \
   --region=us-central1 \
   --platform=managed \
+  # Specify more memory if you used the Paketo buildpack earlier.
+  # --memory=1G \
   --allow-unauthenticated \
   --image=gcr.io/${PROJECT_ID}/helloworld
 ```
