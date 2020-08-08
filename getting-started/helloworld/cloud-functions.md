@@ -8,7 +8,7 @@
 
 ```text
 # To use Cloud Functions
-gcloud services enable cloudfuncgtions.googleapis.com
+gcloud services enable cloudfunctions.googleapis.com
 ```
 
 ### Clone
