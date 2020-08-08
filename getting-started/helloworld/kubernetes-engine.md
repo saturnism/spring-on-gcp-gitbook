@@ -17,25 +17,6 @@ gcloud services enable container.googleapis.com
 gcloud services enable containerregistry.googleapis.com
 ```
 
-### Create Cluster
-
-Create a [VPC-native Kubernetes Engine cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/alias-ips).
-
-```text
-gcloud container clusters create helloworld-cluster \
-  --num-nodes 2 \
-  --enable-ip-alias \
-  --scopes=cloud-platform \
-  --network=default \
-  --machine-type n1-standard-1
-```
-
-Kubernetes credential is automatically retrieved and stored in your `$HOME/.kube/config` file. If you need to re-retrieve the credential:
-
-```bash
-gcloud container clusters get-credentials helloworld-cluster
-```
-
 ### Clone
 
 ```text
@@ -105,6 +86,25 @@ PROJECT_ID=$(gcloud config get-value project)
 ```
 {% endtab %}
 {% endtabs %}
+
+### Create Cluster
+
+Create a [VPC-native Kubernetes Engine cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/alias-ips).
+
+```text
+gcloud container clusters create helloworld-cluster \
+  --num-nodes 2 \
+  --enable-ip-alias \
+  --scopes=cloud-platform \
+  --network=default \
+  --machine-type n1-standard-1
+```
+
+Kubernetes credential is automatically retrieved and stored in your `$HOME/.kube/config` file. If you need to re-retrieve the credential:
+
+```bash
+gcloud container clusters get-credentials helloworld-cluster
+```
 
 ### Deploy
 
