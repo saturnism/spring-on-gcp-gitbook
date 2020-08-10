@@ -4,19 +4,6 @@
 
 ## Getting Started
 
-### Enable API
-
-```text
-# To use Compute Engine
-gcloud services enable compute.googleapis.com
-
-# To use Kubernetes Engine
-gcloud services enable container.googleapis.com
-
-# To store Container Images in Container Registry
-gcloud services enable containerregistry.googleapis.com
-```
-
 ### Clone
 
 ```text
@@ -86,6 +73,19 @@ PROJECT_ID=$(gcloud config get-value project)
 ```
 {% endtab %}
 {% endtabs %}
+
+### Enable API
+
+```text
+# To use Compute Engine
+gcloud services enable compute.googleapis.com
+
+# To use Kubernetes Engine
+gcloud services enable container.googleapis.com
+
+# To store Container Images in Container Registry
+gcloud services enable containerregistry.googleapis.com
+```
 
 ### Create Cluster
 
