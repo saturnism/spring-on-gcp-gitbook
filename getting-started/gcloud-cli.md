@@ -66,7 +66,7 @@ Application Default Credentials authentication is for client libraries to make c
 
 This will store the credential \(OAuth refresh token\) in a well-known location, such as `~/.config/gcloud/application_default_credentials.json`. Google Cloud client libraries can automatically detect this file and use this credential.
 
-## Default Zone and Region
+### Default Zone and Region
 
 A cloud resource can be Zonal, Regional, or Multi-Regional. For example, a VM is Zonal, because it can only live in a single availability zone. App Engine service is regional, because it's automatically distributed across multiple zones within a single Region.  Cloud Storage can store your data in a Regional bucket, or a Multi-Regional bucket.
 

@@ -65,3 +65,15 @@ You can switch back to the terminals by clicking **Open Terminal**.
 
 ![Open Terminal](../.gitbook/assets/image%20%2821%29.png)
 
+
+
+## Default Zone and Region
+
+You can always specify the `zone` or `region` with each of the `gcloud` command. If you primarily operate within a single zone or region, set the default `zone` and default `region`.
+
+```bash
+gcloud config set compute/region us-central1
+gcloud config set compute/zone us-central1-c
+gcloud config set run/region us-central1
+```
+
