@@ -8,9 +8,11 @@ description: >-
 
 ## Cloud Shell
 
-Cloud Shell already has the `gcloud` CLI pre-installed.
+Cloud Shell already has the `gcloud` CLI pre-installed, so you **do not** need to go through the Local Installation.
 
+{% hint style="danger" %}
 Jump to the last section to [configure default zone and region](gcloud-cli.md#default-zone-and-region) so you do not need to repeatedly specify it.
+{% endhint %}
 
 ## Local Installation
 
