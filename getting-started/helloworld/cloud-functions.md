@@ -4,13 +4,6 @@
 
 ## Getting Started
 
-### Enable API
-
-```text
-# To use Cloud Functions
-gcloud services enable cloudfunctions.googleapis.com
-```
-
 ### Clone
 
 ```bash
@@ -31,6 +24,13 @@ mvn function:run
 
 # In a different tab, trigger the function:
 curl localhost:8080
+```
+
+### Enable API
+
+```text
+# To use Cloud Functions
+gcloud services enable cloudfunctions.googleapis.com
 ```
 
 ### Deploy
