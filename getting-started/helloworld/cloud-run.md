@@ -10,16 +10,6 @@ You can deploy a [Hello World Application](https://github.com/saturnism/jvm-hell
 
 ## Getting Started - Manual Deployment
 
-### Enable API
-
-```text
-# To use Cloud Run
-gcloud services enable run.googleapis.com
-
-# To store Container Images in Container Registry
-gcloud services enable containerregistry.googleapis.com
-```
-
 ### Clone
 
 ```bash
@@ -103,6 +93,16 @@ Paketo Buildpack will calculate the minimum memory needed to run the Spring Boot
 {% endhint %}
 {% endtab %}
 {% endtabs %}
+
+### Enable API
+
+```text
+# To use Cloud Run
+gcloud services enable run.googleapis.com
+
+# To store Container Images in Container Registry
+gcloud services enable containerregistry.googleapis.com
+```
 
 ### Deploy
 
