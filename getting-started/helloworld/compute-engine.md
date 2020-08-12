@@ -15,14 +15,15 @@ cd jvm-helloworld-by-example/helloworld-springboot-tomcat
 ./mvnw package
 ```
 
-### Enable API
+### Create a VM
+
+#### Enable API
 
 ```bash
-# To use Compute Engine
 gcloud services enable compute.googleapis.com
 ```
 
-### Create a VM
+#### Create a VM
 
 ```bash
 gcloud compute instances create helloworld \
@@ -118,14 +119,17 @@ cd jvm-helloworld-by-example/helloworld-springboot-tomcat
 ./mvnw package
 ```
 
-### Enable API
+### Containerize
+
+#### Enable API
+
+Enable Container Registry API to be able to push container images to the Container Registry.
 
 ```bash
-# To use Compute Engine
-gcloud services enable compute.googleapis.com
+gcloud services enable containerregistry.googleapis.com
 ```
 
-### Containerize
+#### Jib
 
 Use Jib to containerize the application:
 
@@ -141,6 +145,14 @@ Learn different ways to containerize a Java application in the [Container Image]
 {% endhint %}
 
 ### Create a VM with Container Image
+
+#### Enable API
+
+```bash
+gcloud services enable compute.googleapis.com
+```
+
+#### Create a VM
 
 ```bash
 PROJECT_ID=$(gcloud config get-value project)

@@ -48,6 +48,7 @@ Learn different ways to containerize a Java application in the [Container Image]
 
 ```text
 gcloud services enable compute.googleapis.com
+gcloud services enable container.googleapis.com
 ```
 
 #### Create Cluster
