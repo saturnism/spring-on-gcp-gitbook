@@ -17,7 +17,8 @@ Google Cloud Platform has a range of different runtime environments to run your 
   </thead>
   <tbody>
     <tr>
-      <td style="text-align:left">Fully Managed</td>
+      <td style="text-align:left"><b>Fully Managed</b>
+      </td>
       <td style="text-align:left">FaaS</td>
       <td style="text-align:left">PaaS</td>
       <td style="text-align:left">CaaS/PaaS</td>
@@ -25,7 +26,8 @@ Google Cloud Platform has a range of different runtime environments to run your 
       <td style="text-align:left">Virtual Machines</td>
     </tr>
     <tr>
-      <td style="text-align:left">Deployable Artifact</td>
+      <td style="text-align:left"><b>Deployable Artifact</b>
+      </td>
       <td style="text-align:left">Source or JAR</td>
       <td style="text-align:left">Source or JAR</td>
       <td style="text-align:left">Container Image</td>
@@ -33,7 +35,8 @@ Google Cloud Platform has a range of different runtime environments to run your 
       <td style="text-align:left">Anything, and Container Image</td>
     </tr>
     <tr>
-      <td style="text-align:left">Locality</td>
+      <td style="text-align:left"><b>Locality</b>
+      </td>
       <td style="text-align:left">Regional</td>
       <td style="text-align:left">Regional</td>
       <td style="text-align:left">Regional</td>
@@ -41,7 +44,8 @@ Google Cloud Platform has a range of different runtime environments to run your 
       <td style="text-align:left">Zonal/Regional</td>
     </tr>
     <tr>
-      <td style="text-align:left">Billing Units</td>
+      <td style="text-align:left"><b>Billing Units</b>
+      </td>
       <td style="text-align:left">Instance execution time seconds and Invocations</td>
       <td style="text-align:left">Instance up time minutes</td>
       <td style="text-align:left">Instance execution time seconds</td>
@@ -49,15 +53,17 @@ Google Cloud Platform has a range of different runtime environments to run your 
       <td style="text-align:left">VM instance hours</td>
     </tr>
     <tr>
-      <td style="text-align:left">vCPU</td>
+      <td style="text-align:left"><b>vCPU</b>
+      </td>
       <td style="text-align:left">1</td>
-      <td style="text-align:left">1</td>
+      <td style="text-align:left">1, up to 4.8GHz</td>
       <td style="text-align:left">Up to 2</td>
       <td style="text-align:left">Up to 416 per node, and up to 5000 nodes.</td>
       <td style="text-align:left">0.5 to 416</td>
     </tr>
     <tr>
-      <td style="text-align:left">Memory</td>
+      <td style="text-align:left"><b>Memory</b>
+      </td>
       <td style="text-align:left">Up to 2GB</td>
       <td style="text-align:left">Up to 2GB</td>
       <td style="text-align:left">Up to 2GB</td>
@@ -65,7 +71,8 @@ Google Cloud Platform has a range of different runtime environments to run your 
       <td style="text-align:left">Up to 11TB</td>
     </tr>
     <tr>
-      <td style="text-align:left">Disk</td>
+      <td style="text-align:left"><b>Disk</b>
+      </td>
       <td style="text-align:left">Writable /tmp directory</td>
       <td style="text-align:left">Writable /tmp directory</td>
       <td style="text-align:left">Writable /tmp directory</td>
