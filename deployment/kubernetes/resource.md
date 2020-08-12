@@ -4,9 +4,7 @@ This section continues from the previous section - make sure you do the tutorial
 
 {% page-ref page="deployment.md" %}
 
-## Resource Requests and Limits
-
-### Default Configuration
+## Default Configuration
 
 You can specify the computing resource needs for each of the containers. By default, each container is given 10% of a CPU and no memory use restrictions.
 
@@ -39,7 +37,7 @@ Containers:
 ```
 
 {% hint style="info" %}
-The default value is `100m`, which means `100 milli` = `100/1000` = `10%`.
+The default value is `100m`, which means `100 milli` = `100/1000` = `10%`of a vCPU core.
 {% endhint %}
 
 The default is configured per Namespace. The application was deployed into the `default` Namespace. Look at the default resource configuration for this Namespace:
@@ -81,7 +79,7 @@ kubectl get limitrange limits -oyaml
 The default can be updated. [See Configure Default CPU Requests and Limits for a Namespace](https://kubernetes.io/docs/tasks/administer-cluster/manage-resources/cpu-default-namespace/) documentation.
 {% endhint %}
 
-### Resource Request
+## Resource Request
 
 In Kubernetes, you can reserve capacity by setting the Resource Requests to reserve more CPU and memory. Configure the deployment to reserve at least `20%` of a CPU, and `128Mi` of RAM.
 
@@ -114,9 +112,23 @@ spec:
 ```
 {% endcode %}
 
-### Resource Limit
+{% hint style="info" %}
+In this example, CPU request is`200m` means `200 milli`=`200/1000` = `20%` of 1 vCPU core.
 
-The application can consume more CPU and memory than requested - they can bust up to the limit, but cannot exceed the limit. Configure the deployment to set the limit:
+Memory is `128Mi`, which is `128 Mebibytes` = `~134 Megabytes`.
+{% endhint %}
+
+{% hint style="info" %}
+See [Kubernetes Resource Units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes) documentation for the units descriptions such as `m`, `M`, and `Mi`.
+{% endhint %}
+
+{% hint style="danger" %}
+When specifying the Memory resource allocation, do not accidentally use `m` as the unit. `128m` means `0.128 bytes`.
+{% endhint %}
+
+## Resource Limit
+
+The application can consume more CPU and memory than requested - they can burst up to the limit, but cannot exceed the limit. Configure the deployment to set the limit:
 
 {% code title="k8s/service.yaml" %}
 ```yaml
@@ -159,6 +171,4 @@ Memory is bot a compressible resource. If the application exceeds the Memory lim
 {% hint style="info" %}
 For Java applications, read the [Container Awareness](../docker/container-awareness.md) section to make sure you are using a Container-Aware OpenJDK version to avoid unnecessary `OOMKilled` errors.
 {% endhint %}
-
-
 
