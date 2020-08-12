@@ -1,7 +1,5 @@
 ---
-description: >-
-  In this section, you'll learn how to create a Kubernetes service and how
-  service discovery works.
+description: Learn how to create a Kubernetes service and how service discovery works.
 ---
 
 # Service

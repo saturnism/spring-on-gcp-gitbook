@@ -1,3 +1,9 @@
+---
+description: >-
+  Learn how Kubernets checks the application health, and how to use liveness
+  probes and readiness probes.
+---
+
 # Health Checks
 
 his section continues from the previous section - make sure you do the tutorial in sequence.

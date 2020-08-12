@@ -1,3 +1,7 @@
+---
+description: Learn how to assign CPU/memory resources to your containerized application.
+---
+
 # Resources
 
 This section continues from the previous section - make sure you do the tutorial in sequence.

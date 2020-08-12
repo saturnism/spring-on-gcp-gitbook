@@ -1,7 +1,7 @@
 ---
 description: >-
-  In this section, you'll learn how to create a production-grade Kubernetes
-  cluster to deploy your application.
+  Learn how to create a production-grade Kubernetes cluster to deploy your
+  application.
 ---
 
 # Kubernetes Cluster

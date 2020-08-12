@@ -1,7 +1,7 @@
 ---
 description: >-
-  In this section, you'll learn how to create a Kubernetes deployment and
-  deploying the Hello World container image.
+  Learn how to create a Kubernetes deployment and deploying the Hello World
+  container image.
 ---
 
 # Deployment
