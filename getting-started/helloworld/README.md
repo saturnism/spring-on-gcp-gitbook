@@ -17,8 +17,7 @@ Google Cloud Platform has a range of different runtime environments to run your 
   </thead>
   <tbody>
     <tr>
-      <td style="text-align:left"><b>Fully Managed</b>
-      </td>
+      <td style="text-align:left">Fully Managed</td>
       <td style="text-align:left">FaaS</td>
       <td style="text-align:left">PaaS</td>
       <td style="text-align:left">CaaS/PaaS</td>
@@ -26,8 +25,7 @@ Google Cloud Platform has a range of different runtime environments to run your 
       <td style="text-align:left">Virtual Machines</td>
     </tr>
     <tr>
-      <td style="text-align:left"><b>Deployable Artifact</b>
-      </td>
+      <td style="text-align:left">Deployable Artifact</td>
       <td style="text-align:left">Source or JAR</td>
       <td style="text-align:left">Source or JAR</td>
       <td style="text-align:left">Container Image</td>
@@ -35,11 +33,10 @@ Google Cloud Platform has a range of different runtime environments to run your 
       <td style="text-align:left">Anything, and Container Image</td>
     </tr>
     <tr>
-      <td style="text-align:left"><b>Billing Units</b>
-      </td>
-      <td style="text-align:left">Instance execution time and Invocations</td>
-      <td style="text-align:left">Instance up time</td>
-      <td style="text-align:left">Instance execution time</td>
+      <td style="text-align:left">Billing Units</td>
+      <td style="text-align:left">Instance execution time seconds and Invocations</td>
+      <td style="text-align:left">Instance up time minutes</td>
+      <td style="text-align:left">Instance execution time seconds</td>
       <td style="text-align:left">Control plane and VM instance hours</td>
       <td style="text-align:left">VM instance hours</td>
     </tr>
