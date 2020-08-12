@@ -5,6 +5,7 @@
 ### Clone
 
 ```text
+cd $HOME
 git clone https://github.com/saturnism/jvm-helloworld-by-example
 cd jvm-helloworld-by-example/helloworld-springboot-tomcat
 ```

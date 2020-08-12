@@ -7,6 +7,7 @@
 ### Clone
 
 ```bash
+cd $HOME
 git clone https://github.com/GoogleCloudPlatform/java-docs-samples
 cd java-docs-samples/functions/helloworld/helloworld
 ```
