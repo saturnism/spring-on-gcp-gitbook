@@ -44,7 +44,7 @@
 
 ## Deployment
 
-* [Docker](deployment/docker/README.md)
+* [Container](deployment/docker/README.md)
   * [Container Image](deployment/docker/container-image.md)
   * [Container Awareness](deployment/docker/container-awareness.md)
 * [Kubernetes](deployment/kubernetes/README.md)

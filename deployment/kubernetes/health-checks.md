@@ -34,6 +34,8 @@ cd jvm-helloworld-by-example/helloworld-springboot-tomcat
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-actuator</artifactId>
     </dependency>
+    
+    ...
   </dependencies>
   ...
 </project>
