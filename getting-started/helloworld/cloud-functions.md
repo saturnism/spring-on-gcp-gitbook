@@ -2,6 +2,10 @@
 
 [Cloud Function](https://cloud.google.com/functions/docs/) is a scalable pay as you go Functions-as-a-Service \(FaaS\) to run your code with zero server managements.
 
+Spring Cloud Functions has pre-GA support for Cloud Functions for Java 11. See [Spring Cloud Functions 3.1.0 Reference Documentation](https://docs.spring.io/spring-cloud-function/docs/3.1.0-M2/reference/html/gcp.html) for more details.
+
+This guide currently uses a non-Spring example for Cloud Functions.
+
 ## Getting Started
 
 ### Clone
