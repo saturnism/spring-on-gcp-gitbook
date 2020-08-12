@@ -73,9 +73,9 @@ Google Cloud Platform has a range of different runtime environments to run your 
     <tr>
       <td style="text-align:left"><b>Disk</b>
       </td>
-      <td style="text-align:left">Writable /tmp directory</td>
-      <td style="text-align:left">Writable /tmp directory</td>
-      <td style="text-align:left">Writable /tmp directory</td>
+      <td style="text-align:left">Writable <code>/tmp</code> directory</td>
+      <td style="text-align:left">Writable <code>/tmp</code> directory</td>
+      <td style="text-align:left">Writable <code>/tmp</code> directory</td>
       <td style="text-align:left">Attach PD/SSD</td>
       <td style="text-align:left">Attach PD/SSD</td>
     </tr>
