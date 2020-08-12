@@ -19,6 +19,16 @@ cd jvm-helloworld-by-example/helloworld-springboot-tomcat
 
 ### Containerize
 
+#### Enable API
+
+Enable Container Registry API to be able to push container images to the Container Registry.
+
+```bash
+gcloud services enable containerregistry.googleapis.com
+```
+
+#### Jib
+
 Use Jib to containerize the application:
 
 ```bash
@@ -32,20 +42,15 @@ PROJECT_ID=$(gcloud config get-value project)
 Learn different ways to containerize a Java application in the [Container Image](../../deployment/docker/container-image.md) section.
 {% endhint %}
 
-### Enable API
+### Create Cluster
+
+#### Enable API
 
 ```text
-# To use Compute Engine
 gcloud services enable compute.googleapis.com
-
-# To use Kubernetes Engine
-gcloud services enable container.googleapis.com
-
-# To store Container Images in Container Registry
-gcloud services enable containerregistry.googleapis.com
 ```
 
-### Create Cluster
+#### Create Cluster
 
 Create a [VPC-native Kubernetes Engine cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/alias-ips).
 
@@ -57,6 +62,8 @@ gcloud container clusters create helloworld-cluster \
   --network=default \
   --machine-type n1-standard-1
 ```
+
+#### Cluster Credentials
 
 Kubernetes credential is automatically retrieved and stored in your `$HOME/.kube/config` file. If you need to re-retrieve the credential:
 
