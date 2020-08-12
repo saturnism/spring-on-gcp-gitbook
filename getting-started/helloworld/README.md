@@ -33,6 +33,14 @@ Google Cloud Platform has a range of different runtime environments to run your 
       <td style="text-align:left">Anything, and Container Image</td>
     </tr>
     <tr>
+      <td style="text-align:left">Locality</td>
+      <td style="text-align:left">Regional</td>
+      <td style="text-align:left">Regional</td>
+      <td style="text-align:left">Regional</td>
+      <td style="text-align:left">Zonal/Regional</td>
+      <td style="text-align:left">Zonal/Regional</td>
+    </tr>
+    <tr>
       <td style="text-align:left">Billing Units</td>
       <td style="text-align:left">Instance execution time seconds and Invocations</td>
       <td style="text-align:left">Instance up time minutes</td>
