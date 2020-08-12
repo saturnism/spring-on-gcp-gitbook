@@ -8,6 +8,7 @@
 * [Cloud Shell](getting-started/cloud-shell.md)
 * [gcloud CLI](getting-started/gcloud-cli.md)
 * [Hello World!](getting-started/helloworld/README.md)
+  * [Cloud Shell](getting-started/helloworld/cloud-shell.md)
   * [App Engine](getting-started/helloworld/app-engine.md)
   * [Cloud Run](getting-started/helloworld/cloud-run.md)
   * [Kubernetes Engine](getting-started/helloworld/kubernetes-engine.md)
