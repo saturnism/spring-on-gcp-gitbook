@@ -92,9 +92,14 @@ If you have Docker installed locally, you can run the docker container locally t
 
 ```bash
 PROJECT_ID=$(gcloud config get-value project)
+
 docker pull gcr.io/${PROJECT_ID}/helloworld
 docker run -ti --rm -p 8080:8080 gcr.io/${PROJECT_ID}/helloworld
 ```
+
+{% hint style="info" %}
+The `-ti` flag means allocate a `TTY`, and expect interaction via `STDIN`. The `--rm` flag means delete the container completely upon exit.
+{% endhint %}
 
 ## Connect Locally
 
