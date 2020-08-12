@@ -45,6 +45,10 @@ gcloud compute instances create helloworld \
 gcloud compute scp target/helloworld.jar helloworld:
 ```
 
+{% hint style="info" %}
+If it was your first time connecting to the VM, it will automatically prompt you to generate a new SSH key.
+{% endhint %}
+
 ### SSH to VM
 
 ```bash
