@@ -14,11 +14,11 @@
   * [Kubernetes Engine](getting-started/helloworld/kubernetes-engine.md)
   * [Compute Engine](getting-started/helloworld/compute-engine.md)
   * [Cloud Functions](getting-started/helloworld/cloud-functions.md)
-* [Spring Cloud GCP](getting-started/spring-cloud-gcp.md)
 
 ## Application Development <a id="app-dev"></a>
 
 * [Development Tools](app-dev/development-tools.md)
+* [Spring Cloud GCP](app-dev/spring-cloud-gcp.md)
 * [Cloud Services](app-dev/cloud-services/README.md)
   * [Databases](app-dev/cloud-services/databases/README.md)
     * [Cloud SQL](app-dev/cloud-services/databases/cloud-sql.md)
