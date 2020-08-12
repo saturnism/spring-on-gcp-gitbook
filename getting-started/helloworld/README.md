@@ -135,7 +135,7 @@ Google Cloud Platform has a range of different runtime environments to run your 
 |  | Cloud Functions | App Engine | Cloud Run | Kubernetes Engine | Compute Engine |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | **Network Load Balancer** | No | No | No | Yes, with `Service` | Yes, with Network Load Balancer |
-| **HTTP Load Balancer** | Yes | Yes | Yes | Yes, with `Ingress` | Yes, with HTTP\(s\) Load Balancer |
+| **HTTP** | Yes | Yes | Yes | Yes, with `Ingress` | Yes, with HTTP\(s\) Load Balancer |
 | **HTTPs** | Yes | Yes | Yes | Yes, with `Ingress` | Yes, with HTTP\(s\) Load Balancer  |
 | **Custom Domain** | No | Yes | Yes | Yes, manual configuration | Yes, manual configuration |
 | **Managed SSL Certificate** | Yes | Yes | Yes | Yes, with `ManagedCertificate` | Yes, with HTTP\(s\) Load Balancer |
