@@ -60,6 +60,7 @@ Trigger the function with `curl`:
 
 ```bash
 URL=$(gcloud functions describe helloworld --format='value(httpsTrigger.url)')
+
 curl ${URL}
 ```
 
