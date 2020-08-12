@@ -6,6 +6,10 @@ description: >-
 
 # Kubernetes Cluster
 
+This section requires basic understanding of Docker and container images - make sure you do the tutorial in sequence.
+
+{% page-ref page="../docker/container-image.md" %}
+
 ## Enable API
 
 ```text

@@ -157,7 +157,7 @@ Memory is bot a compressible resource. If the application exceeds the Memory lim
 {% endhint %}
 
 {% hint style="info" %}
-For Java applications, read the [Container Image and OpenJDK](container-image.md#openjdk-version) documentation to make sure you are using a Container-Aware OpenJDK version to avoid unnecessary `OOMKilled` errors.
+For Java applications, read the [Container Awareness](../docker/container-awareness.md) section to make sure you are using a Container-Aware OpenJDK version to avoid unnecessary `OOMKilled` errors.
 {% endhint %}
 
 

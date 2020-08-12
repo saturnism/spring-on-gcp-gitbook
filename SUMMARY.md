@@ -48,7 +48,6 @@
   * [Container Awareness](deployment/docker/container-awareness.md)
 * [Kubernetes](deployment/kubernetes/README.md)
   * [Kubernetes Cluster](deployment/kubernetes/kubernetes-cluster.md)
-  * [Container Image](deployment/kubernetes/container-image.md)
   * [Deployment](deployment/kubernetes/deployment.md)
   * [Resource Allocation](deployment/kubernetes/resource.md)
   * [Service](deployment/kubernetes/service.md)
