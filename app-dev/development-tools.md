@@ -81,8 +81,6 @@ Automatically identifies Java exceptions and produce reports. Easily see new exc
 
 Collect system and application metrics, build dashboards, and setup alerts.  See [Metrics documentation](cloud-services/metrics.md).
 
-## Production Tools
-
 ### Cloud Debugger
 
 [Cloud Debugger](https://cloud.google.com/debugger/docs/setup/java) can debug your production application without halting the application. Cloud Debugger can capture application state as a Snapshot, and also able to add additional log messages without redeploying the code.
