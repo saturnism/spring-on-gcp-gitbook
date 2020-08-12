@@ -76,8 +76,15 @@ gcloud container clusters get-credentials helloworld-cluster
 
 ```bash
 PROJECT_ID=$(gcloud config get-value project)
+
 kubectl create deployment helloworld \
   --image=gcr.io/${PROJECT_ID}/helloworld
+```
+
+Check that the container is deployed:
+
+```bash
+kubectl get pods
 ```
 
 ### Expose
@@ -94,19 +101,28 @@ A Network \(L4\) Load Balancer is the easiest way to expose a single service for
 
 ### Connect
 
-Find the public load balancer IP address:
+Find the Load Balancer's External IP address:
 
 ```text
 kubectl get services helloworld
 ```
 
+Initially, it may display that the External IP is `<pending>`.
+
+```bash
+NAME         TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)          AGE
+helloworld   LoadBalancer   ...          <pending>     8080:32414/TCP   ...
+```
+
+Re-check until the External IP is assigned.
+
 Then connect with `curl`:
 
 ```bash
 EXTERNAL_IP=$(kubectl get svc helloworld \
-  -ojsonpath='{.status.loadBalancer.ingress[0].ip})
+  -ojsonpath='{.status.loadBalancer.ingress[0].ip}')
 
-curl http://${EXTERNAL_IP}
+curl http://${EXTERNAL_IP}:8080
 ```
 
 ## Learn More
