@@ -31,14 +31,15 @@ mvn function:run
 curl localhost:8080
 ```
 
-### Enable API
+### Deploy
+
+#### Enable API
 
 ```text
-# To use Cloud Functions
 gcloud services enable cloudfunctions.googleapis.com
 ```
 
-### Deploy
+#### Deploy
 
 ```bash
 gcloud functions deploy helloworld --trigger-http \
