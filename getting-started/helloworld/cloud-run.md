@@ -23,6 +23,12 @@ cd jvm-helloworld-by-example/helloworld-springboot-tomcat
 ./mvnw package
 ```
 
+### Enable Container Registry API
+
+```bash
+gcloud services enable containerregistry.googleapis.com
+```
+
 ### Containerize
 
 Use Jib to containerize the application:
@@ -38,25 +44,21 @@ PROJECT_ID=$(gcloud config get-value project)
 Learn different ways to containerize a Java application in the [Container Image](../../deployment/docker/container-image.md) section.
 {% endhint %}
 
-### Enable API
+### Enable Cloud Run API
 
 ```text
 # To use Cloud Run
 gcloud services enable run.googleapis.com
-
-# To store Container Images in Container Registry
-gcloud services enable containerregistry.googleapis.com
 ```
 
 ### Deploy
 
 ```bash
 PROJECT_ID=$(gcloud config get-value project)
+
 gcloud run deploy helloworld \
   --region=us-central1 \
   --platform=managed \
-  # Specify more memory if you used the Paketo buildpack earlier.
-  # --memory=1G \
   --allow-unauthenticated \
   --image=gcr.io/${PROJECT_ID}/helloworld
 ```
@@ -78,6 +80,7 @@ URL=$(gcloud run services describe helloworld \
   --region=us-central1 \
   --platform=managed \
   --format='value(status.address.url)')
+
 curl ${URL}
 ```
 
@@ -87,8 +90,9 @@ By default, Cloud Run will deploy with the smallest 1CPU 256MB instance. You can
 
 ```bash
 PROJECT_ID=$(gcloud config get-value project)
+
 gcloud run deploy helloworld --platform=managed --allow-unauthenticated \
-  --cpu=2 --memory=512M --set-env-vars="SPRING_PROFILES_ACTIVE=prod"
+  --cpu=2 --memory=512M --set-env-vars="SPRING_PROFILES_ACTIVE=prod" \
   --image=gcr.io/${PROJECT_ID}/helloworld
 ```
 
