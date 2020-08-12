@@ -23,13 +23,17 @@ cd jvm-helloworld-by-example/helloworld-springboot-tomcat
 ./mvnw package
 ```
 
-### Enable Container Registry API
+### Containerize
+
+#### Enable API
+
+Enable Container Registry API to be able to push container images to the Container Registry.
 
 ```bash
 gcloud services enable containerregistry.googleapis.com
 ```
 
-### Containerize
+#### Jib
 
 Use Jib to containerize the application:
 
@@ -44,14 +48,16 @@ PROJECT_ID=$(gcloud config get-value project)
 Learn different ways to containerize a Java application in the [Container Image](../../deployment/docker/container-image.md) section.
 {% endhint %}
 
-### Enable Cloud Run API
+### Deploy
+
+#### Enable API
 
 ```text
 # To use Cloud Run
 gcloud services enable run.googleapis.com
 ```
 
-### Deploy
+#### Deploy Container
 
 ```bash
 PROJECT_ID=$(gcloud config get-value project)
