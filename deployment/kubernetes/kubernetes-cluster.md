@@ -13,14 +13,8 @@ This section requires basic understanding of Docker and container images - make 
 ## Enable API
 
 ```text
-# To use Compute Engine
 gcloud services enable compute.googleapis.com
-
-# To use Kubernetes Engine
 gcloud services enable container.googleapis.com
-
-# To store Container Images in Container Registry
-gcloud services enable containerregistry.googleapis.com
 ```
 
 ## Create Cluster
