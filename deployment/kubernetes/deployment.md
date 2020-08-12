@@ -8,6 +8,10 @@ description: >-
 
 This section continues from the previous section - make sure you do the tutorial in sequence.
 
+{% page-ref page="../docker/container-image.md" %}
+
+{% page-ref page="kubernetes-cluster.md" %}
+
 ## Pod
 
 A Kubernetes Pod is a group of tightly coupled containers, tied together that must start, stop, and scale together. In many case a Pod is associated to only one container.  Multiple containers in a single pod can be useful when you have, for example, a container that runs the application, and another container that periodically polls logs/metrics from the application container.
