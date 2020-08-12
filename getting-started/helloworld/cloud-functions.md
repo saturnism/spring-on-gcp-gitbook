@@ -6,6 +6,8 @@ Spring Cloud Functions has pre-GA support for Cloud Functions for Java 11. See [
 
 This guide currently uses a non-Spring example for Cloud Functions.
 
+{% embed url="https://www.youtube.com/watch?v=UsYRKkibLPI" %}
+
 ## Getting Started
 
 ### Clone
