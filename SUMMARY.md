@@ -9,10 +9,10 @@
 * [gcloud CLI](getting-started/gcloud-cli.md)
 * [Hello World!](getting-started/helloworld/README.md)
   * [App Engine](getting-started/helloworld/app-engine.md)
-  * [Cloud Functions](getting-started/helloworld/cloud-functions.md)
   * [Cloud Run](getting-started/helloworld/cloud-run.md)
   * [Kubernetes Engine](getting-started/helloworld/kubernetes-engine.md)
   * [Compute Engine](getting-started/helloworld/compute-engine.md)
+  * [Cloud Functions](getting-started/helloworld/cloud-functions.md)
 * [Spring Cloud GCP](getting-started/spring-cloud-gcp.md)
 
 ## Application Development <a id="app-dev"></a>
