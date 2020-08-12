@@ -1,3 +1,9 @@
+---
+description: >-
+  Learn the intricate details of how JVM applications see container resources
+  and how it impacts heap, CPU, and threads.
+---
+
 # Container Awareness
 
 When you containerize a Java application, make sure you use a base JDK image that is container-aware \(CGroup aware\) so that the JDK can allocate memory and CPU counts properly.
