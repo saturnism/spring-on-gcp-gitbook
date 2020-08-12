@@ -73,13 +73,15 @@ java -jar helloworld.jar
 
 By default, most ports on the Compute Engine are firewalled off.  If you want to expose port `8080` in this case, you can first add a `tag` to the Compute Engine instance, and then add a firewall rule to allow inbound port `8080` traffic for any Compute Engine instance with a certain tag.
 
-Add a tag:
+From outside of the VM \(e.g., your computer, or Cloud Shell\):
+
+#### Add Tag
 
 ```text
 gcloud compute instances add-tags helloworld --tags=webapp
 ```
 
-Add Firewall rule:
+#### Add Firewall Rule
 
 ```bash
 gcloud compute firewall-rules create webapp-rule \
@@ -101,6 +103,7 @@ You can now connect to the external IP on port `8080` of the application:
 ```bash
 EXTERNAL_IP=$(gcloud compute instances describe helloworld \
   --format='value(networkInterfaces.accessConfigs[0].natIP)')
+
 curl http://${EXTERNAL_IP}:8080
 ```
 
