@@ -105,6 +105,7 @@ Then connect with `curl`:
 ```bash
 EXTERNAL_IP=$(kubectl get svc helloworld \
   -ojsonpath='{.status.loadBalancer.ingress[0].ip})
+
 curl http://${EXTERNAL_IP}
 ```
 
