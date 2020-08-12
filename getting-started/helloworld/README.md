@@ -128,3 +128,11 @@ Google Cloud Platform has a range of different runtime environments to run your 
 | **Custom Domain** | No | Yes | Yes | Yes, manual configuration | Yes, manual configuration |
 | **Managed SSL Certificate** | Yes | Yes | Yes | Yes, with `ManagedCertificate` | Yes, with HTTP\(s\) Load Balancer |
 
+## Networking
+
+|  | Cloud Functions | App Engine | Cloud Run | Kubernetes Engine | Compute Engine |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| Use VPC | Yes | Yes | Yes | Yes | Yes |
+| Expose on VPC Only | No | No | No | Yes | Yes |
+| Internal VPC Only Load Balancing | No | No | No | Yes | Yes |
+
