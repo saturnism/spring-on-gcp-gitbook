@@ -40,6 +40,10 @@ gcloud compute instances create helloworld \
 ```
 {% endhint %}
 
+{% hint style="info" %}
+See [Compute Engine Machine Types documentation](https://cloud.google.com/compute/docs/machine-types) for a list of Machine Types and the associated CPU/Memory resources.
+{% endhint %}
+
 ### Copy File to VM
 
 ```bash

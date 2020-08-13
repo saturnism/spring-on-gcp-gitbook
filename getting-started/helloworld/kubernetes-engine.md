@@ -65,6 +65,10 @@ gcloud container clusters create helloworld-cluster \
   --machine-type n1-standard-1
 ```
 
+{% hint style="info" %}
+See [Compute Engine Machine Types documentation](https://cloud.google.com/compute/docs/machine-types) for a list of Machine Types and the associated CPU/Memory resources.
+{% endhint %}
+
 #### Cluster Credentials
 
 Kubernetes credential is automatically retrieved and stored in your `$HOME/.kube/config` file. If you need to re-retrieve the credential:
