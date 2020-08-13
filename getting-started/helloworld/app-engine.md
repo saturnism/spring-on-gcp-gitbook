@@ -72,6 +72,10 @@ env_variables:
 ```
 {% endcode %}
 
+{% hint style="info" %}
+See [App Engine Standard Instance Classes documentation](https://cloud.google.com/appengine/docs/standard#instance_classes) for a list of Instance Classes and associated CPU/Memory resources.
+{% endhint %}
+
 Deploy the JAR file with the configuration:
 
 ```text
