@@ -171,7 +171,7 @@ CPU limit is a _compressible_ resource. If the application exceeds the CPU limit
 {% endhint %}
 
 {% hint style="danger" %}
-Memory is bot a compressible resource. If the application exceeds the Memory limit, then the container will be killed \(`OOMKilled`\) and restarted.
+Memory is not a compressible resource. If the application exceeds the Memory limit, then the container will be killed \(`OOMKilled`\) and restarted.
 {% endhint %}
 
 {% hint style="info" %}
