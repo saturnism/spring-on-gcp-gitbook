@@ -1,3 +1,7 @@
+---
+description: Use Cloud Shell to build and test applications for development purpose.
+---
+
 # Cloud Shell
 
 You can run and test a an application directly within Cloud Shell. Cloud Shell has many tools pre-installed, such OpenJDK, Maven, Gradle, and more. Cloud Shell is meant for development and not meant for production nor long running processes.

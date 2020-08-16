@@ -1,3 +1,7 @@
+---
+description: Deploy a simple HTTP function.
+---
+
 # Cloud Functions
 
 [Cloud Function](https://cloud.google.com/functions/docs/) is a scalable pay as you go Functions-as-a-Service \(FaaS\) to run your code with zero server managements.
