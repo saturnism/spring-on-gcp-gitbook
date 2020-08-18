@@ -52,11 +52,28 @@ You can configure [Jib Maven plugin](https://github.com/GoogleContainerTools/jib
 3. Build container with `pack`, and use `--publish` flag to push directly to the remote registry:
 
 ```bash
+# Paketo Buildpack
 PROJECT_ID=$(gcloud config get-value project)
-pack build --builder gcr.io/buildpacks/builder:v1 \
+pack build \
+  --builder gcr.io/paketo-buildpacks/builder:base \
+  --publish \
+  gcr.io/${PROJECT_ID}/helloworld
+
+# GCP Buildpack
+PROJECT_ID=$(gcloud config get-value project)
+pack build \
+  --builder gcr.io/buildpacks/builder:v1 \
   --publish \
   gcr.io/${PROJECT_ID}/helloworld
 ```
+
+{% hint style="info" %}
+Learn about [Paketo Buildpack](https://paketo.io/) and [GCP Buildpack](https://github.com/GoogleCloudPlatform/buildpacks).
+{% endhint %}
+
+{% hint style="danger" %}
+Paketo Buildpack will calculate the minimum memory needed to run the Spring Boot application. For a this Hello World example, the minimum is 1GB of RAM.
+{% endhint %}
 {% endtab %}
 
 {% tab title="Spring Boot 2.3" %}
