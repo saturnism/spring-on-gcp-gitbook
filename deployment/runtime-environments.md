@@ -143,6 +143,6 @@
 |  | Cloud Functions | App Engine | Cloud Run | Kubernetes Engine | Compute Engine |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | Use VPC | Yes | Yes | Yes | Yes | Yes |
-| Expose on VPC Only | No | No | No | Yes | Yes |
+| Expose on VPC Only | Yes | No | No | Yes | Yes |
 | Internal VPC Only Load Balancing | No | No | No | Yes | Yes |
 
