@@ -17,6 +17,14 @@ cd jvm-helloworld-by-example/helloworld-springboot-tomcat
 ./mvnw package
 ```
 
+## Enable API
+
+Enable Container Registry API to be able to push container images to the Container Registry.
+
+```bash
+gcloud services enable containerregistry.googleapis.com
+```
+
 ## Containerize
 
 Typically, tutorials teach you how to write a `Dockerfile` to containerize a Java application. A `Dockerfile` however can be error prone and it's hard to implement all the best practices. Rather than writing a `Dockerfile`, use tools such as Jib and Buildpacks to automatically create optimized container images.
