@@ -545,6 +545,10 @@ jdbc:sqlserver://localhost/databaseName=orders
 {% endtab %}
 {% endtabs %}
 
+#### Unix Socket Domain
+
+You can optionally configure Cloud SQL Proxy to expose not a TCP IP port, but using Unix Socket Domain instead, and configure the Cloud SQL Socket Factory to connect using the Unix Socket Domain. See [Connect External App documentation](https://cloud.google.com/sql/docs/mysql/connect-external-app#unix-sockets) for more details.
+
 ### VPC Private IP
 
 If your Cloud SQL instance is on [VPC and has a private IP](https://cloud.google.com/sql/docs/mysql/private-ip), and your application is running in the Cloud able to access the same VPC, then configure JDBC drivers normally connecting to the private IP address.
