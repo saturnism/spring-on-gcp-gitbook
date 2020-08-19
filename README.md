@@ -36,6 +36,20 @@ There is a lot of content on this site. Below are some recommended paths dependi
 
 {% page-ref page="getting-started/helloworld/cloud-functions.md" %}
 {% endtab %}
+
+{% tab title="App Development" %}
+{% page-ref page="app-dev/development-tools.md" %}
+
+{% page-ref page="app-dev/spring-cloud-gcp.md" %}
+
+{% page-ref page="app-dev/cloud-services/databases/cloud-sql.md" %}
+
+{% page-ref page="app-dev/cloud-services/messaging.md" %}
+
+{% page-ref page="app-dev/cloud-services/cache/memorystore-redis.md" %}
+
+{% page-ref page="app-dev/cloud-services/trace.md" %}
+{% endtab %}
 {% endtabs %}
 
 {% hint style="info" %}
