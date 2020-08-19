@@ -4,6 +4,42 @@ This is a community documentation that captures everything [Ray Tsang \(@saturni
 
 Instead of writing individual blogs on each topic, the content is organized and intended to be kept up to date. Feel free to [contribute via GitHub](https://github.com/saturnism/spring-on-gcp-gitbook), and/or [file topic requests](https://github.com/saturnism/spring-on-gcp-gitbook/issues)! If you'd like to discuss more in detail, you can [schedule an office hour](http://saturnism.me/office-hour/).
 
+There is a lot of content on this site. Below are some recommended paths depending on what you are looking for.
+
+{% tabs %}
+{% tab title="New to Google Cloud" %}
+{% page-ref page="getting-started/google-cloud-platform.md" %}
+
+{% page-ref page="getting-started/cloud-shell.md" %}
+
+{% page-ref page="getting-started/gcloud-cli.md" %}
+
+{% page-ref page="getting-started/helloworld/" %}
+{% endtab %}
+
+{% tab title="Containers" %}
+{% page-ref page="deployment/docker/container-image.md" %}
+
+{% page-ref page="deployment/docker/container-awareness.md" %}
+
+{% page-ref page="getting-started/helloworld/cloud-run.md" %}
+
+{% page-ref page="getting-started/helloworld/kubernetes-engine.md" %}
+
+{% page-ref page="deployment/kubernetes/" %}
+{% endtab %}
+
+{% tab title="Serverless" %}
+{% page-ref page="getting-started/helloworld/app-engine.md" %}
+
+{% page-ref page="getting-started/helloworld/cloud-run.md" %}
+
+{% page-ref page="getting-started/helloworld/cloud-functions.md" %}
+
+​
+{% endtab %}
+{% endtabs %}
+
 {% hint style="info" %}
 This is not official Google Cloud documentation. Always refer to official documentation for current pricing, features, limitations, etc.
 {% endhint %}
