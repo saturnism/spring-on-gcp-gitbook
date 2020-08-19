@@ -64,7 +64,7 @@
       </td>
       <td style="text-align:left">Up to 2GB</td>
       <td style="text-align:left">Up to 2GB</td>
-      <td style="text-align:left">Up to 2GB</td>
+      <td style="text-align:left">Up to 4GB</td>
       <td style="text-align:left">Up to 11TB per node.</td>
       <td style="text-align:left">Up to 11TB</td>
     </tr>
