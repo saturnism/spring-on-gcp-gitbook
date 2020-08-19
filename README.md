@@ -35,8 +35,6 @@ There is a lot of content on this site. Below are some recommended paths dependi
 {% page-ref page="getting-started/helloworld/cloud-run.md" %}
 
 {% page-ref page="getting-started/helloworld/cloud-functions.md" %}
-
-​
 {% endtab %}
 {% endtabs %}
 
