@@ -134,7 +134,6 @@ Add the Spring Data Spanner starter:
 
 {% tab title="Gradle" %}
 ```bash
-
 compile group: 'org.springframework.cloud', name: 'spring-cloud-gcp-starter-data-spanner'
 ```
 {% endtab %}
@@ -157,35 +156,35 @@ Notice that there is no explicit configuration for username/password. Cloud Span
 
 ### ORM
 
-Spring Data Cloud Spanner allows you to map domain POJOs to Cloud Spanner tables via annotations. Read the [Spring Data Spanner reference documentation](https://cloud.spring.io/spring-cloud-static/spring-cloud-gcp/current/reference/html/#object-mapping) for details  
+Spring Data Cloud Spanner allows you to map domain POJOs to Cloud Spanner tables via annotations. Read the [Spring Data Spanner reference documentation](https://cloud.spring.io/spring-cloud-static/spring-cloud-gcp/current/reference/html/#object-mapping) for details
 
 ```java
 @Table(name="orders")
 class Order {
-	@PrimaryKey
-	@Column(name="order_id")
+    @PrimaryKey
+    @Column(name="order_id")
   private String id;
 
-	private String description;
+    private String description;
 
-	private LocalDateTime timestamp;
+    private LocalDateTime timestamp;
 
-	@Interleaved
-	private List<OrderItem> items;
+    @Interleaved
+    private List<OrderItem> items;
 
   // Getter and Setters...
 }  
 
 @Table(name="order_items")
 class OrderItem {
-	@PrimaryKey(keyOrder = 1)
-	private String orderId;
+    @PrimaryKey(keyOrder = 1)
+    private String orderId;
 
-	@PrimaryKey(keyOrder = 2)
-	private String orderItemId;
+    @PrimaryKey(keyOrder = 2)
+    private String orderItemId;
 
-	private String description;
-	private Long quantity;
+    private String description;
+    private Long quantity;
 
   // Getter and Setter...
 }
@@ -219,32 +218,32 @@ In a business logic service, you can utilize the repositories:
 ```java
 @Service
 class OrderService {
-	private final OrderRepository orderRepository;
+    private final OrderRepository orderRepository;
 
-	OrderService(OrderRepository orderRepository,
-			OrderItemRepository orderItemRepository) {
-		this.orderRepository = orderRepository;
-	}
+    OrderService(OrderRepository orderRepository,
+            OrderItemRepository orderItemRepository) {
+        this.orderRepository = orderRepository;
+    }
 
-	@Transactional
-	Order createOrder(Order order) {
-	  // Use UUID String representation for the ID
-		order.setId(UUID.randomUUID().toString());
-		
-		// Set the creation time
-		order.setCreationTimestamp(LocalDateTime.now());
+    @Transactional
+    Order createOrder(Order order) {
+      // Use UUID String representation for the ID
+        order.setId(UUID.randomUUID().toString());
+
+        // Set the creation time
+        order.setCreationTimestamp(LocalDateTime.now());
 
     // Set the parent Order ID and children ID for each item.
-		if (order.getItems() != null) {
-			order.getItems().stream().forEach(orderItem -> {
-				orderItem.setOrderId(order.getId());
-				orderItem.setOrderItemId(UUID.randomUUID().toString());
-			});
-		}
-		
-		// Children are saved in cascade.
-		return orderRepository.save(order);
-	}
+        if (order.getItems() != null) {
+            order.getItems().stream().forEach(orderItem -> {
+                orderItem.setOrderId(order.getId());
+                orderItem.setOrderItemId(UUID.randomUUID().toString());
+            });
+        }
+
+        // Children are saved in cascade.
+        return orderRepository.save(order);
+    }
 }
 ```
 
@@ -330,7 +329,7 @@ Use Spring Boot JDBC Starter to use JDBC Template:
 {% endtab %}
 
 {% tab title="Gradle" %}
-```
+```text
 compile group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc'
 ```
 {% endtab %}
@@ -382,7 +381,7 @@ Add both the Cloud Spanner JDBC driver and Cloud Spanner Hibernate Dialect:
 {% endtab %}
 
 {% tab title="Gradle" %}
-```
+```text
 compile group: 'com.google.cloud', name: 'google-cloud-spanner-jdbc'
 compile group: 'com.google.cloud', name: 'google-cloud-spanner-hibernate-dialect'
 ```
@@ -402,7 +401,7 @@ Add Spring Data JPA starter:
 {% endtab %}
 
 {% tab title="Gradle" %}
-```
+```text
 compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa'
 ```
 {% endtab %}
@@ -439,17 +438,17 @@ In Cloud Spanner, parent-children relationship is modeled as a composite key. Wi
 @Entity
 @Table(name="orders")
 class Order {
-	@Id
-	@Column(name="order_id")
+    @Id
+    @Column(name="order_id")
   private String id;
 
-	private String description;
+    private String description;
 
-	@Column(name="creation_timestamp")
-	private LocalDateTime creationTimestamp;
+    @Column(name="creation_timestamp")
+    private LocalDateTime creationTimestamp;
 
-	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
-	private List<OrderItem> items;
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    private List<OrderItem> items;
 
   // Getter and Setter ...
 }
@@ -457,29 +456,29 @@ class Order {
 @Embeddable
 class OrderItemId implements Serializable {
   @Column(name="order_id")
-	private String orderId;
+    private String orderId;
 
-	@Column(name="order_item_id")
-	private String orderItemId;
-	
-	// Getter and Setter ...
-	// Hashcode and Equals ...
+    @Column(name="order_item_id")
+    private String orderItemId;
+
+    // Getter and Setter ...
+    // Hashcode and Equals ...
 }
 
 @Entity
 @Table(name="order_items")
 class OrderItem {
-	@EmbeddedId
-	private OrderItemId orderItemId;
+    @EmbeddedId
+    private OrderItemId orderItemId;
 
-	private String description;
-	private Long quantity;
+    private String description;
+    private Long quantity;
 
-	@ManyToOne
+    @ManyToOne
   @JoinColumn(name="order_id", insertable = false, updatable = false)
-	private Order order;
-	
-	// Getter and Setter ...
+    private Order order;
+
+    // Getter and Setter ...
 }
 ```
 

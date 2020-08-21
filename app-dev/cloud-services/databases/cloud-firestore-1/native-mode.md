@@ -47,7 +47,6 @@ Add the Spring Data Firestore starter:
 
 {% tab title="Gradle" %}
 ```bash
-
 compile group: 'org.springframework.cloud', name: 'spring-cloud-gcp-starter-data-firestore'
 ```
 {% endtab %}
@@ -68,20 +67,20 @@ Spring Data Cloud Firestore allows you to map domain POJOs to Datastore document
 ```java
 @Document
 class Order {
-	@DocumentId
-	private String id;
-	private String description;
-	private LocalDateTime timestamp;
-	private List<OrderItem> items;
-	
-	// Getters and setters ...
+    @DocumentId
+    private String id;
+    private String description;
+    private LocalDateTime timestamp;
+    private List<OrderItem> items;
+
+    // Getters and setters ...
 }
 
 class OrderItem {
-	private String description;
-	private Long quantity;
-	
-	// Getters and setters ...
+    private String description;
+    private Long quantity;
+
+    // Getters and setters ...
 }
 ```
 

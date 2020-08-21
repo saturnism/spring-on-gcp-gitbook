@@ -82,7 +82,6 @@ Add the Spring Cloud GCP Trace starter:
 
 {% tab title="Gradle" %}
 ```bash
-
 compile group: 'org.springframework.cloud', name: 'spring-cloud-gcp-starter-logging'
 ```
 {% endtab %}
@@ -229,7 +228,7 @@ In the Cloud Trace console, check **Show Logs**, then you can then see the logs 
 
 ## Other Loggers
 
-It's highly recommended that you use the default logger \(Logback\) with Spring Boot, to take advantage of Spring Cloud GCP features.  If you do use other Loggers, you may be able to configure logging to API with different appenders/handlers.
+It's highly recommended that you use the default logger \(Logback\) with Spring Boot, to take advantage of Spring Cloud GCP features. If you do use other Loggers, you may be able to configure logging to API with different appenders/handlers.
 
 #### Java Logging API \(JUL\)
 
@@ -237,7 +236,7 @@ See [Cloud Logging handler for Java Logging API](https://cloud.google.com/loggin
 
 #### Apache Commons Logging \(JCL\)
 
-There is no ready-to-use appender to Cloud Logging. But you can [bridge it to Slf4J](http://www.slf4j.org/legacy.html), or [bridge it to Java Logging API](http://commons.apache.org/proper/commons-logging/apidocs/org/apache/commons/logging/impl/Jdk14Logger.html). 
+There is no ready-to-use appender to Cloud Logging. But you can [bridge it to Slf4J](http://www.slf4j.org/legacy.html), or [bridge it to Java Logging API](http://commons.apache.org/proper/commons-logging/apidocs/org/apache/commons/logging/impl/Jdk14Logger.html).
 
 #### Log4J 2
 

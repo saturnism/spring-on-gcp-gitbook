@@ -31,7 +31,7 @@ gcloud secrets delete order-db-password
 
 ### Assign IAM Permission
 
-You can finely control CRUD permissions for an account \(user account, service account, a Google Group\) to a secret.  See the [Secret Manager IAM access control](https://cloud.google.com/secret-manager/docs/access-control) for more information. 
+You can finely control CRUD permissions for an account \(user account, service account, a Google Group\) to a secret. See the [Secret Manager IAM access control](https://cloud.google.com/secret-manager/docs/access-control) for more information.
 
 ```bash
 gcloud secrets add-iam-policy-binding --help
@@ -57,7 +57,6 @@ Add the Spring Cloud GCP Secret Manager starter:
 
 {% tab title="Gradle" %}
 ```bash
-
 compile group: 'org.springframework.cloud', name: 'spring-cloud-gcp-starter-secretmanager'
 ```
 {% endtab %}

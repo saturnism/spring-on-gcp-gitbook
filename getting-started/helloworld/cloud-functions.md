@@ -10,7 +10,7 @@ Spring Cloud Functions has pre-GA support for Cloud Functions for Java 11. See [
 
 This guide currently uses a non-Spring example for Cloud Functions.
 
-{% embed url="https://www.youtube.com/watch?v=UsYRKkibLPI" %}
+{% embed url="https://www.youtube.com/watch?v=UsYRKkibLPI" caption="" %}
 
 ## Getting Started
 
@@ -92,10 +92,4 @@ gcloud functions deploy helloworld --trigger-http \
 
 * [Cloud Functions Java Runtime documentation](https://cloud.google.com/functions/docs/concepts/java-runtime)
 * [Framework support](https://cloud.google.com/functions/docs/concepts/java-frameworks) for [Spring Cloud Functions](https://cloud.spring.io/spring-cloud-static/spring-cloud-function/3.0.7.RELEASE/reference/html/gcp.html), [Micronaut](https://micronaut-projects.github.io/micronaut-gcp/2.0.x/guide/#cloudFunction), [Quarkus](https://quarkus.io/guides/gcp-functions)
-
-
-
-
-
-
 

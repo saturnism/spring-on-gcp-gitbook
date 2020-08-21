@@ -48,7 +48,6 @@ Add the Spring Data Datastore starter:
 
 {% tab title="Gradle" %}
 ```bash
-
 compile group: 'org.springframework.cloud', name: 'spring-cloud-gcp-starter-data-datastore'
 ```
 {% endtab %}
@@ -64,26 +63,26 @@ Notice that there is no explicit configuration for username/password. Cloud Fire
 
 ### ORM
 
-Spring Data Cloud Datastore allows you to map domain POJOs to Datastore documents via annotations. Read the [Spring Data Datastore reference documentation](https://cloud.spring.io/spring-cloud-static/spring-cloud-gcp/current/reference/html/#object-mapping-2) for details  
+Spring Data Cloud Datastore allows you to map domain POJOs to Datastore documents via annotations. Read the [Spring Data Datastore reference documentation](https://cloud.spring.io/spring-cloud-static/spring-cloud-gcp/current/reference/html/#object-mapping-2) for details
 
 ```java
 @Entity
 class Order {
-	@Id
-	private Long id;
-	private String description;
-	private LocalDateTime timestamp;
-	private List<OrderItem> items;
-	
-	// Getters and setters ...
+    @Id
+    private Long id;
+    private String description;
+    private LocalDateTime timestamp;
+    private List<OrderItem> items;
+
+    // Getters and setters ...
 }
 
 @Entity
 class OrderItem {
-	private String description;
-	private Long quantity;
-	
-	// Getters and setters ...
+    private String description;
+    private Long quantity;
+
+    // Getters and setters ...
 }
 ```
 
@@ -108,20 +107,20 @@ In a business logic service, you can utilize the repositories:
 ```java
 @Service
 class OrderService {
-	private final OrderRepository orderRepository;
+    private final OrderRepository orderRepository;
 
-	OrderService(OrderRepository orderRepository) {
-		this.orderRepository = orderRepository;
-	}
+    OrderService(OrderRepository orderRepository) {
+        this.orderRepository = orderRepository;
+    }
 
-	@Transactional
-	Order createOrder(Order order) {
-		// Set the creation time
-		order.setTimestamp(LocalDateTime.now());
+    @Transactional
+    Order createOrder(Order order) {
+        // Set the creation time
+        order.setTimestamp(LocalDateTime.now());
 
-		// Children are saved in cascade.
-		return orderRepository.save(order);
-	}
+        // Children are saved in cascade.
+        return orderRepository.save(order);
+    }
 }
 ```
 

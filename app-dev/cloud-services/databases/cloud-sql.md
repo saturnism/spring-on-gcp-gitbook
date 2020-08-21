@@ -291,7 +291,7 @@ gcloud sql instances describe sqlserver-instance \
 
 ## JDBC
 
-There are different ways to connect to a Cloud SQL instance.  All methods will configure a JDBC URL to allow you to use the corresponding JDBC Driver, and subsequently, JPA / Hibernate and Spring Data.
+There are different ways to connect to a Cloud SQL instance. All methods will configure a JDBC URL to allow you to use the corresponding JDBC Driver, and subsequently, JPA / Hibernate and Spring Data.
 
 | Method | MySQL | PostgreSQL | SQL Server | Considerations |
 | :--- | :--- | :--- | :--- | :--- |
@@ -333,7 +333,6 @@ Gradle:
 dependencies {
     compile group: 'org.springframework.cloud', name: 'spring-cloud-gcp-starter-sql-mysql'
 }
-
 ```
 {% endcode %}
 {% endtab %}

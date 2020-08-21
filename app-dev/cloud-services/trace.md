@@ -30,7 +30,6 @@ Add the Spring Cloud GCP Trace starter:
 
 {% tab title="Gradle" %}
 ```bash
-
 compile group: 'org.springframework.cloud', name: 'spring-cloud-gcp-starter-trace'
 ```
 {% endtab %}
@@ -38,7 +37,7 @@ compile group: 'org.springframework.cloud', name: 'spring-cloud-gcp-starter-trac
 
 ### Configuration
 
-By default, Spring Cloud Sleuth samples only 10% of the requests.  I.e., 1 in 10 requests may have traces propagated to the trace server \(Cloud Trace\). In a non-production environment, you may want to see all of the trace. You can adjust the sampling rate using Spring Cloud Sleuth's properties:
+By default, Spring Cloud Sleuth samples only 10% of the requests. I.e., 1 in 10 requests may have traces propagated to the trace server \(Cloud Trace\). In a non-production environment, you may want to see all of the trace. You can adjust the sampling rate using Spring Cloud Sleuth's properties:
 
 {% code title="application.properties" %}
 ```text
@@ -63,11 +62,11 @@ Spring Cloud Sleuth will automatically trace incoming requests from WebMVC, or W
 @RestController
 class OrderController {
   private final OrderRepository orderRepository;
-  
+
   OrderController(OrderRepository orderService) {
     this.orderRepository = orderRepository;
   }
-  
+
   @GetMapping("/order/{orderId}")
   public Order getOrder(@PathParam String orderId) {
     return orderRepository.findById(orderId);
@@ -87,21 +86,19 @@ Spring Cloud Sleuth will automatically trace incoming messages and handlers when
 
 If there is a piece of code/method that you want to break out into it's own span, you can use Spring Cloud Sleuth's `@NewSpan` annotation. See [Spring Cloud Sleuth's Creating New Span documentation](https://docs.spring.io/spring-cloud-sleuth/docs/2.2.x-SNAPSHOT/reference/html/#creating-new-spans).
 
-
-
 ```java
 @Service
 class OrderService {
-	private final OrderRepository orderRepository;
+    private final OrderRepository orderRepository;
 
-	...
+    ...
 
   @NewSpan
-	@Transactional
-	Order createOrder(Order order) {
-	  ...
-		return orderRepository.save(order);
-	}
+    @Transactional
+    Order createOrder(Order order) {
+      ...
+        return orderRepository.save(order);
+    }
 }
 ```
 
@@ -109,20 +106,18 @@ class OrderService {
 
 You can associate additional data to a Span \(a tag\) via annotation. See [Spring Cloud Sleuth's Continuing Span documentation](https://docs.spring.io/spring-cloud-sleuth/docs/2.2.x-SNAPSHOT/reference/html/#continuing-spans-2).
 
-
-
 ```java
 @Service
 class OrderService {
-	private final OrderRepository orderRepository;
+    private final OrderRepository orderRepository;
 
   ...
 
   @NewSpan
-	@Transactional
-	Order getOrder(@SpanTag("orderId") String id) {
-		return orderRepository.findById(id);
-	}
+    @Transactional
+    Order getOrder(@SpanTag("orderId") String id) {
+        return orderRepository.findById(id);
+    }
 }
 ```
 

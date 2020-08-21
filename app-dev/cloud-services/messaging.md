@@ -2,7 +2,7 @@
 
 ## Cloud Pub/Sub
 
-[Cloud Pub/Sub](https://cloud.google.com/pubsub/docs/) is a managed publish/subscribe service, where you can send messages to a topic, and subscribe via push, pull, or streaming pull.  A single Cloud Pub/Sub Topic can be associated with one or more Subscriptions. Each Subscription can have one or more subscribers. Cloud Pub/Sub delivers messages with guaranteed at-least-once delivery, and there is no ordering guarantee.
+[Cloud Pub/Sub](https://cloud.google.com/pubsub/docs/) is a managed publish/subscribe service, where you can send messages to a topic, and subscribe via push, pull, or streaming pull. A single Cloud Pub/Sub Topic can be associated with one or more Subscriptions. Each Subscription can have one or more subscribers. Cloud Pub/Sub delivers messages with guaranteed at-least-once delivery, and there is no ordering guarantee.
 
 ### Enable API
 
@@ -55,7 +55,6 @@ Add the Spring Cloud GCP Pub/Sub starter:
 
 {% tab title="Gradle" %}
 ```bash
-
 compile group: 'org.springframework.cloud', name: 'spring-cloud-gcp-starter-pubsub'
 ```
 {% endtab %}
@@ -73,7 +72,7 @@ Notice that there is no explicit configuration for username/password. Cloud Pub/
 
 #### JSON Serialization
 
-You need to produce a  `PubSubMessageConverter` bean in order for Spring Cloud GCP Pub/Sub to automatically serialize a POJO into JSON payload, 
+You need to produce a `PubSubMessageConverter` bean in order for Spring Cloud GCP Pub/Sub to automatically serialize a POJO into JSON payload,
 
 ```java
 @Bean
@@ -84,7 +83,7 @@ public PubSubMessageConverter pubSubMessageConverter() {
 
 #### Non-Web Applications
 
-In a web application, the Java process will stay alive until it's explicitly killed. If your Pub/Sub message subscriber does not use a Web starter \(Web or Webflux\), then the application may exit as soon as it initializes.  When you need the Pub/Sub subscribers to stay alive without exiting immediately, you must create a bean `ThreadPoolTaskScheduler` named `pubsubSubscriberThreadPool`. 
+In a web application, the Java process will stay alive until it's explicitly killed. If your Pub/Sub message subscriber does not use a Web starter \(Web or Webflux\), then the application may exit as soon as it initializes. When you need the Pub/Sub subscribers to stay alive without exiting immediately, you must create a bean `ThreadPoolTaskScheduler` named `pubsubSubscriberThreadPool`.
 
 ```java
 @Bean
@@ -149,7 +148,7 @@ ApplicationRunner subscribeRunner(PubSubSubscriberTemplate subscriberTemplate) {
 ```
 
 {% hint style="warning" %}
-Streaming pull currently does not support back-pressure  well. If you have many small messages, but each message takes a long time to process.
+Streaming pull currently does not support back-pressure well. If you have many small messages, but each message takes a long time to process.
 {% endhint %}
 
 ### Reactive Stream
@@ -207,7 +206,7 @@ You can then create a new message processor and binding a method to the input ch
 ```java
 public class OrderProcessor {
   private static final Logger logger = LoggerFactory.getLogger(OrderProcessor.class);
-  
+
   @ServiceActivator(inputChannel = "orderRequestInputChannel")
   void process(@Payload Order order) {
     logger.info(order.getId());
@@ -300,7 +299,7 @@ A Spring Cloud Stream consumer to consume messages is simply a Java `Consumer`.
 public Consumer<Order> processOrder() {
   return order -> {
     logger.info(order.getId());
-	};
+    };
 };
 ```
 
@@ -327,12 +326,11 @@ If your consumer need to also produce a message to another topic, you can implem
 ```java
 @Bean
 public Function<Order, String> processOrder() {
-	return order -> {
-	  logger.info(order.getId());
-	  return order.getId();
-	};
+    return order -> {
+      logger.info(order.getId());
+      return order.getId();
+    };
 };
-
 ```
 
 #### Binding
@@ -357,23 +355,23 @@ If you need to continuously produce messages, then you can implement `Supplier`.
 ```java
 @Bean
 Supplier<Flux<Order>> ordersToProcess() {
-	return () -> Flux.from(e -> {
-		while (true) {
-			try {
-				Order order = new Order();
-				order.setId(UUID.randomUUID().toString());
-				e.onNext(order);
-				Thread.sleep(1000L);
-			} catch (InterruptedException interruptedException) {
-			}
-	  }
-	});
+    return () -> Flux.from(e -> {
+        while (true) {
+            try {
+                Order order = new Order();
+                order.setId(UUID.randomUUID().toString());
+                e.onNext(order);
+                Thread.sleep(1000L);
+            } catch (InterruptedException interruptedException) {
+            }
+      }
+    });
 }
 ```
 
 #### Binding
 
-The output of the supplier can be sent to the  destination/topic.
+The output of the supplier can be sent to the destination/topic.
 
 ```text
 spring.cloud.stream.bindings.ordersToProcess-out-0.destination=order-processed
