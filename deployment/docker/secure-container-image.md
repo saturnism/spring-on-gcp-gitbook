@@ -17,7 +17,15 @@ Do not copy secrets and/or credentials into a container image \(e.g., do not cop
 
 Many base images comes with all the command line utilities from a typical Linux distribution \(e.g., a shell, package manager, etc\). These container images may allow you \(or an attacker!\) to get into a shell, and install additional tools. To reduce the attack surface, consider using a minimal base image that has the least attack surface \(but also harder to debug with\).
 
-For Java applications, [Distroless](https://github.com/GoogleContainerTools/distroless/blob/master/java/README.md) is a good choice, and it's the default when building with Jib.
+{% tabs %}
+{% tab title="Jib" %}
+Jib uses the [Distroless](https://github.com/GoogleContainerTools/distroless/blob/master/java/README.md) base image by default.
+{% endtab %}
+
+{% tab title="Buildpacks" %}
+Buildpack's runtime image ultimately do not use Distroless. Paketo, for example, executed shell script to calculate memory needs, and thus Shell is needed. There is no easy way to switch out the base image when using a Buildpack. You may need to create your own to change the base image.
+{% endtab %}
+{% endtabs %}
 
 ## Non-Root User
 
