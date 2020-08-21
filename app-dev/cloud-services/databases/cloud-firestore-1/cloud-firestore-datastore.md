@@ -18,7 +18,7 @@ Because Cloud Firestore is a NoSQL database, you do not need to explicitly creat
 
 ## Spring Data Datastore
 
-The easiest way to access Datastore is using Spring Cloud GCP's [Spring Data Datastore starter](https://cloud.spring.io/spring-cloud-static/spring-cloud-gcp/1.2.2.RELEASE/reference/html/#spring-data-cloud-datastore). This starter provides full Spring Data support for Datastore while implementing idiomatic access patterns.
+The easiest way to access Datastore is using Spring Cloud GCP's [Spring Data Datastore starter](https://cloud.spring.io/spring-cloud-static/spring-cloud-gcp/current/reference/html/#spring-data-cloud-datastore). This starter provides full Spring Data support for Datastore while implementing idiomatic access patterns.
 
 | Spring Data Feature | Supported |
 | :--- | :--- |
@@ -64,7 +64,7 @@ Notice that there is no explicit configuration for username/password. Cloud Fire
 
 ### ORM
 
-Spring Data Cloud Datastore allows you to map domain POJOs to Datastore documents via annotations. Read the [Spring Data Datastore reference documentation](https://cloud.spring.io/spring-cloud-static/spring-cloud-gcp/1.2.2.RELEASE/reference/html/#object-mapping-2) for details  
+Spring Data Cloud Datastore allows you to map domain POJOs to Datastore documents via annotations. Read the [Spring Data Datastore reference documentation](https://cloud.spring.io/spring-cloud-static/spring-cloud-gcp/current/reference/html/#object-mapping-2) for details  
 
 ```java
 @Entity
@@ -90,7 +90,7 @@ class OrderItem {
 Because Datastore is a document-oriented NoSQL database, you can have nested structure, you can establish parent-children relationships without complicated foreign keys.
 
 {% hint style="info" %}
-Read the [Spring Data Datastore reference documentation](https://cloud.spring.io/spring-cloud-static/spring-cloud-gcp/1.2.2.RELEASE/reference/html/#object-mapping-2) for more details.
+Read the [Spring Data Datastore reference documentation](https://cloud.spring.io/spring-cloud-static/spring-cloud-gcp/current/reference/html/#object-mapping-2) for more details.
 {% endhint %}
 
 ### Repository

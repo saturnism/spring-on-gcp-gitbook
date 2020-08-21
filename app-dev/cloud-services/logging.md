@@ -64,7 +64,7 @@ In Cloud Logging dashboard, you can see graphs with segmentation on the Severity
 
 ## Logback
 
-Spring Boot uses [Slf4J](http://www.slf4j.org/) logging API and [Logback](http://logback.qos.ch/) logger by default. You can user [Spring Cloud GCP's Logging Starter](https://cloud.spring.io/spring-cloud-static/spring-cloud-gcp/1.2.3.RELEASE/reference/html/#stackdriver-logging) to use pre-configured Logback appenders to produce Structured JSON logs, or send the log via the Cloud Logging API.
+Spring Boot uses [Slf4J](http://www.slf4j.org/) logging API and [Logback](http://logback.qos.ch/) logger by default. You can user [Spring Cloud GCP's Logging Starter](https://cloud.spring.io/spring-cloud-static/spring-cloud-gcp/current/reference/html/#stackdriver-logging) to use pre-configured Logback appenders to produce Structured JSON logs, or send the log via the Cloud Logging API.
 
 ### Dependency
 

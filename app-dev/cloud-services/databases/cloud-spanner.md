@@ -104,7 +104,7 @@ gcloud spanner databases ddl update orders \
 
 ## Spring Data Spanner Starter
 
-The easiest way to access Cloud Spanner is using Spring Cloud GCP's [Spring Data Spanner starter](https://cloud.spring.io/spring-cloud-static/spring-cloud-gcp/1.2.2.RELEASE/reference/html/#spring-data-cloud-spanner). This starter provides full Spring Data support for Cloud Spanner while implementing idiomatic access patterns.
+The easiest way to access Cloud Spanner is using Spring Cloud GCP's [Spring Data Spanner starter](https://cloud.spring.io/spring-cloud-static/spring-cloud-gcp/current/reference/html/#spring-data-cloud-spanner). This starter provides full Spring Data support for Cloud Spanner while implementing idiomatic access patterns.
 
 | Spring Data Feature | Supported |
 | :--- | :--- |
@@ -157,7 +157,7 @@ Notice that there is no explicit configuration for username/password. Cloud Span
 
 ### ORM
 
-Spring Data Cloud Spanner allows you to map domain POJOs to Cloud Spanner tables via annotations. Read the [Spring Data Spanner reference documentation](https://cloud.spring.io/spring-cloud-static/spring-cloud-gcp/1.2.2.RELEASE/reference/html/#object-mapping) for details  
+Spring Data Cloud Spanner allows you to map domain POJOs to Cloud Spanner tables via annotations. Read the [Spring Data Spanner reference documentation](https://cloud.spring.io/spring-cloud-static/spring-cloud-gcp/current/reference/html/#object-mapping) for details  
 
 ```java
 @Table(name="orders")
@@ -192,7 +192,7 @@ class OrderItem {
 ```
 
 {% hint style="info" %}
-Read the [Spring Data Spanner reference documentation](https://cloud.spring.io/spring-cloud-static/spring-cloud-gcp/1.2.2.RELEASE/reference/html/#object-mapping) for more details.
+Read the [Spring Data Spanner reference documentation](https://cloud.spring.io/spring-cloud-static/spring-cloud-gcp/current/reference/html/#object-mapping) for more details.
 {% endhint %}
 
 ### Repository

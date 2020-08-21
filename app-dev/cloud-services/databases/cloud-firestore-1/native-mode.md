@@ -16,7 +16,7 @@ Because Cloud Firestore is a NoSQL database, you do not need to explicitly creat
 
 ## Spring Data Firestore
 
-The easiest way to access Cloud Firestore is using Spring Cloud GCP's [Spring Data Firestore starter](https://cloud.spring.io/spring-cloud-static/spring-cloud-gcp/1.2.2.RELEASE/reference/html/#spring-data-reactive-repositories-for-cloud-firestore). This starter provides full Spring Data support for Cloud Firestore while implementing idiomatic access patterns.
+The easiest way to access Cloud Firestore is using Spring Cloud GCP's [Spring Data Firestore starter](https://cloud.spring.io/spring-cloud-static/spring-cloud-gcp/current/reference/html/#spring-data-reactive-repositories-for-cloud-firestore). This starter provides full Spring Data support for Cloud Firestore while implementing idiomatic access patterns.
 
 | Spring Data Feature | Supported |
 | :--- | :--- |
@@ -88,7 +88,7 @@ class OrderItem {
 Because Firestore is a document-oriented NoSQL database, you can have nested structure, you can establish parent-children relationships without complicated foreign keys.
 
 {% hint style="info" %}
-Read the [Spring Data Firestore reference documentation](https://cloud.spring.io/spring-cloud-static/spring-cloud-gcp/1.2.2.RELEASE/reference/html/#object-mapping-3) for more details.
+Read the [Spring Data Firestore reference documentation](https://cloud.spring.io/spring-cloud-static/spring-cloud-gcp/current/reference/html/#object-mapping-3) for more details.
 {% endhint %}
 
 ### Repository

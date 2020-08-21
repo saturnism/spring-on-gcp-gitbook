@@ -39,7 +39,7 @@ gcloud secrets add-iam-policy-binding --help
 
 ## Spring Cloud Secret Manager
 
-You can easily get value from Secret Manager by using [Spring Cloud GCP's Secret Manager starter](https://cloud.spring.io/spring-cloud-static/spring-cloud-gcp/1.2.3.RELEASE/reference/html/#secret-manager).
+You can easily get value from Secret Manager by using [Spring Cloud GCP's Secret Manager starter](https://cloud.spring.io/spring-cloud-static/spring-cloud-gcp/current/reference/html/#secret-manager).
 
 ### Dependency
 
@@ -68,7 +68,7 @@ compile group: 'org.springframework.cloud', name: 'spring-cloud-gcp-starter-secr
 Secret Manager can be configured during Bootstrap phase, via `bootstrap.properties`. The starter automatically enables Secret Manager integration. But you can also disable it by configuring `spring.cloud.gcp.secretmanager.enabled=false` in a different Spring Boot profile.
 
 {% hint style="info" %}
-Read [Spring Cloud GCP Secret Manager configuration](https://cloud.spring.io/spring-cloud-static/spring-cloud-gcp/1.2.3.RELEASE/reference/html/#configuration-10) documentation for more details.
+Read [Spring Cloud GCP Secret Manager configuration](https://cloud.spring.io/spring-cloud-static/spring-cloud-gcp/current/reference/html/#configuration-10) documentation for more details.
 {% endhint %}
 
 ### Property Source

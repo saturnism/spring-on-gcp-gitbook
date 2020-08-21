@@ -302,7 +302,7 @@ There are different ways to connect to a Cloud SQL instance.  All methods will c
 
 ### Cloud SQL Starter
 
-When using Spring Boot, you can use [Spring Cloud GCP's Cloud SQL starter](https://cloud.spring.io/spring-cloud-static/spring-cloud-gcp/1.2.2.RELEASE/reference/html/#spring-jdbc).
+When using Spring Boot, you can use [Spring Cloud GCP's Cloud SQL starter](https://cloud.spring.io/spring-cloud-static/spring-cloud-gcp/current/reference/html/#spring-jdbc).
 
 Cloud SQL starter will automatically:
 
