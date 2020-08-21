@@ -43,6 +43,7 @@
 * [Runtime Environments](deployment/runtime-environments.md)
 * [Container](deployment/docker/README.md)
   * [Container Image](deployment/docker/container-image.md)
+  * [Secure Container Image](deployment/docker/secure-container-image.md)
   * [Container Awareness](deployment/docker/container-awareness.md)
 * [Kubernetes](deployment/kubernetes/README.md)
   * [Kubernetes Cluster](deployment/kubernetes/kubernetes-cluster.md)

@@ -29,6 +29,10 @@ gcloud services enable containerregistry.googleapis.com
 
 Typically, tutorials teach you how to write a `Dockerfile` to containerize a Java application. A `Dockerfile` however can be error prone and it's hard to implement all the best practices. Rather than writing a `Dockerfile`, use tools such as Jib and Buildpacks to automatically create optimized container images.
 
+### Build and Push
+
+Most tools can build and push directly into a container registry. In case of Jib, this step does not require a Docker daemon at all, and it can push changed layers directly into a remote registry. This is great for automated CI/CD pipelines.
+
 {% tabs %}
 {% tab title="Jib" %}
 [Jib](https://github.com/GoogleContainerTools/jib) can containerize any Java application easily, without a `Dockerfile` nor `docker` installed. Jib will push the container image directly to the remote registry.
@@ -112,6 +116,58 @@ Learn about [Paketo Buildpack](https://paketo.io/) and [GCP Buildpack](https://g
 {% hint style="danger" %}
 Paketo Buildpack will calculate the minimum memory needed to run the Spring Boot application. For a this Hello World example, the minimum is 1GB of RAM.
 {% endhint %}
+{% endtab %}
+{% endtabs %}
+
+### Build Locally
+
+If you are running a local Docker daemon and you do not want to push straight to a remote registry, then you can build container images without pushing:
+
+{% tabs %}
+{% tab title="Jib" %}
+```bash
+PROJECT_ID=$(gcloud config get-value project)
+./mvnw compile com.google.cloud.tools:jib-maven-plugin:2.4.0:dockerBuild \
+  -Dimage=gcr.io/${PROJECT_ID}/helloworld
+```
+{% endtab %}
+
+{% tab title="Buildpack" %}
+```bash
+# Paketo Buildpack
+PROJECT_ID=$(gcloud config get-value project)
+pack build \
+  --builder gcr.io/paketo-buildpacks/builder:base \
+  gcr.io/${PROJECT_ID}/helloworld
+
+# GCP Buildpack
+PROJECT_ID=$(gcloud config get-value project)
+pack build \
+  --builder gcr.io/buildpacks/builder:v1 \
+  gcr.io/${PROJECT_ID}/helloworld
+```
+{% endtab %}
+
+{% tab title="Spring Boot 2.3" %}
+```bash
+PROJECT_ID=$(gcloud config get-value project)
+
+# Maven with Paketo Buildpack
+./mvnw spring-boot:build-image \
+  -Dspring-boot.build-image.imageName=gcr.io/${PROJECT_ID}/helloworld
+
+# Maven with GCP Buildpack
+./mvnw spring-boot:build-image \
+  -Dspring-boot.build-image.imageName=gcr.io/${PROJECT_ID}/helloworld \
+  -Dspring-boot.build-image.builder=gcr.io/buildpacks/builder
+
+# Gradle with Paketo Buildpack
+./gradlew bootBuildImage --imageName=gcr.io/${PROJECT_ID}/helloworld
+
+# Gradle with GCP Buildpack
+./gradlew bootBuildImage --imageName=gcr.io/${PROJECT_ID}/helloworld \
+  --builder=gcr.io/buildpacks/builder
+```
 {% endtab %}
 {% endtabs %}
 
