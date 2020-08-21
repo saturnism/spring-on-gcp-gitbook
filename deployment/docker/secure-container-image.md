@@ -90,9 +90,9 @@ So, what do the automated tools do by default?
   <tbody>
     <tr>
       <td style="text-align:left">Source Code</td>
-      <td style="text-align:left">No Source</td>
-      <td style="text-align:left">No Source</td>
-      <td style="text-align:left">Source is copied</td>
+      <td style="text-align:left">No source in runtime</td>
+      <td style="text-align:left">No source in runtime</td>
+      <td style="text-align:left">Source is copied to runtime</td>
     </tr>
     <tr>
       <td style="text-align:left">Minimal Base Image</td>
