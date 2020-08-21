@@ -74,3 +74,41 @@ Buildpacks \(with Paketo and GCP builders\) run as a non-root user by default, a
 {% endtab %}
 {% endtabs %}
 
+## Summary
+
+So, what do the automated tools do by default?
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left"></th>
+      <th style="text-align:left">Jib</th>
+      <th style="text-align:left">Paketo Builder</th>
+      <th style="text-align:left">GCP Builder</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">Source Code</td>
+      <td style="text-align:left">No Source</td>
+      <td style="text-align:left">No Source</td>
+      <td style="text-align:left">Source is copied</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Minimal Base Image</td>
+      <td style="text-align:left">Uses Distroless</td>
+      <td style="text-align:left">Not Distroless</td>
+      <td style="text-align:left">Not Distroless</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Non-Root User</td>
+      <td style="text-align:left">
+        <p>Defaults to <code>root</code>,</p>
+        <p>Configure to non-root.</p>
+      </td>
+      <td style="text-align:left"><code>cnb</code> user</td>
+      <td style="text-align:left"><code>cnb</code> user</td>
+    </tr>
+  </tbody>
+</table>
+
