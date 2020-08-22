@@ -6,7 +6,7 @@ By default, Kuberntes will schedule a pod onto a random node as long as the node
 
 One solution is to avoid scheduling the pods onto the same node as much as possible, and this is called [ant-affinity](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity).
 
-For the Hello World container, add additional configuration to make sure the pods are scheduled onto different nodes as much as possible.
+For the Hello World container, add additional configuration to make sure the pods are scheduled onto different nodes.
 
 {% code title="k8s/deployment.yaml" %}
 ```yaml
@@ -17,8 +17,7 @@ metadata:
   labels:
     app: helloworld
 spec:
-  replicas: 2
-  
+  replicas: 1
   selector:
     matchLabels:
       app: helloworld
@@ -46,6 +45,42 @@ spec:
             topologyKey: "kubernetes.io/hostname"
 ```
 {% endcode %}
+
+Scale out the deployment to 4 pods:
+
+```bash
+kubectl scale deployment helloworld --replicas=4
+```
+
+List all the pods and show which node it is running on:
+
+```bash
+kubectl get pods -lapp=helloworld -owide
+```
+
+Observe in the `NODE` column, that each pod is running on a different node.
+
+But since the demo cluster only has 4 nodes, if you scale out to 5 pods, it can no longer satisfy the anti-affinity requirement, and the 5th pod will remain in the unschedulable \(Pending\) state:
+
+```bash
+kubectl scale deployment helloworld --replicas=5
+```
+
+Find the pending pod:
+
+```bash
+kubectl get pods -lapp=helloworld --field-selector='status.phase=Pending'
+```
+
+Describe it's detail:
+
+```bash
+POD_NAME=$(kubectl get pods -lapp=helloworld \
+  --field-selector='status.phase=Pending' \
+  -o jsonpath='{.items[0].metadata.name}')
+
+kubectl describe pod $POD_NAME
+```
 
 {% hint style="info" %}
 See Kubernetes [Affinity / Anti-Affinity documentation](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity) for more information

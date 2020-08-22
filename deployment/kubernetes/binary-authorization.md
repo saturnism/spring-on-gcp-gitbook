@@ -150,3 +150,28 @@ Verify that the Pod is up and running due to the allow list:
 kubectl get pods -lapp=unattested-nginx
 ```
 
+If you trust every container image from a particular Project:
+
+
+
+{% code title="binauthz-policy.yaml" %}
+```yaml
+admissionWhitelistPatterns:
+- namePattern: gcr.io/google_containers/*
+- namePattern: gcr.io/google-containers/*
+- namePattern: k8s.gcr.io/*
+- namePattern: gke.gcr.io/*
+- namePattern: gcr.io/stackdriver-agents/*
+# Add the container registry from a project to the allow list.
+# Replace PROJECT_ID.
+- namePattern: gcr.io/PROJECT_ID/*
+defaultAdmissionRule:
+  enforcementMode: ENFORCED_BLOCK_AND_AUDIT_LOG
+  evaluationMode: REQUIRE_ATTESTATION
+  requireAttestationsBy:
+  - projects/PROJECT_ID/attestors/default-attestor
+globalPolicyEvaluationMode: ENABLE
+name: projects/PROJECT_ID/policy
+```
+{% endcode %}
+
