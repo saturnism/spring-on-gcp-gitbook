@@ -17,7 +17,7 @@ You need to create an Attestor, which is associated with the metadata of the an 
 
 ### Create a Note
 
-An Attestation ultimately becomes an instance of a Note. A note is a metadata entry in Google Container Analysis, and it's needed to be associasted with an Attestor.
+A note is a metadata entry in Google Container Analysis, and it's needed to be associasted with an Attestor. An Attestation ultimately becomes an instance of a Note. 
 
 ```bash
 PROJECT_ID=$(gcloud config get-value project)
