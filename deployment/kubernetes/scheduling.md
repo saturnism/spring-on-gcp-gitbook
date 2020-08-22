@@ -141,5 +141,17 @@ See that all the pods are running:
 kubectl get pods -lapp=helloworld
 ```
 
+## Affinity
+
+Sometimes you may want to pin a Pod to run together, or only on certain nodes, or only in certain zones/regions. To do this, you can specify Affinity rather than Anti-Affinity.
+
+{% hint style="info" %}
+See Kubernetes [Affinity / Anti-Affinity documentation](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity) for more information
+{% endhint %}
+
 ## Disruption Budget
+
+{% hint style="info" %}
+See Kubernetes [Disruption Budget documentation](https://kubernetes.io/docs/tasks/run-application/configure-pdb/) for more information.
+{% endhint %}
 
