@@ -45,6 +45,7 @@
   * [Container Image](deployment/docker/container-image.md)
   * [Secure Container Image](deployment/docker/secure-container-image.md)
   * [Container Awareness](deployment/docker/container-awareness.md)
+  * [Vulnerability Scanning](deployment/docker/vulnerability-scanning.md)
   * [Attestation](deployment/docker/attestation.md)
 * [Kubernetes](deployment/kubernetes/README.md)
   * [Kubernetes Cluster](deployment/kubernetes/kubernetes-cluster.md)
