@@ -2,6 +2,8 @@
 
 This section continues from the previous section - make sure you do the tutorial in sequence.
 
+{% page-ref page="deployment.md" %}
+
 {% page-ref page="../docker/attestation.md" %}
 
 ## Enforce Attestation
