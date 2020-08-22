@@ -4,9 +4,11 @@
 
 By default, Kuberntes will schedule a pod onto a random node as long as the node has capacity to execute the pod based on the resource constraints. However, when you scale a deployment to `2`, there is a chance where both of the Pods are scheduled onto the same Kuberntes Node. This can cause issues if the Node goes down, causing both available Pods to shutdown and need to reschedule onto another node.
 
-One solution is to avoid scheduling the pods onto the same node as much as possible, and this is called [ant-affinity](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity).
+One solution is to avoid scheduling the pods onto the same node and this is called [ant-affinity](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity).
 
-For the Hello World container, add additional configuration to make sure the pods are scheduled onto different nodes.
+### Required Anti-Affinity
+
+This example will enforce anti-affinity and not schedule any pods if anti-affinity requirement cannot be met. For the Hello World container, add additional configuration to make sure the pods are scheduled onto different nodes.
 
 {% code title="k8s/deployment.yaml" %}
 ```yaml
@@ -85,6 +87,47 @@ kubectl describe pod $POD_NAME
 {% hint style="info" %}
 See Kubernetes [Affinity / Anti-Affinity documentation](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity) for more information
 {% endhint %}
+
+### Preferred Anti-Affinity
+
+In the Required case, if a pod cannot ensure anti-affinity, it'll simply not run. This may not be desirable for most workload. Instead, tell Kubernetes that anti-affinity is Preferred, but if the condition cannot be met, schedule it onto a host with another pod anyways. Use `preferredDuringSchedulingIgnoredDuringExecution` block instead.
+
+{% code title="k8s/deployment.yaml" %}
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helloworld
+  labels:
+    app: helloworld
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: helloworld
+  template:
+    metadata:
+      labels:
+        app: helloworld
+    spec:
+      containers:
+      - name: helloworld
+        image: gcr.io/.../helloworld
+      affinity:
+        podAntiAffinity:
+          # Use Preferred rather than Required
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                  - helloworld
+              topologyKey: "kubernetes.io/hostname"
+```
+{% endcode %}
 
 ## Disruption Budget
 
