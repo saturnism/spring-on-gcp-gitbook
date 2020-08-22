@@ -1,4 +1,4 @@
-# Messaging
+# Cloud Pub/Sub
 
 ## Cloud Pub/Sub
 

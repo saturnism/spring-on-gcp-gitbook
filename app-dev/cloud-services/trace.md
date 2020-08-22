@@ -138,7 +138,7 @@ RestTemplate restTemplate() {
 
 #### Messaging
 
-When using Spring Integration, Spring Cloud Sleuth will automatically propagate trace context via message headers. For example, send a [Pub/Sub message with Spring Integration's Gateway](messaging.md#spring-integration) will automatically add trace headers to the Pub/Sub message.
+When using Spring Integration, Spring Cloud Sleuth will automatically propagate trace context via message headers. For example, send a [Pub/Sub message with Spring Integration's Gateway](messaging/pubsub.md#spring-integration) will automatically add trace headers to the Pub/Sub message.
 
 #### Additional Headers
 

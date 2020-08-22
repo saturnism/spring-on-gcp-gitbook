@@ -44,7 +44,7 @@ There is a lot of content on this site. Below are some recommended paths dependi
 
 {% page-ref page="app-dev/cloud-services/databases/cloud-sql.md" %}
 
-{% page-ref page="app-dev/cloud-services/messaging.md" %}
+{% page-ref page="app-dev/cloud-services/messaging/pubsub.md" %}
 
 {% page-ref page="app-dev/cloud-services/cache/memorystore-redis.md" %}
 
