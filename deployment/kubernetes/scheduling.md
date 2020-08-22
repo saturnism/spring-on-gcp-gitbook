@@ -129,5 +129,17 @@ spec:
 ```
 {% endcode %}
 
+Scale out to 5 pods, it can no longer satisfy the anti-affinity requirement, and the 5th pod will still be scheduled, but onto a node that already has another Hello World pod running.
+
+```bash
+kubectl scale deployment helloworld --replicas=5
+```
+
+See that all the pods are running:
+
+```bash
+kubectl get pods -lapp=helloworld
+```
+
 ## Disruption Budget
 
