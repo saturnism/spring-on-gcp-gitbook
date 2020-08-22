@@ -56,6 +56,7 @@
   * [Load Balancing](deployment/kubernetes/load-balancing/README.md)
     * [External Load Balancing](deployment/kubernetes/load-balancing/external-load-balancing.md)
     * [Internal Load Balancing](deployment/kubernetes/load-balancing/internal-load-balancing.md)
+  * [Scheduling](deployment/kubernetes/scheduling.md)
   * [Binary Authorization](deployment/kubernetes/binary-authorization.md)
 
 ## Additional Resources
