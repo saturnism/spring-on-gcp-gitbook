@@ -97,7 +97,7 @@ gcloud alpha container binauthz attestors public-keys add \
 
 ## Attestation
 
-You can create an attestation for a container image, but you'll need the full SHA256 container image hash as well. The easiest way is to find this from Container Registry:
+You can create an attestation for a container image, but you'll need the full SHA256 container image digest. The easiest way is to find this from Container Registry:
 
 ```bash
 PROJECT_ID=$(gcloud config get-value project)
