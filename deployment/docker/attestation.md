@@ -13,6 +13,8 @@ gcloud services enable \
 
 ## Attestor
 
+You need to create an Attestor, which is associated with the metadata of the an asymetric key pair that's used to sign and validate a signature for an image digest.
+
 ### Create a Note
 
 An Attestation ultimately becomes an instance of a Note. A note is a metadata entry in Google Container Analysis, and it's needed to be associasted with an Attestor.
