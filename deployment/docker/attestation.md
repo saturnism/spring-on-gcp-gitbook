@@ -111,8 +111,6 @@ gcloud container images describe gcr.io/$PROJECT_ID/helloworld
 PROJECT_ID=$(gcloud config get-value project)
 IMAGE=$(gcloud container images describe gcr.io/$PROJECT_ID/helloworld \
   --format='value(image_summary.fully_qualified_digest)')
-PUBLIC_KEY_ID=$(gcloud container binauthz attestors describe default-attestor \
-  --format='value(userOwnedGrafeasNote.publicKeys[0].id)')
 
 gcloud beta container binauthz attestations sign-and-create \
     --artifact-url=$IMAGE \
