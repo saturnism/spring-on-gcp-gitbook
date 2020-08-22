@@ -160,8 +160,11 @@ If you are using Project Reactor \(or Webflux that uses Project Reactor\), you c
 ApplicationRunner reactiveSubscriber(PubSubReactiveFactory reactiveFactory, PubSubMessageConverter converter) {
   return (args) -> {
     reactiveFactory.poll("orders-subscription", 250L)
+      // Convert a JSON payload into an object
       .map(msg -> converter.fromPubSubMessage(msg.getPubsubMessage(), Order.class))
       .doOnNext(order -> System.out.println(order.getId()))
+      // Mannually acknowledge the message
+      .doOnNext(AcknowledgeablePubsubMessage::ack);
       .subscribe();
   };
 }
