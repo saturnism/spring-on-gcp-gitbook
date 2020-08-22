@@ -30,16 +30,23 @@ admissionWhitelistPatterns:
 - namePattern: gcr.io/stackdriver-agents/*
 defaultAdmissionRule:
   enforcementMode: ENFORCED_BLOCK_AND_AUDIT_LOG
-  evaluationMode: ALWAYS_ALLOW
+  # Change evaluationMode to require attestation
+  evaluationMode: REQUIRE_ATTESTATION
+  # Add the policy, and reference the `default-attestor` created from
+  # Attestation section.
+  # Replace PROJECT_ID with your Project ID.
+  requireAttestationsBy:
+  - projects/PROJECT_ID/attestors/default-attestor
 globalPolicyEvaluationMode: ENABLE
-name: projects/wise-coyote-emerald/policy
-# Add the policy, and reference the `default-attestor` created from
-# Attestation section.
-# Replace PROJECT_ID with your Project ID.
-requireAttestationsBy:
-- projects/PROJECT_ID/attestors/default-attestor
+name: projects/PROJECT_ID/policy
 ```
 {% endcode %}
+
+Import the Policy File:
+
+```bash
+gcloud container binauthz policy import $HOME/binauthz-policy.yaml
+```
 
 
 

@@ -51,6 +51,8 @@ gcloud container clusters create demo-cluster \
   --scopes=cloud-platform
 ```
 
+These nodes will still have a public IP, and be able to access the public Internet. For most production clusters, you'll want to consider creating a [Private Cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters), and control egress via [Cloud NAT](https://cloud.google.com/nat/docs/gke-example).
+
 ## Credentials
 
 Kubernetes credential is automatically retrieved and stored in your `$HOME/.kube/config` file. If you need to re-retrieve the credential:
