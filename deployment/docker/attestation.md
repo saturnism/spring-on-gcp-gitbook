@@ -55,7 +55,7 @@ gcloud beta container binauthz attestors create default-attestor \
     --attestation-authority-note-project=$PROJECT_ID
 ```
 
-## Signature Key Pair
+## Asymetric Key Pair
 
 You need to create a key pair so that you can sign an attestation with a private key, and later, verify it with a public key. You can create you own key pair, but this guide will use Cloud KMS.
 
