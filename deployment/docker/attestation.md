@@ -5,10 +5,9 @@ To secure your software supply chain, you should consider signing your container
 ## Enable API
 
 ```bash
-gcloud services enable \
-    container.googleapis.com \
-    containeranalysis.googleapis.com \
-    binaryauthorization.googleapis.com
+gcloud services enable container.googleapis.com
+gcloud services enable containeranalysis.googleapis.com
+gcloud services enable binaryauthorization.googleapis.com
 ```
 
 ## Attestor

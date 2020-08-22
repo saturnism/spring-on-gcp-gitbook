@@ -6,7 +6,7 @@ description: >-
 
 # Health Checks
 
-his section continues from the previous section - make sure you do the tutorial in sequence.
+This section continues from the previous section - make sure you do the tutorial in sequence.
 
 {% page-ref page="service.md" %}
 
