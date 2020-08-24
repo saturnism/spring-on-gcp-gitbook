@@ -9,6 +9,27 @@ It's a common mistake to copy too much data/information into a container image. 
 * Source code, build files are easily copied into a runtime container image by accident when using a Dockerfile.
 * Version control directories, such as `.git` are easily copied into a runtime container image by accident when using a Dockerfile.
 
+{% tabs %}
+{% tab title="Jib" %}
+Jib automatically builds thin container images without the source.
+{% endtab %}
+
+{% tab title="Buildpacks" %}
+Paketo automatically builds thin container images without the source.
+
+GCP Buildpack needs to set `GOOGLE_CLEAR_SOURCE=true`  to remove the source from the container image. See [GCP Buildpack README](https://github.com/GoogleCloudPlatform/buildpacks#configuration) for more information.
+
+```bash
+PROJECT_ID=$(gcloud config get-value project)                                                            ⬢ system ⎈ demo-cluster
+pack build \
+  -e "GOOGLE_CLEAR_SOURCE=true"
+  --builder gcr.io/buildpacks/builder:v1 \
+  --publish \
+  gcr.io/${PROJECT_ID}/helloworld
+```
+{% endtab %}
+{% endtabs %}
+
 ## No Secrets/Credentials
 
 Do not copy secrets and/or credentials into a container image \(e.g., do not copy a service account key file!\). For the most part, secrets can be stored in the runtime environment \(e.g., a Kubernetes Secret\), or better, a secret store \(e.g., [Cloud Secret Manager](../../app-dev/cloud-services/secret-management.md), or HashiCorp Vault\).
@@ -100,7 +121,11 @@ So, what do the automated tools do by default?
       <td style="text-align:left">Source Code</td>
       <td style="text-align:left">No source in runtime</td>
       <td style="text-align:left">No source in runtime</td>
-      <td style="text-align:left">Source is copied to runtime</td>
+      <td style="text-align:left">
+        <p>Set <code>GOOGLE_CLEAR_SOURCE.</code> 
+        </p>
+        <p>See <a href="https://github.com/GoogleCloudPlatform/buildpacks#configuration">README</a>.</p>
+      </td>
     </tr>
     <tr>
       <td style="text-align:left">Minimal Base Image</td>
