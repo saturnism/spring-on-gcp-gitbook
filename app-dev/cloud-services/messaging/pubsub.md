@@ -35,6 +35,20 @@ gcloud pubsub topics publish orders \
 gcloud pubsub subscriptions pull orders-subscription --auto-ack
 ```
 
+### Dead Letter Topic
+
+Normally if you failed to process a message, then you will need to un-acknowledge, and the message will be re-delivered again. However, you may not want to continuously re-deliver the same message indefinitely because your application simply cannot process it. In this case, you'd want to create a subscription with a Dead Letter Topic. You can then configure the max re-delivery attempts - and when all the attempts are exhausted, Pub/Sub will then re-deliver the message to a different topic. In order for the Dead Letter Topic to persist the message, you must also create a subscription for it - otherwise, no message will be persisted for the Dead Letter Topic.
+
+{% hint style="info" %}
+See [Cloud Pub/Sub Dead Letter Topic](https://cloud.google.com/pubsub/docs/dead-letter-topics) for more information.
+{% endhint %}
+
+### Ordering
+
+{% hint style="info" %}
+See [Cloud Pub/Sub Ordering documentation](https://cloud.google.com/pubsub/docs/ordering) for more information.
+{% endhint %}
+
 ## Spring Cloud Pub/Sub
 
 The easiest way to use Cloud Pub/Sub is using Spring Cloud GCP's [Spring Pub/Sub starter](https://cloud.spring.io/spring-cloud-static/spring-cloud-gcp/current/reference/html/#google-cloud-pubsub). This starter provides easy to use `PubSubTemplate` bean to send and receive messages.
