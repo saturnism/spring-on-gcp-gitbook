@@ -136,3 +136,10 @@ gcloud beta container binauthz attestations list \
   --attestor=default-attestor
 ```
 
+## Binary Authorization
+
+Once the container image has a signed attestation, it can then be used to authorize deployments into a Kubernetes Engine cluster by enabling Binary Authorization.
+
+1. [Create a Kubernetes Engine cluster](../kubernetes/kubernetes-cluster.md#create-cluster) that has Binary Authorization enabled.
+2. [Enable Binary Authorization](../kubernetes/binary-authorization.md#enforce-attestation) policy to enforce attestations.
+
