@@ -39,14 +39,62 @@ gcloud pubsub subscriptions pull orders-subscription --auto-ack
 
 Normally if you failed to process a message, then you will need to un-acknowledge, and the message will be re-delivered again. However, you may not want to continuously re-deliver the same message indefinitely because your application simply cannot process it. In this case, you'd want to create a subscription with a Dead Letter Topic. You can then configure the max re-delivery attempts - and when all the attempts are exhausted, Pub/Sub will then re-deliver the message to a different topic. In order for the Dead Letter Topic to persist the message, you must also create a subscription for it - otherwise, no message will be persisted for the Dead Letter Topic.
 
+#### Create a Dead Letter Topic
+
+```bash
+gcloud pubsub topics create order-dlt
+gcloud pubsub subscriptions create order-dlt-subscription \
+  --topic=order-dlt \
+  --ack-deadline=300 \
+  --expiration-period=never
+```
+
+#### Create a Subscription with Dead Letter Topic
+
+```bash
+gcloud pubsub subscriptions create orders-subscription \
+  --topic=orders \
+  --dead-letter-topic=order-dlt \
+  --max-delivery-attempts=5
+```
+
+#### Grant Cloud Pub/Sub Permissions
+
+You need to grant Cloud Pub/Sub additional permissions in order for Cloud Pub/Sub to be able to remove message from the original subscription and then publishing it to the DLT.
+
+```bash
+PROJECT_NUMBER=$(gcloud projects describe $PROJECT_ID --format='value(projectNumber)')
+PUBSUB_SERVICE_ACCOUNT="service-${PROJECT_NUMBER}@gcp-sa-pubsub.iam.gserviceaccount.com"
+
+# Permission to subscribe to the original subscription
+gcloud pubsub subscriptions add-iam-policy-binding orders-subscription \
+    --member="serviceAccount:$PUBSUB_SERVICE_ACCOUNT"\
+    --role="roles/pubsub.subscriber"
+    
+# Permission to re-publish the message to the Dead Letter Topic
+gcloud pubsub topics add-iam-policy-binding orders-dlt \
+    --member="serviceAccount:${PUBSUB_SERVICE_ACCOUNT}"\
+    --role="roles/pubsub.publisher"
+```
+
 {% hint style="info" %}
 See [Cloud Pub/Sub Dead Letter Topic](https://cloud.google.com/pubsub/docs/dead-letter-topics) for more information.
 {% endhint %}
 
 ### Ordering
 
+You can enable Message Ordering to a Pub/Sub topic, so that messages with the same key value \(e.g., the same Order ID\) can be delivered in order. Ordering can be important for a CQRS system that cannot process events out of order.
+
 {% hint style="info" %}
 See [Cloud Pub/Sub Ordering documentation](https://cloud.google.com/pubsub/docs/ordering) for more information.
+{% endhint %}
+
+### Filtering
+
+Some architectures may be delivering many different types of messages to a single topic. For example, there may be different event types for an Order event \(e.g., Created, Fulfilled, Returned ...\). If you need to create different workers to process different type of events, then you can create a Subscription for each event type, and select the type of message you want to process with a Filter.
+
+{% hint style="info" %}
+See [Cloud Pub/Sub Filtering documentation](https://cloud.google.com/pubsub/docs/filtering) for more information.
 {% endhint %}
 
 ## Spring Cloud Pub/Sub
