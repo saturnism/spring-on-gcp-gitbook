@@ -210,7 +210,7 @@ ApplicationRunner subscribeRunner(PubSubSubscriberTemplate subscriberTemplate) {
 ```
 
 {% hint style="warning" %}
-Streaming pull currently does not support back-pressure well. If you have many small messages, but each message takes a long time to process.
+Streaming pull currently does not support back-pressure well. If you have many small messages, but each message takes a long time to process, then you may not want to use Streaming Pull.
 {% endhint %}
 
 ### Reactive Stream
