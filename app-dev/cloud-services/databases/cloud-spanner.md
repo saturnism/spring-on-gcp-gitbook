@@ -174,7 +174,7 @@ class Order {
 
   private String description;
 
-  @Column(name="creation_timeestamp")
+  @Column(name="creation_timestamp")
   private LocalDateTime timestamp;
 
   @Interleaved
