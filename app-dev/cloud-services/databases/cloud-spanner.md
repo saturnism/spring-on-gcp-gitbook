@@ -166,6 +166,7 @@ import lombok.Data;
 import org.springframework.cloud.gcp.data.spanner.core.mapping.*;
 
 @Table(name="orders")
+@Data // Lombok to generate getter/setters
 class Order {
   @PrimaryKey
   @Column(name="order_id")
@@ -187,6 +188,7 @@ import lombok.Data;
 import org.springframework.cloud.gcp.data.spanner.core.mapping.*;
 
 @Table(name="order_items")
+@Data // Lombok to generate getter/setters
 class OrderItem {
     @PrimaryKey(keyOrder = 1)
     @Column(name="order_id")
