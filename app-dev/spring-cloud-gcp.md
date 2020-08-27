@@ -24,7 +24,7 @@ Or, generate the project using `curl`:
 
 ```text
 curl https://start.spring.io/starter.zip \
-  -d dependencies=web,cloud-gcp \
+  -d dependencies=web,cloud-gcp,lombok \
   -d bootVersion=2.3.1.RELEASE
   -d baseDir=demo
 ```
