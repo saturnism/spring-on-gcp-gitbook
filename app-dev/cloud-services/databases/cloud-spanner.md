@@ -172,12 +172,13 @@ class Order {
   @Column(name="order_id")
   private String id;
 
-    private String description;
+  private String description;
 
-    private LocalDateTime timestamp;
+  @Column(name="creation_timeestamp")
+  private LocalDateTime timestamp;
 
-    @Interleaved
-    private List<OrderItem> items;
+  @Interleaved
+  private List<OrderItem> items;
 }  
 ```
 {% endcode %}
