@@ -213,16 +213,42 @@ Read the [Spring Data Spanner reference documentation](https://cloud.spring.io/s
 
 Use Spring Data repository to quickly get CRUD access to the Cloud Spanner tables.
 
+{% code title="OrderRepository.java" %}
 ```java
-@Repository
-interface OrderRepository extends SpannerRepository<Order, String> {
-}
+package com.example.demo;
+
+import org.springframework.cloud.gcp.data.spanner.repository.SpannerRepository;
+import org.springframework.stereotype.Repository;
 
 @Repository
-interface OrderItemRepository extends SpannerRepository<OrderItem, Key> {
-  List<OrderItem> findAllByOrderId(String orderId);
+public interface OrderRepository extends SpannerRepository<Order, String> {
 }
 ```
+{% endcode %}
+
+{% code title="OrderItemRepoistory.java" %}
+```java
+package com.example.demo;
+
+import lombok.Data;
+import org.springframework.cloud.gcp.data.spanner.core.mapping.*;
+
+@Table(name="order_items")
+@Data
+class OrderItem {
+  @PrimaryKey(keyOrder = 1)
+  @Column(name="order_id")
+  private String orderId;
+
+  @PrimaryKey(keyOrder = 2)
+  @Column(name="order_item_id")
+  private String orderItemId;
+
+  private String description;
+  private Long quantity;
+}
+```
+{% endcode %}
 
 {% hint style="info" %}
 `Order` is the parent and has only a primary key. Spring Data repository's ID parameter type can be the type for the single key. `OrderItem`, however, has a composite key. Spring Data repository's ID parameter type must be Cloud Spanner's `Key` type for a composite key.
@@ -233,32 +259,32 @@ In a business logic service, you can utilize the repositories:
 ```java
 @Service
 class OrderService {
-    private final OrderRepository orderRepository;
+  private final OrderRepository orderRepository;
 
-    OrderService(OrderRepository orderRepository,
-            OrderItemRepository orderItemRepository) {
-        this.orderRepository = orderRepository;
-    }
+  OrderService(OrderRepository orderRepository,
+      OrderItemRepository orderItemRepository) {
+    this.orderRepository = orderRepository;
+  }
 
-    @Transactional
-    Order createOrder(Order order) {
-      // Use UUID String representation for the ID
-        order.setId(UUID.randomUUID().toString());
+  @Transactional
+  Order createOrder(Order order) {
+    // Use UUID String representation for the ID
+    order.setId(UUID.randomUUID().toString());
 
-        // Set the creation time
-        order.setCreationTimestamp(LocalDateTime.now());
+    // Set the creation time
+    order.setCreationTimestamp(LocalDateTime.now());
 
     // Set the parent Order ID and children ID for each item.
-        if (order.getItems() != null) {
-            order.getItems().stream().forEach(orderItem -> {
-                orderItem.setOrderId(order.getId());
-                orderItem.setOrderItemId(UUID.randomUUID().toString());
-            });
-        }
-
-        // Children are saved in cascade.
-        return orderRepository.save(order);
+    if (order.getItems() != null) {
+        order.getItems().stream().forEach(orderItem -> {
+        orderItem.setOrderId(order.getId());
+        orderItem.setOrderItemId(UUID.randomUUID().toString());
+      });
     }
+
+    // Children are saved in cascade.
+    return orderRepository.save(order);
+  }
 }
 ```
 
