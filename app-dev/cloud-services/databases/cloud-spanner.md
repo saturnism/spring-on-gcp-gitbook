@@ -99,7 +99,7 @@ Use gcloud to execute the DDL:
 ```bash
 gcloud spanner databases ddl update orders \
   --instance=spanner-instance \
-  --ddl=$(<schema.ddl)
+  --ddl="$(<schema.ddl)"
 ```
 
 ## Spring Data Spanner Starter
