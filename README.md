@@ -1,6 +1,6 @@
 # Introduction
 
-This is community documentation that captures everything [Ray Tsang \(@saturnism\)](https://twitter.com/saturnism) knows about running Spring Boot microservices/applications on Google Cloud Platform. 
+This is community documentation that captures everything [Ray Tsang \(@saturnism\)](https://twitter.com/saturnism) knows about running Spring Boot microservices/applications on Google Cloud Platform.
 
 Instead of writing individual blogs on each topic, the content is organized and intended to be kept up to date. Feel free to [contribute via GitHub](https://github.com/saturnism/spring-on-gcp-gitbook), and/or [file topic requests](https://github.com/saturnism/spring-on-gcp-gitbook/issues)! If you'd like to discuss more in detail, you can [schedule an office hour](http://saturnism.me/office-hour/).
 
@@ -17,6 +17,14 @@ There is a lot of content on this site. Here are some recommended paths dependin
 {% page-ref page="getting-started/helloworld/" %}
 {% endtab %}
 
+{% tab title="Serverless" %}
+{% page-ref page="getting-started/helloworld/app-engine.md" %}
+
+{% page-ref page="getting-started/helloworld/cloud-run.md" %}
+
+{% page-ref page="getting-started/helloworld/cloud-functions.md" %}
+{% endtab %}
+
 {% tab title="Containers" %}
 {% page-ref page="deployment/docker/container-image.md" %}
 
@@ -24,17 +32,7 @@ There is a lot of content on this site. Here are some recommended paths dependin
 
 {% page-ref page="getting-started/helloworld/cloud-run.md" %}
 
-{% page-ref page="getting-started/helloworld/kubernetes-engine.md" %}
-
 {% page-ref page="deployment/kubernetes/" %}
-{% endtab %}
-
-{% tab title="Serverless" %}
-{% page-ref page="getting-started/helloworld/app-engine.md" %}
-
-{% page-ref page="getting-started/helloworld/cloud-run.md" %}
-
-{% page-ref page="getting-started/helloworld/cloud-functions.md" %}
 {% endtab %}
 
 {% tab title="App Development" %}
@@ -44,11 +42,7 @@ There is a lot of content on this site. Here are some recommended paths dependin
 
 {% page-ref page="app-dev/cloud-services/databases/cloud-sql.md" %}
 
-{% page-ref page="app-dev/cloud-services/messaging/pubsub.md" %}
-
-{% page-ref page="app-dev/cloud-services/cache/memorystore-redis.md" %}
-
-{% page-ref page="app-dev/cloud-services/trace.md" %}
+{% page-ref page="app-dev/cloud-services/" %}
 {% endtab %}
 {% endtabs %}
 
