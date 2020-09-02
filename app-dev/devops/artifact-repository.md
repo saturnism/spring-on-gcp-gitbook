@@ -95,6 +95,8 @@ Note that an Artifact Registry Gradle plugin is needed to publish to Artifact Re
 {% endtab %}
 {% endtabs %}
 
+Artifact Registry's plugins will automatically detect the current [Application Default Credentials](../../getting-started/google-cloud-platform.md#application-default-credentials) to authorize access.
+
 This example uses Maven, so edit the `pom.xml` to add the additional settings:
 
 ```markup
