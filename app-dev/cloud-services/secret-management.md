@@ -120,6 +120,58 @@ spring.datasource.password=${sm://order-db-prod-password}
 | Long - Project Scoped | `sm://projects/your-project/order-db-password/1` |
 | Long - Fully Qualified | `sm://projects/your-project/secrets/order-db-password/versions/1` |
 
+### Local Development
+
+Use Spring Boot Profile to differentiate local development profile vs deployed environments. For example, for local development, you can hard-code test credentials/values, but for the cloud environment, you can use a different profile.
+
+#### Default Profile
+
+Configure the default profile to disable Secret Manager
+
+{% code title="bootstrap.properties" %}
+```text
+spring.cloud.gcp.secretmanager.enabled=false
+```
+{% endcode %}
+
+Hard-code the local test credentials with the value as usual.
+
+{% code title="application.properties" %}
+```text
+...
+spring.datasource.password=admin
+```
+{% endcode %}
+
+#### Production Profile
+
+Configure the production profile to enable Secret Manager.
+
+{% code title="bootstrap-prod.properties" %}
+```text
+spring.cloud.gcp.secretmanager.enabled=false
+```
+{% endcode %}
+
+Configure production profile to retrieve the credential from Secret Manager.
+
+{% code title="application-prod.properties" %}
+```text
+...
+spring.datasource.password=${sm://order-db-prod-password}
+```
+{% endcode %}
+
+Start your application with the profile, for example:
+
+```bash
+# From Maven
+./mvnw spring-boot:run -Dspring-boot.run.profiles=prod
+
+# From Java startup command
+java -jar target/...jar -Dspring.profiles.active=prod
+```
+
 ### Samples
 
 * [Spring Cloud GCP Secret Manager sample](https://github.com/spring-cloud/spring-cloud-gcp/tree/master/spring-cloud-gcp-samples/spring-cloud-gcp-secretmanager-sample)
