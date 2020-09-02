@@ -69,7 +69,9 @@ mvn archetype:generate \
 cd common-libs/
 ```
 
-#### Build Configuration
+#### Configuration
+
+Once you have a Java project you want to publish to Artifact Registry, then you can use `gcloud` CLI to print out the configuration for your build system \(Maven or Gradle\). You'll need to use the configuration to be able to publish artifacts to the repository, or consume artifacts from the repository.
 
 {% tabs %}
 {% tab title="Maven" %}
