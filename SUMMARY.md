@@ -39,6 +39,7 @@
   * [Metrics](app-dev/cloud-services/metrics.md)
   * [Debugging](app-dev/cloud-services/debugging.md)
   * [Profiling](app-dev/cloud-services/profiling.md)
+  * [Artifact Repository](app-dev/cloud-services/artifact-repository.md)
 
 ## Deployment
 
