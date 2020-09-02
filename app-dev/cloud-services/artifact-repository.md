@@ -14,9 +14,11 @@ See [Artifact Registry documentation](https://cloud.google.com/artifact-registry
 
 Artifact Registry can host Maven repositories to host the Java artifacts. Artifacts are hosted within a region of your choice, and you can apply Identity Access Management to control who can access/update artifacts.
 
-Artifact Registry is currently in beta, and the Maven Repository feature is in Alpha. You'll need to sign up for the Alpha program first.
+{% embed url="https://www.youtube.com/watch?v=2-P4cSCk1VM" %}
 
 {% hint style="warning" %}
+Artifact Registry is currently in beta, and the Maven Repository feature is in Alpha. You'll need to sign up for the Alpha program first.
+
 [Sign up for Artifact Registry Alpha](https://docs.google.com/forms/d/e/1FAIpQLSf5q3CeDna_c27ifadF1KO17W3PrYO91w-UI-jjUdnvGS1cmQ/viewform) feature to try the hands-on instructions.
 {% endhint %}
 
