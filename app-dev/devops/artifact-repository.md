@@ -12,6 +12,12 @@ Google Cloud also has a fully managed artifact repository service called [Artifa
 See [Artifact Registry documentation](https://cloud.google.com/artifact-registry) for more information.
 {% endhint %}
 
+### Enable API
+
+```bash
+gcloud services enable artifactregistry.googleapis.com
+```
+
 ## Maven Repository
 
 Artifact Registry can host Maven repositories to host the Java artifacts. Artifacts are hosted within a region of your choice, and you can apply Identity Access Management to control who can access/update artifacts.
@@ -25,12 +31,6 @@ Artifact Registry is currently in beta, and the Maven Repository feature is in A
 {% endhint %}
 
 Once you are confirmed to be enrolled in the alpha program, you can give it a try!
-
-### Enable API
-
-```bash
-gcloud services enable artifactregistry.googleapis.com
-```
 
 ### Create a Maven Repository
 
