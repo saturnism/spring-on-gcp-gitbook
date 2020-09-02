@@ -4,13 +4,15 @@ When developing applications in a larger project, you may find a need to share c
 
 On Google Cloud, you can continue setup/configure/use these repositories. JFrog can also run [Artifactory as a hosted service on Google Cloud](https://jfrog.com/partner/google-cloud-platform/)!
 
+## Artifact Registry
+
 Google Cloud also has a fully managed artifact repository service called [Artifact Registry](https://cloud.google.com/artifact-registry) \(beta\), and you can use it to store container images, NPM packages, and Java artifacts.
 
 {% hint style="info" %}
 See [Artifact Registry documentation](https://cloud.google.com/artifact-registry) for more information.
 {% endhint %}
 
-## Artifact Registry - Maven Repository
+## Maven Repository
 
 Artifact Registry can host Maven repositories to host the Java artifacts. Artifacts are hosted within a region of your choice, and you can apply Identity Access Management to control who can access/update artifacts.
 
