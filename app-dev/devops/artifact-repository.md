@@ -144,11 +144,11 @@ gcloud alpha artifacts packages list \
 
 In the Cloud Console, you can also browse to **Artifact Registry &gt; private-maven-repo.**
 
-![](../.gitbook/assets/image%20%2842%29.png)
+![](../../.gitbook/assets/image%20%2842%29.png)
 
 And see manage the artifacts:
 
-![](../.gitbook/assets/image%20%2841%29.png)
+![](../../.gitbook/assets/image%20%2841%29.png)
 
 {% hint style="info" %}
 See [Artifact Registry Quickstart for Maven and Gradle](https://cloud.google.com/artifact-registry/docs/java/quickstart) for more information.
