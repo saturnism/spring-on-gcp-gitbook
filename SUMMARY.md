@@ -39,10 +39,10 @@
   * [Metrics](app-dev/cloud-services/metrics.md)
   * [Debugging](app-dev/cloud-services/debugging.md)
   * [Profiling](app-dev/cloud-services/profiling.md)
-  * [Artifact Repository](app-dev/cloud-services/artifact-repository.md)
 
 ## Deployment
 
+* [Artifact Repository](deployment/artifact-repository.md)
 * [Runtime Environments](deployment/runtime-environments.md)
 * [Container](deployment/docker/README.md)
   * [Container Image](deployment/docker/container-image.md)
