@@ -1,2 +1,2 @@
-# DevOps Services
+# DevOps
 

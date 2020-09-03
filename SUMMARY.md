@@ -40,7 +40,7 @@
   * [Metrics](app-dev/observability/metrics.md)
   * [Profiling](app-dev/observability/profiling.md)
   * [Debugging](app-dev/observability/debugging.md)
-* [DevOps Services](app-dev/devops/README.md)
+* [DevOps](app-dev/devops/README.md)
   * [Artifact Repository](app-dev/devops/artifact-repository.md)
 
 ## Deployment
