@@ -34,12 +34,13 @@
   * [Cache](app-dev/cloud-services/cache/README.md)
     * [Memorystore Redis](app-dev/cloud-services/cache/memorystore-redis.md)
     * [Memorystore Memcached \(beta\)](app-dev/cloud-services/cache/memorystore-memcached.md)
+* [Observability](app-dev/observability/README.md)
+  * [Trace](app-dev/observability/trace.md)
+  * [Logging](app-dev/observability/logging.md)
+  * [Metrics](app-dev/observability/metrics.md)
+  * [Profiling](app-dev/observability/profiling.md)
+  * [Debugging](app-dev/observability/debugging.md)
 * [DevOps Services](app-dev/devops/README.md)
-  * [Trace](app-dev/devops/trace.md)
-  * [Logging](app-dev/devops/logging.md)
-  * [Metrics](app-dev/devops/metrics.md)
-  * [Profiling](app-dev/devops/profiling.md)
-  * [Debugging](app-dev/devops/debugging.md)
   * [Artifact Repository](app-dev/devops/artifact-repository.md)
 
 ## Deployment
