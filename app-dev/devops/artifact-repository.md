@@ -1,6 +1,6 @@
 # Artifact Repository
 
-When developing applications in a larger project, you may find a need to share common libraries across multiple teams or applications. If this library is a public OSS library, it's usually hosted on Maven Central. For an internal library, though, you'll need to use a private repository. Typically, in an on-premise datacenter, these Java \(Maven\) artifacts in private repositories such as Sonatype Nexus, or JFrog Artifactory.
+When developing applications in a larger project, you may find a need to share common libraries across multiple teams or applications. If this library is a public OSS library, it's usually hosted on Maven Central. For an internal library, though, you'll need to use a private repository. Typically, in an on-premise datacenter, these Java \(Maven\) artifacts may be stored in private repositories such as Sonatype Nexus, or JFrog Artifactory.
 
 On Google Cloud, you can continue setup/configure/use these repositories. JFrog can also run [Artifactory as a hosted service on Google Cloud](https://jfrog.com/partner/google-cloud-platform/)!
 
