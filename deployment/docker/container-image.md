@@ -80,6 +80,22 @@ Paketo Buildpack will calculate the minimum memory needed to run the Spring Boot
 {% endhint %}
 {% endtab %}
 
+{% tab title="Buildpack with Cloud Build" %}
+Cloud Build has built-in Buildpack support, so you can build the container image in the remote Cloud Build environment:
+
+```bash
+# GCP Buildpack
+PROJECT_ID=$(gcloud config get-value project)
+gcloud alpha builds submit \
+  --pack image=gcr.io/${PROJECT_ID}/helloworld
+
+# Paketo Buildpack
+PROJECT_ID=$(gcloud config get-value project)
+gcloud alpha builds submit \
+  --pack image=gcr.io/${PROJECT_ID}/helloworld,builder=gcr.io/paketo-buildpacks/builder:base
+```
+{% endtab %}
+
 {% tab title="Spring Boot 2.3" %}
 Since Spring Boot 2.3+, you can build container using the Spring Boot plugin.
 
