@@ -34,6 +34,7 @@
   * [Cache](app-dev/cloud-services/cache/README.md)
     * [Memorystore Redis](app-dev/cloud-services/cache/memorystore-redis.md)
     * [Memorystore Memcached \(beta\)](app-dev/cloud-services/cache/memorystore-memcached.md)
+  * [Other Services](app-dev/cloud-services/other-services.md)
 * [Observability](app-dev/observability/README.md)
   * [Trace](app-dev/observability/trace.md)
   * [Logging](app-dev/observability/logging.md)
