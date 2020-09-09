@@ -2,7 +2,7 @@
 
 Spring Cloud GCP has idiomatic integrations and starters for a number of Google Cloud services, but not all services. There may be cases where you need to use a Google Cloud client library directly. In this case, you can re-use basic bootstrapping provided by the Spring Cloud GCP, so you can have a consistent way of specifying credentials for your application.
 
-## Client Library Dependency
+## Dependency
 
 Spring Cloud GCP already imports the [Google Cloud Java BOM](https://github.com/googleapis/java-cloud-bom), and it already has encoded the client library versions. So you can specify any Google Cloud client library without explicitly specifying a version. This is great to ensure that you are using a compatible version of a Google Cloud client library.
 
