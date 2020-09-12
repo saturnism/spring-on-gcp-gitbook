@@ -1,10 +1,10 @@
 # Secure Container Image
 
-While the [creating a new container image](container-image.md#containerize) is fairly easy and straight forward for development purpose, you should consider building secure container image for production use. Below are some basic considerations.
+While [creating a new container image](container-image.md#containerize) is fairly easy and straightforward for development purposes, you should consider building a secure container image for production use. Below are some basic considerations.
 
 ## No Source Code
 
-It's a common mistake to copy too much data/information into a container image. In general, you should only have the content that's absolutely necessary to run your application. But these are things that often makes into a container image and no one knows about:
+It's a common mistake to copy too much data/information into a container image. In general, you should only have the content that's absolutely necessary to run your application. But there are things that often make it into a container image that you may not realize:
 
 * Source code, build files are easily copied into a runtime container image by accident when using a Dockerfile.
 * Version control directories, such as `.git` are easily copied into a runtime container image by accident when using a Dockerfile.
@@ -36,7 +36,7 @@ Do not copy secrets and/or credentials into a container image \(e.g., do not cop
 
 ## Minimal Base Image
 
-Many base images comes with all the command line utilities from a typical Linux distribution \(e.g., a shell, package manager, etc\). These container images may allow you \(or an attacker!\) to get into a shell, and install additional tools. To reduce the attack surface, consider using a minimal base image that has the least attack surface \(but also harder to debug with\).
+Many base images comes with all the command line utilities from a typical Linux distribution \(e.g., a shell, package manager, etc\). These container images may allow you \(or an attacker!\) to get into a shell, and install additional tools. To reduce the attack surface, consider using a minimal base image that has the least attack surface \(but is also harder to debug with\).
 
 {% tabs %}
 {% tab title="Jib" %}
