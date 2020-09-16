@@ -63,31 +63,31 @@ Declare your CI/CD pipeline and run it with Cloud Build. See [Cloud Build with J
 
 ### Artifact Registry
 
-Publish Java artifacts to Artifact Registry, which can host Maven repositories.  See [Artifact Registry Maven Repository Quickstart](https://cloud.google.com/artifact-registry/docs/java/quickstart).
+Publish Java artifacts to Artifact Registry, which can host Maven repositories.  See [Artifact Repository](devops/artifact-repository.md) section.
 
 ### Cloud Trace
 
-Use Spring Cloud Sleuth and send Distributed Tracing data to Cloud Trace, using Spring Cloud GCP.  See [Trace documentation](cloud-services/trace.md).
+Use Spring Cloud Sleuth and send Distributed Tracing data to Cloud Trace, using Spring Cloud GCP.  See [Trace section](observability/trace.md).
 
 ### Cloud Logging
 
-Aggregate logs into a centralized logging console to easily search and view logs. See [Logging documentation](cloud-services/logging.md).
+Aggregate logs into a centralized logging console to easily search and view logs. See [Logging section](observability/logging.md).
 
 ### Error Reporting
 
-Automatically identifies Java exceptions and produce reports. Easily see new exceptions and their frequencies. See [Error Reporting documentation](https://cloud.google.com/error-reporting/docs/viewing-errors).
+Automatically identifies Java exceptions and produce reports. Easily see new exceptions and their frequencies. See [Logging section](observability/logging.md#error-reporting).
 
 ### Cloud Monitoring
 
-Collect system and application metrics, build dashboards, and setup alerts.  See [Metrics documentation](cloud-services/metrics.md).
+Collect system and application metrics, build dashboards, and setup alerts.  See [Metrics section](observability/metrics.md).
 
 ### Cloud Debugger
 
-[Cloud Debugger](https://cloud.google.com/debugger/docs/setup/java) can debug your production application without halting the application. Cloud Debugger can capture application state as a Snapshot, and also able to add additional log messages without redeploying the code.
+Cloud Debugger can debug your production application without halting the application. Cloud Debugger can capture application state as a Snapshot, and also able to add additional log messages without redeploying the code. See [Cloud Debugger section](observability/debugging.md).
 
 ### Cloud Profiler
 
-[Cloud Profiler](https://cloud.google.com/profiler/docs/profiling-java) can continuously profile CPU and heap usages in a production application with minimal overhead.  The profiled flame graph can help you understand performance hotspots.
+Cloud Profiler can continuously profile CPU and heap usages in a production application with minimal overhead.  The profiled flame graph can help you understand performance hotspots. See [Cloud Profiler section](observability/profiling.md).
 
 
 
