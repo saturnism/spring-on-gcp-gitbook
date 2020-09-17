@@ -451,4 +451,3 @@ This will send the output of the supplier to the `order-processed` topic.
 
 * [Spring Cloud GCP Pub/Sub Stream Binder sample](https://github.com/spring-cloud/spring-cloud-gcp/tree/master/spring-cloud-gcp-samples/spring-cloud-gcp-pubsub-binder-sample)
 * [Spring Cloud GCP Pub/Sub Stream Binder \(no annotations\) sample](https://github.com/spring-cloud/spring-cloud-gcp/tree/master/spring-cloud-gcp-samples/spring-cloud-gcp-pubsub-stream-binder-functional-sample)
-

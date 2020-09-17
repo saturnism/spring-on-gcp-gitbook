@@ -146,4 +146,3 @@ Once the container image has a signed attestation, it can then be used to author
 {% hint style="info" %}
 See [Binary Authorization](../kubernetes/binary-authorization.md) section for more information.
 {% endhint %}
-

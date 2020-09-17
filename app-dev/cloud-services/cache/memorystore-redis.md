@@ -226,4 +226,3 @@ class DemoApplication {
 ### Samples
 
 * [Spring Boot Session Data Redis sample](https://github.com/spring-projects/spring-session/tree/master/spring-session-samples/spring-session-sample-boot-redis-simple)
-

@@ -115,4 +115,3 @@ Spring Cloud GCP supports many GCP services using de-facto Spring abstraction la
 | **Centralized Logging** | Cloud Logging | SLF4J / Logback |
 | **Monitoring Metrics** | Cloud Monitoring | Micrometer / Prometheus |
 | **Security** | Cloud Identity Aware Proxy | Spring Security |
-

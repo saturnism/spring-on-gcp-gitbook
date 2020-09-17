@@ -144,4 +144,3 @@ So, what do the automated tools do by default?
     </tr>
   </tbody>
 </table>
-

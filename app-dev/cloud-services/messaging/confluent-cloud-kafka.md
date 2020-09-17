@@ -1,2 +1,1 @@
 # Confluent Cloud Kafka
-

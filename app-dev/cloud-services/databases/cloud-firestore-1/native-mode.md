@@ -125,4 +125,3 @@ class OrderService {
 ### Samples
 
 * [Spring Boot with Cloud Firestore sample](https://github.com/spring-cloud/spring-cloud-gcp/tree/master/spring-cloud-gcp-data-firestore)
-

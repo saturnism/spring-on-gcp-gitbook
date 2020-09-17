@@ -175,4 +175,3 @@ java -jar target/...jar -Dspring.profiles.active=prod
 ### Samples
 
 * [Spring Cloud GCP Secret Manager sample](https://github.com/spring-cloud/spring-cloud-gcp/tree/master/spring-cloud-gcp-samples/spring-cloud-gcp-secretmanager-sample)
-

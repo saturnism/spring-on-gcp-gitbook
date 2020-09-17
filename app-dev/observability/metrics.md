@@ -306,4 +306,3 @@ Better integration is [coming soon with Spring Cloud GCP](https://cloud.spring.i
 ## Learn More
 
 * [Troubleshooting and Debugging Microservices in Kubernetes](https://saturnism.me/talk/troubleshooting-debugging-microservices/)
-

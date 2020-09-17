@@ -245,4 +245,3 @@ There is no ready-to-use appender to Cloud Logging. But you can [bridge it to Sl
 ## Learn More
 
 * [Troubleshooting and Debugging Microservices in Kubernetes](https://saturnism.me/talk/troubleshooting-debugging-microservices/)
-

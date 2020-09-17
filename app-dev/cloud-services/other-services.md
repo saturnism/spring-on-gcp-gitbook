@@ -43,4 +43,3 @@ ContainerAnalysisClient containerAnalysisClient(CredentialsProvider credentialsP
 ## Project ID
 
 In rare cases, you may want to know which Project ID you are currently configured to use by default. You can find out from the [`GcpProjectIdProvider` bean](https://docs.spring.io/spring-cloud-gcp/docs/1.2.5.RELEASE/reference/html/#project-id).
-

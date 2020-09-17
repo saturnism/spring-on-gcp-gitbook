@@ -13,4 +13,3 @@ If you want to run Confluent's Kafka platform yourself, you can use the [Conflue
 ## Strimzi Operator
 
 You can run Kafka in Kubernetes using the [Strimzi Operator](https://strimzi.io). See [Strimzi Quickstart ](https://strimzi.io/quickstarts/)documentation and the more detailed [Strimzi Quick Start Guide](https://strimzi.io/docs/operators/latest/quickstart.html) for more information.  
-

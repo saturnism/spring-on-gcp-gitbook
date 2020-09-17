@@ -161,4 +161,3 @@ And see manage the artifacts:
 {% hint style="info" %}
 See [Artifact Registry Quickstart for Maven and Gradle](https://cloud.google.com/artifact-registry/docs/java/quickstart) for more information.
 {% endhint %}
-
