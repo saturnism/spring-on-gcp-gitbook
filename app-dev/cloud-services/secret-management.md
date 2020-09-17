@@ -47,7 +47,7 @@ Add the Spring Cloud GCP Secret Manager starter:
 
 {% tabs %}
 {% tab title="Maven" %}
-```bash
+```markup
 <dependency>
     <groupId>org.springframework.cloud</groupId>
     <artifactId>spring-cloud-gcp-starter-secretmanager</artifactId>

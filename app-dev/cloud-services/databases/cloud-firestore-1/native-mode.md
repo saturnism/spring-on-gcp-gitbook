@@ -37,7 +37,7 @@ Add the Spring Data Firestore starter:
 
 {% tabs %}
 {% tab title="Maven" %}
-```bash
+```markup
 <dependency>
     <groupId>org.springframework.cloud</groupId>
     <artifactId>spring-cloud-gcp-starter-data-firestore</artifactId>
@@ -46,7 +46,7 @@ Add the Spring Data Firestore starter:
 {% endtab %}
 
 {% tab title="Gradle" %}
-```bash
+```groovy
 compile group: 'org.springframework.cloud', name: 'spring-cloud-gcp-starter-data-firestore'
 ```
 {% endtab %}

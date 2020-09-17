@@ -131,7 +131,7 @@ Add the 3rd party Memcached Spring Boot starter:
 
 {% tabs %}
 {% tab title="Maven" %}
-```bash
+```markup
 <dependency>
     <groupId>io.sixhours</groupId>
     <artifactId>memcached-spring-boot-starter</artifactId>
@@ -141,7 +141,7 @@ Add the 3rd party Memcached Spring Boot starter:
 {% endtab %}
 
 {% tab title="Gradle" %}
-```bash
+```groovy
 compile group: 'io.sixhours', name: 'memcached-spring-boot-starter:2.1.2'
 ```
 {% endtab %}

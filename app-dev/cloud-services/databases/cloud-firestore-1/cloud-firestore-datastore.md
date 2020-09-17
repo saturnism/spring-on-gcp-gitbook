@@ -38,7 +38,7 @@ Add the Spring Data Datastore starter:
 
 {% tabs %}
 {% tab title="Maven" %}
-```bash
+```markup
 <dependency>
     <groupId>org.springframework.cloud</groupId>
     <artifactId>spring-cloud-gcp-starter-data-datastore</artifactId>

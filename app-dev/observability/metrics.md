@@ -54,7 +54,7 @@ Add Spring Boot Actuator and Micrometer Prometheus dependencies:
 
 {% tabs %}
 {% tab title="Maven" %}
-```bash
+```markup
 <dependency>
   <groupId>org.springframework.boot</groupId>
   <artifactId>spring-boot-starter-actuator</artifactId>
@@ -67,7 +67,7 @@ Add Spring Boot Actuator and Micrometer Prometheus dependencies:
 {% endtab %}
 
 {% tab title="Gradle" %}
-```bash
+```groovy
 
 compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
 compile group: 'io.micrometer', name: 'micrometer-registry-prometheus'
@@ -268,7 +268,7 @@ Add Spring Boot Actuator and Micrometer Stackdriver dependencies:
 
 {% tabs %}
 {% tab title="Maven" %}
-```bash
+```markup
 <dependency>
   <groupId>org.springframework.boot</groupId>
   <artifactId>spring-boot-starter-actuator</artifactId>
@@ -281,7 +281,7 @@ Add Spring Boot Actuator and Micrometer Stackdriver dependencies:
 {% endtab %}
 
 {% tab title="Gradle" %}
-```bash
+```groovy
 
 compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
 compile group: 'io.micrometer', name: 'micrometer-registry-stackdriver'

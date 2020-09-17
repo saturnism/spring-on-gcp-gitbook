@@ -178,7 +178,7 @@ Add the Spring Data Spanner starter:
 
 {% tabs %}
 {% tab title="Maven" %}
-```bash
+```markup
 <dependency>
     <groupId>org.springframework.cloud</groupId>
     <artifactId>spring-session-data-redis</artifactId>
@@ -191,7 +191,7 @@ Add the Spring Data Spanner starter:
 {% endtab %}
 
 {% tab title="Gradle" %}
-```bash
+```groovy
 compile group: 'org.springframework.cloud', name: 'spring-session-data-redis'
 compile group: 'org.springframework.cloud', name: 'spring-boot-starter-data-redis'
 ```
