@@ -46,13 +46,13 @@ Use `kubectl` command line to deploy the YAML file:
 kubectl apply -f k8s/service.yaml
 ```
 
-To verify the application is deployed, see :
+To verify the application is deployed, run:
 
 ```bash
 kubectl get svc helloworld
 ```
 
-You should see that the Service has a Cluster IP address, but also the External IP address with the initial value of `<pending>`. This is because the behind the scenes, Kubernetes Engine is provision a real Google Cloud Network Load Balancer.
+You should see that the Service has a Cluster IP address, but also the External IP address with the initial value of `<pending>`. This is because, behind the scenes, Kubernetes Engine is provisioning a Google Cloud Network Load Balancer.
 
 ```bash
 NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)    AGE
@@ -61,7 +61,7 @@ helloworld   ClusterIP   ...          <pending>     8080/TCP   7s
 
 ### Connect
 
-Continuously to check the External IP address, until an IP address is assigned.  Once the IP Address is assigned, you can connect to the External IP address, and it'll be load balanced to the `helloworld` service backend pods.
+Continuously check the External IP address, until an IP address is assigned. Once the IP Address is assigned, you can connect to the External IP address, and it'll be load balanced to the `helloworld` service backend pods.
 
 ```bash
 EXTERNAL_IP=$(kubectl get svc helloworld -ojsonpath="{.status.loadBalancer.ingress[0].ip}")
@@ -191,7 +191,7 @@ NAME         HOSTS   ADDRESS         PORTS   AGE
 helloworld   *       ...             80      81s
 ```
 
-However, Ingress will be configuring many Google Cloud components behind the scenes for a global load balancer, so it'll take a few minutes before the address is accessible. Use `kubectl describe` to see the current status:
+Many Google Cloud components are being configured behind the scenes to enable global load balancing. It'll take a few minutes before the address is accessible. Use `kubectl describe` to see the current status:
 
 ```bash
 kubectl describe ingress helloworld
@@ -296,9 +296,7 @@ kubectl get ingress helloworld
 
 ### SSL Certificate
 
-In order to use a SSL certificate to serve HTTPs traffic, you must use a real fully qualified domain name and configure it to point to the IP address.
-
-If you don't have a real domain, then you can try using [xip.io](https://xip.io).
+In order to use a SSL certificate to serve HTTPs traffic, you must use a real, fully qualified domain name and configure it to point to the IP address. If you don't have a real domain, then you can try using [xip.io](https://xip.io).
 
 ```bash
 EXTERNAL_IP=$(kubectl get ingress helloworld -ojsonpath="{.status.loadBalancer.ingress[0].ip}")
@@ -499,6 +497,5 @@ curl -k "https://${DOMAIN}"
 ```
 
 {% hint style="info" %}
-See [Using multiple SSL certificates in HTTP\(s\) load balancing with Ingress](https://cloud.google.com/kubernetes-engine/docs/how-to/ingress-multi-ssl) for more details
+See [Using multiple SSL certificates in HTTP\(s\) load balancing with Ingress](https://cloud.google.com/kubernetes-engine/docs/how-to/ingress-multi-ssl) for more details.
 {% endhint %}
-

@@ -143,4 +143,3 @@ spec:
           servicePort: 8080
 ```
 {% endcode %}
-

@@ -44,7 +44,7 @@ name: projects/PROJECT_ID/policy
 ```
 {% endcode %}
 
-Import the Policy File:
+Import the policy file:
 
 ```bash
 gcloud container binauthz policy import $HOME/binauthz-policy.yaml
@@ -134,7 +134,7 @@ name: projects/PROJECT_ID/policy
 ```
 {% endcode %}
 
-Import the Policy File:
+Import the policy file:
 
 ```bash
 gcloud container binauthz policy import $HOME/binauthz-policy.yaml
@@ -153,8 +153,6 @@ kubectl get pods -lapp=unattested-nginx
 ```
 
 If you trust every container image from a particular Project:
-
-
 
 {% code title="binauthz-policy.yaml" %}
 ```yaml
@@ -176,4 +174,3 @@ globalPolicyEvaluationMode: ENABLE
 name: projects/PROJECT_ID/policy
 ```
 {% endcode %}
-

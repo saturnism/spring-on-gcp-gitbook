@@ -11,6 +11,3 @@ Because Memorystore is protocol compatible. You can use existing Spring Boot int
 ## Memorystore Redis
 
 ## Memorystore Memcached
-
-
-

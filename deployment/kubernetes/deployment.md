@@ -221,4 +221,3 @@ Delete the Nginx deployment before you continue!
 
 `kubectl delete deployment nginx-deployment`
 {% endhint %}
-

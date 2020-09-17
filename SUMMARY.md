@@ -70,4 +70,3 @@
 * [Code Labs](additional-resources/code-labs.md)
 * [Presentations / Videos](additional-resources/presentations-videos.md)
 * [Cheat Sheets](additional-resources/cheet-sheets.md)
-

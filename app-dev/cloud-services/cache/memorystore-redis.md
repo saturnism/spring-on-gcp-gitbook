@@ -28,7 +28,7 @@ Creating a Redis instance may take a few minutes.
 
 ### Get Instance IP Address
 
-```text
+```bash
 gcloud redis instances describe orders-cache \
   --region=us-central1 --format="value(host)"
 ```
@@ -52,25 +52,25 @@ See [Memorystore connectivity options](./#connectivity) to see how to connect to
 
 You can test quickly by creating a Compute Engine instance in a zone within the same region:
 
-```text
+```bash
 gcloud compute instances create test-memorystore-vm --zone=us-central1-c
 ```
 
 SSH into the machine:
 
-```text
+```bash
 gcloud compute ssh test-memorystore-vm --zone=us-central1-c
 ```
 
 Install `redis-cli`:
 
-```text
+```bash
 sudo apt-get update && sudo apt-get install -y redis-tools
 ```
 
 Connect to the instance:
 
-```text
+```bash
 redis-cli -h <MEMORYSTORE_REDIS_IP>
 ```
 
@@ -99,7 +99,7 @@ Add the Spring Data Redis starter:
 
 {% tabs %}
 {% tab title="Maven" %}
-```bash
+```markup
 <dependency>
     <groupId>org.springframework.cloud</groupId>
     <artifactId>spring-boot-starter-cache</artifactId>
@@ -124,7 +124,7 @@ compile group: 'org.springframework.cloud', name: 'spring-boot-starter-data-redi
 Configure the Redis instance to connect to:
 
 {% code title="application.properties" %}
-```bash
+```text
 spring.redis.host=<MEMORYSTORE_REDIS_IP>
 
 # Configure default TTL, e.g., 10 minutes
@@ -146,7 +146,7 @@ class DemoApplication {
 
 ### Cacheable
 
-Once you configured the Spring Boot with Redis and enabled caching, you can use the `@Cacheable` annotation to cache return values.
+Once you have configured the Spring Boot with Redis and enabled caching, you can use the `@Cacheable` annotation to cache return values.
 
 ```java
 @Service

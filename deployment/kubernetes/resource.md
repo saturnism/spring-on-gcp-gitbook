@@ -76,7 +76,7 @@ kubectl get limitrange limits -oyaml
 ```
 
 {% hint style="info" %}
-The default can be updated. [See Configure Default CPU Requests and Limits for a Namespace](https://kubernetes.io/docs/tasks/administer-cluster/manage-resources/cpu-default-namespace/) documentation.
+The default can be updated. See [Configure Default CPU Requests and Limits for a Namespace](https://kubernetes.io/docs/tasks/administer-cluster/manage-resources/cpu-default-namespace/) documentation.
 {% endhint %}
 
 ## Resource Request
@@ -113,7 +113,7 @@ spec:
 {% endcode %}
 
 {% hint style="info" %}
-In this example, CPU request is`200m` means `200 milli`=`200/1000` = `20%` of 1 vCPU core.
+In this example, CPU request is `200m` which means `200 milli`=`200/1000` = `20%` of 1 vCPU core.
 
 Memory is `128Mi`, which is `128 Mebibytes` = `~134 Megabytes`.
 {% endhint %}
@@ -128,7 +128,7 @@ When specifying the Memory resource allocation, do not accidentally use `m` as t
 
 ## Resource Limit
 
-The application can consume more CPU and memory than requested - they can burst up to the limit, but cannot exceed the limit. Configure the deployment to set the limit:
+The application can consume more CPU and memory than requested - it can burst up to the limit, but cannot exceed the limit. Configure the deployment to set the limit:
 
 {% code title="k8s/service.yaml" %}
 ```yaml
@@ -163,14 +163,13 @@ spec:
 {% endcode %}
 
 {% hint style="info" %}
-CPU limit is a _compressible_ resource. If the application exceeds the CPU limit, it'll simply be throttled, and thus capping the latency and  throughput.
+CPU limit is a _compressible_ resource. If the application exceeds the CPU limit, it'll simply be throttled, and thus capping the latency and throughput.
 {% endhint %}
 
 {% hint style="danger" %}
-Memory is bot a compressible resource. If the application exceeds the Memory limit, then the container will be killed \(`OOMKilled`\) and restarted.
+Memory is not a compressible resource. If the application exceeds the Memory limit, then the container will be killed \(`OOMKilled`\) and restarted.
 {% endhint %}
 
 {% hint style="info" %}
 For Java applications, read the [Container Awareness](../docker/container-awareness.md) section to make sure you are using a Container-Aware OpenJDK version to avoid unnecessary `OOMKilled` errors.
 {% endhint %}
-

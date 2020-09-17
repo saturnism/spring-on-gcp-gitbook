@@ -207,7 +207,7 @@ docker push gcr.io/${PROJECT_ID}/helloworld
 
 Download the Cloud Debugger Java agent into `src/main/jib` directory so that Jib can include the agent files as part of the container image:
 
-```text
+```bash
 # Make a directory to store the Java agent
 mkdir -p src/main/jib/opt/cdbg
 
@@ -247,7 +247,7 @@ Add the Cloud Debugger Java agent to the container, and configure the agent in t
 
 #### Clone
 
-```text
+```bash
 # Clone the sample repository manually
 git clone https://github.com/saturnism/jvm-helloworld-by-example
 cd jvm-helloworld-by-example/helloworld-springboot-tomcat
@@ -286,7 +286,7 @@ docker push gcr.io/${PROJECT_ID}/helloworld
 
 Download the Cloud Debugger Java agent into `src/main/jib` directory so that Jib can include the agent files as part of the container image:
 
-```text
+```bash
 # Make a directory to store the Java agent
 mkdir -p src/main/jib/opt/cdbg
 
@@ -515,7 +515,7 @@ Do not click on **Select source** yet.
 
 Use the command line to upload the source code \(for example, if you deployed the [Helloworld Application](../../getting-started/helloworld/app-engine.md#clone)\):
 
-```text
+```bash
 # Clone the sample repository manually
 git clone https://github.com/GoogleCloudPlatform/java-docs-samples
 cd java-docs-samples/appengine-java11/springboot-helloworld

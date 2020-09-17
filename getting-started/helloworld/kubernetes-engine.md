@@ -10,7 +10,7 @@ description: Create a Kubernetes cluster and deploy a container.
 
 ### Clone
 
-```text
+```bash
 cd $HOME
 git clone https://github.com/saturnism/jvm-helloworld-by-example
 cd jvm-helloworld-by-example/helloworld-springboot-tomcat
@@ -18,7 +18,7 @@ cd jvm-helloworld-by-example/helloworld-springboot-tomcat
 
 ### Build
 
-```text
+```bash
 ./mvnw package
 ```
 
@@ -26,7 +26,7 @@ cd jvm-helloworld-by-example/helloworld-springboot-tomcat
 
 #### Enable API
 
-Enable Container Registry API to be able to push container images to the Container Registry.
+Enable the Container Registry API so that you can push container images to [Container Registry](https://cloud.google.com/container-registry).
 
 ```bash
 gcloud services enable containerregistry.googleapis.com
@@ -51,7 +51,7 @@ Learn different ways to containerize a Java application in the [Container Image]
 
 #### Enable API
 
-```text
+```bash
 gcloud services enable compute.googleapis.com
 gcloud services enable container.googleapis.com
 ```
@@ -60,7 +60,7 @@ gcloud services enable container.googleapis.com
 
 Create a [VPC-native Kubernetes Engine cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/alias-ips).
 
-```text
+```bash
 gcloud container clusters create helloworld-cluster \
   --num-nodes 2 \
   --enable-ip-alias \
@@ -75,7 +75,7 @@ See [Compute Engine Machine Types documentation](https://cloud.google.com/comput
 
 #### Cluster Credentials
 
-Kubernetes credential is automatically retrieved and stored in your `$HOME/.kube/config` file. If you need to re-retrieve the credential:
+Kubernetes credentials are automatically retrieved and stored in your `$HOME/.kube/config` file. If you need to re-retrieve the credentials:
 
 ```bash
 gcloud container clusters get-credentials helloworld-cluster
@@ -100,7 +100,7 @@ kubectl get pods
 
 You can expose this one service using a single [Network \(L4\) Load Balancer](https://cloud.google.com/load-balancing/docs/network):
 
-```text
+```bash
 kubectl create service loadbalancer helloworld --tcp=8080:8080
 ```
 
@@ -112,7 +112,7 @@ A Network \(L4\) Load Balancer is the easiest way to expose a single service for
 
 Find the Load Balancer's External IP address:
 
-```text
+```bash
 kubectl get services helloworld
 ```
 
@@ -139,4 +139,3 @@ curl http://${EXTERNAL_IP}:8080
 * [Kubernetes from Basic to Advanced code lab](https://bit.ly/k8s-lab)
 * [Spring Boot on GCP code lab](https://bit.ly/spring-gcp-lab)
 * [Spring to Kubernetes Faster and Easier](https://saturnism.me/talk/kubernetes-spring-java-best-practices/)
-

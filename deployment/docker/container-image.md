@@ -19,7 +19,7 @@ cd jvm-helloworld-by-example/helloworld-springboot-tomcat
 
 ## Enable API
 
-Enable Container Registry API to be able to push container images to the Container Registry.
+Enable Container Registry API to push your container images to the Container Registry.
 
 ```bash
 gcloud services enable containerregistry.googleapis.com
@@ -27,7 +27,7 @@ gcloud services enable containerregistry.googleapis.com
 
 ## Containerize
 
-Typically, tutorials teach you how to write a `Dockerfile` to containerize a Java application. A `Dockerfile` however can be error prone and it's hard to implement all the best practices. Rather than writing a `Dockerfile`, use tools such as Jib and Buildpacks to automatically create optimized container images.
+Typically, tutorials teach you how to write a `Dockerfile` to containerize a Java application. A `Dockerfile` can be error prone and it's hard to implement all the best practices. Rather than writing a `Dockerfile`, use tools such as Jib and Buildpacks to automatically create optimized container images.
 
 ### Build and Push
 
@@ -76,7 +76,7 @@ Learn about [Paketo Buildpack](https://paketo.io/) and [GCP Buildpack](https://g
 {% endhint %}
 
 {% hint style="danger" %}
-Paketo Buildpack will calculate the minimum memory needed to run the Spring Boot application. For a this Hello World example, the minimum is 1GB of RAM.
+Paketo Buildpack will calculate the minimum memory needed to run the Spring Boot application. For a Hello World example, the minimum is 1GB of RAM.
 {% endhint %}
 {% endtab %}
 
@@ -130,7 +130,7 @@ Learn about [Paketo Buildpack](https://paketo.io/) and [GCP Buildpack](https://g
 {% endhint %}
 
 {% hint style="danger" %}
-Paketo Buildpack will calculate the minimum memory needed to run the Spring Boot application. For a this Hello World example, the minimum is 1GB of RAM.
+Paketo Buildpack will calculate the minimum memory needed to run the Spring Boot application. For a Hello World example, the minimum is 1GB of RAM.
 {% endhint %}
 {% endtab %}
 {% endtabs %}
@@ -209,6 +209,3 @@ You can connect to the container that's running locally
 ```bash
 curl localhost:8080
 ```
-
-## 
-

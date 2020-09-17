@@ -145,4 +145,3 @@
 | Use VPC | Yes | Yes | Yes | Yes | Yes |
 | Expose on VPC Only | Yes | No | No | Yes | Yes |
 | Internal VPC Only Load Balancing | No | No | No | Yes | Yes |
-

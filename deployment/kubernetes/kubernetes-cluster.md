@@ -12,14 +12,14 @@ This section requires basic understanding of Docker and container images - make 
 
 ## Enable API
 
-```text
+```bash
 gcloud services enable compute.googleapis.com
 gcloud services enable container.googleapis.com
 ```
 
 ## Create Cluster
 
-While it's easy to create a Kubernetes Engine cluster, but it takes a bit more to provision a production-grade cluster.   This cluster will enable many features for production use:
+While it's easy to create a Kubernetes Engine cluster, it takes a bit more to provision a production-grade cluster. This cluster will enable many features for production use:
 
 | Feature | Description |
 | :--- | :--- |
@@ -55,7 +55,7 @@ These nodes will still have a public IP, and be able to access the public Intern
 
 ## Credentials
 
-Kubernetes credential is automatically retrieved and stored in your `$HOME/.kube/config` file. If you need to re-retrieve the credential:
+Kubernetes credentials are automatically retrieved and stored in your `$HOME/.kube/config` file. If you need to re-retrieve the credential:
 
 ```bash
 gcloud container clusters get-credentials demo-cluster
@@ -63,7 +63,7 @@ gcloud container clusters get-credentials demo-cluster
 
 ## Node Pool and Nodes
 
-The Kubernetes cluster is composed of multiple Nodes - each node is a Compute Engine Virtual Machine.  When you deploy a container image into Kubernetes, a container instance is ultimately scheduled and ran on one of the Nodes.
+The Kubernetes cluster is composed of multiple Nodes - each node is a Compute Engine Virtual Machine. When you deploy a container image into Kubernetes, a container instance is ultimately scheduled and ran on one of the Nodes.
 
 In Kubernetes Engine, theses nodes are managed by a Node Pool, which is a set of homogenous Compute Engine Virtual Machines \(i.e., they have exactly the same configuration, such as machine type, disk, operation system, etc\).
 
@@ -77,7 +77,7 @@ You can see a list of Virtual Machines using `gcloud`:
 gcloud compute instances list
 ```
 
-You can also use `kubectl` to list the nodes that belongs to the current cluster:
+You can also use `kubectl` to list the nodes that belong to the current cluster:
 
 ```bash
 kubectl get nodes
@@ -95,4 +95,3 @@ Once you are in the Compute Engine Virtual Machine, you can also see the contain
 docker ps
 exit
 ```
-

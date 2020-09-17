@@ -5,4 +5,3 @@ Kubernetes is becoming the de-facto cluster/container orchestration system. Lear
 If you are unfamiliar with Kubernetes, you can learn more in this video:
 
 {% embed url="https://www.youtube.com/watch?v=kT1vmK0r184" %}
-

@@ -102,7 +102,7 @@ interface OrderRepository extends DatastoreRepository<Order, Long> {
 }
 ```
 
-In a business logic service, you can utilize the repositories:
+In a business logic service you can utilize the repositories:
 
 ```java
 @Service
@@ -162,4 +162,3 @@ curl http://localhost:8080/orders
 ### Samples
 
 * [Spring Boot with Datastore sample](https://github.com/spring-cloud/spring-cloud-gcp/tree/master/spring-cloud-gcp-samples/spring-cloud-gcp-data-datastore-sample)
-

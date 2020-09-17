@@ -84,7 +84,7 @@ class OrderItem {
 }
 ```
 
-Because Firestore is a document-oriented NoSQL database, you can have nested structure, you can establish parent-children relationships without complicated foreign keys.
+Because Firestore is a document-oriented NoSQL database, you can have nested structure and can establish parent-children relationships without complicated foreign keys.
 
 {% hint style="info" %}
 Read the [Spring Data Firestore reference documentation](https://cloud.spring.io/spring-cloud-static/spring-cloud-gcp/current/reference/html/#object-mapping-3) for more details.

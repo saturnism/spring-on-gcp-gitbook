@@ -88,6 +88,3 @@ Cloud Debugger can debug your production application without halting the applica
 ### Cloud Profiler
 
 Cloud Profiler can continuously profile CPU and heap usages in a production application with minimal overhead.  The profiled flame graph can help you understand performance hotspots. See [Cloud Profiler section](observability/profiling.md).
-
-
-

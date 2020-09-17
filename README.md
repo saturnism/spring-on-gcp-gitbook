@@ -49,4 +49,3 @@ There is a lot of content on this site. Here are some recommended paths dependin
 {% hint style="info" %}
 This is not official Google Cloud documentation. Always refer to [official documentation](https://cloud.google.com) for current pricing, features, limitations, etc.
 {% endhint %}
-

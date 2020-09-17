@@ -14,12 +14,9 @@ Read [Choosing between Native mode and Datastore mode](https://cloud.google.com/
 For traditional backend applications where real-time data updates is not needed, the Datastore mode is simple to use. For backend applications that wants to adopt reactive programming model, then the Native mode is better suited. 
 
 {% hint style="danger" %}
-A single Google Cloud Project can only choose one of the modes.  Once the mode chosen, you cannot change the mode. I.e., if you created a project that chose to use the Native mode, then the same project can no longer use the Datastore mode.
+A single Google Cloud Project can only choose one of the modes. Once the mode chosen, you cannot change the mode. I.e., if you created a project that chose to use the Native mode, then the same project can no longer use the Datastore mode.
 {% endhint %}
 
 Learn how to use each of the mode in the following pages.
 
 {% page-ref page="cloud-firestore-datastore.md" %}
-
-
-

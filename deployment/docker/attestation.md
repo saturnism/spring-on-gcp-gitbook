@@ -16,7 +16,7 @@ You need to create an Attestor, which is associated with the metadata of the an 
 
 ### Create a Note
 
-A note is a metadata entry in Google Container Analysis, and it's needed to be associasted with an Attestor. An Attestation ultimately becomes an instance of a Note. 
+A note is a metadata entry in Google Container Analysis and is required when associating with an Attestor. An Attestation ultimately becomes an instance of a Note. 
 
 ```bash
 PROJECT_ID=$(gcloud config get-value project)
@@ -56,7 +56,7 @@ gcloud beta container binauthz attestors create default-attestor \
 
 ## Asymetric Key Pair
 
-You need to create a key pair so that you can sign an attestation with a private key, and later, verify it with a public key. You can create you own key pair, but this guide will use Cloud KMS.
+You need to create a key pair so that you can sign an attestation with a private key, and later, verify it with a public key. You can create your own key pair, but this guide will use Cloud KMS.
 
 ### Enable API
 
@@ -96,7 +96,7 @@ gcloud alpha container binauthz attestors public-keys add \
 
 ## Attestation
 
-You can create an attestation for a container image, but you'll need the full SHA256 container image digest. The easiest way is to find this from Container Registry:
+You can create an attestation for a container image, but you'll need the full SHA256 container image digest. The easiest way to find this is from Container Registry:
 
 ```bash
 PROJECT_ID=$(gcloud config get-value project)

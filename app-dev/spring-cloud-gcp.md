@@ -22,16 +22,16 @@ Create a new Spring Boot project use [Spring Initializr](https://start.spring.io
 
 Or, generate the project using `curl`:
 
-```text
+```bash
 curl https://start.spring.io/starter.zip \
   -d dependencies=web,cloud-gcp,lombok \
-  -d bootVersion=2.3.1.RELEASE
+  -d bootVersion=2.3.1.RELEASE \
   -d baseDir=demo
 ```
 
 Unpack the downloaded zip file:
 
-```text
+```bash
 unzip demo.zip
 ```
 

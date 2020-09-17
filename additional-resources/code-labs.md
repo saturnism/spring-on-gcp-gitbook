@@ -1,5 +1,5 @@
 ---
-description: Long and short code labs to learn Spring Boot on GCP
+description: Long and short code labs to learn Spring Boot on GCP.
 ---
 
 # Code Labs
@@ -15,6 +15,3 @@ description: Long and short code labs to learn Spring Boot on GCP
 | Spring Boot on Kubernetes | Short | [gcplab.me/spring](https://codelabs.developers.google.com/codelabs/cloud-springboot-kubernetes/index.html?index=..%2F..spring#4) |
 | Spring Boot on Kubernetes | Long | [bit.ly/k8s-lab](http://bit.ly/k8s-lab) |
 | Spring Boot with Istio | Long | [bit.ly/istio-lab](http://bit.ly/istio-lab) |
-
-
-

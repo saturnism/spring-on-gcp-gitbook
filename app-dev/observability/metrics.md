@@ -93,8 +93,8 @@ Notice that there is no explicit configuration for username/password. Cloud Trac
 
 You should be able to access the metrics in Prometheus format from `/actuator/prometheus`.
 
-```text
-$ curl http://localhost:8080/actuator/prometheus
+```bash
+curl http://localhost:8080/actuator/prometheus
 
 # HELP jvm_memory_committed_bytes The amount of memory in bytes that is committed for  the Java virtual machine to use
 # TYPE jvm_memory_committed_bytes gauge
@@ -114,7 +114,7 @@ If you are running in Kubernetes Engine, you can use Prometheus Operator to inst
 
 #### Install Prometheus Operator
 
-```text
+```bash
 kubectl apply -f \
   https://raw.githubusercontent.com/coreos/prometheus-operator/v0.38.1/bundle.yaml
 ```
@@ -231,7 +231,7 @@ metadata:
 
 Apply `prometheus.yaml`to the Kubernetes cluster to provision a new instance using the Prometheus Operator.
 
-```text
+```bash
 kubectl apply -f prometheus.yaml
 ```
 

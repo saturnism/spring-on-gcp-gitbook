@@ -1,6 +1,6 @@
 # Secure Container Image
 
-While [creating a new container image](container-image.md#containerize) is fairly easy and straightforward for development purposes, you should consider building a secure container image for production use. Below are some basic considerations.
+While [Creating a new container image](container-image.md#containerize) is fairly easy and straightforward for development purposes, you should consider building a secure container image for production use. Below are some basic considerations.
 
 ## No Source Code
 
@@ -17,7 +17,7 @@ Jib automatically builds thin container images without the source.
 {% tab title="Buildpacks" %}
 Paketo automatically builds thin container images without the source.
 
-GCP Buildpack needs to set `GOOGLE_CLEAR_SOURCE=true`  to remove the source from the container image. See [GCP Buildpack README](https://github.com/GoogleCloudPlatform/buildpacks#configuration) for more information.
+GCP Buildpack needs to set `GOOGLE_CLEAR_SOURCE=true` to remove the source from the container image. See [GCP Buildpack README](https://github.com/GoogleCloudPlatform/buildpacks#configuration) for more information.
 
 ```bash
 PROJECT_ID=$(gcloud config get-value project)                                                            ⬢ system ⎈ demo-cluster
@@ -36,7 +36,7 @@ Do not copy secrets and/or credentials into a container image \(e.g., do not cop
 
 ## Minimal Base Image
 
-Many base images comes with all the command line utilities from a typical Linux distribution \(e.g., a shell, package manager, etc\). These container images may allow you \(or an attacker!\) to get into a shell, and install additional tools. To reduce the attack surface, consider using a minimal base image that has the least attack surface \(but is also harder to debug with\).
+Many base images comes with all the command line utilities from a typical Linux distribution \(e.g., a shell, package manager, etc\). These container images may allow you \(or an attacker!\) to get into a shell, and install additional tools. To reduce the attack surface, consider using a minimal base image that has the least attack surface. These images will be more secure, but may also be harder to debug.
 
 {% tabs %}
 {% tab title="Jib" %}
@@ -44,13 +44,13 @@ Jib uses the [Distroless](https://github.com/GoogleContainerTools/distroless/blo
 {% endtab %}
 
 {% tab title="Buildpacks" %}
-Buildpack's runtime image ultimately do not use Distroless. Paketo, for example, executed shell script to calculate memory needs, and thus Shell is needed. There is no easy way to switch out the base image when using a Buildpack. You may need to create your own to change the base image.
+Buildpack's runtime image ultimately does not use Distroless. Paketo, for example, executed shell script to calculate memory needs, and thus Shell is needed. There is no easy way to switch out the base image when using a Buildpack. You may need to create your own to change the base image.
 {% endtab %}
 {% endtabs %}
 
 ## Non-Root User
 
-One of the most overlooked configuration for a container image is which user is used to run your application? In a VM environment, you would never want to run an application as `root`. It's no different in a container. Every container image may have a different set of non-priviledged users.
+One of the most overlooked configuration for a container image is which user is used to run your application? In a VM environment, you would never want to run an application as `root`. It's no different in a container. Every container image may have a different set of non-privileged users.
 
 For example, for a Distroless base image \(using a debug image that has a shell\):
 

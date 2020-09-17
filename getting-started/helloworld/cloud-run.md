@@ -1,10 +1,10 @@
 ---
-description: Deploy a container to serverless environment using one command line.
+description: Deploy a container to serverless environment using a single command.
 ---
 
 # Cloud Run
 
-[Cloud Run](https://cloud.google.com/run/docs) is a fully managed container runtime environment, where you can deploy any HTTP serving containers, and Cloud Run will automatically scale out the number of instances as needed, and scale down to zero when no one is using it.
+[Cloud Run](https://cloud.google.com/run/docs) is a fully managed container runtime environment, where you can deploy any HTTP serving container, and Cloud Run will automatically scale out the number of instances as needed, and scale down to zero when no one is using it.
 
 ## Getting Started - Click to Deploy
 
@@ -32,7 +32,7 @@ cd jvm-helloworld-by-example/helloworld-springboot-tomcat
 
 #### Enable API
 
-Enable Container Registry API to be able to push container images to the Container Registry.
+Enable the Container Registry API so that you can push container images to [Container Registry](https://cloud.google.com/container-registry).
 
 ```bash
 gcloud services enable containerregistry.googleapis.com
@@ -57,7 +57,7 @@ Learn different ways to containerize a Java application in the [Container Image]
 
 #### Enable API
 
-```text
+```bash
 # To use Cloud Run
 gcloud services enable run.googleapis.com
 ```
@@ -78,7 +78,7 @@ gcloud run deploy helloworld \
 
 Once deployed, Cloud Run will display the HTTPs URL. You can also find the URL with the command line:
 
-```text
+```bash
 gcloud run services describe helloworld \
   --region=us-central1 \
   --platform=managed
@@ -110,4 +110,3 @@ gcloud run deploy helloworld --platform=managed --allow-unauthenticated \
 ## Learn More
 
 * [Optimizing Java Applications on Cloud Run](https://cloud.google.com/run/docs/tips/java)
-

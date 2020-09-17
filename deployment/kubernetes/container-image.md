@@ -12,14 +12,14 @@ This section continues from the previous section - make sure you do the tutorial
 
 ## Clone
 
-```text
+```bash
 git clone https://github.com/saturnism/jvm-helloworld-by-example
 cd jvm-helloworld-by-example/helloworld-springboot-tomcat
 ```
 
 ## Build
 
-```text
+```bash
 ./mvnw package
 ```
 
@@ -200,4 +200,3 @@ You can connect to the container that's running locally
 ```bash
 curl localhost:8080
 ```
-

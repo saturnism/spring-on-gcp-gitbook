@@ -8,7 +8,7 @@ description: Create a VM then deploy your application to the VM.
 
 ### Clone
 
-```text
+```bash
 cd $HOME
 git clone https://github.com/saturnism/jvm-helloworld-by-example
 cd jvm-helloworld-by-example/helloworld-springboot-tomcat
@@ -16,7 +16,7 @@ cd jvm-helloworld-by-example/helloworld-springboot-tomcat
 
 ### Build
 
-```text
+```bash
 ./mvnw package
 ```
 
@@ -55,7 +55,7 @@ gcloud compute scp target/helloworld.jar helloworld:
 ```
 
 {% hint style="info" %}
-If it was your first time connecting to the VM, it will automatically prompt you to generate a new SSH key.
+If this is your first time connecting to the VM, it will automatically prompt you to generate a new SSH key.
 {% endhint %}
 
 ### SSH to VM
@@ -72,7 +72,7 @@ sudo apt-get update && sudo apt-get install -y openjdk-11-jdk
 
 ### Run in the VM
 
-```text
+```bash
 java -jar helloworld.jar
 ```
 
@@ -80,13 +80,13 @@ java -jar helloworld.jar
 
 #### Firewall
 
-By default, most ports on the Compute Engine are firewalled off.  If you want to expose port `8080` in this case, you can first add a `tag` to the Compute Engine instance, and then add a firewall rule to allow inbound port `8080` traffic for any Compute Engine instance with a certain tag.
+By default, most ports on the Compute Engine are firewalled off. If you want to expose port `8080` in this case, you can first add a `tag` to the Compute Engine instance, and then add a firewall rule to allow inbound port `8080` traffic for any Compute Engine instance with a certain tag.
 
 From outside of the VM \(e.g., your computer, or Cloud Shell\):
 
 #### Add Tag
 
-```text
+```bash
 gcloud compute instances add-tags helloworld --tags=webapp
 ```
 
@@ -124,14 +124,14 @@ In production environments, you would most likely want to put a Load Balancer in
 
 ### Clone
 
-```text
+```bash
 git clone https://github.com/saturnism/jvm-helloworld-by-example
 cd jvm-helloworld-by-example/helloworld-springboot-tomcat
 ```
 
 ### Build
 
-```text
+```bash
 ./mvnw package
 ```
 
@@ -186,7 +186,7 @@ This will automatically create a Container-Optimized VM, and start the container
 
 #### Firewall
 
-By default, most ports on the Compute Engine are firewalled off.  If you want to expose port `8080` in this case, you can first add a `tag` to the Compute Engine instance, and then add a firewall rule to allow inbound port `8080` traffic for any Compute Engine instance with a certain tag.
+By default, most ports on a Compute Engine instance are firewalled off. If you want to expose port `8080` in this case, you can first add a `tag` to the Compute Engine instance, and then add a firewall rule to allow inbound port `8080` traffic for any Compute Engine instance with a certain tag.
 
 Add a tag:
 
@@ -227,4 +227,3 @@ In production environments, you would most likely want to put a Load Balancer in
 {% hint style="info" %}
 To deploy a fleet of VMs, you can use [Managed Instance Group](https://cloud.google.com/compute/docs/containers/deploying-containers#managedinstancegroupcontainer) to deploy a set of VMs running the same container image.
 {% endhint %}
-
