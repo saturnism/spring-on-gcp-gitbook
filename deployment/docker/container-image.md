@@ -52,8 +52,8 @@ You can configure [Jib Maven plugin](https://github.com/GoogleContainerTools/jib
 [Cloud Native Buildpacks](https://buildpacks.io) can containerize applications written in different language without a `Dockerfile`. It does require `docker` installed.
 
 1. Install Docker locally - see [Get Docker documentation](https://docs.docker.com/get-docker/).
-2. Install `pack` CLI - see [Installing `pack` documentation](https://buildpacks.io/docs/install-pack/)
-3. Build container with `pack`, and use `--publish` flag to push directly to the remote registry:
+1. Install `pack` CLI - see [Installing `pack` documentation](https://buildpacks.io/docs/install-pack/)
+1. Build container with `pack`, and use `--publish` flag to push directly to the remote registry:
 
 ```bash
 # Paketo Buildpack
