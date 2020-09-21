@@ -107,7 +107,7 @@ Add the Spring Cloud GCP Pub/Sub starter:
 
 {% tabs %}
 {% tab title="Maven" %}
-```bash
+```markup
 <dependency>
     <groupId>org.springframework.cloud</groupId>
     <artifactId>spring-cloud-gcp-starter-pubsub</artifactId>
@@ -116,7 +116,7 @@ Add the Spring Cloud GCP Pub/Sub starter:
 {% endtab %}
 
 {% tab title="Gradle" %}
-```bash
+```groovy
 compile group: 'org.springframework.cloud', name: 'spring-cloud-gcp-starter-pubsub'
 ```
 {% endtab %}
@@ -333,7 +333,7 @@ Spring Cloud Stream depends on Spring Integration. In addition, add the Pub/Sub 
 
 {% tabs %}
 {% tab title="Maven" %}
-```bash
+```markup
 <dependency>
   <groupId>org.springframework.cloud</groupId>
   <artifactId>spring-cloud-stream</artifactId>
@@ -346,7 +346,7 @@ Spring Cloud Stream depends on Spring Integration. In addition, add the Pub/Sub 
 {% endtab %}
 
 {% tab title="Gradle" %}
-```bash
+```groovy
 compile group: 'org.springframework.cloud', name: 'spring-cloud-stream'
 compile group: 'org.springframework.cloud', name: 'spring-cloud-gcp-pubsub-stream-binder'
 ```
