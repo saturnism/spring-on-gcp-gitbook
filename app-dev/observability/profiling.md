@@ -131,7 +131,7 @@ Add the Cloud Profiler Java agent to the container, and configure the agent in t
 
 #### Clone
 
-```text
+```bash
 # Clone the sample repository manually
 git clone https://github.com/saturnism/jvm-helloworld-by-example
 cd jvm-helloworld-by-example/helloworld-springboot-tomcat
@@ -170,7 +170,7 @@ docker push gcr.io/${PROJECT_ID}/helloworld
 
 Download the Cloud Debugger Java agent into `src/main/jib` directory so that Jib can include the agent files as part of the container image:
 
-```text
+```bash
 # Make a directory to store the Java agent
 mkdir -p src/main/jib/opt/cprof
 
@@ -210,7 +210,7 @@ Add the Cloud Profiler Java agent to the container, and configure the agent in t
 
 #### Clone
 
-```text
+```bash
 # Clone the sample repository manually
 git clone https://github.com/saturnism/jvm-helloworld-by-example
 cd jvm-helloworld-by-example/helloworld-springboot-tomcat
@@ -249,7 +249,7 @@ docker push gcr.io/${PROJECT_ID}/helloworld
 
 Download the Cloud Debugger Java agent into `src/main/jib` directory so that Jib can include the agent files as part of the container image:
 
-```text
+```bash
 # Make a directory to store the Java agent
 mkdir -p src/main/jib/opt/cprof
 
