@@ -154,8 +154,6 @@ kubectl get pods -lapp=unattested-nginx
 
 If you trust every container image from a particular Project:
 
-
-
 {% code title="binauthz-policy.yaml" %}
 ```yaml
 admissionWhitelistPatterns:
