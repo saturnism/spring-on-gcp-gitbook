@@ -54,7 +54,7 @@ Add Spring Boot Actuator and Micrometer Prometheus dependencies:
 
 {% tabs %}
 {% tab title="Maven" %}
-```bash
+```markup
 <dependency>
   <groupId>org.springframework.boot</groupId>
   <artifactId>spring-boot-starter-actuator</artifactId>
@@ -67,7 +67,7 @@ Add Spring Boot Actuator and Micrometer Prometheus dependencies:
 {% endtab %}
 
 {% tab title="Gradle" %}
-```bash
+```groovy
 
 compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
 compile group: 'io.micrometer', name: 'micrometer-registry-prometheus'
@@ -114,7 +114,7 @@ If you are running in Kubernetes Engine, you can use Prometheus Operator to inst
 
 #### Install Prometheus Operator
 
-```text
+```bash
 kubectl apply -f \
   https://raw.githubusercontent.com/coreos/prometheus-operator/v0.38.1/bundle.yaml
 ```
@@ -231,7 +231,7 @@ metadata:
 
 Apply `prometheus.yaml`to the Kubernetes cluster to provision a new instance using the Prometheus Operator.
 
-```text
+```bash
 kubectl apply -f prometheus.yaml
 ```
 
@@ -268,7 +268,7 @@ Add Spring Boot Actuator and Micrometer Stackdriver dependencies:
 
 {% tabs %}
 {% tab title="Maven" %}
-```bash
+```markup
 <dependency>
   <groupId>org.springframework.boot</groupId>
   <artifactId>spring-boot-starter-actuator</artifactId>
@@ -281,7 +281,7 @@ Add Spring Boot Actuator and Micrometer Stackdriver dependencies:
 {% endtab %}
 
 {% tab title="Gradle" %}
-```bash
+```groovy
 
 compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
 compile group: 'io.micrometer', name: 'micrometer-registry-stackdriver'
