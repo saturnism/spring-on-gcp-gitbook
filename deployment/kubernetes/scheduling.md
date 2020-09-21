@@ -2,13 +2,13 @@
 
 ## Anti-Affinity
 
-By default, Kuberntes will schedule a pod onto a random node as long as the node has capacity to execute the pod based on the resource constraints. However, when you scale a deployment to `2`, there is a chance where both of the Pods are scheduled onto the same Kuberntes Node. This can cause issues if the Node goes down, causing both available Pods to shutdown and need to reschedule onto another node.
+By default, Kubernetes will schedule a pod onto a random node as long as the node has capacity to execute the pod based on the resource constraints. However, when you scale a deployment to `2`, there is a chance where both of the Pods are scheduled onto the same Kuberntes Node. This can cause issues if the Node goes down, causing both available Pods to shutdown and need to reschedule onto another node.
 
 One solution is to avoid scheduling the pods onto the same node and this is called [ant-affinity](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity).
 
 ### Required Anti-Affinity
 
-This example will enforce anti-affinity and not schedule any pods if anti-affinity requirement cannot be met. For the Hello World container, add additional configuration to make sure the pods are scheduled onto different nodes.
+This example will enforce anti-affinity and not schedule any pods if the anti-affinity requirement cannot be met. For the Hello World container, add additional configuration to make sure the pods are scheduled onto different nodes.
 
 {% code title="k8s/deployment.yaml" %}
 ```yaml

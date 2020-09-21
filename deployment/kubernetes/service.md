@@ -10,13 +10,13 @@ This section continues from the previous section - make sure you do the tutorial
 
 ## Service
 
-Each Pod has a unique IP address - but the address is ephemeral. The Pod IP addresses are not stable and it can change when Pods start and/or restart. Moreover, if you have a Deployment that starts multiple Pods, and you need to consume an API from the Pods, you do not want to connect using an ephemeral IP address either. Usually, you'll need to put a load balancer to distribute traffic to each individual instances.
+Each Pod has a unique IP address - but the address is ephemeral. The Pod IP addresses are not stable and it can change when Pods start and/or restart. Moreover, if you have a Deployment that starts multiple Pods, and you need to consume an API from the Pods, you do not want to connect using an ephemeral IP address. Usually, you'll need to add a load balancer to distribute traffic to each individual instance.
 
 In Kubernetes, a Service is a Network \(L4\) Load Balancer that'll provide you a single stable Service IP \(and hostname\) to load balance the traffic to a set of pods selected by using labels.
 
 ### Service YAML
 
-You can create a Service and deploy into Kubernetes using `kubectl` command line like in the [Hello World tutorial](../../getting-started/helloworld/kubernetes-engine.md). That's great to get a feel of Kubernetes. However, it's best that you create a YAML file first, and then deploy the YAML file.
+You can create a Service and deploy into Kubernetes using the `kubectl` CLI like in the [Hello World tutorial](../../getting-started/helloworld/kubernetes-engine.md). That's great to get a feel of Kubernetes. However, it's best that you create a YAML file first, and then deploy the YAML file.
 
 ```bash
 # Under the helloworld-springboot-tomcat directory , create a k8s directory
@@ -28,7 +28,7 @@ kubectl create service clusterip helloworld \
   -o yaml > k8s/service.yaml
 ```
 
-You can open the `k8s/service.yaml` file to see the content. Following is a version of the YAML file where it's slimmed down to the bare minimum.
+You can open the `k8s/service.yaml` file to see the content. Below is a version of the YAML file that's slimmed down to the bare minimum.
 
 {% code title="k8s/service.yaml" %}
 ```yaml
@@ -88,7 +88,7 @@ helloworld   ClusterIP   ...          <none>        8080/TCP   7s
 
 ## Service Discovery
 
-In a traditional Spring Cloud application, service discovery is done using an external service registry like Eureka, and perform client-side load balancing with Ribbon.
+In a traditional Spring Cloud application, service discovery is done using an external service registry like Eureka, and client-side load balancing with Ribbon.
 
 In Kubernetes, the Kubernetes Service itself can act as the service registry:
 
@@ -109,13 +109,13 @@ kubectl scale deployment helloworld --replicas=2
 kubectl get pods -lapp=helloworld
 ```
 
-Describe the Service to see the Endpoint IP addresses that it's currently enlisted for the Service, and look for the `Endpoints` output:
+Describe the Service to see the Endpoint IP addresses that it's currently enlisted,, and look for the `Endpoints` output:
 
 ```bash
 kubectl describe svc helloworld
 ```
 
-It is possible to continue to use Ribbon for client-side load balancing by retrieving these endpoints using the Kubernetes API. This is an advanced usage and not covered in this documentation at the moment. However, you can easily achieve the result if you use [Spring Cloud Kubernetes](https://spring.io/projects/spring-cloud-kubernetes) to replace Spring Cloud Eureka.
+It is possible to continue to use Ribbon for client-side load balancing by retrieving these endpoints using the Kubernetes API. This is an advanced usage and not covered in this documentation. However, you can achieve a similar result if you use [Spring Cloud Kubernetes](https://spring.io/projects/spring-cloud-kubernetes) to replace Spring Cloud Eureka.
 
 ### DNS Name
 
@@ -125,7 +125,7 @@ The newly created Kubernetes Service is also a L4 Load Balancer, and it can be a
 See [Kubernetes DNS for Services and Pods documentation](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/) for more detail on how a DNS name is associated with a Service.
 {% endhint %}
 
-This service is currently accessibly only from within the Kubernetes cluster. I.e., there is no public IP address. You can start a new Pod within the cluster that has a shell, and execute commands within the cluster. This accurately simulates a client application sending request to another backend service.
+This service is currently only accessible from within the Kubernetes cluster. I.e., there is no public IP address. You can start a new Pod within the cluster that has a shell, and execute commands within the cluster. This accurately simulates a client application sending request to another backend service.
 
 `nginx` container image has a shell that we can use, so deploy one instance of `nginx`.
 
@@ -152,10 +152,4 @@ exit
 {% hint style="info" %}
 If you have a client service that needs to reach the `helloworld` service within the same cluster, you can simply use the DNS name. This will resolve to the Cluster IP, and subsequently, L4 load balanced to one of the backend endpoints.
 {% endhint %}
-
-
-
-### 
-
-
 

@@ -12,14 +12,14 @@ This section requires basic understanding of Docker and container images - make 
 
 ## Enable API
 
-```text
+```bash
 gcloud services enable compute.googleapis.com
 gcloud services enable container.googleapis.com
 ```
 
 ## Create Cluster
 
-While it's easy to create a Kubernetes Engine cluster, but it takes a bit more to provision a production-grade cluster.   This cluster will enable many features for production use:
+While it's easy to create a Kubernetes Engine cluster, it takes a bit more to provision a production-grade cluster. This cluster will enable many features for production use:
 
 | Feature | Description |
 | :--- | :--- |
@@ -33,7 +33,7 @@ While it's easy to create a Kubernetes Engine cluster, but it takes a bit more t
 | [Auto Repair](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-repair) | Automatically repair a Google Kubernetes Engine node if it becomes unhealthy. |
 | [Auto Upgrade](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-upgrades) | Automatically upgrade Google Kubernetes Engine nodes version to keep up to date with the cluster control plane version. |
 
-```text
+```bash
 PROJECT_ID=$(gcloud config get-value project)
 gcloud container clusters create demo-cluster \
   --num-nodes 4 \
@@ -55,7 +55,7 @@ These nodes will still have a public IP, and be able to access the public Intern
 
 ## Credentials
 
-Kubernetes credential is automatically retrieved and stored in your `$HOME/.kube/config` file. If you need to re-retrieve the credential:
+Kubernetes credentials are automatically retrieved and stored in your `$HOME/.kube/config` file. If you need to re-retrieve the credential:
 
 ```bash
 gcloud container clusters get-credentials demo-cluster
@@ -77,7 +77,7 @@ You can see a list of Virtual Machines using `gcloud`:
 gcloud compute instances list
 ```
 
-You can also use `kubectl` to list the nodes that belongs to the current cluster:
+You can also use `kubectl` to list the nodes that belong to the current cluster:
 
 ```bash
 kubectl get nodes

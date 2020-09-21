@@ -25,7 +25,7 @@ Spring Boot &lt; 2.3 and below, it's best to create a simple endpoint that simpl
 
 ### Clone
 
-```text
+```bash
 git clone https://github.com/saturnism/jvm-helloworld-by-example
 cd jvm-helloworld-by-example/helloworld-springboot-tomcat
 ```
@@ -70,7 +70,7 @@ Learn different ways to containerize a Java application in the [Container Image]
 
 ## Liveness Probe
 
-Kubernetes can automatically detect application issues using a Liveness Probe. When the Liveness Probe check fails, Kubernetes will automatically restart the container, hoping that restarting your application will help it to recover. If the container continues to fail the Liveness Probe, Kubernetes will go into a Crash Loop and backs off the restart exponentially.
+Kubernetes can automatically detect application issues using a Liveness Probe. When the Liveness Probe check fails, Kubernetes will automatically restart the container, in case restarting your application helps it to recover. If the container continues to fail the Liveness Probe, Kubernetes will go into a Crash Loop and backs off the restart exponentially.
 
 {% hint style="info" %}
 Liveness Probe failure indicates to Kubernetes that the failure can be recovered after a restart.
@@ -131,7 +131,7 @@ When configuring a `livenessProbe`, always consider the initial delay needed for
 
 ## Readiness Probe
 
-When your application is alive doesn't mean it's ready to receive traffic. For example, during the startup, the application is alive, but it needs to pre-load data, or warmup caches, before it's ready to accept traffic. A Readiness Probe will let Kubernetes know when your application is ready to receive traffic, and only then will the instance be enlisted into the load balancer as a backend to serve requests \(i.e., a Service's Endpoint\).
+Even if your application is alive, it doesn't mean that it's ready to receive traffic. For example, during the startup, the application is alive, but it needs to pre-load data, or warmup caches, before it's ready to accept traffic. A Readiness Probe will let Kubernetes know when your application is ready to receive traffic, and only then will the instance be enlisted into the load balancer as a backend to serve requests \(i.e., a Service's Endpoint\).
 
 {% code title="k8s/deployment.yaml" %}
 ```yaml
