@@ -67,7 +67,7 @@ Add the Spring Cloud GCP Storage starter:
 
 {% tabs %}
 {% tab title="Maven" %}
-```bash
+```markup
 <dependency>
     <groupId>org.springframework.cloud</groupId>
     <artifactId>spring-cloud-gcp-starter-storage</artifactId>
@@ -76,7 +76,7 @@ Add the Spring Cloud GCP Storage starter:
 {% endtab %}
 
 {% tab title="Gradle" %}
-```bash
+```groovy
 
 compile group: 'org.springframework.cloud', name: 'spring-cloud-gcp-starter-storage'
 ```
@@ -158,7 +158,7 @@ Add both the Spring Cloud GCP Storage starter, and Spring Integration File compo
 
 {% tabs %}
 {% tab title="Maven" %}
-```bash
+```markup
 <dependency>
     <groupId>org.springframework.cloud</groupId>
     <artifactId>spring-cloud-gcp-starter-storage</artifactId>
@@ -171,7 +171,7 @@ Add both the Spring Cloud GCP Storage starter, and Spring Integration File compo
 {% endtab %}
 
 {% tab title="Gradle" %}
-```bash
+```groovy
 
 compile group: 'org.springframework.cloud', name: 'spring-cloud-gcp-starter-storage'
 compile group: 'org.springframework.integration', name: 'spring-integration-file'
