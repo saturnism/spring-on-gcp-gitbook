@@ -62,6 +62,22 @@ In Cloud Logging dashboard, you can see graphs with segmentation on the Severity
 
 ![](../../.gitbook/assets/image%20%2818%29.png)
 
+## Log / Trace Correlation
+
+When your log messages are also associated with the same trace ID and span ID as the ones sent to Cloud Trace, then the Trace console can display the logs along side of the trace/spans views when you click **Show Logs**:
+
+![](https://lh3.googleusercontent.com/O6u214GgMO_GD-xNUkHVj8KTOBH6pf8-_SJP1x17QhdT9Fle3D30gjV-wuTOSSYDHWnjMqFyZmymAIroBTrxNRJGXrT6JqWRQYGVyZE0DMXRDCR4IkNxBCoAwKGnzyctcJMk7-PPBQ)
+
+## Request Log Grouping
+
+In managed runtime environments like Cloud Run and App Engine, the platform's HTTP load balancer automatically produces a HTTP-request log entry that contains the request information such as the URL, response code, etc, as well as the load balancer generated trace ID
+
+The load balancer generated request information is stored in the log entry's [`httpRequest`](https://cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry#HttpRequest) attribute. The load balancer generated trace ID is propagated to your application via the `X-Cloud-Trace-Context` HTTP header. [Spring Cloud GCP Trace starter](trace.md#cloud-trace) will automatically read and use this trace header.
+
+When your log messages are also associated with the same trace ID, then the Log Viewer can group these log entries together, with the top-level request log produced by the load balancer:
+
+![Log entries are grouped under the top-level request log](../../.gitbook/assets/image%20%2843%29.png)
+
 ## Logback
 
 Spring Boot uses [Slf4J](http://www.slf4j.org/) logging API and [Logback](http://logback.qos.ch/) logger by default. You can user [Spring Cloud GCP's Logging Starter](https://cloud.spring.io/spring-cloud-static/spring-cloud-gcp/current/reference/html/#stackdriver-logging) to use pre-configured Logback appenders to produce Structured JSON logs, or send the log via the Cloud Logging API.
@@ -222,6 +238,12 @@ In the Cloud Trace console, check **Show Logs**, then you can then see the logs 
 
 ![](https://lh3.googleusercontent.com/O6u214GgMO_GD-xNUkHVj8KTOBH6pf8-_SJP1x17QhdT9Fle3D30gjV-wuTOSSYDHWnjMqFyZmymAIroBTrxNRJGXrT6JqWRQYGVyZE0DMXRDCR4IkNxBCoAwKGnzyctcJMk7-PPBQ)
 
+### Request Log Grouping
+
+In addition to Trace / Log Correlation, if the application is running in Cloud Run, App Engine, or any environment that's fronted by a GCP's HTTP load balancer, then the log entries can be grouped into the top level load balancer produced request log.
+
+![Log entries are grouped under the top-level request log](../../.gitbook/assets/image%20%2843%29.png)
+
 ### Samples
 
 * [Spring Cloud GCP Logging sample](https://github.com/spring-cloud/spring-cloud-gcp/tree/master/spring-cloud-gcp-samples/spring-cloud-gcp-logging-sample)
@@ -229,6 +251,32 @@ In the Cloud Trace console, check **Show Logs**, then you can then see the logs 
 ## Other Loggers
 
 It's highly recommended that you use the default logger \(Logback\) with Spring Boot, to take advantage of Spring Cloud GCP features. If you do use other Loggers, you may be able to configure logging to API with different appenders/handlers.
+
+### JSON Logging
+
+The official [Structured Logging documentation](https://cloud.google.com/logging/docs/structured-logging) suggests that you output the JSON format according to the [LogEntry](https://cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry). Rather than producing the entire `LogEntry`, you can produce a more simplified JSON payload:
+
+```javascript
+{
+  "message": "My log message",
+  "severity": "WARN"
+}
+```
+
+Cloud Logging agents will automatically extrapolate the `severity` attribute, and also fill in the rest of the `LogEntry` fields so that you don't need to.
+
+If you want to add the trace ID or span ID, you can do so by adding [Special Fields](https://cloud.google.com/logging/docs/agent/configuration#special-fields) to the JSON payload. These special fields will be automatically extrapolated to the `LogEntry`. Fir exanoke/l
+
+```bash
+{
+  "message": "My log message",
+  "severity": "WARN",
+  "logging.googleapis.com/trace": "projects/PROJECT_ID/traces/TRACE_ID",
+  "logging.googleapis.com/spanId": "SPAN_ID"
+}
+```
+
+### API Logging
 
 #### Java Logging API \(JUL\)
 

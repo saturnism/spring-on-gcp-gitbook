@@ -17,7 +17,7 @@ Jib automatically builds thin container images without the source.
 {% tab title="Buildpacks" %}
 Paketo automatically builds thin container images without the source.
 
-GCP Buildpack needs to set `GOOGLE_CLEAR_SOURCE=true`  to remove the source from the container image. See [GCP Buildpack README](https://github.com/GoogleCloudPlatform/buildpacks#configuration) for more information.
+GCP Buildpack needs to set `GOOGLE_CLEAR_SOURCE=true` to remove the source from the container image. See [GCP Buildpack README](https://github.com/GoogleCloudPlatform/buildpacks#configuration) for more information.
 
 ```bash
 PROJECT_ID=$(gcloud config get-value project)                                                            ⬢ system ⎈ demo-cluster
@@ -122,7 +122,7 @@ So, what do the automated tools do by default?
       <td style="text-align:left">No source in runtime</td>
       <td style="text-align:left">No source in runtime</td>
       <td style="text-align:left">
-        <p>Set <code>GOOGLE_CLEAR_SOURCE.</code> 
+        <p>Set <code>GOOGLE_CLEAR_SOURCE.</code>
         </p>
         <p>See <a href="https://github.com/GoogleCloudPlatform/buildpacks#configuration">README</a>.</p>
       </td>
