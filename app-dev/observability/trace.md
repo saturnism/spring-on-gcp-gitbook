@@ -20,7 +20,7 @@ Add the Spring Cloud GCP Trace starter:
 
 {% tabs %}
 {% tab title="Maven" %}
-```bash
+```markup
 <dependency>
     <groupId>org.springframework.cloud</groupId>
     <artifactId>spring-cloud-gcp-starter-trace</artifactId>
@@ -29,7 +29,7 @@ Add the Spring Cloud GCP Trace starter:
 {% endtab %}
 
 {% tab title="Gradle" %}
-```bash
+```groovy
 compile group: 'org.springframework.cloud', name: 'spring-cloud-gcp-starter-trace'
 ```
 {% endtab %}
