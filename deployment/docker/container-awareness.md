@@ -14,7 +14,7 @@ Newer versions of JDK \(8u192 and above\) will automatically discover the CGroup
 
 ## Heap
 
-Run a Docker container and give it only 256MB of memory,  and see an older version of JDK will assign for the default Max Heap.
+Run a Docker container and give it only 256MB of memory, and see an older version of JDK will assign for the default Max Heap.
 
 ```bash
 docker run -ti --rm --cpus=1 --memory=256M openjdk:8u141-jre \
@@ -32,9 +32,9 @@ Run the same command, but with a newer version of JDK:
 
 The output of `MaxHeapSize` is now `132120576` bytes, which is ~126MB, indicating that it's now respecting the 256MB limitation we assigned for the container.
 
-The JVM heap size should never be equal  memory resource you assigned. In this case, even though we assigned 256MB of memory to the container, the Max Heap must be much lower than that \(e.g., 50% of that, or depending on your application\). This is because the JVM also uses native memory in addition to the heap.
+The JVM heap size should never be equal memory resource you assigned. In this case, even though we assigned 256MB of memory to the container, the Max Heap must be much lower than that \(e.g., 50% of that, or depending on your application\). This is because the JVM also uses native memory in addition to the heap.
 
-JVM native memory usages contains thread stack, code cache, metaspace, and potentially direct memory buffer allocations.
+JVM native memory usage contains thread stack, code cache, metaspace, and potentially direct memory buffer allocations.
 
 #### Estimate Memory Needs
 
@@ -71,7 +71,7 @@ If your application was `OOMKilled`, then it's an unsuccessful exit, so the memo
 
 ## CPU
 
-Run a Docker container and giving it only 2 CPUs,  and see what an older version of JDK will assign for the default Parallel GC threads.
+Run a Docker container and giving it only 2 CPUs, and see what an older version of JDK will assign for the default Parallel GC threads.
 
 ```bash
 docker run -ti --rm --cpus=2 openjdk:8u141-jre java \
