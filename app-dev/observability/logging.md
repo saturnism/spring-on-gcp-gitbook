@@ -78,6 +78,8 @@ When your log messages are also associated with the same trace ID, then the Log 
 
 ![Log entries are grouped under the top-level request log](../../.gitbook/assets/image%20%2843%29.png)
 
+If you are not using a Google Cloud HTTP Load Balancer, then you can produce the `httpRequest` log manually. See [Other Loggers' JSON Logging](logging.md#json-logging) section.
+
 ## Logback
 
 Spring Boot uses [Slf4J](http://www.slf4j.org/) logging API and [Logback](http://logback.qos.ch/) logger by default. You can user [Spring Cloud GCP's Logging Starter](https://cloud.spring.io/spring-cloud-static/spring-cloud-gcp/current/reference/html/#stackdriver-logging) to use pre-configured Logback appenders to produce Structured JSON logs, or send the log via the Cloud Logging API.
