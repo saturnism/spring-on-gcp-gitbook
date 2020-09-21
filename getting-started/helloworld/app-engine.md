@@ -1,10 +1,10 @@
 ---
-description: Deploy a JAR to a fully managed PaaS with just one command line.
+description: Deploy a JAR to a fully managed PaaS with just one command.
 ---
 
 # App Engine
 
-[App Engine](https://cloud.google.com/appengine/docs/standard/java11) is a fully managed Platform-as-a-Service that can run your application, provision a HTTPS load balancer, and scale out the workload as needed. When no one is using your application, it can scale down to zero.
+[App Engine](https://cloud.google.com/appengine/docs/standard/java11) is a fully managed Platform-as-a-Service that can run your application, provision a HTTPS load balancer, and scale out your workload as needed. When no one is using your application, it can scale down to zero.
 
 {% embed url="https://www.youtube.com/watch?v=qx\_T6-EKkBE" %}
 
@@ -12,7 +12,7 @@ description: Deploy a JAR to a fully managed PaaS with just one command line.
 
 ### Clone
 
-```text
+```bash
 cd $HOME
 git clone https://github.com/saturnism/jvm-helloworld-by-example
 cd jvm-helloworld-by-example/helloworld-springboot-tomcat
@@ -20,29 +20,29 @@ cd jvm-helloworld-by-example/helloworld-springboot-tomcat
 
 ### Build
 
-```text
+```bash
 ./mvnw package
 ```
 
 ### Deploy
 
-```text
+```bash
 gcloud app deploy target/helloworld.jar
 ```
 
 {% hint style="info" %}
-If this is your first time using App Engine on the project, you'll be prompted to choose the region of the App Engine application. Pick the region that's most suitable for your application. This site mostly uses `us-central` as an example.
+If this is your first time using App Engine on the project, you'll be prompted to choose a region. Pick the region that's most suitable for your application. This site mostly uses `us-central` as an example.
 {% endhint %}
 
 {% hint style="warning" %}
-Once you picked the region, you cannot change it for an App Engine application.
+Once you select the region, you cannot change it for an App Engine application.
 {% endhint %}
 
 ### Connect
 
 Once deployed, the command will output the HTTPs URL. To open the URL in your browser:
 
-```text
+```bash
 gcloud app browse
 ```
 
@@ -65,7 +65,7 @@ You can run any Java service in App Engine as long as it's packaged as a JAR fil
 
 ## Additional Configuration
 
-By default, App Engine will deploy with the smallest `F1`instance class. You can specify a larger instance, configure environment variables, and more tuning parameters using an `app.yaml`:  
+By default, App Engine will deploy with the smallest `F1`instance class. You can specify a larger instance, configure environment variables, and more tuning parameters using an `app.yaml`:
 
 {% code title="app.yaml" %}
 ```text
@@ -82,7 +82,7 @@ See [App Engine Standard Instance Classes documentation](https://cloud.google.co
 
 Deploy the JAR file with the configuration:
 
-```text
+```bash
 gcloud app deploy target/helloworld.jar \
   --appyaml app.yaml
 ```

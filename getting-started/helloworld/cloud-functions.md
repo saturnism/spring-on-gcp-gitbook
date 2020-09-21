@@ -4,7 +4,7 @@ description: Deploy a simple HTTP function.
 
 # Cloud Functions
 
-[Cloud Function](https://cloud.google.com/functions/docs/) is a scalable pay as you go Functions-as-a-Service \(FaaS\) to run your code with zero server managements.
+[Cloud Function](https://cloud.google.com/functions/docs/) is a scalable, pay as you go, Functions-as-a-Service \(FaaS\).
 
 Spring Cloud Functions has pre-GA support for Cloud Functions for Java 11. See [Spring Cloud Functions Reference Documentation](https://docs.spring.io/spring-cloud-function/docs/current/reference/html/gcp.html) for more details.
 
@@ -41,7 +41,7 @@ curl localhost:8080
 
 #### Enable API
 
-```text
+```bash
 gcloud services enable cloudfunctions.googleapis.com
 ```
 
@@ -78,7 +78,7 @@ gcloud functions call helloworld
 
 ## Additional Configurations
 
-By default, Cloud Functions will deploy with the smallest 256MB instance. You can specify a larger instance, and configure environment variables with the `gcloud` CLI:
+By default, Cloud Functions will deploy to the smallest 256MB instance. You can specify a larger instance and configure environment variables with the `gcloud` CLI:
 
 ```bash
 gcloud functions deploy helloworld --trigger-http \

@@ -1,24 +1,24 @@
 ---
 description: >-
-  Get started on Google Cloud Platform by signing up a free account and creating
-  a new project to use.
+  Get started on Google Cloud Platform by signing up for a free account and
+  creating a new project to use.
 ---
 
 # Google Cloud Platform
 
 ## Sign Up
 
-If you don't already use [Google Cloud Platform](http://cloud.google.com/), sign up for an account and [get started for free](http://cloud.google.com/freetrial), and receive $300 credit for the first 12 months.
+If you don't already use [Google Cloud Platform](http://cloud.google.com/), you can [get started for free](http://cloud.google.com/freetrial), and receive $300 credit.
 
 ## Project
 
-All cloud services and resources \(such as virtual machines, network, load balancer, etc\) are to be created under a Google Cloud Platform project.
+All cloud services and resources \(such as virtual machines, network, load balancer, etc\) are created under a Google Cloud Platform project.
 
 A project is a billing unit. Any services / resources you create under the project will be charged to the Billing Account associated with the project.
 
-A project is  a security boundary. You can assign additional users to access different services / resources within the project.
+A project is a security boundary. You can assign additional users to access different services / resources within the project.
 
-Project is usually referred by Project ID. A Project ID is globally unique.
+Projects are usually referred to by Project ID. A Project ID is globally unique.
 
 ### New Account
 
@@ -40,7 +40,7 @@ IAM may be one of the hardest concepts to grasp about Google Cloud Platform - bu
 
 ### Member
 
-All Member \(i.e., a user\) are identified by an e-mail address:
+All Members \(i.e., a user\) are identified by an e-mail address:
 
 | Type | Uses | Identified By |
 | :--- | :--- | :--- |
@@ -66,7 +66,7 @@ A Permission is the finest grain of a particular action that a Member can perfor
 
 ### Roles
 
-Each Member can be associated with [different Roles](https://cloud.google.com/iam/docs/understanding-roles), and each Role is associated with a set of [Permissions](google-cloud-platform.md#permission).  For example, a `roles/storage.objectViewer` role, has `storage.objects.get` and `storage.objects.list` permissions.  See [Understanding roles documentation](https://cloud.google.com/iam/docs/understanding-roles) for all the available roles and the associated permissions
+Each Member can be associated with [different Roles](https://cloud.google.com/iam/docs/understanding-roles), and each Role is associated with a set of [Permissions](google-cloud-platform.md#permission).  For example, a `roles/storage.objectViewer` role, has the `storage.objects.get` and the `storage.objects.list` permissions.  See [Understanding roles documentation](https://cloud.google.com/iam/docs/understanding-roles) for all the available roles and the associated permissions.
 
 {% hint style="info" %}
 You can create [Custom Roles](https://cloud.google.com/iam/docs/understanding-custom-roles) to associate with specific permissions too.
@@ -80,18 +80,18 @@ You can create [Custom Roles](https://cloud.google.com/iam/docs/understanding-cu
 | Service Account | A [Service Account Key file](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) **or** from [Machine Credentials from Metadata Server](https://cloud.google.com/compute/docs/storing-retrieving-metadata) |
 
 {% hint style="info" %}
-User Account is great for local development when using `gcloud`.  Service Account is great for your application/microservice.
+A User Account is great for local development when using `gcloud`.  Service Account is great for your application/microservice.
 {% endhint %}
 
 #### Application Default Credentials
 
-This is the default credential that a Google Cloud client library will discover.  Application Default Credential can be:
+This is the default credential that a Google Cloud client library will discover. And Application Default Credential can be:
 
 * Created by `gcloud auth application-default login` when running locally,
-* **or** a `GOOGLE_APPLICATION_CREDENTIALS` environmental variable that points to the path of a Service[ Account key file](google-cloud-platform.md#service-account-key),
+* **or** a `GOOGLE_APPLICATION_CREDENTIALS` environmental variable that points to the path of a Service [Account key file](google-cloud-platform.md#service-account-key),
 * **or** automatically discovered using the [Metadata Server](google-cloud-platform.md#machine-credentials). 
 
-When using a Google Cloud client library to access a Cloud service, the client library would automatically discover the credential to use based on precedence. See [Google Auth Library README for more information](https://github.com/googleapis/google-auth-library-java/blob/master/README.md#application-default-credentials).
+When using a Google Cloud client library to access a Cloud service, the client library will automatically discover the credential to use based on precedence. See [Google Auth Library README](https://github.com/googleapis/google-auth-library-java/blob/master/README.md#application-default-credentials) for more information.
 
 #### Service Account Key
 
@@ -117,9 +117,9 @@ In most cases, your application is associated with a service account, but will *
 
 All Google Cloud runtime environments \(App Engine, Cloud Functions, Cloud Run, Kubernetes Engine, Compute Engine, ...\) have access to the [Metadata Server](https://cloud.google.com/compute/docs/storing-retrieving-metadata). From the runtime environment, you can retrieve the current access token associated with the Service Account:
 
-```text
+```bash
 curl -H "Metadata-Flavor: Google" \
-  http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/token  
+  http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/token
 ```
 
 {% hint style="info" %}
