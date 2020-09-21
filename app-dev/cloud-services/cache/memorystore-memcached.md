@@ -19,7 +19,7 @@ Memorystore Memcached requires Private Services Access to be enabled. See [Estab
 
 Reserve an IP address range to be used in a VPC, so that the Memcached instance's IP address can be allocated within this range:
 
-```text
+```bash
 gcloud beta compute addresses create reserved-range \
   --global --prefix-length=24 \
   --description=description --network=default \
@@ -32,7 +32,7 @@ This is a simplified range creation on the `default` VPC network. In a productio
 
 Establish peering so that Memorystore can allocate the IP address in the reserved range in the VPC.
 
-```text
+```bash
 gcloud services vpc-peerings connect \
   --service=servicenetworking.googleapis.com \
   --ranges=reserved-range --network=default
@@ -53,7 +53,7 @@ Creating a Memcached instance may take a few minutes.
 
 ### Get Instance IP Address
 
-```text
+```bash
 gcloud beta memcache instances describe orders-cache \
   --region=us-central1 --format="value(memcacheNodes.host)"
 ```
@@ -77,25 +77,25 @@ See [Memorystore connectivity options](./#connectivity) to see how to connect to
 
 You can test quickly by creating a Compute Engine instance in a zone within the same region:
 
-```text
+```bash
 gcloud compute instances create test-memorystore-vm --zone=us-central1-c
 ```
 
 SSH into the machine:
 
-```text
+```bash
 gcloud compute ssh test-memorystore-vm --zone=us-central1-c
 ```
 
 Install `redis-cli`:
 
-```text
+```bash
 sudo apt-get update && sudo apt-get install -y telnet
 ```
 
 Connect to the instance:
 
-```text
+```bash
 telnet <MEMORYSTORE_MEMCACHED_IP> 11211
 ```
 

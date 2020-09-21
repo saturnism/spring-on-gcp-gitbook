@@ -1,5 +1,5 @@
 ---
-description: Long and short code labs to learn Spring Boot on GCP
+description: Long and short code labs to learn Spring Boot on GCP.
 ---
 
 # Code Labs

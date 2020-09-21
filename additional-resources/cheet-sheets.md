@@ -1,6 +1,6 @@
 # Cheat Sheets
 
-Here are some  commands and links to reference documentations that are frequently used.
+Here are some commonly used commands and links.
 
 ## gcloud
 

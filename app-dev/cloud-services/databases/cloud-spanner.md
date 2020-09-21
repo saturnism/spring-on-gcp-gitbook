@@ -6,13 +6,13 @@
 
 ### Enable API
 
-```text
+```bash
 gcloud services enable spanner.googleapis.com
 ```
 
 ### Create an Instance
 
-```text
+```bash
 gcloud spanner instances create spanner-instance \
   --config=regional-us-central1 \
   --nodes=1 --description="A Spanner Instance"
@@ -26,7 +26,7 @@ This example creates a new regional instance \(i.e., spanning across zones withi
 
 A Cloud Spanner instance can host multiple databases, that each contains its own tables.
 
-```text
+```bash
 gcloud spanner databases create orders \
   --instance=spanner-instance
 ```
@@ -37,13 +37,13 @@ There is no interactive CLI to Cloud Spanner. You can create table and execute S
 
 #### List Databases
 
-```text
+```bash
 gcloud spanner databases list --instance=spanner-instance
 ```
 
 #### Execute SQL Statements
 
-```text
+```bash
 gcloud spanner databases execute-sql orders \
   --instance=spanner-instance \
   --sql="SELECT 1"
@@ -51,7 +51,7 @@ gcloud spanner databases execute-sql orders \
 
 #### Show Query Plan
 
-```text
+```bash
 gcloud spanner databases execute-sql orders \
   --instance=spanner-instance \
   --sql="SELECT 1" \
@@ -124,7 +124,7 @@ Add the Spring Data Spanner starter:
 
 {% tabs %}
 {% tab title="Maven" %}
-```bash
+```markup
 <dependency>
     <groupId>org.springframework.cloud</groupId>
     <artifactId>spring-cloud-gcp-starter-data-spanner</artifactId>
@@ -133,7 +133,7 @@ Add the Spring Data Spanner starter:
 {% endtab %}
 
 {% tab title="Gradle" %}
-```bash
+```groovy
 compile group: 'org.springframework.cloud', name: 'spring-cloud-gcp-starter-data-spanner'
 ```
 {% endtab %}
@@ -342,7 +342,7 @@ Add Cloud Spanner JDBC Driver:
 
 {% tabs %}
 {% tab title="Maven" %}
-```bash
+```markup
 <dependency>
     <groupId>com.google.cloud</groupId>
     <artifactId>google-cloud-spanner-jdbc</artifactId>
@@ -351,7 +351,7 @@ Add Cloud Spanner JDBC Driver:
 {% endtab %}
 
 {% tab title="Gradle" %}
-```bash
+```groovy
 compile group: 'com.google.cloud', name: 'google-cloud-spanner-jdbc'
 ```
 {% endtab %}
@@ -361,7 +361,7 @@ Use Spring Boot JDBC Starter to use JDBC Template:
 
 {% tabs %}
 {% tab title="Maven" %}
-```bash
+```markup
 <dependency>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-jdbc</artifactId>
@@ -370,7 +370,7 @@ Use Spring Boot JDBC Starter to use JDBC Template:
 {% endtab %}
 
 {% tab title="Gradle" %}
-```text
+```groovy
 compile group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc'
 ```
 {% endtab %}
@@ -433,7 +433,7 @@ Add Spring Data JPA starter:
 
 {% tabs %}
 {% tab title="Maven" %}
-```bash
+```markup
 <dependency>
   <groupId>org.springframework.boot</groupId>
   <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -442,7 +442,7 @@ Add Spring Data JPA starter:
 {% endtab %}
 
 {% tab title="Gradle" %}
-```text
+```groovy
 compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa'
 ```
 {% endtab %}
