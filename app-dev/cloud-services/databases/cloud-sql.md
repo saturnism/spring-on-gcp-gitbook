@@ -318,7 +318,7 @@ Add the Cloud SQL Starter dependency:
 Maven:
 
 {% code title="pom.xml" %}
-```bash
+```markup
 <dependency>
     <groupId>org.springframework.cloud</groupId>
     <artifactId>spring-cloud-gcp-starter-sql-mysql</artifactId>
@@ -329,7 +329,7 @@ Maven:
 Gradle:
 
 {% code title="build.gradle" %}
-```bash
+```groovy
 dependencies {
     compile group: 'org.springframework.cloud', name: 'spring-cloud-gcp-starter-sql-mysql'
 }
@@ -341,7 +341,7 @@ dependencies {
 Maven:
 
 {% code title="pom.xml" %}
-```bash
+```markup
 <dependency>
     <groupId>org.springframework.cloud</groupId>
     <artifactId>spring-cloud-gcp-starter-sql-postgresql</artifactId>
@@ -352,7 +352,7 @@ Maven:
 Gradle:
 
 {% code title="build.gradle" %}
-```bash
+```groovy
 compile group: 'org.springframework.cloud', name: 'spring-cloud-gcp-starter-sql-postgresql'
 ```
 {% endcode %}
@@ -402,7 +402,7 @@ Add the Cloud SQL Socket Factory dependency:
 {% tabs %}
 {% tab title="Maven" %}
 {% code title="pom.xml" %}
-```bash
+```markup
 <dependency>
     <groupId>com.google.cloud.sql</groupId>
     <artifactId>postgres-socket-factory</artifactId>
@@ -414,7 +414,7 @@ Add the Cloud SQL Socket Factory dependency:
 
 {% tab title="Gradle" %}
 {% code title="build.gradle" %}
-```bash
+```groovy
 dependencies {
     compile 'com.google.cloud.sql:postgres-socket-factory:1.0.15'
 }
