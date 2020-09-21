@@ -515,7 +515,7 @@ Do not click on **Select source** yet.
 
 Use the command line to upload the source code \(for example, if you deployed the [Helloworld Application](../../getting-started/helloworld/app-engine.md#clone)\):
 
-```text
+```bash
 # Clone the sample repository manually
 git clone https://github.com/GoogleCloudPlatform/java-docs-samples
 cd java-docs-samples/appengine-java11/springboot-helloworld
@@ -535,7 +535,7 @@ Once uploaded, click **Select source.**
 
 You can associate a Git repository using the [`git-commit-plugin`](https://github.com/git-commit-id/git-commit-id-maven-plugin) that generates a `git.properties` file, which contains the information to the Git repository. This only works if the repository is publicly accessible.
 
-```bash
+```markup
 <plugin>
   <groupId>pl.project13.maven</groupId>
   <artifactId>git-commit-id-plugin</artifactId>
