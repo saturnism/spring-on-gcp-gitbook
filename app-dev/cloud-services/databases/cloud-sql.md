@@ -400,8 +400,33 @@ If you don't use Spring Cloud GCP's Cloud SQL starter, and need to configure JDB
 Add the Cloud SQL Socket Factory dependency:
 
 {% tabs %}
-{% tab title="Maven" %}
-{% code title="pom.xml" %}
+{% tab title="MySQL" %}
+Maven:
+
+```markup
+<dependency>
+    <groupId>com.google.cloud.sql</groupId>
+    <artifactId>mysql-socket-factory-connector-j-8</artifactId>
+    <version>1.0.15</version>
+</dependency>
+```
+
+Gradle:
+
+{% code title="build.gradle" %}
+```groovy
+dependencies {
+    compile 'com.google.cloud.sql:mysql-socket-factory-connector-j-8<1.0.15'
+}
+```
+{% endcode %}
+
+Different MySQL Socket Factory artifact is needed for different MySQL Connector/J versions. See [MySQL Socket Factory README](https://github.com/GoogleCloudPlatform/cloud-sql-jdbc-socket-factory#mysql) for more information.
+{% endtab %}
+
+{% tab title="PostgreSQL" %}
+Maven:
+
 ```markup
 <dependency>
     <groupId>com.google.cloud.sql</groupId>
@@ -409,10 +434,9 @@ Add the Cloud SQL Socket Factory dependency:
     <version>1.0.15</version>
 </dependency>
 ```
-{% endcode %}
-{% endtab %}
 
-{% tab title="Gradle" %}
+Gradle:
+
 {% code title="build.gradle" %}
 ```groovy
 dependencies {
