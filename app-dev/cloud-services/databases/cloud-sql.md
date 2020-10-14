@@ -407,7 +407,7 @@ Maven:
 <dependency>
     <groupId>com.google.cloud.sql</groupId>
     <artifactId>mysql-socket-factory-connector-j-8</artifactId>
-    <version>1.0.15</version>
+    <version>1.1.0</version>
 </dependency>
 ```
 
@@ -416,7 +416,7 @@ Gradle:
 {% code title="build.gradle" %}
 ```groovy
 dependencies {
-    compile 'com.google.cloud.sql:mysql-socket-factory-connector-j-8<1.0.15'
+    compile 'com.google.cloud.sql:mysql-socket-factory-connector-j-8:1.1.0'
 }
 ```
 {% endcode %}
@@ -431,7 +431,7 @@ Maven:
 <dependency>
     <groupId>com.google.cloud.sql</groupId>
     <artifactId>postgres-socket-factory</artifactId>
-    <version>1.0.15</version>
+    <version>1.1.0</version>
 </dependency>
 ```
 
@@ -440,7 +440,7 @@ Gradle:
 {% code title="build.gradle" %}
 ```groovy
 dependencies {
-    compile 'com.google.cloud.sql:postgres-socket-factory:1.0.15'
+    compile 'com.google.cloud.sql:postgres-socket-factory:1.1.0'
 }
 ```
 {% endcode %}
