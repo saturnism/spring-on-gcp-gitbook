@@ -397,7 +397,7 @@ If you don't use Spring Cloud GCP's Cloud SQL starter, and need to configure JDB
 
 #### Dependency
 
-Add the Cloud SQL Socket Factory dependency:
+In addition to the JDBC Driver dependency, add the Cloud SQL Socket Factory dependency:
 
 {% tabs %}
 {% tab title="MySQL" %}
