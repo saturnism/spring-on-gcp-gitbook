@@ -582,14 +582,21 @@ You can use R2DBC driver for reactive database access when you connect to Cloud 
 
 * Cloud SQL Proxy
 * VPC Private IP
+* Using R2DBC Cloud SQL Connector
 
-{% hint style="danger" %}
-R2DBC driver does not work with Cloud SQL Socket Factory. A [GitHub issue](https://github.com/GoogleCloudPlatform/cloud-sql-jdbc-socket-factory/issues/164) is currently open to track this support.
-{% endhint %}
+### Cloud SQL Proxy or VPC Private IP
 
-See [R2DBC documentation](https://r2dbc.io/) for corresponding driver usages:
+You can use standard R2DBC driver to connect using the IP address. See [R2DBC documentation](https://r2dbc.io/) for corresponding driver usages:
 
 * [r2dbc-mysql](https://github.com/mirromutth/r2dbc-mysql)
 * [r2dbc-postgresql](https://github.com/r2dbc/r2dbc-postgresql)
 * [r2dbc-mssql](https://github.com/r2dbc/r2dbc-mssql)
+
+### Cloud SQL Connector
+
+You can use R2DBC Cloud SQL Connector that automatically exchanges the certificates like the Cloud SQL Socket Factory.
+
+{% hint style="info" %}
+See [Cloud SQL Socket Factory README](https://github.com/GoogleCloudPlatform/cloud-sql-jdbc-socket-factory#instructions-for-r2dbc) for more information on configuring the R2DBC driver for Cloud SQL.
+{% endhint %}
 
