@@ -13,7 +13,7 @@ gcloud services enable secretmanager.googleapis.com
 ### Create a Secret
 
 ```bash
-echo "qwerty" | \
+echo -n "qwerty" | \
   gcloud secrets create order-db-password --data-file=- --replication-policy=automatic
 ```
 
