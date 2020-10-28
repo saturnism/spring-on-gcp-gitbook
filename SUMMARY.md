@@ -63,6 +63,7 @@
     * [External Load Balancing](deployment/kubernetes/load-balancing/external-load-balancing.md)
     * [Internal Load Balancing](deployment/kubernetes/load-balancing/internal-load-balancing.md)
   * [Scheduling](deployment/kubernetes/scheduling.md)
+  * [Workload Identity](deployment/kubernetes/workload-identity.md)
   * [Binary Authorization](deployment/kubernetes/binary-authorization.md)
 
 ## Additional Resources
