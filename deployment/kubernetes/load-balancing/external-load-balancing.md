@@ -25,6 +25,8 @@ metadata:
   name: helloworld
   labels:
     app: helloworld
+  annotations:
+    cloud.google.com/neg: '{"exposed_ports": {"8080":{}}}'
 spec:
   ports:
   - name: 8080-8080
