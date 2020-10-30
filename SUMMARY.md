@@ -67,7 +67,8 @@
   * [Binary Authorization](deployment/kubernetes/binary-authorization.md)
 * [Istio](deployment/istio/README.md)
   * [Getting Started](deployment/istio/getting-started.md)
-  * [Istio Sidecar Proxy](deployment/istio/istio-sidecar-proxy.md)
+  * [Sidecar Proxy](deployment/istio/sidecar-proxy.md)
+  * [Traffic Splitting](deployment/istio/traffic-splitting.md)
 
 ## Additional Resources
 

@@ -60,5 +60,24 @@ kubectl get ns
 kubectl -n=istio-system get pods
 ```
 
-That should be it!
+## Install Addons
+
+In addition to core-Istio, you can install addons for observability, for example to see distributed traces and out-of-the-box metrics/dashboard.
+
+```bash
+# Zipkin
+kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.7/samples/addons/extras/zipkin.yaml
+
+# Prometheus
+kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.7/samples/addons/prometheus.yaml
+
+# Grafana
+kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.7/samples/addons/grafana.yaml
+
+# Wait for Grafana a bit before Kiali
+sleep 20
+
+# Kiali
+kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.7/samples/addons/kiali.yaml
+```
 
