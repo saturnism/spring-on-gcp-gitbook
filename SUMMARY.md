@@ -65,7 +65,9 @@
   * [Scheduling](deployment/kubernetes/scheduling.md)
   * [Workload Identity](deployment/kubernetes/workload-identity.md)
   * [Binary Authorization](deployment/kubernetes/binary-authorization.md)
-* [Istio](deployment/istio.md)
+* [Istio](deployment/istio/README.md)
+  * [Getting Started](deployment/istio/getting-started.md)
+  * [Istio Sidecar Proxy](deployment/istio/istio-sidecar-proxy.md)
 
 ## Additional Resources
 
