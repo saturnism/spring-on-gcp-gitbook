@@ -66,7 +66,7 @@ java -agentpath:/opt/cprof/profiler_java_agent.so \
 Rather than hard coding the startup command line, you can also configure it with the `JAVA_TOOL_OPTIONS` environmental variable:
 
 ```bash
-JAVA_TOOL_OPTIONS="-agentpath:/opt/cprof/profiler_java_agent.so.so"
+JAVA_TOOL_OPTIONS="-agentpath:/opt/cprof/profiler_java_agent.so"
 java -jar ...
 ```
 
