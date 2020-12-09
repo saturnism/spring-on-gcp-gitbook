@@ -149,7 +149,7 @@ Configure the production profile to enable Secret Manager.
 
 {% code title="bootstrap-prod.properties" %}
 ```text
-spring.cloud.gcp.secretmanager.enabled=false
+spring.cloud.gcp.secretmanager.enabled=true
 ```
 {% endcode %}
 
