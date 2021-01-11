@@ -28,8 +28,6 @@ The heap consumption is the amount of memory allocated in the Java program's hea
 
 ![](../../.gitbook/assets/image%20%2835%29.png)
 
-
-
 ## Java Agent
 
 Cloud Profiler works by adding a Java agent to your JVM startup argument, and the agent can communicate with the Cloud Profiler service in the Cloud. Through the Cloud Console, you can then see the collected profile data.
@@ -40,7 +38,7 @@ A Cloud Profiler agent can work both within Google Cloud environments using the 
 
 | Latest Version | Versioned URL |
 | :--- | :--- |
-| [Download](https://storage.googleapis.com/cloud-profiler/java/latest/profiler_java_agent.tar.gz) | https://storage.googleapis.com/cloud-profiler/java/cloud-profiler-java-agent\_${VERSION}.tar.gz |
+| [Download](https://storage.googleapis.com/cloud-profiler/java/latest/profiler_java_agent.tar.gz) | [https://storage.googleapis.com/cloud-profiler/java/cloud-profiler-java-agent\_${VERSION}.tar.gz](https://storage.googleapis.com/cloud-profiler/java/cloud-profiler-java-agent_${VERSION}.tar.gz) |
 
 Unfortunately, the list of versions are not available on GitHub. The only way to see the list of available versions is listing the Google Cloud Storage bucket that contains all the binaries:
 
@@ -56,7 +54,7 @@ See [Profiling Java Applications](https://cloud.google.com/profiler/docs/profili
 
 #### Agent Path
 
-To use the agent, you'll need to configure the JVM command line using the standard  `-agentpath` , e.g.:
+To use the agent, you'll need to configure the JVM command line using the standard `-agentpath` , e.g.:
 
 ```bash
 java -agentpath:/opt/cprof/profiler_java_agent.so \
@@ -275,7 +273,7 @@ Deploy to Kubernetes Engine with Debugger Enabled using the environmental variab
 mkdir k8s/
 ```
 
-Create a  Deployment YAML file and configure the environmental variable:
+Create a Deployment YAML file and configure the environmental variable:
 
 {% code title="k8s/deployment.yaml" %}
 ```yaml
@@ -408,8 +406,4 @@ java -agentpath:/opt/cprof/profiler_java_agent.so=-logtostderr,-cprof_enable_hea
 ```
 {% endtab %}
 {% endtabs %}
-
-
-
-
 

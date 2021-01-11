@@ -68,7 +68,6 @@
 * [Istio](deployment/istio/README.md)
   * [Getting Started](deployment/istio/getting-started.md)
   * [Sidecar Proxy](deployment/istio/sidecar-proxy.md)
-  * [Traffic Splitting](deployment/istio/traffic-splitting.md)
 
 ## Additional Resources
 
