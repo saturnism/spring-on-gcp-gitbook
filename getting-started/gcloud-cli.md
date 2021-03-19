@@ -8,10 +8,10 @@ description: >-
 
 ## Cloud Shell
 
-Cloud Shell already has the `gcloud` CLI pre-installed, so you can **skip ahead to** [**configure default zone and region**](gcloud-cli.md#default-zone-and-region).
+Cloud Shell already has the `gcloud` CLI pre-installed, so you can **skip ahead to** [**configure default zone and region**](#default-zone-and-region).
 
 {% hint style="danger" %}
-Jump to the last section to [configure default zone and region](gcloud-cli.md#default-zone-and-region) so you do not need to repeatedly specify it.
+Jump to the last section to [configure default zone and region](#default-zone-and-region) so you do not need to repeatedly specify it.
 {% endhint %}
 
 ## Local Installation
@@ -19,7 +19,7 @@ Jump to the last section to [configure default zone and region](gcloud-cli.md#de
 To install the `gcloud` CLI on your local machine, follow the [official installation guide](https://cloud.google.com/sdk/docs/downloads-interactive) for your platform and then follow the below steps to finish configuration.
 
 {% hint style="danger" %}
-If you are using Cloud Shell, jump to the last section to [configure default zone and region](gcloud-cli.md#default-zone-and-region) so you do not need to repeatedly specify it.
+If you are using Cloud Shell, jump to the last section to [configure default zone and region](#default-zone-and-region) so you do not need to repeatedly specify it.
 {% endhint %}
 
 ### Authenticate
@@ -67,7 +67,7 @@ gcloud auth application-default set-quota-project YOUR_PROJECT_ID
 ```
 
 {% hint style="info" %}
-Application Default Credentials are used by client libraries when making calls to Google Cloud. This is different from the [first gcloud Authenticate](gcloud-cli.md#authenticate), which is for `gcloud` to make calls to Google Cloud.
+Application Default Credentials are used by client libraries when making calls to Google Cloud. This is different from the [first gcloud Authenticate](#authenticate), which is for `gcloud` to make calls to Google Cloud.
 {% endhint %}
 
 This will store the credential \(OAuth refresh token\) in a well-known location, such as `~/.config/gcloud/application_default_credentials.json`. Google Cloud client libraries can automatically detect this file and use this credential.
