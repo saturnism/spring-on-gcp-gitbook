@@ -150,7 +150,7 @@ Create a Kubernetes Ingress configuration that will create the HTTP Load Balance
 
 {% code title="k8s/ingress.yaml" %}
 ```yaml
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: helloworld
@@ -160,8 +160,10 @@ spec:
       paths:
       - path: /*
         backend:
-          serviceName: helloworld
-          servicePort: 8080
+          service:
+            name: helloworld
+            post:
+              number: 8080
 ```
 {% endcode %}
 
@@ -266,7 +268,7 @@ gcloud compute addresses describe helloworld-ingress-ip --global \
 In `k8s/ingress.yaml`, use the `kubernetes.io/ingress.global-static-ip-name` annotation to specify the IP name:
 
 ```yaml
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: helloworld
@@ -278,8 +280,10 @@ spec:
       paths:
       - path: /*
         backend:
-          serviceName: helloworld
-          servicePort: 8080
+          service:
+            name: helloworld
+            post:
+              number: 8080
 ```
 
 #### Deploy
@@ -323,7 +327,7 @@ EXTERNAL_IP=$(kubectl get ingress helloworld -ojsonpath="{.status.loadBalancer.i
 DOMAIN="${EXTERNAL_IP}.xip.io"
 
 cat << EOF > k8s/certificate.yaml
-apiVersion: networking.gke.io/v1beta2
+apiVersion: networking.gke.io/v1
 kind: ManagedCertificate
 metadata:
   name: helloworld-certificate
@@ -338,7 +342,7 @@ EOF
 {% tab title="With Custom Domain" %}
 {% code title="k8s/certificate.yaml" %}
 ```yaml
-apiVersion: networking.gke.io/v1beta2
+apiVersion: networking.gke.io/v1
 kind: ManagedCertificate
 metadata:
   name: helloworld-certificate
@@ -355,7 +359,7 @@ In `k8s/ingress.yaml`, use the `networking.gke.io/managed-certificates` annotati
 
 {% code title="k8s/ingress.yaml" %}
 ```yaml
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: helloworld
@@ -369,8 +373,10 @@ spec:
       paths:
       - path: /*
         backend:
-          serviceName: helloworld
-          servicePort: 8080
+          service:
+            name: helloworld
+            post:
+              number: 8080
 ```
 {% endcode %}
 
@@ -460,7 +466,7 @@ Update the Ingress to refer to the secret for TLS certificate/key pair:
 
 {% code title="k8s/ingress.yaml" %}
 ```yaml
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: helloworld
@@ -475,8 +481,10 @@ spec:
       paths:
       - path: /*
         backend:
-          serviceName: helloworld
-          servicePort: 8080
+          service:
+            name: helloworld
+            post:
+              number: 8080
 ```
 {% endcode %}
 
